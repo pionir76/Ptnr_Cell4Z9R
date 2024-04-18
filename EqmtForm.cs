@@ -44,59 +44,21 @@ namespace Ptnr
         public int EqmtIdx { get; }
         private Config Cfg;
 
-        private bool _doFirstRunChamber1 = false;
-        private bool _doFirstRunChamber2 = false;
-        private bool _doFirstRunChiller1 = false;
-        private bool _doFirstRunChiller2 = false;
+        private bool[] _doFirstRunChamber = new bool[4] { false, false, false, false };
+        private ChamberSts[] _chamber = new ChamberSts[4];
+        private RecorderSts[] _recorder1 = new RecorderSts[4];
 
-        private ChamberSts _chamber1 = new ChamberSts();
-        private ChillerSts _chiller1 = new ChillerSts();
-        private RecorderSts _recorder1 = new RecorderSts();
+        private TSpecTmChamber[,] specTmChamber = new TSpecTmChamber[4,SysDefs.TEMI_TEST_CNT];
+        private TSpecTpChamber[,] specTpChamber = new TSpecTpChamber[4,SysDefs.TEMP_TEST_CNT];
 
-        private ChamberSts _chamber2 = new ChamberSts();
-        private ChillerSts _chiller2 = new ChillerSts();
-        private RecorderSts _recorder2 = new RecorderSts();
+        private int[] _chamberWorkingIdx = new int[4] {0,0,0,0};
+        private List<int>[] _chamberTestList = new List<int>[4];
 
-        private TSpecTmChamber[] specTmChamber1 = new TSpecTmChamber[SysDefs.TEMI_TEST_CNT];
-        private TSpecTmChamber[] specTmChamber2 = new TSpecTmChamber[SysDefs.TEMI_TEST_CNT];
+        private System.Windows.Forms.Timer[] _workChamberTmr = new System.Windows.Forms.Timer[4];
 
-        private TSpecTpChamber[] specTpChamber1 = new TSpecTpChamber[SysDefs.TEMP_TEST_CNT];
-        private TSpecTpChamber[] specTpChamber2 = new TSpecTpChamber[SysDefs.TEMP_TEST_CNT];
-
-        private TSpecChiller[] specChiller1 = new TSpecChiller[SysDefs.CHILLER_TEST_CNT];
-        private TSpecChiller[] specChiller2 = new TSpecChiller[SysDefs.CHILLER_TEST_CNT];
-
-        private int _chamber1WorkingIdx = 0;
-        private int _chiller1WorkingIdx = 0;
-
-        private int _chamber2WorkingIdx = 0;
-        private int _chiller2WorkingIdx = 0;
-
-        private List<int> _chamber1TestList = new List<int>();
-        private List<int> _chiller1TestList = new List<int>();
-
-        private List<int> _chamber2TestList = new List<int>();
-        private List<int> _chiller2TestList = new List<int>();
-
-        private System.Windows.Forms.Timer _workChamber1Tmr;
-        private System.Windows.Forms.Timer _workChiller1Tmr;
-
-        private System.Windows.Forms.Timer _workChamber2Tmr;
-        private System.Windows.Forms.Timer _workChiller2Tmr;
-
-        private bool _bWorkChamber1 = false;
-        private bool _bWorkChiller1 = false;
-
-        private bool _bWorkChamber2 = false;
-        private bool _bWorkChiller2 = false;
-
-        private bool _bReadyRoom1;
-        private bool _bReadyRoom2;
-
-        private bool _bChamber1Hold = false;
-        private bool _bChiller1Hold = false;
-        private bool _bChamber2Hold = false;
-        private bool _bChiller2Hold = false;
+        private bool[] _bWorkChamber = new bool[4] { false, false, false, false };
+        private bool[] _bReadyRoom = new bool[4] { false, false, false, false };
+        private bool[] _bChamberHold = new bool[4] { false, false, false, false };
 
         private EqmtType _eqmtType;
 
@@ -148,6 +110,7 @@ namespace Ptnr
                 this.lblTitle.Text = string.Format("항온항습\n  Chamber #{0}", EqmtIdx + 1);
             }
 
+            // Temp
             else
             {
                 this.lblTitle.Text = string.Format("항온\n  Chamber #{0}", EqmtIdx + 1);
@@ -156,26 +119,25 @@ namespace Ptnr
             bWorkingNow = false;
             bWorkFinish = false;
 
-            for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
+            for (int r = 0; r < 4; r++)
             {
-                specTmChamber1[i] = new TSpecTmChamber();
-                specTmChamber2[i] = new TSpecTmChamber();
-            }
+                for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
+                {
+                    specTmChamber[r, i] = new TSpecTmChamber();
+                    specTmChamber[r, i] = new TSpecTmChamber();
+                }
 
-            for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
-            {
-                specTpChamber1[i] = new TSpecTpChamber();
-                specTpChamber2[i] = new TSpecTpChamber();
-            }
+                for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
+                {
+                    specTpChamber[r, i] = new TSpecTpChamber();
+                    specTpChamber[r, i] = new TSpecTpChamber();
+                }
+                _bReadyRoom[r] = false;
+                _chamberWorkingIdx[r] = 0;
 
-            for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-            {
-                specChiller1[i] = new TSpecChiller();
-                specChiller2[i] = new TSpecChiller();
+                _workChamberTmr[r].Tick += new EventHandler(OnWorkChamberTmrEvent);
+                _workChamberTmr[r].Interval = 1000;
             }
-
-            _bReadyRoom1 = false;
-            _bReadyRoom2 = false;
 
             //----------------------------------------------------------------//
             // Result report infomations
@@ -185,44 +147,16 @@ namespace Ptnr
             txtAmbHumi.Text = _cfg.EqmtCfg[EqmtIdx].AmbHumi;
             txtApprov.Text = _cfg.EqmtCfg[EqmtIdx].Approv;
             txtCoolTemp.Text = _cfg.EqmtCfg[EqmtIdx].CoolTemp;
-            
-            //----------------------------------------------------------------//
-            // Set work #1 timer.
-            //----------------------------------------------------------------//
-            _workChamber1Tmr = new System.Windows.Forms.Timer();
-            _workChamber1Tmr.Tick += new EventHandler(OnWorkChamberTmrEvent);
-            _workChamber1Tmr.Interval = 1000;
-
-            _workChiller1Tmr = new System.Windows.Forms.Timer();
-            _workChiller1Tmr.Tick += new EventHandler(OnWorkChillerTmrEvent);
-            _workChiller1Tmr.Interval = 1000;
-
-            _chamber1WorkingIdx = 0;
-            _chiller1WorkingIdx = 0;
-
-            //----------------------------------------------------------------//
-            // Set work #2 timer.
-            //----------------------------------------------------------------//
-            _workChamber2Tmr = new System.Windows.Forms.Timer();
-            _workChamber2Tmr.Tick += new EventHandler(OnWorkChamberTmrEvent);
-            _workChamber2Tmr.Interval = 1000;
-
-            _workChiller2Tmr = new System.Windows.Forms.Timer();
-            _workChiller2Tmr.Tick += new EventHandler(OnWorkChillerTmrEvent);
-            _workChiller2Tmr.Interval = 1000;
-
-            _chamber2WorkingIdx = 0;
-            _chiller2WorkingIdx = 0;
 
             //--------------------------------------------------------------------------//
             // Chamber #1, #2 Comm. Status
             //--------------------------------------------------------------------------//
-            lblChamb1Sts.Text = "OFFLINE";
-            lblChiller1Sts.Text = "OFFLINE";
+            lblChamb11Sts.Text = "OFFLINE";
+            lblChamb12Sts.Text = "OFFLINE";
             lblRecorder1Sts.Text = "OFFLINE";
 
-            lblChamb2Sts.Text = "OFFLINE";
-            lblChiller2Sts.Text = "OFFLINE";
+            lblChamb21Sts.Text = "OFFLINE";
+            lblChamb22Sts.Text = "OFFLINE";
             lblRecorder2Sts.Text = "OFFLINE";
 
             UpdateTestSheet();
@@ -417,31 +351,31 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             if (_chamber1.bOnLine)
             {
-                lblChamb1Sts.Text = "ONLINE";
-                lblChamb1Sts.BackColor = Color.Salmon;
-                lblChamb1Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb11Sts.Text = "ONLINE";
+                lblChamb11Sts.BackColor = Color.Salmon;
+                lblChamb11Sts.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                lblChamb1Sts.Text = "OFFLINE";
-                lblChamb1Sts.BackColor = Color.DarkGray;
-                lblChamb1Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb11Sts.Text = "OFFLINE";
+                lblChamb11Sts.BackColor = Color.DarkGray;
+                lblChamb11Sts.ForeColor = Color.WhiteSmoke;
 
                 _bReadyRoom1 = false;
             }
 
             if (_chiller1.bOnLine)
             {
-                lblChiller1Sts.Text = "ONLINE";
-                lblChiller1Sts.BackColor = Color.Salmon;
-                lblChiller1Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb12Sts.Text = "ONLINE";
+                lblChamb12Sts.BackColor = Color.Salmon;
+                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
             }
 
             else
             {
-                lblChiller1Sts.Text = "OFFLINE";
-                lblChiller1Sts.BackColor = Color.DarkGray;
-                lblChiller1Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb12Sts.Text = "OFFLINE";
+                lblChamb12Sts.BackColor = Color.DarkGray;
+                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
 
                 _bReadyRoom1 = false;
             }
@@ -466,31 +400,31 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             if (_chamber2.bOnLine)
             {
-                lblChamb2Sts.Text = "ONLINE";
-                lblChamb2Sts.BackColor = Color.Salmon;
-                lblChamb2Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb21Sts.Text = "ONLINE";
+                lblChamb21Sts.BackColor = Color.Salmon;
+                lblChamb21Sts.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                lblChamb2Sts.Text = "OFFLINE";
-                lblChamb2Sts.BackColor = Color.DarkGray;
-                lblChamb2Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb21Sts.Text = "OFFLINE";
+                lblChamb21Sts.BackColor = Color.DarkGray;
+                lblChamb21Sts.ForeColor = Color.WhiteSmoke;
 
                 _bReadyRoom2 = false;
             }
 
             if (_chiller2.bOnLine)
             {
-                lblChiller2Sts.Text = "ONLINE";
-                lblChiller2Sts.BackColor = Color.Salmon;
-                lblChiller2Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb22Sts.Text = "ONLINE";
+                lblChamb22Sts.BackColor = Color.Salmon;
+                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
             }
 
             else
             {
-                lblChiller2Sts.Text = "OFFLINE";
-                lblChiller2Sts.BackColor = Color.DarkGray;
-                lblChiller2Sts.ForeColor = Color.WhiteSmoke;
+                lblChamb22Sts.Text = "OFFLINE";
+                lblChamb22Sts.BackColor = Color.DarkGray;
+                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
 
                 _bReadyRoom2 = false;
             }
@@ -561,8 +495,8 @@ namespace Ptnr
                 {
                     TSpecTmChamber sp1 = new TSpecTmChamber();
 
-                    if (lsv == lsvChmbSpc1) sp1 = specTmChamber1[i];
-                    if (lsv == lsvChmbSpc2) sp1 = specTmChamber2[i];
+                    if (lsv == lsvChmbSpc11) sp1 = specTmChamber1[i];
+                    if (lsv == lsvChmbSpc21) sp1 = specTmChamber2[i];
 
                     string strTsp1 = SysDefs.DotString(sp1.tsp, 1) + "℃";
                     string strHsp1 = SysDefs.DotString(sp1.hsp, 1) + "%";
@@ -665,8 +599,8 @@ namespace Ptnr
                 {
                     TSpecTpChamber sp1 = new TSpecTpChamber();
 
-                    if (lsv == lsvChmbSpc1) sp1 = specTpChamber1[i];
-                    if (lsv == lsvChmbSpc2) sp1 = specTpChamber2[i];
+                    if (lsv == lsvChmbSpc11) sp1 = specTpChamber1[i];
+                    if (lsv == lsvChmbSpc21) sp1 = specTpChamber2[i];
 
                     string strTsp1 = SysDefs.DotString(sp1.tsp, 1) + "℃";
                     string strWTm1 = (sp1.waitTm == 0) ? "-" : sp1.waitTm.ToString() + "Min";
@@ -1025,13 +959,13 @@ namespace Ptnr
 
             if (rt == RoomType.Room1)
             {
-                UpdateChamberTestSheetList(lsvChmbSpc1);
+                UpdateChamberTestSheetList(lsvChmbSpc11);
                 UpdateChillerTestSheetList(lsvChillerSpc1);
             }
 
             else if (rt == RoomType.Room2)
             {
-                UpdateChamberTestSheetList(lsvChmbSpc2);
+                UpdateChamberTestSheetList(lsvChmbSpc21);
                 UpdateChillerTestSheetList(lsvChillerSpc2);
             }
         }
@@ -1728,8 +1662,8 @@ namespace Ptnr
                 GenReport();
             }
 
-            if( addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc1);
-            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc2);
+            if( addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc11);
+            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc21);
         }
 
         private void DoTpChamberTest(int addr, TSpecTpChamber spcChamber)
@@ -1823,8 +1757,8 @@ namespace Ptnr
                 GenReport();
             }
 
-            if (addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc1);
-            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc2);
+            if (addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc11);
+            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc21);
         }
 
         //--------------------------------------------------------------------------//
@@ -3348,11 +3282,11 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             // Update List controls Room1
             //--------------------------------------------------------------------------//
-            lblChamber1TPv.Text = "온도:" + SysDefs.DotString(_chamber1.tpv, 1) + " ℃";
-            lblChamber1HPv.Text = "습도:" + SysDefs.DotString(_chamber1.hpv, 1) + " %";
+            lblChamber11TPv.Text = "온도:" + SysDefs.DotString(_chamber1.tpv, 1) + " ℃";
+            lblChamber11HPv.Text = "습도:" + SysDefs.DotString(_chamber1.hpv, 1) + " %";
 
-            lblChiller1TPv.Text = "온도:" + SysDefs.DotString(_chiller1.tpv, 1) + " ℃";
-            lblChiller1SPv.Text = "유량:" + SysDefs.DotString(_chiller1.spv, 2) + " lpm";
+            lblChamber12TPv.Text = "온도:" + SysDefs.DotString(_chiller1.tpv, 1) + " ℃";
+            lblChamber12HPv.Text = "유량:" + SysDefs.DotString(_chiller1.spv, 2) + " lpm";
 
             lblRec1Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder1.ch[0], 1) + " ℃";
             lblRec1Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder1.ch[1], 1) + " ℃";
@@ -3367,11 +3301,11 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             // Update List controls Room2
             //--------------------------------------------------------------------------//
-            lblChamber2TPv.Text = "온도:" + SysDefs.DotString(_chamber2.tpv, 1) + " ℃";
-            lblChamber2HPv.Text = "습도:" + SysDefs.DotString(_chamber2.hpv, 1) + " %";
+            lblChamber21TPv.Text = "온도:" + SysDefs.DotString(_chamber2.tpv, 1) + " ℃";
+            lblChamber21HPv.Text = "습도:" + SysDefs.DotString(_chamber2.hpv, 1) + " %";
 
-            lblChiller2TPv.Text = "온도:" + SysDefs.DotString(_chiller2.tpv, 1) + " ℃";
-            lblChiller2SPv.Text = "유량:" + SysDefs.DotString(_chiller2.spv, 2) + " lpm";
+            lblChamber22TPv.Text = "온도:" + SysDefs.DotString(_chiller2.tpv, 1) + " ℃";
+            lblChamber22HPv.Text = "유량:" + SysDefs.DotString(_chiller2.spv, 2) + " lpm";
 
             lblRec2Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder2.ch[0], 1) + " ℃";
             lblRec2Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder2.ch[1], 1) + " ℃";
@@ -3919,11 +3853,11 @@ namespace Ptnr
             {
                 for (int idx = 0; idx < 2; idx++){
                     if (idx == 0){
-                        lsvChamber = lsvChmbSpc1;
+                        lsvChamber = lsvChmbSpc11;
                         lsvChiller = lsvChillerSpc1;
                     }
                     else{
-                        lsvChamber = lsvChmbSpc2;
+                        lsvChamber = lsvChmbSpc21;
                         lsvChiller = lsvChillerSpc2;
                     }
 
@@ -3997,8 +3931,8 @@ namespace Ptnr
                     lsvChiller.Columns[lsvChiller.Columns.Count - 1].Width = w + lsvChiller.Width - tw - 5;
                 }
 
-                lsvChmbSpc1.Items.Clear();
-                lsvChmbSpc2.Items.Clear();
+                lsvChmbSpc11.Items.Clear();
+                lsvChmbSpc21.Items.Clear();
 
                 for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++){
                     ListViewItem itm1;
@@ -4007,8 +3941,8 @@ namespace Ptnr
                     itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
                     itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
 
-                    lsvChmbSpc1.Items.Add(itm1);
-                    lsvChmbSpc2.Items.Add(itm2);
+                    lsvChmbSpc11.Items.Add(itm1);
+                    lsvChmbSpc21.Items.Add(itm2);
                 }
             }
 
@@ -4018,11 +3952,11 @@ namespace Ptnr
             else{
                 for (int idx = 0; idx < 2; idx++){
                     if (idx == 0){
-                        lsvChamber = lsvChmbSpc1;
+                        lsvChamber = lsvChmbSpc11;
                         lsvChiller = lsvChillerSpc1;
                     }
                     else{
-                        lsvChamber = lsvChmbSpc2;
+                        lsvChamber = lsvChmbSpc21;
                         lsvChiller = lsvChillerSpc2;
                     }
 
@@ -4103,8 +4037,8 @@ namespace Ptnr
                     lsvChiller.Columns[lsvChiller.Columns.Count - 1].Width = w + lsvChiller.Width - tw - 5;
                 }
 
-                lsvChmbSpc1.Items.Clear();
-                lsvChmbSpc2.Items.Clear();
+                lsvChmbSpc11.Items.Clear();
+                lsvChmbSpc21.Items.Clear();
 
                 for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
                 {
@@ -4114,8 +4048,8 @@ namespace Ptnr
                     itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "" });
                     itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "" });
 
-                    lsvChmbSpc1.Items.Add(itm1);
-                    lsvChmbSpc2.Items.Add(itm2);
+                    lsvChmbSpc11.Items.Add(itm1);
+                    lsvChmbSpc21.Items.Add(itm2);
                 }
             }
 
@@ -4137,8 +4071,8 @@ namespace Ptnr
                 lsvChillerSpc2.Items.Add(itm2);
             }
 
-            UpdateChamberTestSheetList(lsvChmbSpc1);
-            UpdateChamberTestSheetList(lsvChmbSpc2);
+            UpdateChamberTestSheetList(lsvChmbSpc11);
+            UpdateChamberTestSheetList(lsvChmbSpc21);
 
             UpdateChillerTestSheetList(lsvChillerSpc1);
             UpdateChillerTestSheetList(lsvChillerSpc2);
@@ -4302,8 +4236,8 @@ namespace Ptnr
             }
 
 
-            UpdateChamberTestSheetList(lsvChmbSpc1);
-            UpdateChamberTestSheetList(lsvChmbSpc2);
+            UpdateChamberTestSheetList(lsvChmbSpc11);
+            UpdateChamberTestSheetList(lsvChmbSpc21);
 
             UpdateChillerTestSheetList(lsvChillerSpc1);
             UpdateChillerTestSheetList(lsvChillerSpc2);
@@ -4312,7 +4246,7 @@ namespace Ptnr
 
         private void ListView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            if (sender == lsvChmbSpc1 || sender == lsvChmbSpc2)
+            if (sender == lsvChmbSpc11 || sender == lsvChmbSpc21)
             {
                 if(_eqmtType == EqmtType.Temi)
                 {
@@ -4373,8 +4307,8 @@ namespace Ptnr
 
             int workingIdx = 0;
 
-            if (sender == lsvChmbSpc1) workingIdx = _chamber1WorkingIdx;
-            if (sender == lsvChmbSpc2) workingIdx = _chamber2WorkingIdx;
+            if (sender == lsvChmbSpc11) workingIdx = _chamber1WorkingIdx;
+            if (sender == lsvChmbSpc21) workingIdx = _chamber2WorkingIdx;
             if (sender == lsvChillerSpc1) workingIdx = _chiller1WorkingIdx;
             if (sender == lsvChillerSpc2) workingIdx = _chiller2WorkingIdx;
 
@@ -4401,18 +4335,18 @@ namespace Ptnr
             ref int workingIdx = ref _chamber1WorkingIdx;
             ListViewNF lstView = new ListViewNF();
 
-            if (sender == lsvChmbSpc1)
+            if (sender == lsvChmbSpc11)
             {
                 bWork = _bWorkChamber1;
                 workingIdx = ref _chamber1WorkingIdx;
-                lstView = lsvChmbSpc1;
+                lstView = lsvChmbSpc11;
             }
 
-            else if (sender == lsvChmbSpc2)
+            else if (sender == lsvChmbSpc21)
             {
                 bWork = _bWorkChamber2;
                 workingIdx = ref _chamber2WorkingIdx;
-                lstView = lsvChmbSpc2;
+                lstView = lsvChmbSpc21;
             }
 
             else if (sender == lsvChillerSpc1)
@@ -4470,8 +4404,8 @@ namespace Ptnr
             {
                 specTpChamber1[idx].Reset();
             }
-            UpdateChamberTestSheetList(lsvChmbSpc1);
-            UpdateChamberTestSheetList(lsvChmbSpc2);
+            UpdateChamberTestSheetList(lsvChmbSpc11);
+            UpdateChamberTestSheetList(lsvChmbSpc21);
 
             UpdateChillerTestSheetList(lsvChillerSpc1);
             UpdateChillerTestSheetList(lsvChillerSpc2);
@@ -4483,8 +4417,8 @@ namespace Ptnr
 
             specChiller1[idx].Reset();
 
-            UpdateChamberTestSheetList(lsvChmbSpc1);
-            UpdateChamberTestSheetList(lsvChmbSpc2);
+            UpdateChamberTestSheetList(lsvChmbSpc11);
+            UpdateChamberTestSheetList(lsvChmbSpc21);
 
             UpdateChillerTestSheetList(lsvChillerSpc1);
             UpdateChillerTestSheetList(lsvChillerSpc2);
