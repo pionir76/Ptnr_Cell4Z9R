@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSetComm = new System.Windows.Forms.TabPage();
+            this.edtTitle = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.cmbEqmt8Port = new System.Windows.Forms.ComboBox();
+            this.label72 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cmbEqmt6Port = new System.Windows.Forms.ComboBox();
             this.cmbEqmt7Port = new System.Windows.Forms.ComboBox();
@@ -183,89 +185,6 @@
             this.txtChamberRamp4 = new System.Windows.Forms.TextBox();
             this.txtChamberWTm5 = new System.Windows.Forms.TextBox();
             this.tabSetTemp = new System.Windows.Forms.TabPage();
-            this.tabSetChiller = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtChillerRamp9 = new System.Windows.Forms.TextBox();
-            this.txtChillerRamp8 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.txtChillerRamp4 = new System.Windows.Forms.TextBox();
-            this.txtChillerRamp7 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtChillerRamp3 = new System.Windows.Forms.TextBox();
-            this.txtChillerRamp6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtChillerRamp2 = new System.Windows.Forms.TextBox();
-            this.txtChillerRamp5 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtChillerRamp1 = new System.Windows.Forms.TextBox();
-            this.txtChillerSDiff9 = new System.Windows.Forms.TextBox();
-            this.txtChillerSDiff8 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtChillerSDiff4 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtChillerSDiff7 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtChillerSDiff3 = new System.Windows.Forms.TextBox();
-            this.txtChillerSDiff6 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.txtChillerSDiff2 = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtChillerTSp5 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp6 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp1 = new System.Windows.Forms.TextBox();
-            this.txtChillerSDiff5 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp2 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp7 = new System.Windows.Forms.TextBox();
-            this.txtChillerSDiff1 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp9 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp3 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp8 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff9 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff8 = new System.Windows.Forms.TextBox();
-            this.txtChillerTSp4 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp5 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm9 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff4 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm8 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp1 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp6 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm4 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff7 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp2 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp7 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff3 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm7 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp9 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp3 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp8 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm3 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff6 = new System.Windows.Forms.TextBox();
-            this.txtChillerSSp4 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm6 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff2 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff5 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm2 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm5 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm9 = new System.Windows.Forms.TextBox();
-            this.txtChillerTDiff1 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm8 = new System.Windows.Forms.TextBox();
-            this.txtChillerTTm1 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm5 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm4 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm7 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm1 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm6 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm3 = new System.Windows.Forms.TextBox();
-            this.txtChillerWTm2 = new System.Windows.Forms.TextBox();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -314,87 +233,24 @@
             this.txtTempRamp5 = new System.Windows.Forms.TextBox();
             this.txtTempRamp4 = new System.Windows.Forms.TextBox();
             this.txtTempWTm5 = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.txtTpChillerRamp9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerRamp8 = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.txtTpChillerRamp4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerRamp7 = new System.Windows.Forms.TextBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.txtTpChillerRamp3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerRamp6 = new System.Windows.Forms.TextBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.txtTpChillerRamp2 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerRamp5 = new System.Windows.Forms.TextBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.txtTpChillerRamp1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSDiff9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSDiff8 = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.txtTpChillerSDiff4 = new System.Windows.Forms.TextBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.txtTpChillerSDiff7 = new System.Windows.Forms.TextBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.txtTpChillerSDiff3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSDiff6 = new System.Windows.Forms.TextBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.txtTpChillerSDiff2 = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.txtTpChillerTSp5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp6 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSDiff5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp2 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp7 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSDiff1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp8 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff8 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTSp4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm8 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp6 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff7 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp2 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp7 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm7 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp8 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff6 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerSSp4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm6 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff2 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm2 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm9 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTDiff1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm8 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerTTm1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm5 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm4 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm7 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm1 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm6 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm3 = new System.Windows.Forms.TextBox();
-            this.txtTpChillerWTm2 = new System.Windows.Forms.TextBox();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.txtChamberCtrStblTm8 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm9 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm7 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm6 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm5 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm4 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm3 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm2 = new System.Windows.Forms.TextBox();
+            this.txtChamberCtrStblTm1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtTempCtlStblTm5 = new System.Windows.Forms.TextBox();
+            this.txtTempCtlStblTm4 = new System.Windows.Forms.TextBox();
+            this.txtTempCtlStblTm3 = new System.Windows.Forms.TextBox();
+            this.txtTempCtlStblTm2 = new System.Windows.Forms.TextBox();
+            this.txtTempCtlStblTm1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabSetComm.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -404,20 +260,14 @@
             this.tabSetTemi.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabSetTemp.SuspendLayout();
-            this.tabSetChiller.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabSetComm);
             this.tabControl1.Controls.Add(this.tabSetTemi);
-            this.tabControl1.Controls.Add(this.tabSetChiller);
             this.tabControl1.Controls.Add(this.tabSetTemp);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabControl1.ItemSize = new System.Drawing.Size(300, 30);
             this.tabControl1.Location = new System.Drawing.Point(22, 22);
@@ -425,12 +275,13 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(20, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1278, 788);
+            this.tabControl1.Size = new System.Drawing.Size(1367, 788);
             this.tabControl1.TabIndex = 1;
             // 
             // tabSetComm
             // 
             this.tabSetComm.BackColor = System.Drawing.Color.White;
+            this.tabSetComm.Controls.Add(this.edtTitle);
             this.tabSetComm.Controls.Add(this.label52);
             this.tabSetComm.Controls.Add(this.label48);
             this.tabSetComm.Controls.Add(this.label51);
@@ -439,6 +290,7 @@
             this.tabSetComm.Controls.Add(this.label37);
             this.tabSetComm.Controls.Add(this.label49);
             this.tabSetComm.Controls.Add(this.cmbEqmt8Port);
+            this.tabSetComm.Controls.Add(this.label72);
             this.tabSetComm.Controls.Add(this.label23);
             this.tabSetComm.Controls.Add(this.cmbEqmt6Port);
             this.tabSetComm.Controls.Add(this.cmbEqmt7Port);
@@ -459,6 +311,16 @@
             this.tabSetComm.Size = new System.Drawing.Size(1270, 750);
             this.tabSetComm.TabIndex = 2;
             this.tabSetComm.Text = "통신 설정";
+            // 
+            // edtTitle
+            // 
+            this.edtTitle.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.edtTitle.Location = new System.Drawing.Point(128, 554);
+            this.edtTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.edtTitle.Name = "edtTitle";
+            this.edtTitle.Size = new System.Drawing.Size(327, 30);
+            this.edtTitle.TabIndex = 59;
+            this.edtTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label52
             // 
@@ -539,6 +401,16 @@
             this.cmbEqmt8Port.Name = "cmbEqmt8Port";
             this.cmbEqmt8Port.Size = new System.Drawing.Size(138, 28);
             this.cmbEqmt8Port.TabIndex = 12;
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label72.Location = new System.Drawing.Point(43, 557);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(79, 20);
+            this.label72.TabIndex = 13;
+            this.label72.Text = "Title :";
             // 
             // label23
             // 
@@ -624,7 +496,7 @@
             // 
             this.groupBox4.Controls.Add(this.rdoDLen8);
             this.groupBox4.Controls.Add(this.rdoDLen7);
-            this.groupBox4.Location = new System.Drawing.Point(646, 386);
+            this.groupBox4.Location = new System.Drawing.Point(647, 270);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -661,7 +533,7 @@
             // 
             this.groupBox3.Controls.Add(this.rdoStBit2);
             this.groupBox3.Controls.Add(this.rdoStBit1);
-            this.groupBox3.Location = new System.Drawing.Point(481, 386);
+            this.groupBox3.Location = new System.Drawing.Point(482, 270);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -699,7 +571,7 @@
             this.groupBox2.Controls.Add(this.rdoParityEven);
             this.groupBox2.Controls.Add(this.rdoParityOdd);
             this.groupBox2.Controls.Add(this.rdoParityNone);
-            this.groupBox2.Location = new System.Drawing.Point(295, 386);
+            this.groupBox2.Location = new System.Drawing.Point(296, 270);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -751,7 +623,7 @@
             this.groupBox1.Controls.Add(this.rdoBaud38400);
             this.groupBox1.Controls.Add(this.rdoBaud19200);
             this.groupBox1.Controls.Add(this.rdoBaud9600);
-            this.groupBox1.Location = new System.Drawing.Point(44, 386);
+            this.groupBox1.Location = new System.Drawing.Point(45, 270);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -829,7 +701,7 @@
             this.tabSetTemi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSetTemi.Name = "tabSetTemi";
             this.tabSetTemi.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabSetTemi.Size = new System.Drawing.Size(1270, 750);
+            this.tabSetTemi.Size = new System.Drawing.Size(1359, 750);
             this.tabSetTemi.TabIndex = 0;
             this.tabSetTemi.Text = "TEMI SET";
             // 
@@ -859,6 +731,7 @@
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.txtChamberTTm7);
             this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label57);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.label4);
@@ -905,31 +778,40 @@
             this.groupBox5.Controls.Add(this.txtChamberTDiff9);
             this.groupBox5.Controls.Add(this.txtChamberTOver8);
             this.groupBox5.Controls.Add(this.txtChamberTSp8);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm1);
             this.groupBox5.Controls.Add(this.txtChamberTDiff8);
             this.groupBox5.Controls.Add(this.txtChamberHOver1);
             this.groupBox5.Controls.Add(this.txtChamberHSp1);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm2);
             this.groupBox5.Controls.Add(this.txtChamberHDiff1);
             this.groupBox5.Controls.Add(this.txtChamberHOver2);
             this.groupBox5.Controls.Add(this.txtChamberHSp2);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm3);
             this.groupBox5.Controls.Add(this.txtChamberHDiff2);
             this.groupBox5.Controls.Add(this.txtChamberHOver3);
             this.groupBox5.Controls.Add(this.txtChamberHSp3);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm4);
             this.groupBox5.Controls.Add(this.txtChamberHDiff3);
             this.groupBox5.Controls.Add(this.txtChamberHOver4);
             this.groupBox5.Controls.Add(this.txtChamberHSp4);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm5);
             this.groupBox5.Controls.Add(this.txtChamberHDiff4);
             this.groupBox5.Controls.Add(this.txtChamberHOver5);
             this.groupBox5.Controls.Add(this.txtChamberHSp5);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm6);
             this.groupBox5.Controls.Add(this.txtChamberHDiff5);
             this.groupBox5.Controls.Add(this.txtChamberHOver6);
             this.groupBox5.Controls.Add(this.txtChamberHSp6);
             this.groupBox5.Controls.Add(this.txtChamberHDiff6);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm7);
             this.groupBox5.Controls.Add(this.txtChamberHSp7);
             this.groupBox5.Controls.Add(this.txtChamberHOver7);
             this.groupBox5.Controls.Add(this.txtChamberHSp9);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm9);
             this.groupBox5.Controls.Add(this.txtChamberHDiff7);
             this.groupBox5.Controls.Add(this.txtChamberHOver9);
             this.groupBox5.Controls.Add(this.txtChamberHSp8);
+            this.groupBox5.Controls.Add(this.txtChamberCtrStblTm8);
             this.groupBox5.Controls.Add(this.txtChamberHDiff9);
             this.groupBox5.Controls.Add(this.txtChamberHOver8);
             this.groupBox5.Controls.Add(this.txtChamberUnif1);
@@ -957,7 +839,7 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox5.Size = new System.Drawing.Size(1200, 519);
+            this.groupBox5.Size = new System.Drawing.Size(1286, 519);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chamber Test Spec.";
@@ -966,7 +848,7 @@
             // 
             this.chkT9DoReport.FlatAppearance.BorderSize = 3;
             this.chkT9DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT9DoReport.Location = new System.Drawing.Point(1133, 411);
+            this.chkT9DoReport.Location = new System.Drawing.Point(1241, 411);
             this.chkT9DoReport.Name = "chkT9DoReport";
             this.chkT9DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT9DoReport.TabIndex = 64;
@@ -976,7 +858,7 @@
             // 
             this.chkT8DoReport.FlatAppearance.BorderSize = 3;
             this.chkT8DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT8DoReport.Location = new System.Drawing.Point(1133, 371);
+            this.chkT8DoReport.Location = new System.Drawing.Point(1241, 371);
             this.chkT8DoReport.Name = "chkT8DoReport";
             this.chkT8DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT8DoReport.TabIndex = 64;
@@ -986,7 +868,7 @@
             // 
             this.chkT7DoReport.FlatAppearance.BorderSize = 3;
             this.chkT7DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT7DoReport.Location = new System.Drawing.Point(1133, 330);
+            this.chkT7DoReport.Location = new System.Drawing.Point(1241, 330);
             this.chkT7DoReport.Name = "chkT7DoReport";
             this.chkT7DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT7DoReport.TabIndex = 64;
@@ -996,7 +878,7 @@
             // 
             this.chkT6DoReport.FlatAppearance.BorderSize = 3;
             this.chkT6DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT6DoReport.Location = new System.Drawing.Point(1133, 289);
+            this.chkT6DoReport.Location = new System.Drawing.Point(1241, 289);
             this.chkT6DoReport.Name = "chkT6DoReport";
             this.chkT6DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT6DoReport.TabIndex = 64;
@@ -1006,7 +888,7 @@
             // 
             this.chkT5DoReport.FlatAppearance.BorderSize = 3;
             this.chkT5DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT5DoReport.Location = new System.Drawing.Point(1133, 248);
+            this.chkT5DoReport.Location = new System.Drawing.Point(1241, 248);
             this.chkT5DoReport.Name = "chkT5DoReport";
             this.chkT5DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT5DoReport.TabIndex = 64;
@@ -1016,7 +898,7 @@
             // 
             this.chkT4DoReport.FlatAppearance.BorderSize = 3;
             this.chkT4DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT4DoReport.Location = new System.Drawing.Point(1133, 206);
+            this.chkT4DoReport.Location = new System.Drawing.Point(1241, 206);
             this.chkT4DoReport.Name = "chkT4DoReport";
             this.chkT4DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT4DoReport.TabIndex = 64;
@@ -1026,7 +908,7 @@
             // 
             this.chkT3DoReport.FlatAppearance.BorderSize = 3;
             this.chkT3DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT3DoReport.Location = new System.Drawing.Point(1133, 165);
+            this.chkT3DoReport.Location = new System.Drawing.Point(1241, 165);
             this.chkT3DoReport.Name = "chkT3DoReport";
             this.chkT3DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT3DoReport.TabIndex = 64;
@@ -1036,7 +918,7 @@
             // 
             this.chkT2DoReport.FlatAppearance.BorderSize = 3;
             this.chkT2DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT2DoReport.Location = new System.Drawing.Point(1133, 124);
+            this.chkT2DoReport.Location = new System.Drawing.Point(1241, 124);
             this.chkT2DoReport.Name = "chkT2DoReport";
             this.chkT2DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT2DoReport.TabIndex = 64;
@@ -1046,7 +928,7 @@
             // 
             this.chkT1DoReport.FlatAppearance.BorderSize = 3;
             this.chkT1DoReport.Font = new System.Drawing.Font("돋움체", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.chkT1DoReport.Location = new System.Drawing.Point(1133, 84);
+            this.chkT1DoReport.Location = new System.Drawing.Point(1241, 84);
             this.chkT1DoReport.Name = "chkT1DoReport";
             this.chkT1DoReport.Size = new System.Drawing.Size(43, 32);
             this.chkT1DoReport.TabIndex = 64;
@@ -2185,961 +2067,13 @@
             this.tabSetTemp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabSetTemp.Name = "tabSetTemp";
             this.tabSetTemp.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabSetTemp.Size = new System.Drawing.Size(1270, 750);
+            this.tabSetTemp.Size = new System.Drawing.Size(1359, 750);
             this.tabSetTemp.TabIndex = 1;
             this.tabSetTemp.Text = "TEMP SET";
             // 
-            // tabSetChiller
-            // 
-            this.tabSetChiller.Controls.Add(this.groupBox6);
-            this.tabSetChiller.Location = new System.Drawing.Point(4, 34);
-            this.tabSetChiller.Name = "tabSetChiller";
-            this.tabSetChiller.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSetChiller.Size = new System.Drawing.Size(1270, 750);
-            this.tabSetChiller.TabIndex = 3;
-            this.tabSetChiller.Text = "TEMI CHILLER";
-            this.tabSetChiller.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label54);
-            this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Controls.Add(this.txtChillerRamp9);
-            this.groupBox6.Controls.Add(this.txtChillerRamp8);
-            this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Controls.Add(this.label53);
-            this.groupBox6.Controls.Add(this.txtChillerRamp4);
-            this.groupBox6.Controls.Add(this.txtChillerRamp7);
-            this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.txtChillerRamp3);
-            this.groupBox6.Controls.Add(this.txtChillerRamp6);
-            this.groupBox6.Controls.Add(this.label13);
-            this.groupBox6.Controls.Add(this.label19);
-            this.groupBox6.Controls.Add(this.txtChillerRamp2);
-            this.groupBox6.Controls.Add(this.txtChillerRamp5);
-            this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.txtChillerRamp1);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff9);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff8);
-            this.groupBox6.Controls.Add(this.label14);
-            this.groupBox6.Controls.Add(this.label55);
-            this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff4);
-            this.groupBox6.Controls.Add(this.label26);
-            this.groupBox6.Controls.Add(this.label15);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff7);
-            this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff3);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff6);
-            this.groupBox6.Controls.Add(this.label31);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff2);
-            this.groupBox6.Controls.Add(this.label32);
-            this.groupBox6.Controls.Add(this.txtChillerTSp5);
-            this.groupBox6.Controls.Add(this.txtChillerTSp6);
-            this.groupBox6.Controls.Add(this.txtChillerTSp1);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff5);
-            this.groupBox6.Controls.Add(this.txtChillerTSp2);
-            this.groupBox6.Controls.Add(this.txtChillerTSp7);
-            this.groupBox6.Controls.Add(this.txtChillerSDiff1);
-            this.groupBox6.Controls.Add(this.txtChillerTSp9);
-            this.groupBox6.Controls.Add(this.txtChillerTSp3);
-            this.groupBox6.Controls.Add(this.txtChillerTSp8);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff9);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff8);
-            this.groupBox6.Controls.Add(this.txtChillerTSp4);
-            this.groupBox6.Controls.Add(this.txtChillerSSp5);
-            this.groupBox6.Controls.Add(this.txtChillerTTm9);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff4);
-            this.groupBox6.Controls.Add(this.txtChillerTTm8);
-            this.groupBox6.Controls.Add(this.txtChillerSSp1);
-            this.groupBox6.Controls.Add(this.txtChillerSSp6);
-            this.groupBox6.Controls.Add(this.txtChillerTTm4);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff7);
-            this.groupBox6.Controls.Add(this.txtChillerSSp2);
-            this.groupBox6.Controls.Add(this.txtChillerSSp7);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff3);
-            this.groupBox6.Controls.Add(this.txtChillerTTm7);
-            this.groupBox6.Controls.Add(this.txtChillerSSp9);
-            this.groupBox6.Controls.Add(this.txtChillerSSp3);
-            this.groupBox6.Controls.Add(this.txtChillerSSp8);
-            this.groupBox6.Controls.Add(this.txtChillerTTm3);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff6);
-            this.groupBox6.Controls.Add(this.txtChillerSSp4);
-            this.groupBox6.Controls.Add(this.txtChillerTTm6);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff2);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff5);
-            this.groupBox6.Controls.Add(this.txtChillerTTm2);
-            this.groupBox6.Controls.Add(this.txtChillerTTm5);
-            this.groupBox6.Controls.Add(this.txtChillerWTm9);
-            this.groupBox6.Controls.Add(this.txtChillerTDiff1);
-            this.groupBox6.Controls.Add(this.txtChillerWTm8);
-            this.groupBox6.Controls.Add(this.txtChillerTTm1);
-            this.groupBox6.Controls.Add(this.txtChillerWTm5);
-            this.groupBox6.Controls.Add(this.txtChillerWTm4);
-            this.groupBox6.Controls.Add(this.txtChillerWTm7);
-            this.groupBox6.Controls.Add(this.txtChillerWTm1);
-            this.groupBox6.Controls.Add(this.txtChillerWTm6);
-            this.groupBox6.Controls.Add(this.txtChillerWTm3);
-            this.groupBox6.Controls.Add(this.txtChillerWTm2);
-            this.groupBox6.Location = new System.Drawing.Point(23, 40);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox6.Size = new System.Drawing.Size(1117, 504);
-            this.groupBox6.TabIndex = 14;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Chiller Test Spec";
-            // 
-            // label54
-            // 
-            this.label54.BackColor = System.Drawing.Color.IndianRed;
-            this.label54.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label54.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label54.Location = new System.Drawing.Point(21, 270);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(68, 32);
-            this.label54.TabIndex = 11;
-            this.label54.Text = "5";
-            this.label54.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.IndianRed;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label11.Location = new System.Drawing.Point(21, 92);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 32);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "1";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerRamp9
-            // 
-            this.txtChillerRamp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp9.Location = new System.Drawing.Point(953, 451);
-            this.txtChillerRamp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp9.Name = "txtChillerRamp9";
-            this.txtChillerRamp9.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp9.TabIndex = 39;
-            this.txtChillerRamp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerRamp8
-            // 
-            this.txtChillerRamp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp8.Location = new System.Drawing.Point(953, 405);
-            this.txtChillerRamp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp8.Name = "txtChillerRamp8";
-            this.txtChillerRamp8.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp8.TabIndex = 39;
-            this.txtChillerRamp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.LightGray;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(96, 52);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 30);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "온도";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label53
-            // 
-            this.label53.BackColor = System.Drawing.Color.IndianRed;
-            this.label53.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label53.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label53.Location = new System.Drawing.Point(21, 315);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(68, 32);
-            this.label53.TabIndex = 11;
-            this.label53.Text = "6";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerRamp4
-            // 
-            this.txtChillerRamp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp4.Location = new System.Drawing.Point(953, 227);
-            this.txtChillerRamp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp4.Name = "txtChillerRamp4";
-            this.txtChillerRamp4.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp4.TabIndex = 39;
-            this.txtChillerRamp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerRamp7
-            // 
-            this.txtChillerRamp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp7.Location = new System.Drawing.Point(953, 360);
-            this.txtChillerRamp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp7.Name = "txtChillerRamp7";
-            this.txtChillerRamp7.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp7.TabIndex = 29;
-            this.txtChillerRamp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label24
-            // 
-            this.label24.BackColor = System.Drawing.Color.IndianRed;
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label24.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label24.Location = new System.Drawing.Point(21, 137);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(68, 32);
-            this.label24.TabIndex = 11;
-            this.label24.Text = "2";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerRamp3
-            // 
-            this.txtChillerRamp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp3.Location = new System.Drawing.Point(953, 182);
-            this.txtChillerRamp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp3.Name = "txtChillerRamp3";
-            this.txtChillerRamp3.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp3.TabIndex = 29;
-            this.txtChillerRamp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerRamp6
-            // 
-            this.txtChillerRamp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp6.Location = new System.Drawing.Point(953, 315);
-            this.txtChillerRamp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp6.Name = "txtChillerRamp6";
-            this.txtChillerRamp6.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp6.TabIndex = 19;
-            this.txtChillerRamp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.LightGray;
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(193, 52);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 30);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "유량";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.IndianRed;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label19.Location = new System.Drawing.Point(21, 360);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 32);
-            this.label19.TabIndex = 11;
-            this.label19.Text = "7";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerRamp2
-            // 
-            this.txtChillerRamp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp2.Location = new System.Drawing.Point(953, 137);
-            this.txtChillerRamp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp2.Name = "txtChillerRamp2";
-            this.txtChillerRamp2.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp2.TabIndex = 19;
-            this.txtChillerRamp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerRamp5
-            // 
-            this.txtChillerRamp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp5.Location = new System.Drawing.Point(953, 270);
-            this.txtChillerRamp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp5.Name = "txtChillerRamp5";
-            this.txtChillerRamp5.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp5.TabIndex = 9;
-            this.txtChillerRamp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label25
-            // 
-            this.label25.BackColor = System.Drawing.Color.IndianRed;
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label25.Location = new System.Drawing.Point(21, 182);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(68, 32);
-            this.label25.TabIndex = 11;
-            this.label25.Text = "3";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerRamp1
-            // 
-            this.txtChillerRamp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerRamp1.Location = new System.Drawing.Point(953, 92);
-            this.txtChillerRamp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerRamp1.Name = "txtChillerRamp1";
-            this.txtChillerRamp1.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerRamp1.TabIndex = 9;
-            this.txtChillerRamp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSDiff9
-            // 
-            this.txtChillerSDiff9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff9.Location = new System.Drawing.Point(829, 451);
-            this.txtChillerSDiff9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff9.Name = "txtChillerSDiff9";
-            this.txtChillerSDiff9.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff9.TabIndex = 37;
-            this.txtChillerSDiff9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSDiff8
-            // 
-            this.txtChillerSDiff8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff8.Location = new System.Drawing.Point(829, 405);
-            this.txtChillerSDiff8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff8.Name = "txtChillerSDiff8";
-            this.txtChillerSDiff8.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff8.TabIndex = 37;
-            this.txtChillerSDiff8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.LightGray;
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label14.Location = new System.Drawing.Point(333, 52);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 30);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "대기시간";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label55
-            // 
-            this.label55.BackColor = System.Drawing.Color.IndianRed;
-            this.label55.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label55.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label55.Location = new System.Drawing.Point(21, 451);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(68, 32);
-            this.label55.TabIndex = 11;
-            this.label55.Text = "9";
-            this.label55.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.IndianRed;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label18.Location = new System.Drawing.Point(21, 405);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 32);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "8";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerSDiff4
-            // 
-            this.txtChillerSDiff4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff4.Location = new System.Drawing.Point(829, 227);
-            this.txtChillerSDiff4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff4.Name = "txtChillerSDiff4";
-            this.txtChillerSDiff4.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff4.TabIndex = 37;
-            this.txtChillerSDiff4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label26
-            // 
-            this.label26.BackColor = System.Drawing.Color.IndianRed;
-            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label26.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label26.Location = new System.Drawing.Point(21, 227);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(68, 32);
-            this.label26.TabIndex = 11;
-            this.label26.Text = "4";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.LightGray;
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.Location = new System.Drawing.Point(451, 52);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(110, 30);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "테스트시간";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerSDiff7
-            // 
-            this.txtChillerSDiff7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff7.Location = new System.Drawing.Point(829, 360);
-            this.txtChillerSDiff7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff7.Name = "txtChillerSDiff7";
-            this.txtChillerSDiff7.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff7.TabIndex = 27;
-            this.txtChillerSDiff7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.IndianRed;
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label22.Location = new System.Drawing.Point(705, 52);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(110, 30);
-            this.label22.TabIndex = 11;
-            this.label22.Text = "온도편차";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerSDiff3
-            // 
-            this.txtChillerSDiff3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff3.Location = new System.Drawing.Point(829, 182);
-            this.txtChillerSDiff3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff3.Name = "txtChillerSDiff3";
-            this.txtChillerSDiff3.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff3.TabIndex = 27;
-            this.txtChillerSDiff3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSDiff6
-            // 
-            this.txtChillerSDiff6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff6.Location = new System.Drawing.Point(829, 315);
-            this.txtChillerSDiff6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff6.Name = "txtChillerSDiff6";
-            this.txtChillerSDiff6.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff6.TabIndex = 17;
-            this.txtChillerSDiff6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label31
-            // 
-            this.label31.BackColor = System.Drawing.Color.IndianRed;
-            this.label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label31.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label31.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label31.Location = new System.Drawing.Point(830, 52);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(110, 30);
-            this.label31.TabIndex = 11;
-            this.label31.Text = "유량편차";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerSDiff2
-            // 
-            this.txtChillerSDiff2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff2.Location = new System.Drawing.Point(829, 137);
-            this.txtChillerSDiff2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff2.Name = "txtChillerSDiff2";
-            this.txtChillerSDiff2.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff2.TabIndex = 17;
-            this.txtChillerSDiff2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label32
-            // 
-            this.label32.BackColor = System.Drawing.Color.IndianRed;
-            this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label32.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label32.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label32.Location = new System.Drawing.Point(953, 52);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(110, 30);
-            this.label32.TabIndex = 11;
-            this.label32.Text = "Ramp성능";
-            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChillerTSp5
-            // 
-            this.txtChillerTSp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp5.Location = new System.Drawing.Point(96, 270);
-            this.txtChillerTSp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp5.Name = "txtChillerTSp5";
-            this.txtChillerTSp5.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp5.TabIndex = 0;
-            this.txtChillerTSp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp6
-            // 
-            this.txtChillerTSp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp6.Location = new System.Drawing.Point(96, 315);
-            this.txtChillerTSp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp6.Name = "txtChillerTSp6";
-            this.txtChillerTSp6.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp6.TabIndex = 10;
-            this.txtChillerTSp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp1
-            // 
-            this.txtChillerTSp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp1.Location = new System.Drawing.Point(96, 92);
-            this.txtChillerTSp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp1.Name = "txtChillerTSp1";
-            this.txtChillerTSp1.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp1.TabIndex = 0;
-            this.txtChillerTSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSDiff5
-            // 
-            this.txtChillerSDiff5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff5.Location = new System.Drawing.Point(829, 270);
-            this.txtChillerSDiff5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff5.Name = "txtChillerSDiff5";
-            this.txtChillerSDiff5.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff5.TabIndex = 7;
-            this.txtChillerSDiff5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp2
-            // 
-            this.txtChillerTSp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp2.Location = new System.Drawing.Point(96, 137);
-            this.txtChillerTSp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp2.Name = "txtChillerTSp2";
-            this.txtChillerTSp2.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp2.TabIndex = 10;
-            this.txtChillerTSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp7
-            // 
-            this.txtChillerTSp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp7.Location = new System.Drawing.Point(96, 360);
-            this.txtChillerTSp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp7.Name = "txtChillerTSp7";
-            this.txtChillerTSp7.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp7.TabIndex = 20;
-            this.txtChillerTSp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSDiff1
-            // 
-            this.txtChillerSDiff1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSDiff1.Location = new System.Drawing.Point(829, 92);
-            this.txtChillerSDiff1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSDiff1.Name = "txtChillerSDiff1";
-            this.txtChillerSDiff1.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerSDiff1.TabIndex = 7;
-            this.txtChillerSDiff1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp9
-            // 
-            this.txtChillerTSp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp9.Location = new System.Drawing.Point(96, 451);
-            this.txtChillerTSp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp9.Name = "txtChillerTSp9";
-            this.txtChillerTSp9.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp9.TabIndex = 30;
-            this.txtChillerTSp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp3
-            // 
-            this.txtChillerTSp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp3.Location = new System.Drawing.Point(96, 182);
-            this.txtChillerTSp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp3.Name = "txtChillerTSp3";
-            this.txtChillerTSp3.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp3.TabIndex = 20;
-            this.txtChillerTSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp8
-            // 
-            this.txtChillerTSp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp8.Location = new System.Drawing.Point(96, 405);
-            this.txtChillerTSp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp8.Name = "txtChillerTSp8";
-            this.txtChillerTSp8.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp8.TabIndex = 30;
-            this.txtChillerTSp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff9
-            // 
-            this.txtChillerTDiff9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff9.Location = new System.Drawing.Point(706, 451);
-            this.txtChillerTDiff9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff9.Name = "txtChillerTDiff9";
-            this.txtChillerTDiff9.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff9.TabIndex = 36;
-            this.txtChillerTDiff9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff8
-            // 
-            this.txtChillerTDiff8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff8.Location = new System.Drawing.Point(706, 405);
-            this.txtChillerTDiff8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff8.Name = "txtChillerTDiff8";
-            this.txtChillerTDiff8.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff8.TabIndex = 36;
-            this.txtChillerTDiff8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTSp4
-            // 
-            this.txtChillerTSp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTSp4.Location = new System.Drawing.Point(96, 227);
-            this.txtChillerTSp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTSp4.Name = "txtChillerTSp4";
-            this.txtChillerTSp4.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerTSp4.TabIndex = 30;
-            this.txtChillerTSp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp5
-            // 
-            this.txtChillerSSp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp5.Location = new System.Drawing.Point(192, 270);
-            this.txtChillerSSp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp5.Name = "txtChillerSSp5";
-            this.txtChillerSSp5.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp5.TabIndex = 1;
-            this.txtChillerSSp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm9
-            // 
-            this.txtChillerTTm9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm9.Location = new System.Drawing.Point(449, 451);
-            this.txtChillerTTm9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm9.Name = "txtChillerTTm9";
-            this.txtChillerTTm9.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm9.TabIndex = 34;
-            this.txtChillerTTm9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff4
-            // 
-            this.txtChillerTDiff4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff4.Location = new System.Drawing.Point(706, 227);
-            this.txtChillerTDiff4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff4.Name = "txtChillerTDiff4";
-            this.txtChillerTDiff4.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff4.TabIndex = 36;
-            this.txtChillerTDiff4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm8
-            // 
-            this.txtChillerTTm8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm8.Location = new System.Drawing.Point(449, 405);
-            this.txtChillerTTm8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm8.Name = "txtChillerTTm8";
-            this.txtChillerTTm8.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm8.TabIndex = 34;
-            this.txtChillerTTm8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp1
-            // 
-            this.txtChillerSSp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp1.Location = new System.Drawing.Point(192, 92);
-            this.txtChillerSSp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp1.Name = "txtChillerSSp1";
-            this.txtChillerSSp1.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp1.TabIndex = 1;
-            this.txtChillerSSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp6
-            // 
-            this.txtChillerSSp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp6.Location = new System.Drawing.Point(192, 315);
-            this.txtChillerSSp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp6.Name = "txtChillerSSp6";
-            this.txtChillerSSp6.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp6.TabIndex = 11;
-            this.txtChillerSSp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm4
-            // 
-            this.txtChillerTTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm4.Location = new System.Drawing.Point(449, 227);
-            this.txtChillerTTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm4.Name = "txtChillerTTm4";
-            this.txtChillerTTm4.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm4.TabIndex = 34;
-            this.txtChillerTTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff7
-            // 
-            this.txtChillerTDiff7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff7.Location = new System.Drawing.Point(706, 360);
-            this.txtChillerTDiff7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff7.Name = "txtChillerTDiff7";
-            this.txtChillerTDiff7.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff7.TabIndex = 26;
-            this.txtChillerTDiff7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp2
-            // 
-            this.txtChillerSSp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp2.Location = new System.Drawing.Point(192, 137);
-            this.txtChillerSSp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp2.Name = "txtChillerSSp2";
-            this.txtChillerSSp2.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp2.TabIndex = 11;
-            this.txtChillerSSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp7
-            // 
-            this.txtChillerSSp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp7.Location = new System.Drawing.Point(192, 360);
-            this.txtChillerSSp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp7.Name = "txtChillerSSp7";
-            this.txtChillerSSp7.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp7.TabIndex = 21;
-            this.txtChillerSSp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff3
-            // 
-            this.txtChillerTDiff3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff3.Location = new System.Drawing.Point(706, 182);
-            this.txtChillerTDiff3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff3.Name = "txtChillerTDiff3";
-            this.txtChillerTDiff3.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff3.TabIndex = 26;
-            this.txtChillerTDiff3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm7
-            // 
-            this.txtChillerTTm7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm7.Location = new System.Drawing.Point(449, 360);
-            this.txtChillerTTm7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm7.Name = "txtChillerTTm7";
-            this.txtChillerTTm7.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm7.TabIndex = 24;
-            this.txtChillerTTm7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp9
-            // 
-            this.txtChillerSSp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp9.Location = new System.Drawing.Point(192, 451);
-            this.txtChillerSSp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp9.Name = "txtChillerSSp9";
-            this.txtChillerSSp9.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp9.TabIndex = 31;
-            this.txtChillerSSp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp3
-            // 
-            this.txtChillerSSp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp3.Location = new System.Drawing.Point(192, 182);
-            this.txtChillerSSp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp3.Name = "txtChillerSSp3";
-            this.txtChillerSSp3.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp3.TabIndex = 21;
-            this.txtChillerSSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp8
-            // 
-            this.txtChillerSSp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp8.Location = new System.Drawing.Point(192, 405);
-            this.txtChillerSSp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp8.Name = "txtChillerSSp8";
-            this.txtChillerSSp8.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp8.TabIndex = 31;
-            this.txtChillerSSp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm3
-            // 
-            this.txtChillerTTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm3.Location = new System.Drawing.Point(449, 182);
-            this.txtChillerTTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm3.Name = "txtChillerTTm3";
-            this.txtChillerTTm3.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm3.TabIndex = 24;
-            this.txtChillerTTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff6
-            // 
-            this.txtChillerTDiff6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff6.Location = new System.Drawing.Point(706, 315);
-            this.txtChillerTDiff6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff6.Name = "txtChillerTDiff6";
-            this.txtChillerTDiff6.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff6.TabIndex = 16;
-            this.txtChillerTDiff6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerSSp4
-            // 
-            this.txtChillerSSp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerSSp4.Location = new System.Drawing.Point(192, 227);
-            this.txtChillerSSp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerSSp4.Name = "txtChillerSSp4";
-            this.txtChillerSSp4.Size = new System.Drawing.Size(90, 30);
-            this.txtChillerSSp4.TabIndex = 31;
-            this.txtChillerSSp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm6
-            // 
-            this.txtChillerTTm6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm6.Location = new System.Drawing.Point(449, 315);
-            this.txtChillerTTm6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm6.Name = "txtChillerTTm6";
-            this.txtChillerTTm6.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm6.TabIndex = 14;
-            this.txtChillerTTm6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff2
-            // 
-            this.txtChillerTDiff2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff2.Location = new System.Drawing.Point(706, 137);
-            this.txtChillerTDiff2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff2.Name = "txtChillerTDiff2";
-            this.txtChillerTDiff2.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff2.TabIndex = 16;
-            this.txtChillerTDiff2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff5
-            // 
-            this.txtChillerTDiff5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff5.Location = new System.Drawing.Point(706, 270);
-            this.txtChillerTDiff5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff5.Name = "txtChillerTDiff5";
-            this.txtChillerTDiff5.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff5.TabIndex = 6;
-            this.txtChillerTDiff5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm2
-            // 
-            this.txtChillerTTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm2.Location = new System.Drawing.Point(449, 137);
-            this.txtChillerTTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm2.Name = "txtChillerTTm2";
-            this.txtChillerTTm2.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm2.TabIndex = 14;
-            this.txtChillerTTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm5
-            // 
-            this.txtChillerTTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm5.Location = new System.Drawing.Point(449, 270);
-            this.txtChillerTTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm5.Name = "txtChillerTTm5";
-            this.txtChillerTTm5.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm5.TabIndex = 4;
-            this.txtChillerTTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm9
-            // 
-            this.txtChillerWTm9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm9.Location = new System.Drawing.Point(331, 451);
-            this.txtChillerWTm9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm9.Name = "txtChillerWTm9";
-            this.txtChillerWTm9.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm9.TabIndex = 33;
-            this.txtChillerWTm9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTDiff1
-            // 
-            this.txtChillerTDiff1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTDiff1.Location = new System.Drawing.Point(706, 92);
-            this.txtChillerTDiff1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTDiff1.Name = "txtChillerTDiff1";
-            this.txtChillerTDiff1.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTDiff1.TabIndex = 6;
-            this.txtChillerTDiff1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm8
-            // 
-            this.txtChillerWTm8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm8.Location = new System.Drawing.Point(331, 405);
-            this.txtChillerWTm8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm8.Name = "txtChillerWTm8";
-            this.txtChillerWTm8.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm8.TabIndex = 33;
-            this.txtChillerWTm8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerTTm1
-            // 
-            this.txtChillerTTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerTTm1.Location = new System.Drawing.Point(449, 92);
-            this.txtChillerTTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerTTm1.Name = "txtChillerTTm1";
-            this.txtChillerTTm1.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerTTm1.TabIndex = 4;
-            this.txtChillerTTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm5
-            // 
-            this.txtChillerWTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm5.Location = new System.Drawing.Point(331, 270);
-            this.txtChillerWTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm5.Name = "txtChillerWTm5";
-            this.txtChillerWTm5.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm5.TabIndex = 3;
-            this.txtChillerWTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm4
-            // 
-            this.txtChillerWTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm4.Location = new System.Drawing.Point(331, 227);
-            this.txtChillerWTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm4.Name = "txtChillerWTm4";
-            this.txtChillerWTm4.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm4.TabIndex = 33;
-            this.txtChillerWTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm7
-            // 
-            this.txtChillerWTm7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm7.Location = new System.Drawing.Point(331, 360);
-            this.txtChillerWTm7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm7.Name = "txtChillerWTm7";
-            this.txtChillerWTm7.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm7.TabIndex = 23;
-            this.txtChillerWTm7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm1
-            // 
-            this.txtChillerWTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm1.Location = new System.Drawing.Point(331, 92);
-            this.txtChillerWTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm1.Name = "txtChillerWTm1";
-            this.txtChillerWTm1.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm1.TabIndex = 3;
-            this.txtChillerWTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm6
-            // 
-            this.txtChillerWTm6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm6.Location = new System.Drawing.Point(331, 315);
-            this.txtChillerWTm6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm6.Name = "txtChillerWTm6";
-            this.txtChillerWTm6.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm6.TabIndex = 13;
-            this.txtChillerWTm6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm3
-            // 
-            this.txtChillerWTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm3.Location = new System.Drawing.Point(331, 182);
-            this.txtChillerWTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm3.Name = "txtChillerWTm3";
-            this.txtChillerWTm3.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm3.TabIndex = 23;
-            this.txtChillerWTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtChillerWTm2
-            // 
-            this.txtChillerWTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtChillerWTm2.Location = new System.Drawing.Point(331, 137);
-            this.txtChillerWTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtChillerWTm2.Name = "txtChillerWTm2";
-            this.txtChillerWTm2.Size = new System.Drawing.Size(110, 30);
-            this.txtChillerWTm2.TabIndex = 13;
-            this.txtChillerWTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnOk
-            // 
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(914, 832);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(178, 54);
-            this.btnOk.TabIndex = 0;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.OnOk);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1113, 832);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(178, 54);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label12);
             this.groupBox7.Controls.Add(this.label27);
             this.groupBox7.Controls.Add(this.label33);
             this.groupBox7.Controls.Add(this.label34);
@@ -3152,11 +2086,13 @@
             this.groupBox7.Controls.Add(this.label46);
             this.groupBox7.Controls.Add(this.txtTempTSp1);
             this.groupBox7.Controls.Add(this.txtTempUnif5);
+            this.groupBox7.Controls.Add(this.txtTempCtlStblTm1);
             this.groupBox7.Controls.Add(this.txtTempTOver1);
             this.groupBox7.Controls.Add(this.txtTempTDiff1);
             this.groupBox7.Controls.Add(this.txtTempTTm5);
             this.groupBox7.Controls.Add(this.txtTempUnif4);
             this.groupBox7.Controls.Add(this.txtTempTSp2);
+            this.groupBox7.Controls.Add(this.txtTempCtlStblTm2);
             this.groupBox7.Controls.Add(this.txtTempTTm4);
             this.groupBox7.Controls.Add(this.txtTempTOver2);
             this.groupBox7.Controls.Add(this.txtTempTDiff2);
@@ -3164,13 +2100,16 @@
             this.groupBox7.Controls.Add(this.txtTempTTm3);
             this.groupBox7.Controls.Add(this.txtTempUnif2);
             this.groupBox7.Controls.Add(this.txtTempTSp3);
+            this.groupBox7.Controls.Add(this.txtTempCtlStblTm3);
             this.groupBox7.Controls.Add(this.txtTempTTm2);
             this.groupBox7.Controls.Add(this.txtTempTOver3);
             this.groupBox7.Controls.Add(this.txtTempTDiff3);
             this.groupBox7.Controls.Add(this.label61);
+            this.groupBox7.Controls.Add(this.txtTempCtlStblTm4);
             this.groupBox7.Controls.Add(this.label62);
             this.groupBox7.Controls.Add(this.txtTempTOver4);
             this.groupBox7.Controls.Add(this.txtTempTSp4);
+            this.groupBox7.Controls.Add(this.txtTempCtlStblTm5);
             this.groupBox7.Controls.Add(this.txtTempTDiff4);
             this.groupBox7.Controls.Add(this.txtTempTOver5);
             this.groupBox7.Controls.Add(this.txtTempTSp5);
@@ -3191,7 +2130,7 @@
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox7.Size = new System.Drawing.Size(1200, 322);
+            this.groupBox7.Size = new System.Drawing.Size(1200, 490);
             this.groupBox7.TabIndex = 13;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Chamber Test Spec.";
@@ -3687,937 +2626,198 @@
             this.txtTempWTm5.TabIndex = 34;
             this.txtTempWTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox8);
-            this.tabPage1.Location = new System.Drawing.Point(4, 34);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1270, 750);
-            this.tabPage1.TabIndex = 4;
-            this.tabPage1.Text = "TEMP CHILLER";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label38);
-            this.groupBox8.Controls.Add(this.label43);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp9);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp8);
-            this.groupBox8.Controls.Add(this.label44);
-            this.groupBox8.Controls.Add(this.label47);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp4);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp7);
-            this.groupBox8.Controls.Add(this.label58);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp3);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp6);
-            this.groupBox8.Controls.Add(this.label59);
-            this.groupBox8.Controls.Add(this.label60);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp2);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp5);
-            this.groupBox8.Controls.Add(this.label63);
-            this.groupBox8.Controls.Add(this.txtTpChillerRamp1);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff9);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff8);
-            this.groupBox8.Controls.Add(this.label64);
-            this.groupBox8.Controls.Add(this.label65);
-            this.groupBox8.Controls.Add(this.label66);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff4);
-            this.groupBox8.Controls.Add(this.label67);
-            this.groupBox8.Controls.Add(this.label68);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff7);
-            this.groupBox8.Controls.Add(this.label69);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff3);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff6);
-            this.groupBox8.Controls.Add(this.label70);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff2);
-            this.groupBox8.Controls.Add(this.label71);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp5);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp6);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp1);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff5);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp2);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp7);
-            this.groupBox8.Controls.Add(this.txtTpChillerSDiff1);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp9);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp3);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp8);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff9);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff8);
-            this.groupBox8.Controls.Add(this.txtTpChillerTSp4);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp5);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm9);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff4);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm8);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp1);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp6);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm4);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff7);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp2);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp7);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff3);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm7);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp9);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp3);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp8);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm3);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff6);
-            this.groupBox8.Controls.Add(this.txtTpChillerSSp4);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm6);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff2);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff5);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm2);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm5);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm9);
-            this.groupBox8.Controls.Add(this.txtTpChillerTDiff1);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm8);
-            this.groupBox8.Controls.Add(this.txtTpChillerTTm1);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm5);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm4);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm7);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm1);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm6);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm3);
-            this.groupBox8.Controls.Add(this.txtTpChillerWTm2);
-            this.groupBox8.Location = new System.Drawing.Point(38, 41);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox8.Size = new System.Drawing.Size(1117, 504);
-            this.groupBox8.TabIndex = 15;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Chiller Test Spec";
-            // 
-            // label38
-            // 
-            this.label38.BackColor = System.Drawing.Color.IndianRed;
-            this.label38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label38.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label38.Location = new System.Drawing.Point(21, 270);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(68, 32);
-            this.label38.TabIndex = 11;
-            this.label38.Text = "5";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label43
-            // 
-            this.label43.BackColor = System.Drawing.Color.IndianRed;
-            this.label43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label43.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label43.Location = new System.Drawing.Point(21, 92);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(68, 32);
-            this.label43.TabIndex = 11;
-            this.label43.Text = "1";
-            this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerRamp9
-            // 
-            this.txtTpChillerRamp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp9.Location = new System.Drawing.Point(953, 451);
-            this.txtTpChillerRamp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp9.Name = "txtTpChillerRamp9";
-            this.txtTpChillerRamp9.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp9.TabIndex = 39;
-            this.txtTpChillerRamp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerRamp8
-            // 
-            this.txtTpChillerRamp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp8.Location = new System.Drawing.Point(953, 405);
-            this.txtTpChillerRamp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp8.Name = "txtTpChillerRamp8";
-            this.txtTpChillerRamp8.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp8.TabIndex = 39;
-            this.txtTpChillerRamp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label44
-            // 
-            this.label44.BackColor = System.Drawing.Color.LightGray;
-            this.label44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label44.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label44.Location = new System.Drawing.Point(96, 52);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(89, 30);
-            this.label44.TabIndex = 11;
-            this.label44.Text = "온도";
-            this.label44.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label47
-            // 
-            this.label47.BackColor = System.Drawing.Color.IndianRed;
-            this.label47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label47.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label47.Location = new System.Drawing.Point(21, 315);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(68, 32);
-            this.label47.TabIndex = 11;
-            this.label47.Text = "6";
-            this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerRamp4
-            // 
-            this.txtTpChillerRamp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp4.Location = new System.Drawing.Point(953, 227);
-            this.txtTpChillerRamp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp4.Name = "txtTpChillerRamp4";
-            this.txtTpChillerRamp4.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp4.TabIndex = 39;
-            this.txtTpChillerRamp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerRamp7
-            // 
-            this.txtTpChillerRamp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp7.Location = new System.Drawing.Point(953, 360);
-            this.txtTpChillerRamp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp7.Name = "txtTpChillerRamp7";
-            this.txtTpChillerRamp7.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp7.TabIndex = 29;
-            this.txtTpChillerRamp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label58
-            // 
-            this.label58.BackColor = System.Drawing.Color.IndianRed;
-            this.label58.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label58.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label58.Location = new System.Drawing.Point(21, 137);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(68, 32);
-            this.label58.TabIndex = 11;
-            this.label58.Text = "2";
-            this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerRamp3
-            // 
-            this.txtTpChillerRamp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp3.Location = new System.Drawing.Point(953, 182);
-            this.txtTpChillerRamp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp3.Name = "txtTpChillerRamp3";
-            this.txtTpChillerRamp3.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp3.TabIndex = 29;
-            this.txtTpChillerRamp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerRamp6
-            // 
-            this.txtTpChillerRamp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp6.Location = new System.Drawing.Point(953, 315);
-            this.txtTpChillerRamp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp6.Name = "txtTpChillerRamp6";
-            this.txtTpChillerRamp6.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp6.TabIndex = 19;
-            this.txtTpChillerRamp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label59
-            // 
-            this.label59.BackColor = System.Drawing.Color.LightGray;
-            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label59.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label59.Location = new System.Drawing.Point(193, 52);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(89, 30);
-            this.label59.TabIndex = 11;
-            this.label59.Text = "유량";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label60
-            // 
-            this.label60.BackColor = System.Drawing.Color.IndianRed;
-            this.label60.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label60.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label60.Location = new System.Drawing.Point(21, 360);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(68, 32);
-            this.label60.TabIndex = 11;
-            this.label60.Text = "7";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerRamp2
-            // 
-            this.txtTpChillerRamp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp2.Location = new System.Drawing.Point(953, 137);
-            this.txtTpChillerRamp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp2.Name = "txtTpChillerRamp2";
-            this.txtTpChillerRamp2.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp2.TabIndex = 19;
-            this.txtTpChillerRamp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerRamp5
-            // 
-            this.txtTpChillerRamp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp5.Location = new System.Drawing.Point(953, 270);
-            this.txtTpChillerRamp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp5.Name = "txtTpChillerRamp5";
-            this.txtTpChillerRamp5.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp5.TabIndex = 9;
-            this.txtTpChillerRamp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label63
-            // 
-            this.label63.BackColor = System.Drawing.Color.IndianRed;
-            this.label63.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label63.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label63.Location = new System.Drawing.Point(21, 182);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(68, 32);
-            this.label63.TabIndex = 11;
-            this.label63.Text = "3";
-            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerRamp1
-            // 
-            this.txtTpChillerRamp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerRamp1.Location = new System.Drawing.Point(953, 92);
-            this.txtTpChillerRamp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerRamp1.Name = "txtTpChillerRamp1";
-            this.txtTpChillerRamp1.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerRamp1.TabIndex = 9;
-            this.txtTpChillerRamp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSDiff9
-            // 
-            this.txtTpChillerSDiff9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff9.Location = new System.Drawing.Point(829, 451);
-            this.txtTpChillerSDiff9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff9.Name = "txtTpChillerSDiff9";
-            this.txtTpChillerSDiff9.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff9.TabIndex = 37;
-            this.txtTpChillerSDiff9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSDiff8
-            // 
-            this.txtTpChillerSDiff8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff8.Location = new System.Drawing.Point(829, 405);
-            this.txtTpChillerSDiff8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff8.Name = "txtTpChillerSDiff8";
-            this.txtTpChillerSDiff8.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff8.TabIndex = 37;
-            this.txtTpChillerSDiff8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label64
-            // 
-            this.label64.BackColor = System.Drawing.Color.LightGray;
-            this.label64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label64.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label64.Location = new System.Drawing.Point(333, 52);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(110, 30);
-            this.label64.TabIndex = 11;
-            this.label64.Text = "대기시간";
-            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label65
-            // 
-            this.label65.BackColor = System.Drawing.Color.IndianRed;
-            this.label65.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label65.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label65.Location = new System.Drawing.Point(21, 451);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(68, 32);
-            this.label65.TabIndex = 11;
-            this.label65.Text = "9";
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label66
-            // 
-            this.label66.BackColor = System.Drawing.Color.IndianRed;
-            this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label66.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label66.Location = new System.Drawing.Point(21, 405);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(68, 32);
-            this.label66.TabIndex = 11;
-            this.label66.Text = "8";
-            this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerSDiff4
-            // 
-            this.txtTpChillerSDiff4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff4.Location = new System.Drawing.Point(829, 227);
-            this.txtTpChillerSDiff4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff4.Name = "txtTpChillerSDiff4";
-            this.txtTpChillerSDiff4.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff4.TabIndex = 37;
-            this.txtTpChillerSDiff4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label67
-            // 
-            this.label67.BackColor = System.Drawing.Color.IndianRed;
-            this.label67.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label67.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label67.Location = new System.Drawing.Point(21, 227);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(68, 32);
-            this.label67.TabIndex = 11;
-            this.label67.Text = "4";
-            this.label67.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label68
-            // 
-            this.label68.BackColor = System.Drawing.Color.LightGray;
-            this.label68.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label68.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label68.Location = new System.Drawing.Point(451, 52);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(110, 30);
-            this.label68.TabIndex = 11;
-            this.label68.Text = "테스트시간";
-            this.label68.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerSDiff7
-            // 
-            this.txtTpChillerSDiff7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff7.Location = new System.Drawing.Point(829, 360);
-            this.txtTpChillerSDiff7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff7.Name = "txtTpChillerSDiff7";
-            this.txtTpChillerSDiff7.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff7.TabIndex = 27;
-            this.txtTpChillerSDiff7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label69
-            // 
-            this.label69.BackColor = System.Drawing.Color.IndianRed;
-            this.label69.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label69.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label69.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label69.Location = new System.Drawing.Point(705, 52);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(110, 30);
-            this.label69.TabIndex = 11;
-            this.label69.Text = "온도편차";
-            this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerSDiff3
-            // 
-            this.txtTpChillerSDiff3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff3.Location = new System.Drawing.Point(829, 182);
-            this.txtTpChillerSDiff3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff3.Name = "txtTpChillerSDiff3";
-            this.txtTpChillerSDiff3.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff3.TabIndex = 27;
-            this.txtTpChillerSDiff3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSDiff6
-            // 
-            this.txtTpChillerSDiff6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff6.Location = new System.Drawing.Point(829, 315);
-            this.txtTpChillerSDiff6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff6.Name = "txtTpChillerSDiff6";
-            this.txtTpChillerSDiff6.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff6.TabIndex = 17;
-            this.txtTpChillerSDiff6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label70
-            // 
-            this.label70.BackColor = System.Drawing.Color.IndianRed;
-            this.label70.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label70.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label70.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label70.Location = new System.Drawing.Point(830, 52);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(110, 30);
-            this.label70.TabIndex = 11;
-            this.label70.Text = "유량편차";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerSDiff2
-            // 
-            this.txtTpChillerSDiff2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff2.Location = new System.Drawing.Point(829, 137);
-            this.txtTpChillerSDiff2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff2.Name = "txtTpChillerSDiff2";
-            this.txtTpChillerSDiff2.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff2.TabIndex = 17;
-            this.txtTpChillerSDiff2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label71
-            // 
-            this.label71.BackColor = System.Drawing.Color.IndianRed;
-            this.label71.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label71.Font = new System.Drawing.Font("돋움체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label71.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label71.Location = new System.Drawing.Point(953, 52);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(110, 30);
-            this.label71.TabIndex = 11;
-            this.label71.Text = "Ramp성능";
-            this.label71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtTpChillerTSp5
-            // 
-            this.txtTpChillerTSp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp5.Location = new System.Drawing.Point(96, 270);
-            this.txtTpChillerTSp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp5.Name = "txtTpChillerTSp5";
-            this.txtTpChillerTSp5.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp5.TabIndex = 0;
-            this.txtTpChillerTSp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp6
-            // 
-            this.txtTpChillerTSp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp6.Location = new System.Drawing.Point(96, 315);
-            this.txtTpChillerTSp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp6.Name = "txtTpChillerTSp6";
-            this.txtTpChillerTSp6.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp6.TabIndex = 10;
-            this.txtTpChillerTSp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp1
-            // 
-            this.txtTpChillerTSp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp1.Location = new System.Drawing.Point(96, 92);
-            this.txtTpChillerTSp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp1.Name = "txtTpChillerTSp1";
-            this.txtTpChillerTSp1.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp1.TabIndex = 0;
-            this.txtTpChillerTSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSDiff5
-            // 
-            this.txtTpChillerSDiff5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff5.Location = new System.Drawing.Point(829, 270);
-            this.txtTpChillerSDiff5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff5.Name = "txtTpChillerSDiff5";
-            this.txtTpChillerSDiff5.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff5.TabIndex = 7;
-            this.txtTpChillerSDiff5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp2
-            // 
-            this.txtTpChillerTSp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp2.Location = new System.Drawing.Point(96, 137);
-            this.txtTpChillerTSp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp2.Name = "txtTpChillerTSp2";
-            this.txtTpChillerTSp2.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp2.TabIndex = 10;
-            this.txtTpChillerTSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp7
-            // 
-            this.txtTpChillerTSp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp7.Location = new System.Drawing.Point(96, 360);
-            this.txtTpChillerTSp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp7.Name = "txtTpChillerTSp7";
-            this.txtTpChillerTSp7.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp7.TabIndex = 20;
-            this.txtTpChillerTSp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSDiff1
-            // 
-            this.txtTpChillerSDiff1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSDiff1.Location = new System.Drawing.Point(829, 92);
-            this.txtTpChillerSDiff1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSDiff1.Name = "txtTpChillerSDiff1";
-            this.txtTpChillerSDiff1.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerSDiff1.TabIndex = 7;
-            this.txtTpChillerSDiff1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp9
-            // 
-            this.txtTpChillerTSp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp9.Location = new System.Drawing.Point(96, 451);
-            this.txtTpChillerTSp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp9.Name = "txtTpChillerTSp9";
-            this.txtTpChillerTSp9.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp9.TabIndex = 30;
-            this.txtTpChillerTSp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp3
-            // 
-            this.txtTpChillerTSp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp3.Location = new System.Drawing.Point(96, 182);
-            this.txtTpChillerTSp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp3.Name = "txtTpChillerTSp3";
-            this.txtTpChillerTSp3.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp3.TabIndex = 20;
-            this.txtTpChillerTSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp8
-            // 
-            this.txtTpChillerTSp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp8.Location = new System.Drawing.Point(96, 405);
-            this.txtTpChillerTSp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp8.Name = "txtTpChillerTSp8";
-            this.txtTpChillerTSp8.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp8.TabIndex = 30;
-            this.txtTpChillerTSp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff9
-            // 
-            this.txtTpChillerTDiff9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff9.Location = new System.Drawing.Point(706, 451);
-            this.txtTpChillerTDiff9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff9.Name = "txtTpChillerTDiff9";
-            this.txtTpChillerTDiff9.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff9.TabIndex = 36;
-            this.txtTpChillerTDiff9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff8
-            // 
-            this.txtTpChillerTDiff8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff8.Location = new System.Drawing.Point(706, 405);
-            this.txtTpChillerTDiff8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff8.Name = "txtTpChillerTDiff8";
-            this.txtTpChillerTDiff8.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff8.TabIndex = 36;
-            this.txtTpChillerTDiff8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTSp4
-            // 
-            this.txtTpChillerTSp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTSp4.Location = new System.Drawing.Point(96, 227);
-            this.txtTpChillerTSp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTSp4.Name = "txtTpChillerTSp4";
-            this.txtTpChillerTSp4.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerTSp4.TabIndex = 30;
-            this.txtTpChillerTSp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp5
-            // 
-            this.txtTpChillerSSp5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp5.Location = new System.Drawing.Point(192, 270);
-            this.txtTpChillerSSp5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp5.Name = "txtTpChillerSSp5";
-            this.txtTpChillerSSp5.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp5.TabIndex = 1;
-            this.txtTpChillerSSp5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm9
-            // 
-            this.txtTpChillerTTm9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm9.Location = new System.Drawing.Point(449, 451);
-            this.txtTpChillerTTm9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm9.Name = "txtTpChillerTTm9";
-            this.txtTpChillerTTm9.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm9.TabIndex = 34;
-            this.txtTpChillerTTm9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff4
-            // 
-            this.txtTpChillerTDiff4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff4.Location = new System.Drawing.Point(706, 227);
-            this.txtTpChillerTDiff4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff4.Name = "txtTpChillerTDiff4";
-            this.txtTpChillerTDiff4.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff4.TabIndex = 36;
-            this.txtTpChillerTDiff4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm8
-            // 
-            this.txtTpChillerTTm8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm8.Location = new System.Drawing.Point(449, 405);
-            this.txtTpChillerTTm8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm8.Name = "txtTpChillerTTm8";
-            this.txtTpChillerTTm8.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm8.TabIndex = 34;
-            this.txtTpChillerTTm8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp1
-            // 
-            this.txtTpChillerSSp1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp1.Location = new System.Drawing.Point(192, 92);
-            this.txtTpChillerSSp1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp1.Name = "txtTpChillerSSp1";
-            this.txtTpChillerSSp1.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp1.TabIndex = 1;
-            this.txtTpChillerSSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp6
-            // 
-            this.txtTpChillerSSp6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp6.Location = new System.Drawing.Point(192, 315);
-            this.txtTpChillerSSp6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp6.Name = "txtTpChillerSSp6";
-            this.txtTpChillerSSp6.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp6.TabIndex = 11;
-            this.txtTpChillerSSp6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm4
-            // 
-            this.txtTpChillerTTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm4.Location = new System.Drawing.Point(449, 227);
-            this.txtTpChillerTTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm4.Name = "txtTpChillerTTm4";
-            this.txtTpChillerTTm4.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm4.TabIndex = 34;
-            this.txtTpChillerTTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff7
-            // 
-            this.txtTpChillerTDiff7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff7.Location = new System.Drawing.Point(706, 360);
-            this.txtTpChillerTDiff7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff7.Name = "txtTpChillerTDiff7";
-            this.txtTpChillerTDiff7.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff7.TabIndex = 26;
-            this.txtTpChillerTDiff7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp2
-            // 
-            this.txtTpChillerSSp2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp2.Location = new System.Drawing.Point(192, 137);
-            this.txtTpChillerSSp2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp2.Name = "txtTpChillerSSp2";
-            this.txtTpChillerSSp2.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp2.TabIndex = 11;
-            this.txtTpChillerSSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp7
-            // 
-            this.txtTpChillerSSp7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp7.Location = new System.Drawing.Point(192, 360);
-            this.txtTpChillerSSp7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp7.Name = "txtTpChillerSSp7";
-            this.txtTpChillerSSp7.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp7.TabIndex = 21;
-            this.txtTpChillerSSp7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff3
-            // 
-            this.txtTpChillerTDiff3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff3.Location = new System.Drawing.Point(706, 182);
-            this.txtTpChillerTDiff3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff3.Name = "txtTpChillerTDiff3";
-            this.txtTpChillerTDiff3.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff3.TabIndex = 26;
-            this.txtTpChillerTDiff3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm7
-            // 
-            this.txtTpChillerTTm7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm7.Location = new System.Drawing.Point(449, 360);
-            this.txtTpChillerTTm7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm7.Name = "txtTpChillerTTm7";
-            this.txtTpChillerTTm7.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm7.TabIndex = 24;
-            this.txtTpChillerTTm7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp9
-            // 
-            this.txtTpChillerSSp9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp9.Location = new System.Drawing.Point(192, 451);
-            this.txtTpChillerSSp9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp9.Name = "txtTpChillerSSp9";
-            this.txtTpChillerSSp9.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp9.TabIndex = 31;
-            this.txtTpChillerSSp9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp3
-            // 
-            this.txtTpChillerSSp3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp3.Location = new System.Drawing.Point(192, 182);
-            this.txtTpChillerSSp3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp3.Name = "txtTpChillerSSp3";
-            this.txtTpChillerSSp3.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp3.TabIndex = 21;
-            this.txtTpChillerSSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp8
-            // 
-            this.txtTpChillerSSp8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp8.Location = new System.Drawing.Point(192, 405);
-            this.txtTpChillerSSp8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp8.Name = "txtTpChillerSSp8";
-            this.txtTpChillerSSp8.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp8.TabIndex = 31;
-            this.txtTpChillerSSp8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm3
-            // 
-            this.txtTpChillerTTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm3.Location = new System.Drawing.Point(449, 182);
-            this.txtTpChillerTTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm3.Name = "txtTpChillerTTm3";
-            this.txtTpChillerTTm3.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm3.TabIndex = 24;
-            this.txtTpChillerTTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff6
-            // 
-            this.txtTpChillerTDiff6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff6.Location = new System.Drawing.Point(706, 315);
-            this.txtTpChillerTDiff6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff6.Name = "txtTpChillerTDiff6";
-            this.txtTpChillerTDiff6.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff6.TabIndex = 16;
-            this.txtTpChillerTDiff6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerSSp4
-            // 
-            this.txtTpChillerSSp4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerSSp4.Location = new System.Drawing.Point(192, 227);
-            this.txtTpChillerSSp4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerSSp4.Name = "txtTpChillerSSp4";
-            this.txtTpChillerSSp4.Size = new System.Drawing.Size(90, 30);
-            this.txtTpChillerSSp4.TabIndex = 31;
-            this.txtTpChillerSSp4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm6
-            // 
-            this.txtTpChillerTTm6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm6.Location = new System.Drawing.Point(449, 315);
-            this.txtTpChillerTTm6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm6.Name = "txtTpChillerTTm6";
-            this.txtTpChillerTTm6.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm6.TabIndex = 14;
-            this.txtTpChillerTTm6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff2
-            // 
-            this.txtTpChillerTDiff2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff2.Location = new System.Drawing.Point(706, 137);
-            this.txtTpChillerTDiff2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff2.Name = "txtTpChillerTDiff2";
-            this.txtTpChillerTDiff2.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff2.TabIndex = 16;
-            this.txtTpChillerTDiff2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff5
-            // 
-            this.txtTpChillerTDiff5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff5.Location = new System.Drawing.Point(706, 270);
-            this.txtTpChillerTDiff5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff5.Name = "txtTpChillerTDiff5";
-            this.txtTpChillerTDiff5.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff5.TabIndex = 6;
-            this.txtTpChillerTDiff5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm2
-            // 
-            this.txtTpChillerTTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm2.Location = new System.Drawing.Point(449, 137);
-            this.txtTpChillerTTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm2.Name = "txtTpChillerTTm2";
-            this.txtTpChillerTTm2.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm2.TabIndex = 14;
-            this.txtTpChillerTTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm5
-            // 
-            this.txtTpChillerTTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm5.Location = new System.Drawing.Point(449, 270);
-            this.txtTpChillerTTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm5.Name = "txtTpChillerTTm5";
-            this.txtTpChillerTTm5.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm5.TabIndex = 4;
-            this.txtTpChillerTTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm9
-            // 
-            this.txtTpChillerWTm9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm9.Location = new System.Drawing.Point(331, 451);
-            this.txtTpChillerWTm9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm9.Name = "txtTpChillerWTm9";
-            this.txtTpChillerWTm9.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm9.TabIndex = 33;
-            this.txtTpChillerWTm9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTDiff1
-            // 
-            this.txtTpChillerTDiff1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTDiff1.Location = new System.Drawing.Point(706, 92);
-            this.txtTpChillerTDiff1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTDiff1.Name = "txtTpChillerTDiff1";
-            this.txtTpChillerTDiff1.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTDiff1.TabIndex = 6;
-            this.txtTpChillerTDiff1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm8
-            // 
-            this.txtTpChillerWTm8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm8.Location = new System.Drawing.Point(331, 405);
-            this.txtTpChillerWTm8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm8.Name = "txtTpChillerWTm8";
-            this.txtTpChillerWTm8.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm8.TabIndex = 33;
-            this.txtTpChillerWTm8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerTTm1
-            // 
-            this.txtTpChillerTTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerTTm1.Location = new System.Drawing.Point(449, 92);
-            this.txtTpChillerTTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerTTm1.Name = "txtTpChillerTTm1";
-            this.txtTpChillerTTm1.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerTTm1.TabIndex = 4;
-            this.txtTpChillerTTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm5
-            // 
-            this.txtTpChillerWTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm5.Location = new System.Drawing.Point(331, 270);
-            this.txtTpChillerWTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm5.Name = "txtTpChillerWTm5";
-            this.txtTpChillerWTm5.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm5.TabIndex = 3;
-            this.txtTpChillerWTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm4
-            // 
-            this.txtTpChillerWTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm4.Location = new System.Drawing.Point(331, 227);
-            this.txtTpChillerWTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm4.Name = "txtTpChillerWTm4";
-            this.txtTpChillerWTm4.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm4.TabIndex = 33;
-            this.txtTpChillerWTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm7
-            // 
-            this.txtTpChillerWTm7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm7.Location = new System.Drawing.Point(331, 360);
-            this.txtTpChillerWTm7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm7.Name = "txtTpChillerWTm7";
-            this.txtTpChillerWTm7.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm7.TabIndex = 23;
-            this.txtTpChillerWTm7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm1
-            // 
-            this.txtTpChillerWTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm1.Location = new System.Drawing.Point(331, 92);
-            this.txtTpChillerWTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm1.Name = "txtTpChillerWTm1";
-            this.txtTpChillerWTm1.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm1.TabIndex = 3;
-            this.txtTpChillerWTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm6
-            // 
-            this.txtTpChillerWTm6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm6.Location = new System.Drawing.Point(331, 315);
-            this.txtTpChillerWTm6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm6.Name = "txtTpChillerWTm6";
-            this.txtTpChillerWTm6.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm6.TabIndex = 13;
-            this.txtTpChillerWTm6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm3
-            // 
-            this.txtTpChillerWTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm3.Location = new System.Drawing.Point(331, 182);
-            this.txtTpChillerWTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm3.Name = "txtTpChillerWTm3";
-            this.txtTpChillerWTm3.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm3.TabIndex = 23;
-            this.txtTpChillerWTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTpChillerWTm2
-            // 
-            this.txtTpChillerWTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtTpChillerWTm2.Location = new System.Drawing.Point(331, 137);
-            this.txtTpChillerWTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTpChillerWTm2.Name = "txtTpChillerWTm2";
-            this.txtTpChillerWTm2.Size = new System.Drawing.Size(110, 30);
-            this.txtTpChillerWTm2.TabIndex = 13;
-            this.txtTpChillerWTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // btnOk
+            // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.Location = new System.Drawing.Point(914, 832);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(178, 54);
+            this.btnOk.TabIndex = 0;
+            this.btnOk.Text = "Ok";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.OnOk);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(1113, 832);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(178, 54);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // txtChamberCtrStblTm8
+            // 
+            this.txtChamberCtrStblTm8.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm8.Location = new System.Drawing.Point(1119, 371);
+            this.txtChamberCtrStblTm8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm8.Name = "txtChamberCtrStblTm8";
+            this.txtChamberCtrStblTm8.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm8.TabIndex = 61;
+            this.txtChamberCtrStblTm8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm9
+            // 
+            this.txtChamberCtrStblTm9.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm9.Location = new System.Drawing.Point(1119, 413);
+            this.txtChamberCtrStblTm9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm9.Name = "txtChamberCtrStblTm9";
+            this.txtChamberCtrStblTm9.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm9.TabIndex = 61;
+            this.txtChamberCtrStblTm9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm7
+            // 
+            this.txtChamberCtrStblTm7.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm7.Location = new System.Drawing.Point(1119, 330);
+            this.txtChamberCtrStblTm7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm7.Name = "txtChamberCtrStblTm7";
+            this.txtChamberCtrStblTm7.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm7.TabIndex = 53;
+            this.txtChamberCtrStblTm7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm6
+            // 
+            this.txtChamberCtrStblTm6.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm6.Location = new System.Drawing.Point(1119, 289);
+            this.txtChamberCtrStblTm6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm6.Name = "txtChamberCtrStblTm6";
+            this.txtChamberCtrStblTm6.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm6.TabIndex = 45;
+            this.txtChamberCtrStblTm6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm5
+            // 
+            this.txtChamberCtrStblTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm5.Location = new System.Drawing.Point(1119, 248);
+            this.txtChamberCtrStblTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm5.Name = "txtChamberCtrStblTm5";
+            this.txtChamberCtrStblTm5.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm5.TabIndex = 37;
+            this.txtChamberCtrStblTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm4
+            // 
+            this.txtChamberCtrStblTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm4.Location = new System.Drawing.Point(1119, 206);
+            this.txtChamberCtrStblTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm4.Name = "txtChamberCtrStblTm4";
+            this.txtChamberCtrStblTm4.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm4.TabIndex = 29;
+            this.txtChamberCtrStblTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm3
+            // 
+            this.txtChamberCtrStblTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm3.Location = new System.Drawing.Point(1119, 165);
+            this.txtChamberCtrStblTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm3.Name = "txtChamberCtrStblTm3";
+            this.txtChamberCtrStblTm3.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm3.TabIndex = 21;
+            this.txtChamberCtrStblTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm2
+            // 
+            this.txtChamberCtrStblTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm2.Location = new System.Drawing.Point(1119, 124);
+            this.txtChamberCtrStblTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm2.Name = "txtChamberCtrStblTm2";
+            this.txtChamberCtrStblTm2.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm2.TabIndex = 13;
+            this.txtChamberCtrStblTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtChamberCtrStblTm1
+            // 
+            this.txtChamberCtrStblTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtChamberCtrStblTm1.Location = new System.Drawing.Point(1119, 84);
+            this.txtChamberCtrStblTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtChamberCtrStblTm1.Name = "txtChamberCtrStblTm1";
+            this.txtChamberCtrStblTm1.Size = new System.Drawing.Size(115, 30);
+            this.txtChamberCtrStblTm1.TabIndex = 5;
+            this.txtChamberCtrStblTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.LightCoral;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label11.Location = new System.Drawing.Point(1118, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(116, 30);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "제어안정 시간";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.LightCoral;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label12.Location = new System.Drawing.Point(812, 44);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(116, 30);
+            this.label12.TabIndex = 63;
+            this.label12.Text = "제어안정 시간";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtTempCtlStblTm5
+            // 
+            this.txtTempCtlStblTm5.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtTempCtlStblTm5.Location = new System.Drawing.Point(812, 250);
+            this.txtTempCtlStblTm5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTempCtlStblTm5.Name = "txtTempCtlStblTm5";
+            this.txtTempCtlStblTm5.Size = new System.Drawing.Size(116, 30);
+            this.txtTempCtlStblTm5.TabIndex = 36;
+            this.txtTempCtlStblTm5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtTempCtlStblTm4
+            // 
+            this.txtTempCtlStblTm4.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtTempCtlStblTm4.Location = new System.Drawing.Point(812, 208);
+            this.txtTempCtlStblTm4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTempCtlStblTm4.Name = "txtTempCtlStblTm4";
+            this.txtTempCtlStblTm4.Size = new System.Drawing.Size(116, 30);
+            this.txtTempCtlStblTm4.TabIndex = 28;
+            this.txtTempCtlStblTm4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtTempCtlStblTm3
+            // 
+            this.txtTempCtlStblTm3.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtTempCtlStblTm3.Location = new System.Drawing.Point(812, 167);
+            this.txtTempCtlStblTm3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTempCtlStblTm3.Name = "txtTempCtlStblTm3";
+            this.txtTempCtlStblTm3.Size = new System.Drawing.Size(116, 30);
+            this.txtTempCtlStblTm3.TabIndex = 20;
+            this.txtTempCtlStblTm3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtTempCtlStblTm2
+            // 
+            this.txtTempCtlStblTm2.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtTempCtlStblTm2.Location = new System.Drawing.Point(812, 126);
+            this.txtTempCtlStblTm2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTempCtlStblTm2.Name = "txtTempCtlStblTm2";
+            this.txtTempCtlStblTm2.Size = new System.Drawing.Size(116, 30);
+            this.txtTempCtlStblTm2.TabIndex = 12;
+            this.txtTempCtlStblTm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtTempCtlStblTm1
+            // 
+            this.txtTempCtlStblTm1.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtTempCtlStblTm1.Location = new System.Drawing.Point(812, 86);
+            this.txtTempCtlStblTm1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTempCtlStblTm1.Name = "txtTempCtlStblTm1";
+            this.txtTempCtlStblTm1.Size = new System.Drawing.Size(116, 30);
+            this.txtTempCtlStblTm1.TabIndex = 4;
+            this.txtTempCtlStblTm1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 918);
+            this.ClientSize = new System.Drawing.Size(1401, 918);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -4639,14 +2839,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabSetTemp.ResumeLayout(false);
-            this.tabSetChiller.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -4772,87 +2966,6 @@
         private System.Windows.Forms.ComboBox cmbEqmt5Port;
         private System.Windows.Forms.ComboBox cmbEqmt2Port;
         private System.Windows.Forms.ComboBox cmbEqmt3Port;
-        private System.Windows.Forms.TabPage tabSetChiller;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtChillerRamp4;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtChillerRamp3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtChillerRamp2;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox txtChillerRamp1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtChillerSDiff4;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox txtChillerSDiff3;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox txtChillerSDiff2;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox txtChillerTSp1;
-        private System.Windows.Forms.TextBox txtChillerTSp2;
-        private System.Windows.Forms.TextBox txtChillerSDiff1;
-        private System.Windows.Forms.TextBox txtChillerTSp3;
-        private System.Windows.Forms.TextBox txtChillerTSp4;
-        private System.Windows.Forms.TextBox txtChillerTDiff4;
-        private System.Windows.Forms.TextBox txtChillerSSp1;
-        private System.Windows.Forms.TextBox txtChillerTTm4;
-        private System.Windows.Forms.TextBox txtChillerSSp2;
-        private System.Windows.Forms.TextBox txtChillerTDiff3;
-        private System.Windows.Forms.TextBox txtChillerSSp3;
-        private System.Windows.Forms.TextBox txtChillerTTm3;
-        private System.Windows.Forms.TextBox txtChillerSSp4;
-        private System.Windows.Forms.TextBox txtChillerTDiff2;
-        private System.Windows.Forms.TextBox txtChillerTTm2;
-        private System.Windows.Forms.TextBox txtChillerTDiff1;
-        private System.Windows.Forms.TextBox txtChillerTTm1;
-        private System.Windows.Forms.TextBox txtChillerWTm4;
-        private System.Windows.Forms.TextBox txtChillerWTm1;
-        private System.Windows.Forms.TextBox txtChillerWTm3;
-        private System.Windows.Forms.TextBox txtChillerWTm2;
-        private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.TextBox txtChillerRamp9;
-        private System.Windows.Forms.TextBox txtChillerRamp8;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.TextBox txtChillerRamp7;
-        private System.Windows.Forms.TextBox txtChillerRamp6;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txtChillerRamp5;
-        private System.Windows.Forms.TextBox txtChillerSDiff9;
-        private System.Windows.Forms.TextBox txtChillerSDiff8;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtChillerSDiff7;
-        private System.Windows.Forms.TextBox txtChillerSDiff6;
-        private System.Windows.Forms.TextBox txtChillerTSp5;
-        private System.Windows.Forms.TextBox txtChillerTSp6;
-        private System.Windows.Forms.TextBox txtChillerSDiff5;
-        private System.Windows.Forms.TextBox txtChillerTSp7;
-        private System.Windows.Forms.TextBox txtChillerTSp9;
-        private System.Windows.Forms.TextBox txtChillerTSp8;
-        private System.Windows.Forms.TextBox txtChillerTDiff9;
-        private System.Windows.Forms.TextBox txtChillerTDiff8;
-        private System.Windows.Forms.TextBox txtChillerSSp5;
-        private System.Windows.Forms.TextBox txtChillerTTm9;
-        private System.Windows.Forms.TextBox txtChillerTTm8;
-        private System.Windows.Forms.TextBox txtChillerSSp6;
-        private System.Windows.Forms.TextBox txtChillerTDiff7;
-        private System.Windows.Forms.TextBox txtChillerSSp7;
-        private System.Windows.Forms.TextBox txtChillerTTm7;
-        private System.Windows.Forms.TextBox txtChillerSSp9;
-        private System.Windows.Forms.TextBox txtChillerSSp8;
-        private System.Windows.Forms.TextBox txtChillerTDiff6;
-        private System.Windows.Forms.TextBox txtChillerTTm6;
-        private System.Windows.Forms.TextBox txtChillerTDiff5;
-        private System.Windows.Forms.TextBox txtChillerTTm5;
-        private System.Windows.Forms.TextBox txtChillerWTm9;
-        private System.Windows.Forms.TextBox txtChillerWTm8;
-        private System.Windows.Forms.TextBox txtChillerWTm5;
-        private System.Windows.Forms.TextBox txtChillerWTm7;
-        private System.Windows.Forms.TextBox txtChillerWTm6;
         private System.Windows.Forms.CheckBox chkT9DoReport;
         private System.Windows.Forms.CheckBox chkT8DoReport;
         private System.Windows.Forms.CheckBox chkT7DoReport;
@@ -4939,86 +3052,23 @@
         private System.Windows.Forms.TextBox txtTempRamp5;
         private System.Windows.Forms.TextBox txtTempRamp4;
         private System.Windows.Forms.TextBox txtTempWTm5;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox txtTpChillerRamp9;
-        private System.Windows.Forms.TextBox txtTpChillerRamp8;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox txtTpChillerRamp4;
-        private System.Windows.Forms.TextBox txtTpChillerRamp7;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TextBox txtTpChillerRamp3;
-        private System.Windows.Forms.TextBox txtTpChillerRamp6;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox txtTpChillerRamp2;
-        private System.Windows.Forms.TextBox txtTpChillerRamp5;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.TextBox txtTpChillerRamp1;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff9;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff8;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff4;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff7;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff3;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff6;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff2;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TextBox txtTpChillerTSp5;
-        private System.Windows.Forms.TextBox txtTpChillerTSp6;
-        private System.Windows.Forms.TextBox txtTpChillerTSp1;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff5;
-        private System.Windows.Forms.TextBox txtTpChillerTSp2;
-        private System.Windows.Forms.TextBox txtTpChillerTSp7;
-        private System.Windows.Forms.TextBox txtTpChillerSDiff1;
-        private System.Windows.Forms.TextBox txtTpChillerTSp9;
-        private System.Windows.Forms.TextBox txtTpChillerTSp3;
-        private System.Windows.Forms.TextBox txtTpChillerTSp8;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff9;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff8;
-        private System.Windows.Forms.TextBox txtTpChillerTSp4;
-        private System.Windows.Forms.TextBox txtTpChillerSSp5;
-        private System.Windows.Forms.TextBox txtTpChillerTTm9;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff4;
-        private System.Windows.Forms.TextBox txtTpChillerTTm8;
-        private System.Windows.Forms.TextBox txtTpChillerSSp1;
-        private System.Windows.Forms.TextBox txtTpChillerSSp6;
-        private System.Windows.Forms.TextBox txtTpChillerTTm4;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff7;
-        private System.Windows.Forms.TextBox txtTpChillerSSp2;
-        private System.Windows.Forms.TextBox txtTpChillerSSp7;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff3;
-        private System.Windows.Forms.TextBox txtTpChillerTTm7;
-        private System.Windows.Forms.TextBox txtTpChillerSSp9;
-        private System.Windows.Forms.TextBox txtTpChillerSSp3;
-        private System.Windows.Forms.TextBox txtTpChillerSSp8;
-        private System.Windows.Forms.TextBox txtTpChillerTTm3;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff6;
-        private System.Windows.Forms.TextBox txtTpChillerSSp4;
-        private System.Windows.Forms.TextBox txtTpChillerTTm6;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff2;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff5;
-        private System.Windows.Forms.TextBox txtTpChillerTTm2;
-        private System.Windows.Forms.TextBox txtTpChillerTTm5;
-        private System.Windows.Forms.TextBox txtTpChillerWTm9;
-        private System.Windows.Forms.TextBox txtTpChillerTDiff1;
-        private System.Windows.Forms.TextBox txtTpChillerWTm8;
-        private System.Windows.Forms.TextBox txtTpChillerTTm1;
-        private System.Windows.Forms.TextBox txtTpChillerWTm5;
-        private System.Windows.Forms.TextBox txtTpChillerWTm4;
-        private System.Windows.Forms.TextBox txtTpChillerWTm7;
-        private System.Windows.Forms.TextBox txtTpChillerWTm1;
-        private System.Windows.Forms.TextBox txtTpChillerWTm6;
-        private System.Windows.Forms.TextBox txtTpChillerWTm3;
-        private System.Windows.Forms.TextBox txtTpChillerWTm2;
+        private System.Windows.Forms.TextBox edtTitle;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm1;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm2;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm3;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm4;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm5;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm6;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm7;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm9;
+        private System.Windows.Forms.TextBox txtChamberCtrStblTm8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtTempCtlStblTm1;
+        private System.Windows.Forms.TextBox txtTempCtlStblTm2;
+        private System.Windows.Forms.TextBox txtTempCtlStblTm3;
+        private System.Windows.Forms.TextBox txtTempCtlStblTm4;
+        private System.Windows.Forms.TextBox txtTempCtlStblTm5;
     }
 }

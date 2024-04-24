@@ -161,6 +161,9 @@ namespace Ptnr
 
         private void UpdateForm()
         {
+            // Title
+            this.edtTitle.Text = Cfg.title;
+
             // Comm Set
 
             this.cmbEqmt1Port.SelectedIndex = Cfg.EqmtCfg[0].Port - 1;
@@ -193,6 +196,8 @@ namespace Ptnr
             txtChamberHSp1.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm1.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm1.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm1.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
+
             txtChamberTDiff1.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff1.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp1.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -208,6 +213,8 @@ namespace Ptnr
             txtChamberHSp2.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm2.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm2.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm2.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
+
             txtChamberTDiff2.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff2.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp2.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -221,6 +228,7 @@ namespace Ptnr
             txtChamberHSp3.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm3.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm3.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm3.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff3.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff3.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp3.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -234,6 +242,7 @@ namespace Ptnr
             txtChamberHSp4.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm4.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm4.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm4.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff4.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff4.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp4.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -247,6 +256,7 @@ namespace Ptnr
             txtChamberHSp5.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm5.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm5.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm5.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff5.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff5.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp5.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -260,6 +270,7 @@ namespace Ptnr
             txtChamberHSp6.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm6.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm6.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm6.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff6.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff6.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp6.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -273,6 +284,7 @@ namespace Ptnr
             txtChamberHSp7.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm7.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm7.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm7.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff7.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff7.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp7.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -286,6 +298,7 @@ namespace Ptnr
             txtChamberHSp8.Text   = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm8.Text   = (Cfg.TmCfg.WaitTm[idx]     == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm8.Text   = (Cfg.TmCfg.TestTm[idx]     == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm8.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff8.Text = (Cfg.TmCfg.bUseTDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff8.Text = (Cfg.TmCfg.bUseHDiff[idx]  == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp8.Text  = (Cfg.TmCfg.bUseRamp[idx]   == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -299,6 +312,7 @@ namespace Ptnr
             txtChamberHSp9.Text = SysDefs.DotString(Cfg.TmCfg.HSp[idx], 1);
             txtChamberWTm9.Text = (Cfg.TmCfg.WaitTm[idx] == 0) ? "-" : Cfg.TmCfg.WaitTm[idx].ToString();
             txtChamberTTm9.Text = (Cfg.TmCfg.TestTm[idx] == 0) ? "-" : Cfg.TmCfg.TestTm[idx].ToString();
+            txtChamberCtrStblTm9.Text = (Cfg.TmCfg.CtrlStblTm[idx] == 0) ? "-" : Cfg.TmCfg.CtrlStblTm[idx].ToString();
             txtChamberTDiff9.Text = (Cfg.TmCfg.bUseTDiff[idx] == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.TempDiff[idx], 1);
             txtChamberHDiff9.Text = (Cfg.TmCfg.bUseHDiff[idx] == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.HumiDiff[idx], 1);
             txtChamberRamp9.Text = (Cfg.TmCfg.bUseRamp[idx] == false) ? "-" : SysDefs.DotString(Cfg.TmCfg.Ramp[idx], 1);
@@ -350,151 +364,17 @@ namespace Ptnr
             txtTempTOver4.Text = (Cfg.TpCfg.bUseTOver[3] == false) ? "-" : SysDefs.DotString(Cfg.TpCfg.TOver[3], 1);
             txtTempTOver5.Text = (Cfg.TpCfg.bUseTOver[4] == false) ? "-" : SysDefs.DotString(Cfg.TpCfg.TOver[4], 1);
 
-            // Temi Chiller.
-            txtChillerTSp1.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[0], 1);
-            txtChillerTSp2.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[1], 1);
-            txtChillerTSp3.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[2], 1);
-            txtChillerTSp4.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[3], 1);
-            txtChillerTSp5.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[4], 1);
-            txtChillerTSp6.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[5], 1);
-            txtChillerTSp7.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[6], 1);
-            txtChillerTSp8.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[7], 1);
-            txtChillerTSp9.Text = SysDefs.DotString(Cfg.TmChillerCfg.TSp[8], 1);
-
-            txtChillerSSp1.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[0], 2);
-            txtChillerSSp2.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[1], 2);
-            txtChillerSSp3.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[2], 2);
-            txtChillerSSp4.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[3], 2);
-            txtChillerSSp5.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[4], 2);
-            txtChillerSSp6.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[5], 2);
-            txtChillerSSp7.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[6], 2);
-            txtChillerSSp8.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[7], 2);
-            txtChillerSSp9.Text = SysDefs.DotString(Cfg.TmChillerCfg.SSp[8], 2);
-
-            txtChillerWTm1.Text = (Cfg.TmChillerCfg.WaitTm[0] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[0].ToString();
-            txtChillerWTm2.Text = (Cfg.TmChillerCfg.WaitTm[1] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[1].ToString();
-            txtChillerWTm3.Text = (Cfg.TmChillerCfg.WaitTm[2] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[2].ToString();
-            txtChillerWTm4.Text = (Cfg.TmChillerCfg.WaitTm[3] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[3].ToString();
-            txtChillerWTm5.Text = (Cfg.TmChillerCfg.WaitTm[4] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[4].ToString();
-            txtChillerWTm6.Text = (Cfg.TmChillerCfg.WaitTm[5] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[5].ToString();
-            txtChillerWTm7.Text = (Cfg.TmChillerCfg.WaitTm[6] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[6].ToString();
-            txtChillerWTm8.Text = (Cfg.TmChillerCfg.WaitTm[7] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[7].ToString();
-            txtChillerWTm9.Text = (Cfg.TmChillerCfg.WaitTm[8] == 0) ? "-" : Cfg.TmChillerCfg.WaitTm[8].ToString();
-
-            txtChillerTTm1.Text = (Cfg.TmChillerCfg.TestTm[0] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[0].ToString();
-            txtChillerTTm2.Text = (Cfg.TmChillerCfg.TestTm[1] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[1].ToString();
-            txtChillerTTm3.Text = (Cfg.TmChillerCfg.TestTm[2] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[2].ToString();
-            txtChillerTTm4.Text = (Cfg.TmChillerCfg.TestTm[3] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[3].ToString();
-            txtChillerTTm5.Text = (Cfg.TmChillerCfg.TestTm[4] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[4].ToString();
-            txtChillerTTm6.Text = (Cfg.TmChillerCfg.TestTm[5] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[5].ToString();
-            txtChillerTTm7.Text = (Cfg.TmChillerCfg.TestTm[6] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[6].ToString();
-            txtChillerTTm8.Text = (Cfg.TmChillerCfg.TestTm[7] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[7].ToString();
-            txtChillerTTm9.Text = (Cfg.TmChillerCfg.TestTm[8] == 0) ? "-" : Cfg.TmChillerCfg.TestTm[8].ToString();
-
-            txtChillerTDiff1.Text = (Cfg.TmChillerCfg.bUseTDiff[0] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[0], 1);
-            txtChillerTDiff2.Text = (Cfg.TmChillerCfg.bUseTDiff[1] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[1], 1);
-            txtChillerTDiff3.Text = (Cfg.TmChillerCfg.bUseTDiff[2] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[2], 1);
-            txtChillerTDiff4.Text = (Cfg.TmChillerCfg.bUseTDiff[3] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[3], 1);
-            txtChillerTDiff5.Text = (Cfg.TmChillerCfg.bUseTDiff[4] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[4], 1);
-            txtChillerTDiff6.Text = (Cfg.TmChillerCfg.bUseTDiff[5] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[5], 1);
-            txtChillerTDiff7.Text = (Cfg.TmChillerCfg.bUseTDiff[6] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[6], 1);
-            txtChillerTDiff8.Text = (Cfg.TmChillerCfg.bUseTDiff[7] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[7], 1);
-            txtChillerTDiff9.Text = (Cfg.TmChillerCfg.bUseTDiff[8] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.TDiff[8], 1);
-                                        
-            txtChillerSDiff1.Text = (Cfg.TmChillerCfg.bUseSDiff[0] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[0], 2);
-            txtChillerSDiff2.Text = (Cfg.TmChillerCfg.bUseSDiff[1] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[1], 2);
-            txtChillerSDiff3.Text = (Cfg.TmChillerCfg.bUseSDiff[2] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[2], 2);
-            txtChillerSDiff4.Text = (Cfg.TmChillerCfg.bUseSDiff[3] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[3], 2);
-            txtChillerSDiff5.Text = (Cfg.TmChillerCfg.bUseSDiff[4] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[4], 2);
-            txtChillerSDiff6.Text = (Cfg.TmChillerCfg.bUseSDiff[5] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[5], 2);
-            txtChillerSDiff7.Text = (Cfg.TmChillerCfg.bUseSDiff[6] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[6], 2);
-            txtChillerSDiff8.Text = (Cfg.TmChillerCfg.bUseSDiff[7] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[7], 2);
-            txtChillerSDiff9.Text = (Cfg.TmChillerCfg.bUseSDiff[8] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.SDiff[8], 2);
-                                        
-            txtChillerRamp1.Text = (Cfg.TmChillerCfg.bUseRamp[0] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[0], 1);
-            txtChillerRamp2.Text = (Cfg.TmChillerCfg.bUseRamp[1] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[1], 1);
-            txtChillerRamp3.Text = (Cfg.TmChillerCfg.bUseRamp[2] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[2], 1);
-            txtChillerRamp4.Text = (Cfg.TmChillerCfg.bUseRamp[3] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[3], 1);
-            txtChillerRamp5.Text = (Cfg.TmChillerCfg.bUseRamp[4] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[4], 1);
-            txtChillerRamp6.Text = (Cfg.TmChillerCfg.bUseRamp[5] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[5], 1);
-            txtChillerRamp7.Text = (Cfg.TmChillerCfg.bUseRamp[6] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[6], 1);
-            txtChillerRamp8.Text = (Cfg.TmChillerCfg.bUseRamp[7] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[7], 1);
-            txtChillerRamp9.Text = (Cfg.TmChillerCfg.bUseRamp[8] == false) ? "-" : SysDefs.DotString(Cfg.TmChillerCfg.Ramp[8], 1);
-
-            // Temp Chiller.
-            txtTpChillerTSp1.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[0], 1);
-            txtTpChillerTSp2.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[1], 1);
-            txtTpChillerTSp3.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[2], 1);
-            txtTpChillerTSp4.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[3], 1);
-            txtTpChillerTSp5.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[4], 1);
-            txtTpChillerTSp6.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[5], 1);
-            txtTpChillerTSp7.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[6], 1);
-            txtTpChillerTSp8.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[7], 1);
-            txtTpChillerTSp9.Text = SysDefs.DotString(Cfg.TpChillerCfg.TSp[8], 1);
-
-            txtTpChillerSSp1.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[0], 2);
-            txtTpChillerSSp2.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[1], 2);
-            txtTpChillerSSp3.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[2], 2);
-            txtTpChillerSSp4.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[3], 2);
-            txtTpChillerSSp5.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[4], 2);
-            txtTpChillerSSp6.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[5], 2);
-            txtTpChillerSSp7.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[6], 2);
-            txtTpChillerSSp8.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[7], 2);
-            txtTpChillerSSp9.Text = SysDefs.DotString(Cfg.TpChillerCfg.SSp[8], 2);
-
-            txtTpChillerWTm1.Text = (Cfg.TpChillerCfg.WaitTm[0] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[0].ToString();
-            txtTpChillerWTm2.Text = (Cfg.TpChillerCfg.WaitTm[1] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[1].ToString();
-            txtTpChillerWTm3.Text = (Cfg.TpChillerCfg.WaitTm[2] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[2].ToString();
-            txtTpChillerWTm4.Text = (Cfg.TpChillerCfg.WaitTm[3] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[3].ToString();
-            txtTpChillerWTm5.Text = (Cfg.TpChillerCfg.WaitTm[4] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[4].ToString();
-            txtTpChillerWTm6.Text = (Cfg.TpChillerCfg.WaitTm[5] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[5].ToString();
-            txtTpChillerWTm7.Text = (Cfg.TpChillerCfg.WaitTm[6] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[6].ToString();
-            txtTpChillerWTm8.Text = (Cfg.TpChillerCfg.WaitTm[7] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[7].ToString();
-            txtTpChillerWTm9.Text = (Cfg.TpChillerCfg.WaitTm[8] == 0) ? "-" : Cfg.TpChillerCfg.WaitTm[8].ToString();
-                                         
-            txtTpChillerTTm1.Text = (Cfg.TpChillerCfg.TestTm[0] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[0].ToString();
-            txtTpChillerTTm2.Text = (Cfg.TpChillerCfg.TestTm[1] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[1].ToString();
-            txtTpChillerTTm3.Text = (Cfg.TpChillerCfg.TestTm[2] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[2].ToString();
-            txtTpChillerTTm4.Text = (Cfg.TpChillerCfg.TestTm[3] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[3].ToString();
-            txtTpChillerTTm5.Text = (Cfg.TpChillerCfg.TestTm[4] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[4].ToString();
-            txtTpChillerTTm6.Text = (Cfg.TpChillerCfg.TestTm[5] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[5].ToString();
-            txtTpChillerTTm7.Text = (Cfg.TpChillerCfg.TestTm[6] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[6].ToString();
-            txtTpChillerTTm8.Text = (Cfg.TpChillerCfg.TestTm[7] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[7].ToString();
-            txtTpChillerTTm9.Text = (Cfg.TpChillerCfg.TestTm[8] == 0) ? "-" : Cfg.TpChillerCfg.TestTm[8].ToString();
-
-            txtTpChillerTDiff1.Text = (Cfg.TpChillerCfg.bUseTDiff[0] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[0], 1);
-            txtTpChillerTDiff2.Text = (Cfg.TpChillerCfg.bUseTDiff[1] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[1], 1);
-            txtTpChillerTDiff3.Text = (Cfg.TpChillerCfg.bUseTDiff[2] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[2], 1);
-            txtTpChillerTDiff4.Text = (Cfg.TpChillerCfg.bUseTDiff[3] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[3], 1);
-            txtTpChillerTDiff5.Text = (Cfg.TpChillerCfg.bUseTDiff[4] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[4], 1);
-            txtTpChillerTDiff6.Text = (Cfg.TpChillerCfg.bUseTDiff[5] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[5], 1);
-            txtTpChillerTDiff7.Text = (Cfg.TpChillerCfg.bUseTDiff[6] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[6], 1);
-            txtTpChillerTDiff8.Text = (Cfg.TpChillerCfg.bUseTDiff[7] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[7], 1);
-            txtTpChillerTDiff9.Text = (Cfg.TpChillerCfg.bUseTDiff[8] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.TDiff[8], 1);
-                                           
-            txtTpChillerSDiff1.Text = (Cfg.TpChillerCfg.bUseSDiff[0] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[0], 2);
-            txtTpChillerSDiff2.Text = (Cfg.TpChillerCfg.bUseSDiff[1] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[1], 2);
-            txtTpChillerSDiff3.Text = (Cfg.TpChillerCfg.bUseSDiff[2] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[2], 2);
-            txtTpChillerSDiff4.Text = (Cfg.TpChillerCfg.bUseSDiff[3] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[3], 2);
-            txtTpChillerSDiff5.Text = (Cfg.TpChillerCfg.bUseSDiff[4] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[4], 2);
-            txtTpChillerSDiff6.Text = (Cfg.TpChillerCfg.bUseSDiff[5] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[5], 2);
-            txtTpChillerSDiff7.Text = (Cfg.TpChillerCfg.bUseSDiff[6] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[6], 2);
-            txtTpChillerSDiff8.Text = (Cfg.TpChillerCfg.bUseSDiff[7] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[7], 2);
-            txtTpChillerSDiff9.Text = (Cfg.TpChillerCfg.bUseSDiff[8] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.SDiff[8], 2);
-
-            txtTpChillerRamp1.Text = (Cfg.TpChillerCfg.bUseRamp[0] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[0], 1);
-            txtTpChillerRamp2.Text = (Cfg.TpChillerCfg.bUseRamp[1] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[1], 1);
-            txtTpChillerRamp3.Text = (Cfg.TpChillerCfg.bUseRamp[2] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[2], 1);
-            txtTpChillerRamp4.Text = (Cfg.TpChillerCfg.bUseRamp[3] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[3], 1);
-            txtTpChillerRamp5.Text = (Cfg.TpChillerCfg.bUseRamp[4] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[4], 1);
-            txtTpChillerRamp6.Text = (Cfg.TpChillerCfg.bUseRamp[5] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[5], 1);
-            txtTpChillerRamp7.Text = (Cfg.TpChillerCfg.bUseRamp[6] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[6], 1);
-            txtTpChillerRamp8.Text = (Cfg.TpChillerCfg.bUseRamp[7] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[7], 1);
-            txtTpChillerRamp9.Text = (Cfg.TpChillerCfg.bUseRamp[8] == false) ? "-" : SysDefs.DotString(Cfg.TpChillerCfg.Ramp[8], 1);
+            txtTempCtlStblTm1.Text = (Cfg.TpCfg.CtrlStblTm[0] == 0) ? "-" : Cfg.TpCfg.CtrlStblTm[0].ToString();
+            txtTempCtlStblTm2.Text = (Cfg.TpCfg.CtrlStblTm[1] == 0) ? "-" : Cfg.TpCfg.CtrlStblTm[1].ToString();
+            txtTempCtlStblTm3.Text = (Cfg.TpCfg.CtrlStblTm[2] == 0) ? "-" : Cfg.TpCfg.CtrlStblTm[2].ToString();
+            txtTempCtlStblTm4.Text = (Cfg.TpCfg.CtrlStblTm[3] == 0) ? "-" : Cfg.TpCfg.CtrlStblTm[3].ToString();
+            txtTempCtlStblTm5.Text = (Cfg.TpCfg.CtrlStblTm[4] == 0) ? "-" : Cfg.TpCfg.CtrlStblTm[4].ToString();
         }
 
         private void OnOk(object sender, EventArgs e)
         {
+            Cfg.title = this.edtTitle.Text;
+
             Cfg.EqmtCfg[0].Port = this.cmbEqmt1Port.SelectedIndex + 1;
             Cfg.EqmtCfg[1].Port = this.cmbEqmt2Port.SelectedIndex + 1;
             Cfg.EqmtCfg[2].Port = this.cmbEqmt3Port.SelectedIndex + 1;
@@ -621,6 +501,16 @@ namespace Ptnr
             Cfg.TmCfg.HOver[7] = (this.txtChamberHOver8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChamberHOver8.Text, 1);
             Cfg.TmCfg.HOver[8] = (this.txtChamberHOver9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChamberHOver9.Text, 1);
 
+            Cfg.TmCfg.CtrlStblTm[0] = (this.txtChamberCtrStblTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm1.Text);
+            Cfg.TmCfg.CtrlStblTm[1] = (this.txtChamberCtrStblTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm2.Text);
+            Cfg.TmCfg.CtrlStblTm[2] = (this.txtChamberCtrStblTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm3.Text);
+            Cfg.TmCfg.CtrlStblTm[3] = (this.txtChamberCtrStblTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm4.Text);
+            Cfg.TmCfg.CtrlStblTm[4] = (this.txtChamberCtrStblTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm5.Text);
+            Cfg.TmCfg.CtrlStblTm[5] = (this.txtChamberCtrStblTm6.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm6.Text);
+            Cfg.TmCfg.CtrlStblTm[6] = (this.txtChamberCtrStblTm7.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm7.Text);
+            Cfg.TmCfg.CtrlStblTm[7] = (this.txtChamberCtrStblTm8.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm8.Text);
+            Cfg.TmCfg.CtrlStblTm[8] = (this.txtChamberCtrStblTm9.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChamberCtrStblTm9.Text);
+
             Cfg.TmCfg.bReport[0] = this.chkT1DoReport.Checked;
             Cfg.TmCfg.bReport[1] = this.chkT2DoReport.Checked;
             Cfg.TmCfg.bReport[2] = this.chkT3DoReport.Checked;
@@ -733,7 +623,13 @@ namespace Ptnr
             Cfg.TpCfg.TOver[2] = (this.txtTempTOver3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTempTOver3.Text, 1);
             Cfg.TpCfg.TOver[3] = (this.txtTempTOver4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTempTOver4.Text, 1);
             Cfg.TpCfg.TOver[4] = (this.txtTempTOver5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTempTOver5.Text, 1);
-            
+
+            Cfg.TpCfg.CtrlStblTm[0] = (this.txtTempCtlStblTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTempCtlStblTm1.Text);
+            Cfg.TpCfg.CtrlStblTm[1] = (this.txtTempCtlStblTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTempCtlStblTm2.Text);
+            Cfg.TpCfg.CtrlStblTm[2] = (this.txtTempCtlStblTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTempCtlStblTm3.Text);
+            Cfg.TpCfg.CtrlStblTm[3] = (this.txtTempCtlStblTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTempCtlStblTm4.Text);
+            Cfg.TpCfg.CtrlStblTm[4] = (this.txtTempCtlStblTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTempCtlStblTm5.Text);
+
             if (this.txtTempTDiff1.Text == "-") Cfg.TpCfg.bUseTDiff[0] = false; else Cfg.TpCfg.bUseTDiff[0] = true;
             if (this.txtTempTDiff2.Text == "-") Cfg.TpCfg.bUseTDiff[1] = false; else Cfg.TpCfg.bUseTDiff[1] = true;
             if (this.txtTempTDiff3.Text == "-") Cfg.TpCfg.bUseTDiff[2] = false; else Cfg.TpCfg.bUseTDiff[2] = true;
@@ -757,208 +653,7 @@ namespace Ptnr
             if (this.txtTempTOver3.Text == "-") Cfg.TpCfg.bUseTOver[2] = false; else Cfg.TpCfg.bUseTOver[2] = true;
             if (this.txtTempTOver4.Text == "-") Cfg.TpCfg.bUseTOver[3] = false; else Cfg.TpCfg.bUseTOver[3] = true;
             if (this.txtTempTOver5.Text == "-") Cfg.TpCfg.bUseTOver[4] = false; else Cfg.TpCfg.bUseTOver[4] = true;
-            
-            // Temi Chiller.
-            Cfg.TmChillerCfg.TSp[0] = (txtChillerTSp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp1.Text, 1);
-            Cfg.TmChillerCfg.TSp[1] = (txtChillerTSp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp2.Text, 1);
-            Cfg.TmChillerCfg.TSp[2] = (txtChillerTSp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp3.Text, 1);
-            Cfg.TmChillerCfg.TSp[3] = (txtChillerTSp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp4.Text, 1);
-            Cfg.TmChillerCfg.TSp[4] = (txtChillerTSp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp5.Text, 1);
-            Cfg.TmChillerCfg.TSp[5] = (txtChillerTSp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp6.Text, 1);
-            Cfg.TmChillerCfg.TSp[6] = (txtChillerTSp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp7.Text, 1);
-            Cfg.TmChillerCfg.TSp[7] = (txtChillerTSp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp8.Text, 1);
-            Cfg.TmChillerCfg.TSp[8] = (txtChillerTSp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerTSp9.Text, 1);
-                
-            Cfg.TmChillerCfg.SSp[0] = (txtChillerSSp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp1.Text, 2);
-            Cfg.TmChillerCfg.SSp[1] = (txtChillerSSp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp2.Text, 2);
-            Cfg.TmChillerCfg.SSp[2] = (txtChillerSSp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp3.Text, 2);
-            Cfg.TmChillerCfg.SSp[3] = (txtChillerSSp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp4.Text, 2);
-            Cfg.TmChillerCfg.SSp[4] = (txtChillerSSp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp5.Text, 2);
-            Cfg.TmChillerCfg.SSp[5] = (txtChillerSSp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp6.Text, 2);
-            Cfg.TmChillerCfg.SSp[6] = (txtChillerSSp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp7.Text, 2);
-            Cfg.TmChillerCfg.SSp[7] = (txtChillerSSp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp8.Text, 2);
-            Cfg.TmChillerCfg.SSp[8] = (txtChillerSSp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtChillerSSp9.Text, 2);
 
-            Cfg.TmChillerCfg.WaitTm[0] = (this.txtChillerWTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm1.Text);
-            Cfg.TmChillerCfg.WaitTm[1] = (this.txtChillerWTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm2.Text);
-            Cfg.TmChillerCfg.WaitTm[2] = (this.txtChillerWTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm3.Text);
-            Cfg.TmChillerCfg.WaitTm[3] = (this.txtChillerWTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm4.Text);
-            Cfg.TmChillerCfg.WaitTm[4] = (this.txtChillerWTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm5.Text);
-            Cfg.TmChillerCfg.WaitTm[5] = (this.txtChillerWTm6.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm6.Text);
-            Cfg.TmChillerCfg.WaitTm[6] = (this.txtChillerWTm7.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm7.Text);
-            Cfg.TmChillerCfg.WaitTm[7] = (this.txtChillerWTm8.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm8.Text);
-            Cfg.TmChillerCfg.WaitTm[8] = (this.txtChillerWTm9.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerWTm9.Text);
-
-            Cfg.TmChillerCfg.TestTm[0] = (this.txtChillerTTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm1.Text);
-            Cfg.TmChillerCfg.TestTm[1] = (this.txtChillerTTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm2.Text);
-            Cfg.TmChillerCfg.TestTm[2] = (this.txtChillerTTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm3.Text);
-            Cfg.TmChillerCfg.TestTm[3] = (this.txtChillerTTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm4.Text);
-            Cfg.TmChillerCfg.TestTm[4] = (this.txtChillerTTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm5.Text);
-            Cfg.TmChillerCfg.TestTm[5] = (this.txtChillerTTm6.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm6.Text);
-            Cfg.TmChillerCfg.TestTm[6] = (this.txtChillerTTm7.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm7.Text);
-            Cfg.TmChillerCfg.TestTm[7] = (this.txtChillerTTm8.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm8.Text);
-            Cfg.TmChillerCfg.TestTm[8] = (this.txtChillerTTm9.Text == "-") ? (short)0 : Convert.ToInt32(this.txtChillerTTm9.Text);
-                
-            Cfg.TmChillerCfg.TDiff[0] = (this.txtChillerTDiff1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff1.Text, 1);
-            Cfg.TmChillerCfg.TDiff[1] = (this.txtChillerTDiff2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff2.Text, 1);
-            Cfg.TmChillerCfg.TDiff[2] = (this.txtChillerTDiff3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff3.Text, 1);
-            Cfg.TmChillerCfg.TDiff[3] = (this.txtChillerTDiff4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff4.Text, 1);
-            Cfg.TmChillerCfg.TDiff[4] = (this.txtChillerTDiff5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff5.Text, 1);
-            Cfg.TmChillerCfg.TDiff[5] = (this.txtChillerTDiff6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff6.Text, 1);
-            Cfg.TmChillerCfg.TDiff[6] = (this.txtChillerTDiff7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff7.Text, 1);
-            Cfg.TmChillerCfg.TDiff[7] = (this.txtChillerTDiff8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff8.Text, 1);
-            Cfg.TmChillerCfg.TDiff[8] = (this.txtChillerTDiff9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerTDiff9.Text, 1);
-
-            Cfg.TmChillerCfg.SDiff[0] = (this.txtChillerSDiff1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff1.Text, 2);
-            Cfg.TmChillerCfg.SDiff[1] = (this.txtChillerSDiff2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff2.Text, 2);
-            Cfg.TmChillerCfg.SDiff[2] = (this.txtChillerSDiff3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff3.Text, 2);
-            Cfg.TmChillerCfg.SDiff[3] = (this.txtChillerSDiff4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff4.Text, 2);
-            Cfg.TmChillerCfg.SDiff[4] = (this.txtChillerSDiff5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff5.Text, 2);
-            Cfg.TmChillerCfg.SDiff[5] = (this.txtChillerSDiff6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff6.Text, 2);
-            Cfg.TmChillerCfg.SDiff[6] = (this.txtChillerSDiff7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff7.Text, 2);
-            Cfg.TmChillerCfg.SDiff[7] = (this.txtChillerSDiff8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff8.Text, 2);
-            Cfg.TmChillerCfg.SDiff[8] = (this.txtChillerSDiff9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerSDiff9.Text, 2);
-
-            Cfg.TmChillerCfg.Ramp[0] = (this.txtChillerRamp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp1.Text, 1);
-            Cfg.TmChillerCfg.Ramp[1] = (this.txtChillerRamp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp2.Text, 1);
-            Cfg.TmChillerCfg.Ramp[2] = (this.txtChillerRamp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp3.Text, 1);
-            Cfg.TmChillerCfg.Ramp[3] = (this.txtChillerRamp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp4.Text, 1);
-            Cfg.TmChillerCfg.Ramp[4] = (this.txtChillerRamp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp5.Text, 1);
-            Cfg.TmChillerCfg.Ramp[5] = (this.txtChillerRamp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp6.Text, 1);
-            Cfg.TmChillerCfg.Ramp[6] = (this.txtChillerRamp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp7.Text, 1);
-            Cfg.TmChillerCfg.Ramp[7] = (this.txtChillerRamp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp8.Text, 1);
-            Cfg.TmChillerCfg.Ramp[8] = (this.txtChillerRamp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtChillerRamp9.Text, 1);
-
-            if (this.txtChillerTDiff1.Text == "-") Cfg.TmChillerCfg.bUseTDiff[0] = false; else Cfg.TmChillerCfg.bUseTDiff[0] = true;
-            if (this.txtChillerTDiff2.Text == "-") Cfg.TmChillerCfg.bUseTDiff[1] = false; else Cfg.TmChillerCfg.bUseTDiff[1] = true;
-            if (this.txtChillerTDiff3.Text == "-") Cfg.TmChillerCfg.bUseTDiff[2] = false; else Cfg.TmChillerCfg.bUseTDiff[2] = true;
-            if (this.txtChillerTDiff4.Text == "-") Cfg.TmChillerCfg.bUseTDiff[3] = false; else Cfg.TmChillerCfg.bUseTDiff[3] = true;
-            if (this.txtChillerTDiff5.Text == "-") Cfg.TmChillerCfg.bUseTDiff[4] = false; else Cfg.TmChillerCfg.bUseTDiff[4] = true;
-            if (this.txtChillerTDiff6.Text == "-") Cfg.TmChillerCfg.bUseTDiff[5] = false; else Cfg.TmChillerCfg.bUseTDiff[5] = true;
-            if (this.txtChillerTDiff7.Text == "-") Cfg.TmChillerCfg.bUseTDiff[6] = false; else Cfg.TmChillerCfg.bUseTDiff[6] = true;
-            if (this.txtChillerTDiff8.Text == "-") Cfg.TmChillerCfg.bUseTDiff[7] = false; else Cfg.TmChillerCfg.bUseTDiff[7] = true;
-            if (this.txtChillerTDiff9.Text == "-") Cfg.TmChillerCfg.bUseTDiff[8] = false; else Cfg.TmChillerCfg.bUseTDiff[8] = true;
-                                                       
-            if (this.txtChillerSDiff1.Text == "-") Cfg.TmChillerCfg.bUseSDiff[0] = false; else Cfg.TmChillerCfg.bUseSDiff[0] = true;
-            if (this.txtChillerSDiff2.Text == "-") Cfg.TmChillerCfg.bUseSDiff[1] = false; else Cfg.TmChillerCfg.bUseSDiff[1] = true;
-            if (this.txtChillerSDiff3.Text == "-") Cfg.TmChillerCfg.bUseSDiff[2] = false; else Cfg.TmChillerCfg.bUseSDiff[2] = true;
-            if (this.txtChillerSDiff4.Text == "-") Cfg.TmChillerCfg.bUseSDiff[3] = false; else Cfg.TmChillerCfg.bUseSDiff[3] = true;
-            if (this.txtChillerSDiff5.Text == "-") Cfg.TmChillerCfg.bUseSDiff[4] = false; else Cfg.TmChillerCfg.bUseSDiff[4] = true;
-            if (this.txtChillerSDiff6.Text == "-") Cfg.TmChillerCfg.bUseSDiff[5] = false; else Cfg.TmChillerCfg.bUseSDiff[5] = true;
-            if (this.txtChillerSDiff7.Text == "-") Cfg.TmChillerCfg.bUseSDiff[6] = false; else Cfg.TmChillerCfg.bUseSDiff[6] = true;
-            if (this.txtChillerSDiff8.Text == "-") Cfg.TmChillerCfg.bUseSDiff[7] = false; else Cfg.TmChillerCfg.bUseSDiff[7] = true;
-            if (this.txtChillerSDiff9.Text == "-") Cfg.TmChillerCfg.bUseSDiff[8] = false; else Cfg.TmChillerCfg.bUseSDiff[8] = true;
-
-            if (this.txtChillerRamp1.Text == "-") Cfg.TmChillerCfg.bUseRamp[0] = false; else Cfg.TmChillerCfg.bUseRamp[0] = true;
-            if (this.txtChillerRamp2.Text == "-") Cfg.TmChillerCfg.bUseRamp[1] = false; else Cfg.TmChillerCfg.bUseRamp[1] = true;
-            if (this.txtChillerRamp3.Text == "-") Cfg.TmChillerCfg.bUseRamp[2] = false; else Cfg.TmChillerCfg.bUseRamp[2] = true;
-            if (this.txtChillerRamp4.Text == "-") Cfg.TmChillerCfg.bUseRamp[3] = false; else Cfg.TmChillerCfg.bUseRamp[3] = true;
-            if (this.txtChillerRamp5.Text == "-") Cfg.TmChillerCfg.bUseRamp[4] = false; else Cfg.TmChillerCfg.bUseRamp[4] = true;
-            if (this.txtChillerRamp6.Text == "-") Cfg.TmChillerCfg.bUseRamp[5] = false; else Cfg.TmChillerCfg.bUseRamp[5] = true;
-            if (this.txtChillerRamp7.Text == "-") Cfg.TmChillerCfg.bUseRamp[6] = false; else Cfg.TmChillerCfg.bUseRamp[6] = true;
-            if (this.txtChillerRamp8.Text == "-") Cfg.TmChillerCfg.bUseRamp[7] = false; else Cfg.TmChillerCfg.bUseRamp[7] = true;
-            if (this.txtChillerRamp9.Text == "-") Cfg.TmChillerCfg.bUseRamp[8] = false; else Cfg.TmChillerCfg.bUseRamp[8] = true;
-
-            // Temp Chiller.
-            Cfg.TpChillerCfg.TSp[0] = (txtTpChillerTSp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp1.Text, 1);
-            Cfg.TpChillerCfg.TSp[1] = (txtTpChillerTSp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp2.Text, 1);
-            Cfg.TpChillerCfg.TSp[2] = (txtTpChillerTSp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp3.Text, 1);
-            Cfg.TpChillerCfg.TSp[3] = (txtTpChillerTSp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp4.Text, 1);
-            Cfg.TpChillerCfg.TSp[4] = (txtTpChillerTSp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp5.Text, 1);
-            Cfg.TpChillerCfg.TSp[5] = (txtTpChillerTSp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp6.Text, 1);
-            Cfg.TpChillerCfg.TSp[6] = (txtTpChillerTSp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp7.Text, 1);
-            Cfg.TpChillerCfg.TSp[7] = (txtTpChillerTSp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp8.Text, 1);
-            Cfg.TpChillerCfg.TSp[8] = (txtTpChillerTSp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerTSp9.Text, 1);
-
-            Cfg.TpChillerCfg.SSp[0] = (txtTpChillerSSp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp1.Text, 2);
-            Cfg.TpChillerCfg.SSp[1] = (txtTpChillerSSp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp2.Text, 2);
-            Cfg.TpChillerCfg.SSp[2] = (txtTpChillerSSp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp3.Text, 2);
-            Cfg.TpChillerCfg.SSp[3] = (txtTpChillerSSp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp4.Text, 2);
-            Cfg.TpChillerCfg.SSp[4] = (txtTpChillerSSp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp5.Text, 2);
-            Cfg.TpChillerCfg.SSp[5] = (txtTpChillerSSp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp6.Text, 2);
-            Cfg.TpChillerCfg.SSp[6] = (txtTpChillerSSp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp7.Text, 2);
-            Cfg.TpChillerCfg.SSp[7] = (txtTpChillerSSp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp8.Text, 2);
-            Cfg.TpChillerCfg.SSp[8] = (txtTpChillerSSp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(txtTpChillerSSp9.Text, 2);
-
-            Cfg.TpChillerCfg.WaitTm[0] = (this.txtTpChillerWTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm1.Text);
-            Cfg.TpChillerCfg.WaitTm[1] = (this.txtTpChillerWTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm2.Text);
-            Cfg.TpChillerCfg.WaitTm[2] = (this.txtTpChillerWTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm3.Text);
-            Cfg.TpChillerCfg.WaitTm[3] = (this.txtTpChillerWTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm4.Text);
-            Cfg.TpChillerCfg.WaitTm[4] = (this.txtTpChillerWTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm5.Text);
-            Cfg.TpChillerCfg.WaitTm[5] = (this.txtTpChillerWTm6.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm6.Text);
-            Cfg.TpChillerCfg.WaitTm[6] = (this.txtTpChillerWTm7.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm7.Text);
-            Cfg.TpChillerCfg.WaitTm[7] = (this.txtTpChillerWTm8.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm8.Text);
-            Cfg.TpChillerCfg.WaitTm[8] = (this.txtTpChillerWTm9.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerWTm9.Text);
-                
-            Cfg.TpChillerCfg.TestTm[0] = (this.txtTpChillerTTm1.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm1.Text);
-            Cfg.TpChillerCfg.TestTm[1] = (this.txtTpChillerTTm2.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm2.Text);
-            Cfg.TpChillerCfg.TestTm[2] = (this.txtTpChillerTTm3.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm3.Text);
-            Cfg.TpChillerCfg.TestTm[3] = (this.txtTpChillerTTm4.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm4.Text);
-            Cfg.TpChillerCfg.TestTm[4] = (this.txtTpChillerTTm5.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm5.Text);
-            Cfg.TpChillerCfg.TestTm[5] = (this.txtTpChillerTTm6.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm6.Text);
-            Cfg.TpChillerCfg.TestTm[6] = (this.txtTpChillerTTm7.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm7.Text);
-            Cfg.TpChillerCfg.TestTm[7] = (this.txtTpChillerTTm8.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm8.Text);
-            Cfg.TpChillerCfg.TestTm[8] = (this.txtTpChillerTTm9.Text == "-") ? (short)0 : Convert.ToInt32(this.txtTpChillerTTm9.Text);
-                
-            Cfg.TpChillerCfg.TDiff[0] = (this.txtTpChillerTDiff1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff1.Text, 1);
-            Cfg.TpChillerCfg.TDiff[1] = (this.txtTpChillerTDiff2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff2.Text, 1);
-            Cfg.TpChillerCfg.TDiff[2] = (this.txtTpChillerTDiff3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff3.Text, 1);
-            Cfg.TpChillerCfg.TDiff[3] = (this.txtTpChillerTDiff4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff4.Text, 1);
-            Cfg.TpChillerCfg.TDiff[4] = (this.txtTpChillerTDiff5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff5.Text, 1);
-            Cfg.TpChillerCfg.TDiff[5] = (this.txtTpChillerTDiff6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff6.Text, 1);
-            Cfg.TpChillerCfg.TDiff[6] = (this.txtTpChillerTDiff7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff7.Text, 1);
-            Cfg.TpChillerCfg.TDiff[7] = (this.txtTpChillerTDiff8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff8.Text, 1);
-            Cfg.TpChillerCfg.TDiff[8] = (this.txtTpChillerTDiff9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerTDiff9.Text, 1);
-
-            Cfg.TpChillerCfg.SDiff[0] = (this.txtTpChillerSDiff1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff1.Text, 2);
-            Cfg.TpChillerCfg.SDiff[1] = (this.txtTpChillerSDiff2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff2.Text, 2);
-            Cfg.TpChillerCfg.SDiff[2] = (this.txtTpChillerSDiff3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff3.Text, 2);
-            Cfg.TpChillerCfg.SDiff[3] = (this.txtTpChillerSDiff4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff4.Text, 2);
-            Cfg.TpChillerCfg.SDiff[4] = (this.txtTpChillerSDiff5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff5.Text, 2);
-            Cfg.TpChillerCfg.SDiff[5] = (this.txtTpChillerSDiff6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff6.Text, 2);
-            Cfg.TpChillerCfg.SDiff[6] = (this.txtTpChillerSDiff7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff7.Text, 2);
-            Cfg.TpChillerCfg.SDiff[7] = (this.txtTpChillerSDiff8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff8.Text, 2);
-            Cfg.TpChillerCfg.SDiff[8] = (this.txtTpChillerSDiff9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerSDiff9.Text, 2);
-
-            Cfg.TpChillerCfg.Ramp[0] = (this.txtTpChillerRamp1.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp1.Text, 1);
-            Cfg.TpChillerCfg.Ramp[1] = (this.txtTpChillerRamp2.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp2.Text, 1);
-            Cfg.TpChillerCfg.Ramp[2] = (this.txtTpChillerRamp3.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp3.Text, 1);
-            Cfg.TpChillerCfg.Ramp[3] = (this.txtTpChillerRamp4.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp4.Text, 1);
-            Cfg.TpChillerCfg.Ramp[4] = (this.txtTpChillerRamp5.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp5.Text, 1);
-            Cfg.TpChillerCfg.Ramp[5] = (this.txtTpChillerRamp6.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp6.Text, 1);
-            Cfg.TpChillerCfg.Ramp[6] = (this.txtTpChillerRamp7.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp7.Text, 1);
-            Cfg.TpChillerCfg.Ramp[7] = (this.txtTpChillerRamp8.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp8.Text, 1);
-            Cfg.TpChillerCfg.Ramp[8] = (this.txtTpChillerRamp9.Text == "-") ? (short)0 : SysDefs.DotStringToVal(this.txtTpChillerRamp9.Text, 1);
-
-            if (this.txtTpChillerTDiff1.Text == "-") Cfg.TpChillerCfg.bUseTDiff[0] = false; else Cfg.TpChillerCfg.bUseTDiff[0] = true;
-            if (this.txtTpChillerTDiff2.Text == "-") Cfg.TpChillerCfg.bUseTDiff[1] = false; else Cfg.TpChillerCfg.bUseTDiff[1] = true;
-            if (this.txtTpChillerTDiff3.Text == "-") Cfg.TpChillerCfg.bUseTDiff[2] = false; else Cfg.TpChillerCfg.bUseTDiff[2] = true;
-            if (this.txtTpChillerTDiff4.Text == "-") Cfg.TpChillerCfg.bUseTDiff[3] = false; else Cfg.TpChillerCfg.bUseTDiff[3] = true;
-            if (this.txtTpChillerTDiff5.Text == "-") Cfg.TpChillerCfg.bUseTDiff[4] = false; else Cfg.TpChillerCfg.bUseTDiff[4] = true;
-            if (this.txtTpChillerTDiff6.Text == "-") Cfg.TpChillerCfg.bUseTDiff[5] = false; else Cfg.TpChillerCfg.bUseTDiff[5] = true;
-            if (this.txtTpChillerTDiff7.Text == "-") Cfg.TpChillerCfg.bUseTDiff[6] = false; else Cfg.TpChillerCfg.bUseTDiff[6] = true;
-            if (this.txtTpChillerTDiff8.Text == "-") Cfg.TpChillerCfg.bUseTDiff[7] = false; else Cfg.TpChillerCfg.bUseTDiff[7] = true;
-            if (this.txtTpChillerTDiff9.Text == "-") Cfg.TpChillerCfg.bUseTDiff[8] = false; else Cfg.TpChillerCfg.bUseTDiff[8] = true;
-
-            if (this.txtTpChillerSDiff1.Text == "-") Cfg.TpChillerCfg.bUseSDiff[0] = false; else Cfg.TpChillerCfg.bUseSDiff[0] = true;
-            if (this.txtTpChillerSDiff2.Text == "-") Cfg.TpChillerCfg.bUseSDiff[1] = false; else Cfg.TpChillerCfg.bUseSDiff[1] = true;
-            if (this.txtTpChillerSDiff3.Text == "-") Cfg.TpChillerCfg.bUseSDiff[2] = false; else Cfg.TpChillerCfg.bUseSDiff[2] = true;
-            if (this.txtTpChillerSDiff4.Text == "-") Cfg.TpChillerCfg.bUseSDiff[3] = false; else Cfg.TpChillerCfg.bUseSDiff[3] = true;
-            if (this.txtTpChillerSDiff5.Text == "-") Cfg.TpChillerCfg.bUseSDiff[4] = false; else Cfg.TpChillerCfg.bUseSDiff[4] = true;
-            if (this.txtTpChillerSDiff6.Text == "-") Cfg.TpChillerCfg.bUseSDiff[5] = false; else Cfg.TpChillerCfg.bUseSDiff[5] = true;
-            if (this.txtTpChillerSDiff7.Text == "-") Cfg.TpChillerCfg.bUseSDiff[6] = false; else Cfg.TpChillerCfg.bUseSDiff[6] = true;
-            if (this.txtTpChillerSDiff8.Text == "-") Cfg.TpChillerCfg.bUseSDiff[7] = false; else Cfg.TpChillerCfg.bUseSDiff[7] = true;
-            if (this.txtTpChillerSDiff9.Text == "-") Cfg.TpChillerCfg.bUseSDiff[8] = false; else Cfg.TpChillerCfg.bUseSDiff[8] = true;
-
-            if (this.txtTpChillerRamp1.Text == "-") Cfg.TpChillerCfg.bUseRamp[0] = false; else Cfg.TpChillerCfg.bUseRamp[0] = true;
-            if (this.txtTpChillerRamp2.Text == "-") Cfg.TpChillerCfg.bUseRamp[1] = false; else Cfg.TpChillerCfg.bUseRamp[1] = true;
-            if (this.txtTpChillerRamp3.Text == "-") Cfg.TpChillerCfg.bUseRamp[2] = false; else Cfg.TpChillerCfg.bUseRamp[2] = true;
-            if (this.txtTpChillerRamp4.Text == "-") Cfg.TpChillerCfg.bUseRamp[3] = false; else Cfg.TpChillerCfg.bUseRamp[3] = true;
-            if (this.txtTpChillerRamp5.Text == "-") Cfg.TpChillerCfg.bUseRamp[4] = false; else Cfg.TpChillerCfg.bUseRamp[4] = true;
-            if (this.txtTpChillerRamp6.Text == "-") Cfg.TpChillerCfg.bUseRamp[5] = false; else Cfg.TpChillerCfg.bUseRamp[5] = true;
-            if (this.txtTpChillerRamp7.Text == "-") Cfg.TpChillerCfg.bUseRamp[6] = false; else Cfg.TpChillerCfg.bUseRamp[6] = true;
-            if (this.txtTpChillerRamp8.Text == "-") Cfg.TpChillerCfg.bUseRamp[7] = false; else Cfg.TpChillerCfg.bUseRamp[7] = true;
-            if (this.txtTpChillerRamp9.Text == "-") Cfg.TpChillerCfg.bUseRamp[8] = false; else Cfg.TpChillerCfg.bUseRamp[8] = true;
         }
     }
 }

@@ -50,6 +50,7 @@ namespace Ptnr
         public short[] HSp { get; set; }
         public int[] WaitTm { get; set; }
         public int[] TestTm { get; set; }
+        public int[] CtrlStblTm { get; set; }
 
         public short[] TempDiff { get; set; }
         public short[] HumiDiff { get; set; }
@@ -72,6 +73,7 @@ namespace Ptnr
             HSp = new short[SysDefs.TEMI_TEST_CNT];
             WaitTm = new int[SysDefs.TEMI_TEST_CNT];
             TestTm = new int[SysDefs.TEMI_TEST_CNT];
+            CtrlStblTm = new int[SysDefs.TEMI_TEST_CNT];
 
             TempDiff = new short[SysDefs.TEMI_TEST_CNT];
             HumiDiff = new short[SysDefs.TEMI_TEST_CNT];
@@ -97,6 +99,7 @@ namespace Ptnr
         public short[] TSp { get; set; }
         public int[] WaitTm { get; set; }
         public int[] TestTm { get; set; }
+        public int[] CtrlStblTm { get; set; }
 
         public short[] TempDiff { get; set; }
         public short[] Ramp { get; set; }
@@ -113,6 +116,7 @@ namespace Ptnr
             TSp = new short[SysDefs.TEMP_TEST_CNT];
             WaitTm = new int[SysDefs.TEMP_TEST_CNT];
             TestTm = new int[SysDefs.TEMP_TEST_CNT];
+            CtrlStblTm = new int[SysDefs.TEMP_TEST_CNT];
 
             TempDiff = new short[SysDefs.TEMP_TEST_CNT];
             Ramp = new short[SysDefs.TEMP_TEST_CNT];
@@ -127,49 +131,15 @@ namespace Ptnr
         }
     }
 
-    public class ChillerConfig
-    {
-        public short[] TSp { get; set; }
-        public short[] SSp { get; set; }
-
-        public int[] WaitTm { get; set; }
-        public int[] TestTm { get; set; }
-
-        public short[] TDiff { get; set; }
-        public short[] SDiff { get; set; }
-        public short[] Ramp { get; set; }
-
-        public bool[] bUseTDiff { get; set; }
-        public bool[] bUseSDiff { get; set; }
-        public bool[] bUseRamp { get; set; }
-
-        public ChillerConfig()
-        {
-            TSp = new short[SysDefs.CHILLER_TEST_CNT];
-            SSp = new short[SysDefs.CHILLER_TEST_CNT];
-
-            WaitTm = new int[SysDefs.CHILLER_TEST_CNT];
-            TestTm = new int[SysDefs.CHILLER_TEST_CNT];
-
-            TDiff = new short[SysDefs.CHILLER_TEST_CNT];
-            SDiff = new short[SysDefs.CHILLER_TEST_CNT];
-            Ramp = new short[SysDefs.CHILLER_TEST_CNT];
-
-            bUseTDiff = new bool[SysDefs.CHILLER_TEST_CNT];
-            bUseSDiff = new bool[SysDefs.CHILLER_TEST_CNT];
-            bUseRamp = new bool[SysDefs.CHILLER_TEST_CNT];
-        }
-    }
 
     public class Config
     {
         public TemiConfig TmCfg {  get; set; }
         public TempConfig TpCfg { get; set; }
-        public ChillerConfig TmChillerCfg { get; set; }
-        public ChillerConfig TpChillerCfg { get; set; }
         public CommConfig CommCfg { get; set; }
-
         public EqmtConfig[] EqmtCfg { get; set; }
+
+        public string title;
 
         public Config()
         {
@@ -185,8 +155,6 @@ namespace Ptnr
 
             TmCfg = new TemiConfig();
             TpCfg = new TempConfig();
-            TmChillerCfg = new ChillerConfig();
-            TpChillerCfg = new ChillerConfig();
             CommCfg = new CommConfig();
         }
     }

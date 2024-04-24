@@ -79,8 +79,6 @@ namespace Ptnr
         public Slop tempSlop;
         public Slop humiSlop;
 
-        public DateTime stableTm;
-
         public bool bTouchTemp;
         public bool bTouchHumi;
 
@@ -98,7 +96,7 @@ namespace Ptnr
         public short resTOver;
         public short resHOver;
         public short resROver;
-
+        public short resCtrlStableTm;
         public short resStableTm;
 
         // Judge
@@ -108,6 +106,7 @@ namespace Ptnr
         public short jugUnif;
         public short jugTOver;
         public short jugHOver;
+        public int jugCtrlStableTm;
 
         public bool bUseTDisp;
         public bool bUseHDisp;
@@ -140,6 +139,9 @@ namespace Ptnr
             resROver = SysDefs.NOT_DEFVAL;
             resHOver = SysDefs.NOT_DEFVAL;
 
+            resCtrlStableTm = SysDefs.NOT_DEFVAL;
+            resStableTm = SysDefs.NOT_DEFVAL;
+
             resCtrRamp = 0;
 
             resUnifMin = SysDefs.NOT_DEFVAL;
@@ -152,6 +154,8 @@ namespace Ptnr
 
             jugTOver = 0;
             jugHOver = 0;
+
+            jugCtrlStableTm = 0;
 
             bUseTDisp = false;
             bUseHDisp = false;
@@ -167,21 +171,11 @@ namespace Ptnr
             resRec[SysDefs.CH2] = new List<short>();
             resRec[SysDefs.CH3] = new List<short>();
             resRec[SysDefs.CH4] = new List<short>();
-            resRec[SysDefs.CH5] = new List<short>();
-            resRec[SysDefs.CH6] = new List<short>();
-            resRec[SysDefs.CH7] = new List<short>();
-            resRec[SysDefs.CH8] = new List<short>();
-            resRec[SysDefs.CH9] = new List<short>();
-
+            
             resRec[SysDefs.CH1].Capacity = 30;
             resRec[SysDefs.CH2].Capacity = 30;
             resRec[SysDefs.CH3].Capacity = 30;
             resRec[SysDefs.CH4].Capacity = 30;
-            resRec[SysDefs.CH5].Capacity = 30;
-            resRec[SysDefs.CH6].Capacity = 30;
-            resRec[SysDefs.CH7].Capacity = 30;
-            resRec[SysDefs.CH8].Capacity = 30;
-            resRec[SysDefs.CH9].Capacity = 30;
         }
 
         public void Reset()
@@ -197,6 +191,9 @@ namespace Ptnr
             resTOver = SysDefs.NOT_DEFVAL;
             resHOver = SysDefs.NOT_DEFVAL;
             resROver = SysDefs.NOT_DEFVAL;
+
+            resCtrlStableTm = SysDefs.NOT_DEFVAL;
+            resStableTm = SysDefs.NOT_DEFVAL;
 
             resUnifMin = SysDefs.NOT_DEFVAL;
             resUnifMax = SysDefs.NOT_DEFVAL;
@@ -239,8 +236,6 @@ namespace Ptnr
     public class TSpecTpChamber : TSpec
     {
         public Slop tempSlop;
-        public DateTime stableTm;
-
         public bool bTouchTemp;
         public short tsp;
 
@@ -252,6 +247,7 @@ namespace Ptnr
         public short resTOver;
         public short resROver;
 
+        public short resCtrlStableTm;
         public short resStableTm;
 
         // Judge
@@ -259,6 +255,7 @@ namespace Ptnr
         public short jugRamp;
         public short jugUnif;
         public short jugTOver;
+        public int jugCtrlStableTm;
 
         public bool bUseTDisp;
         public bool bUseRamp;
@@ -281,6 +278,9 @@ namespace Ptnr
             resTOver = SysDefs.NOT_DEFVAL;
             resROver = SysDefs.NOT_DEFVAL;
 
+            resCtrlStableTm = SysDefs.NOT_DEFVAL;
+            resStableTm = SysDefs.NOT_DEFVAL;
+
             resCtrRamp = 0;
 
             resUnifMin = SysDefs.NOT_DEFVAL;
@@ -291,7 +291,8 @@ namespace Ptnr
             jugUnif = 0;
 
             jugTOver = 0;
-            
+            jugCtrlStableTm = 0;
+
             bUseTDisp = false;
             bUseRamp = false;
             bUseUnif = false;
@@ -304,21 +305,11 @@ namespace Ptnr
             resRec[SysDefs.CH2] = new List<short>();
             resRec[SysDefs.CH3] = new List<short>();
             resRec[SysDefs.CH4] = new List<short>();
-            resRec[SysDefs.CH5] = new List<short>();
-            resRec[SysDefs.CH6] = new List<short>();
-            resRec[SysDefs.CH7] = new List<short>();
-            resRec[SysDefs.CH8] = new List<short>();
-            resRec[SysDefs.CH9] = new List<short>();
-
+            
             resRec[SysDefs.CH1].Capacity = 30;
             resRec[SysDefs.CH2].Capacity = 30;
             resRec[SysDefs.CH3].Capacity = 30;
             resRec[SysDefs.CH4].Capacity = 30;
-            resRec[SysDefs.CH5].Capacity = 30;
-            resRec[SysDefs.CH6].Capacity = 30;
-            resRec[SysDefs.CH7].Capacity = 30;
-            resRec[SysDefs.CH8].Capacity = 30;
-            resRec[SysDefs.CH9].Capacity = 30;
         }
 
         public void Reset()
@@ -332,6 +323,9 @@ namespace Ptnr
 
             resUnifMin = SysDefs.NOT_DEFVAL;
             resUnifMax = SysDefs.NOT_DEFVAL;
+
+            resCtrlStableTm = SysDefs.NOT_DEFVAL;
+            resStableTm = SysDefs.NOT_DEFVAL;
 
             workingSts = WorkingSts.Begin;
             result = WorkingRes.NotDef;
@@ -363,75 +357,6 @@ namespace Ptnr
                 }
             }
             return val;
-        }
-    }
-
-    public class TSpecChiller : TSpec
-    {
-        public DateTime workSpStartTm;
-        
-        public Slop tSlop;
-        public Slop sSlop;
-
-        public bool bTouchTSP;
-        public bool bTouchSSP;
-
-        public short tsp;
-        public short ssp;
-        
-        public short resCtrTMin;
-        public short resCtrTMax;
-        
-        public short resCtrSMin;
-        public short resCtrSMax;
-        
-        public short resCtrRamp;
-        
-        // Judge
-        public short jugTDisp;
-        public short jugSDisp;
-        public short jugRamp;
-
-        public bool bUseTDisp;
-        public bool bUseSDisp;
-        public bool bUseRamp;
-        
-        public TSpecChiller()
-        {
-            tsp = 0;
-            ssp = 0;
-
-            bUseTDisp =false;
-            bUseSDisp = false;
-            bUseRamp = false;
-
-            resCtrTMin = SysDefs.NOT_DEFVAL;
-            resCtrTMax = SysDefs.NOT_DEFVAL;
-
-            resCtrSMin = SysDefs.NOT_DEFVAL;
-            resCtrSMax = SysDefs.NOT_DEFVAL;
-            resCtrRamp = SysDefs.NOT_DEFVAL;
-
-            jugTDisp = 0;
-            jugSDisp = 0;
-            jugRamp = 0;
-        }
-        
-        public void Reset()
-        {
-            resCtrTMin = SysDefs.NOT_DEFVAL;
-            resCtrTMax = SysDefs.NOT_DEFVAL;
-            
-            resCtrSMin = SysDefs.NOT_DEFVAL;
-            resCtrSMax = SysDefs.NOT_DEFVAL;
-
-            resCtrRamp = SysDefs.NOT_DEFVAL;
-
-            bTouchTSP = false;
-            bTouchSSP = false;
-
-            workingSts = WorkingSts.Begin;
-            result = WorkingRes.NotDef;
         }
     }
 }

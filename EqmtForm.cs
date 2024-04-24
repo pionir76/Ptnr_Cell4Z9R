@@ -18,12 +18,6 @@ using static Ptnr.TSpec;
 
 namespace Ptnr
 {
-    enum RoomType
-    {
-        Room1,
-        Room2,
-    };
-
     public enum EqmtType
     {
         Temi,
@@ -32,10 +26,9 @@ namespace Ptnr
 
     public partial class EqmtForm : Form
     {
-        public DateTime WorkStartTime {  get; private set; }
+        public DateTime WorkStartTime { get; private set; }
         public bool bWorkingNow { get; private set; }
-        public bool bWorkFinish { get; private set; }
-
+        
         public SerialComm Comm { get; }
         public event EventHandler UpdateConfig;
         public event EventHandler EqmtClose;
@@ -45,19 +38,58 @@ namespace Ptnr
         private Config Cfg;
 
         private bool[] _doFirstRunChamber = new bool[4] { false, false, false, false };
-        private ChamberSts[] _chamber = new ChamberSts[4];
-        private RecorderSts[] _recorder1 = new RecorderSts[4];
 
-        private TSpecTmChamber[,] specTmChamber = new TSpecTmChamber[4,SysDefs.TEMI_TEST_CNT];
-        private TSpecTpChamber[,] specTpChamber = new TSpecTpChamber[4,SysDefs.TEMP_TEST_CNT];
+        private ChamberSts[] _chamber = new ChamberSts[]
+        {
+            new ChamberSts(),
+            new ChamberSts(),
+            new ChamberSts(),
+            new ChamberSts()
+        };
+
+        private RecorderSts[] _recorder = new RecorderSts[]
+        {
+            new RecorderSts(),
+            new RecorderSts(),
+            new RecorderSts(),
+            new RecorderSts()
+        };
+
+        private TSpecTmChamber[][] specTmChamber = new TSpecTmChamber[][]
+        {
+            new TSpecTmChamber[SysDefs.TEMI_TEST_CNT],
+            new TSpecTmChamber[SysDefs.TEMI_TEST_CNT],
+            new TSpecTmChamber[SysDefs.TEMI_TEST_CNT],
+            new TSpecTmChamber[SysDefs.TEMI_TEST_CNT]
+        };
+
+        private TSpecTpChamber[][] specTpChamber = new TSpecTpChamber[][]
+        {
+            new TSpecTpChamber[SysDefs.TEMP_TEST_CNT],
+            new TSpecTpChamber[SysDefs.TEMP_TEST_CNT],
+            new TSpecTpChamber[SysDefs.TEMP_TEST_CNT],
+            new TSpecTpChamber[SysDefs.TEMP_TEST_CNT]
+        };
+
 
         private int[] _chamberWorkingIdx = new int[4] {0,0,0,0};
-        private List<int>[] _chamberTestList = new List<int>[4];
+        private List<int>[] _chamberTestList = new List<int>[]
+        {
+            new List<int>(),
+            new List<int>(),
+            new List<int>(),
+            new List<int>()
+        };
 
-        private System.Windows.Forms.Timer[] _workChamberTmr = new System.Windows.Forms.Timer[4];
+        private System.Windows.Forms.Timer[] _workChamberTmr = new System.Windows.Forms.Timer[]
+        { 
+            new System.Windows.Forms.Timer(),
+            new System.Windows.Forms.Timer(),
+            new System.Windows.Forms.Timer(),
+            new System.Windows.Forms.Timer()
+        };
 
         private bool[] _bWorkChamber = new bool[4] { false, false, false, false };
-        private bool[] _bReadyRoom = new bool[4] { false, false, false, false };
         private bool[] _bChamberHold = new bool[4] { false, false, false, false };
 
         private EqmtType _eqmtType;
@@ -70,11 +102,6 @@ namespace Ptnr
                 parms.Style &= ~0x02000000;  // Turn off WS_CLIPCHILDREN
                 return parms;
             }
-        }
-
-        private void EqmtForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         public void SetType(EqmtType type)
@@ -117,22 +144,20 @@ namespace Ptnr
             }
             
             bWorkingNow = false;
-            bWorkFinish = false;
 
             for (int r = 0; r < 4; r++)
             {
                 for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
                 {
-                    specTmChamber[r, i] = new TSpecTmChamber();
-                    specTmChamber[r, i] = new TSpecTmChamber();
+                    specTmChamber[r][i] = new TSpecTmChamber();
+                    specTmChamber[r][i] = new TSpecTmChamber();
                 }
 
                 for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
                 {
-                    specTpChamber[r, i] = new TSpecTpChamber();
-                    specTpChamber[r, i] = new TSpecTpChamber();
+                    specTpChamber[r][i] = new TSpecTpChamber();
+                    specTpChamber[r][i] = new TSpecTpChamber();
                 }
-                _bReadyRoom[r] = false;
                 _chamberWorkingIdx[r] = 0;
 
                 _workChamberTmr[r].Tick += new EventHandler(OnWorkChamberTmrEvent);
@@ -153,11 +178,11 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             lblChamb11Sts.Text = "OFFLINE";
             lblChamb12Sts.Text = "OFFLINE";
-            lblRecorder1Sts.Text = "OFFLINE";
+            lblRecorder11Sts.Text = "OFFLINE";
 
             lblChamb21Sts.Text = "OFFLINE";
             lblChamb22Sts.Text = "OFFLINE";
-            lblRecorder2Sts.Text = "OFFLINE";
+            lblRecorder21Sts.Text = "OFFLINE";
 
             UpdateTestSheet();
             InitChamberTestSheetList();
@@ -165,8 +190,6 @@ namespace Ptnr
             Comm = new SerialComm();
             Comm.UpdateCtrlStatus += new UpdateCtrlStatusEventHandler(onUpdateCtrlSts);
             Comm.CommClose += new EventHandler(OnCommClosed);
-
-            //btnConnect_Click(this, EventArgs.Empty);
 
             //----------------------------------------------------------------//
             // Set up clock.
@@ -188,44 +211,32 @@ namespace Ptnr
                     //------------------------------------------------------------------//
                     // Write Temi Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER11, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER12, 101, 4);
 
-                    //------------------------------------------------------------------//
-                    // Write Temi Chamber #2 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER21, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER22, 101, 4);
                 }
                 else
                 {
                     //------------------------------------------------------------------//
                     // Write Temp Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 104, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER11, 104, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER12, 104, 4);
 
-                    //------------------------------------------------------------------//
-                    // Write Temp Chamber #2 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 104, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER21, 104, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER22, 104, 4);
                 }
-                
-                //------------------------------------------------------------------//
-                // Write Chiller #1 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 102, 4);
 
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
                 //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
-
-                //--------------------------------------------------//
-                // Subch 11 Stop(1) (유량)
-                //--------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 2831, 1);
+                Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
 
                 Comm.CommStop();
             }
-
             Close();
         }
 
@@ -237,13 +248,15 @@ namespace Ptnr
 
         private void OnCommClosed(object src, EventArgs e)
         {
-            _chamber1.bOnLine = false;
-            _chiller1.bOnLine = false;
-            _recorder1.bOnLine = false;
+            _chamber[0].bOnLine = false;
+            _chamber[1].bOnLine = false;
+            _chamber[2].bOnLine = false;
+            _chamber[3].bOnLine = false;
 
-            _chamber2.bOnLine = false;
-            _chiller2.bOnLine = false;
-            _recorder2.bOnLine = false;
+            _recorder[0].bOnLine = false;
+            _recorder[1].bOnLine = false;
+            _recorder[2].bOnLine = false;
+            _recorder[3].bOnLine = false;
         }
 
         //--------------------------------------------------------------------------//
@@ -253,103 +266,77 @@ namespace Ptnr
         {
             UpdateStatus();
 
-            if(_workChamber1Tmr.Enabled || _workChamber2Tmr.Enabled || _workChiller1Tmr.Enabled || _workChiller2Tmr.Enabled)
+            bWorkingNow = false;
+
+            for (int i = 0; i < 4; i++)
             {
-                if(bWorkingNow == false)
+                if (_workChamberTmr[i].Enabled)
                 {
-                    WorkStartTime = DateTime.Now;
-                    bWorkFinish = false;
+                    _bWorkChamber[i] = true;
+                    bWorkingNow = true;
                 }
-                bWorkingNow = true;
-            }
-            else
-            {
-                if (bWorkingNow == true)
+                else
                 {
-                    bWorkFinish = true;
+                    _bWorkChamber[i] = false;
+
                 }
-                bWorkingNow = false;
             }
 
-            // Room 1
-            if (_workChamber1Tmr.Enabled) _bWorkChamber1 = true;
-            else   _bWorkChamber1 = false;
-            
-            if (_workChiller1Tmr.Enabled) _bWorkChiller1 = true;
-            else _bWorkChiller1 = false;
-
-            // Room2
-            if (_workChamber2Tmr.Enabled) _bWorkChamber2 = true;
-            else _bWorkChamber2 = false;
-
-            if (_workChiller2Tmr.Enabled) _bWorkChiller2 = true;
-            else _bWorkChiller2 = false;
-
-
-            if(_bWorkChamber1 == false)
+            if (_bWorkChamber[0] == false)
             {
-                btnStartChamber1.BackColor = Color.LightGray;
-                btnStartChamber1.ForeColor = Color.Black;
+                btnStartChamber11.BackColor = Color.LightGray;
+                btnStartChamber11.ForeColor = Color.Black;
 
-                btnStartSelectedChamber1.BackColor = Color.LightGray;
-                btnStartSelectedChamber1.ForeColor = Color.Black;
+                btnStartSelectedChamber11.BackColor = Color.LightGray;
+                btnStartSelectedChamber11.ForeColor = Color.Black;
+
+                btnStartChamber11.Enabled = true;
+                btnStartSelectedChamber11.Enabled = true;
             }
 
-            if (_bWorkChiller1 == false)
+            if (_bWorkChamber[1] == false)
             {
-                btnStartChiller1.BackColor = Color.LightGray;
-                btnStartChiller1.ForeColor = Color.Black;
+                btnStartChamber12.BackColor = Color.LightGray;
+                btnStartChamber12.ForeColor = Color.Black;
 
-                btnStartSelectedChiller1.BackColor = Color.LightGray;
-                btnStartSelectedChiller1.ForeColor = Color.Black;
+                btnStartSelectedChamber12.BackColor = Color.LightGray;
+                btnStartSelectedChamber12.ForeColor = Color.Black;
+
+                btnStartChamber12.Enabled = true;
+                btnStartSelectedChamber12.Enabled = true;
             }
 
-            if (_bWorkChamber2 == false)
+            if (_bWorkChamber[2] == false)
             {
-                btnStartChamber2.BackColor = Color.LightGray;
-                btnStartChamber2.ForeColor = Color.Black;
+                btnStartChamber21.BackColor = Color.LightGray;
+                btnStartChamber21.ForeColor = Color.Black;
 
-                btnStartSelectedChamber2.BackColor = Color.LightGray;
-                btnStartSelectedChamber2.ForeColor = Color.Black;
+                btnStartSelectedChamber21.BackColor = Color.LightGray;
+                btnStartSelectedChamber21.ForeColor = Color.Black;
+
+                btnStartChamber21.Enabled = true;
+                btnStartSelectedChamber21.Enabled = true;
             }
 
-            if (_bWorkChiller2 == false)
+            if (_bWorkChamber[3] == false)
             {
-                btnStartChiller2.BackColor = Color.LightGray;
-                btnStartChiller2.ForeColor = Color.Black;
+                btnStartChamber22.BackColor = Color.LightGray;
+                btnStartChamber22.ForeColor = Color.Black;
 
-                btnStartSelectedChiller2.BackColor = Color.LightGray;
-                btnStartSelectedChiller2.ForeColor = Color.Black;
-            }
+                btnStartSelectedChamber22.BackColor = Color.LightGray;
+                btnStartSelectedChamber22.ForeColor = Color.Black;
 
-            if (_bWorkChamber1 == false && _bWorkChiller1 == false)
-            {
-                this.btnStartRoom1.Enabled = true;
-            }
-            else
-            {
-                this.btnStartRoom1.Enabled = false;
-            }
-
-            if (_bWorkChamber2 == false && _bWorkChiller2 == false)
-            {
-                this.btnStartRoom2.Enabled = true;
-            }
-            else
-            {
-                this.btnStartRoom2.Enabled = false;
+                btnStartChamber22.Enabled = true;
+                btnStartSelectedChamber22.Enabled = true;
             }
         }
 
         private void UpdateStatus()
         {
-            _bReadyRoom1 = true;
-            _bReadyRoom2 = true;
-
             //--------------------------------------------------------------------------//
-            // Chamber#1 Comm. Status
+            // Chamber#11 Comm. Status
             //--------------------------------------------------------------------------//
-            if (_chamber1.bOnLine)
+            if (_chamber[0].bOnLine)
             {
                 lblChamb11Sts.Text = "ONLINE";
                 lblChamb11Sts.BackColor = Color.Salmon;
@@ -360,45 +347,60 @@ namespace Ptnr
                 lblChamb11Sts.Text = "OFFLINE";
                 lblChamb11Sts.BackColor = Color.DarkGray;
                 lblChamb11Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom1 = false;
             }
 
-            if (_chiller1.bOnLine)
+            //--------------------------------------------------------------------------//
+            // Chamber#12 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_chamber[1].bOnLine)
             {
                 lblChamb12Sts.Text = "ONLINE";
                 lblChamb12Sts.BackColor = Color.Salmon;
                 lblChamb12Sts.ForeColor = Color.WhiteSmoke;
             }
-
             else
             {
                 lblChamb12Sts.Text = "OFFLINE";
                 lblChamb12Sts.BackColor = Color.DarkGray;
                 lblChamb12Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom1 = false;
             }
 
-            if (_recorder1.bOnLine)
+            //--------------------------------------------------------------------------//
+            // Recorder#11 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_recorder[0].bOnLine)
             {
-                lblRecorder1Sts.Text = "ONLINE";
-                lblRecorder1Sts.BackColor = Color.Salmon;
-                lblRecorder1Sts.ForeColor = Color.WhiteSmoke;
+                lblRecorder11Sts.Text = "ONLINE";
+                lblRecorder11Sts.BackColor = Color.Salmon;
+                lblRecorder11Sts.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                lblRecorder1Sts.Text = "OFFLINE";
-                lblRecorder1Sts.BackColor = Color.DarkGray;
-                lblRecorder1Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom1 = false;
+                lblRecorder11Sts.Text = "OFFLINE";
+                lblRecorder11Sts.BackColor = Color.DarkGray;
+                lblRecorder11Sts.ForeColor = Color.WhiteSmoke;
             }
 
             //--------------------------------------------------------------------------//
-            // Chamber#2 Comm. Status
+            // Recorder#12 Comm. Status
             //--------------------------------------------------------------------------//
-            if (_chamber2.bOnLine)
+            if (_recorder[1].bOnLine)
+            {
+                lblRecorder12Sts.Text = "ONLINE";
+                lblRecorder12Sts.BackColor = Color.Salmon;
+                lblRecorder12Sts.ForeColor = Color.WhiteSmoke;
+            }
+            else
+            {
+                lblRecorder12Sts.Text = "OFFLINE";
+                lblRecorder12Sts.BackColor = Color.DarkGray;
+                lblRecorder12Sts.ForeColor = Color.WhiteSmoke;
+            }
+
+            //--------------------------------------------------------------------------//
+            // Chamber#21 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_chamber[2].bOnLine)
             {
                 lblChamb21Sts.Text = "ONLINE";
                 lblChamb21Sts.BackColor = Color.Salmon;
@@ -409,79 +411,68 @@ namespace Ptnr
                 lblChamb21Sts.Text = "OFFLINE";
                 lblChamb21Sts.BackColor = Color.DarkGray;
                 lblChamb21Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom2 = false;
             }
 
-            if (_chiller2.bOnLine)
+            //--------------------------------------------------------------------------//
+            // Chamber#2 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_chamber[3].bOnLine)
             {
                 lblChamb22Sts.Text = "ONLINE";
                 lblChamb22Sts.BackColor = Color.Salmon;
                 lblChamb22Sts.ForeColor = Color.WhiteSmoke;
             }
-
             else
             {
                 lblChamb22Sts.Text = "OFFLINE";
                 lblChamb22Sts.BackColor = Color.DarkGray;
                 lblChamb22Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom2 = false;
             }
 
-            if (_recorder2.bOnLine)
+            //--------------------------------------------------------------------------//
+            // Recorder#21 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_recorder[2].bOnLine)
             {
-                lblRecorder2Sts.Text = "ONLINE";
-                lblRecorder2Sts.BackColor = Color.Salmon;
-                lblRecorder2Sts.ForeColor = Color.WhiteSmoke;
+                lblRecorder21Sts.Text = "ONLINE";
+                lblRecorder21Sts.BackColor = Color.Salmon;
+                lblRecorder21Sts.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                lblRecorder2Sts.Text = "OFFLINE";
-                lblRecorder2Sts.BackColor = Color.DarkGray;
-                lblRecorder2Sts.ForeColor = Color.WhiteSmoke;
-
-                _bReadyRoom2 = false;
+                lblRecorder21Sts.Text = "OFFLINE";
+                lblRecorder21Sts.BackColor = Color.DarkGray;
+                lblRecorder21Sts.ForeColor = Color.WhiteSmoke;
             }
 
-            if (_bReadyRoom1)
+            //--------------------------------------------------------------------------//
+            // Recorder#22 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_recorder[3].bOnLine)
             {
-                lblStsRoom1.BackColor = Color.Salmon;
-                lblStsRoom1.ForeColor = Color.WhiteSmoke;
+                lblRecorder22Sts.Text = "ONLINE";
+                lblRecorder22Sts.BackColor = Color.Salmon;
+                lblRecorder22Sts.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                if (idx % 2 == 0)
-                {
-                    lblStsRoom1.BackColor = Color.Red;
-                    lblStsRoom1.ForeColor = Color.WhiteSmoke;
-                }
-                else
-                {
-                    lblStsRoom1.BackColor = Color.Black;
-                    lblStsRoom1.ForeColor = Color.WhiteSmoke;
-                }
+                lblRecorder22Sts.Text = "OFFLINE";
+                lblRecorder22Sts.BackColor = Color.DarkGray;
+                lblRecorder22Sts.ForeColor = Color.WhiteSmoke;
             }
 
-            if (_bReadyRoom2)
-            {
-                lblStsRoom2.BackColor = Color.Salmon;
-                lblStsRoom2.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                if (idx % 2 == 0)
-                {
-                    lblStsRoom2.BackColor = Color.Red;
-                    lblStsRoom2.ForeColor = Color.WhiteSmoke;
-                }
-                else
-                {
-                    lblStsRoom2.BackColor = Color.Black;
-                    lblStsRoom2.ForeColor = Color.WhiteSmoke;
-                }
-            }
-            idx++;
+
+            if (_chamber[0].bOnLine && _recorder[0].bOnLine) lblStsRoom1.BackColor = Color.Crimson;
+            else lblStsRoom1.BackColor = Color.DarkGray;
+
+            if (_chamber[1].bOnLine && _recorder[1].bOnLine) lblStsRoom2.BackColor = Color.Crimson;
+            else lblStsRoom2.BackColor = Color.DarkGray;
+
+            if (_chamber[2].bOnLine && _recorder[2].bOnLine) lblStsRoom3.BackColor = Color.Crimson;
+            else lblStsRoom3.BackColor = Color.DarkGray;
+
+            if (_chamber[3].bOnLine && _recorder[3].bOnLine) lblStsRoom4.BackColor = Color.Crimson;
+            else lblStsRoom4.BackColor = Color.DarkGray;
         }
 
         private void UpdateChamberTestSheetList(ListViewNF lsv)
@@ -495,8 +486,10 @@ namespace Ptnr
                 {
                     TSpecTmChamber sp1 = new TSpecTmChamber();
 
-                    if (lsv == lsvChmbSpc11) sp1 = specTmChamber1[i];
-                    if (lsv == lsvChmbSpc21) sp1 = specTmChamber2[i];
+                    if      (lsv == lsvChmbSpc11) sp1 = specTmChamber[0][i];
+                    else if (lsv == lsvChmbSpc12) sp1 = specTmChamber[1][i];
+                    else if (lsv == lsvChmbSpc21) sp1 = specTmChamber[2][i];
+                    else if (lsv == lsvChmbSpc22) sp1 = specTmChamber[3][i];
 
                     string strTsp1 = SysDefs.DotString(sp1.tsp, 1) + "℃";
                     string strHsp1 = SysDefs.DotString(sp1.hsp, 1) + "%";
@@ -510,8 +503,11 @@ namespace Ptnr
 
                     string strResTCtrMax1 = "-";
                     string strResHCtrMax1 = "-";
+                    
                     string strResTOver = "-";
                     string strResHOver = "-";
+                    string strResCtrlStableTm = "-";
+
                     string strResROver = "-";
                     string strResStableTm = "-";
                     string strResRamp1 = "-";
@@ -551,6 +547,8 @@ namespace Ptnr
 
                     strResTOver = (sp1.bUseTOver == false) ? "-" : SysDefs.DotString(sp1.resTOver, 1);
                     strResHOver = (sp1.bUseHOver == false) ? "-" : SysDefs.DotString(sp1.resHOver, 1);
+                    strResCtrlStableTm = sp1.resCtrlStableTm.ToString();
+
                     strResROver = SysDefs.DotString(sp1.resROver, 1);
                     strResStableTm = sp1.resStableTm.ToString();
 
@@ -567,8 +565,9 @@ namespace Ptnr
 
                     if (sp1.resTOver == SysDefs.NOT_DEFVAL) strResTOver = "-";
                     if (sp1.resHOver == SysDefs.NOT_DEFVAL) strResHOver = "-";
-                    if (sp1.resROver == SysDefs.NOT_DEFVAL) strResROver = "-";
+                    if (sp1.resCtrlStableTm == SysDefs.NOT_DEFVAL) strResCtrlStableTm = "-";
 
+                    if (sp1.resROver == SysDefs.NOT_DEFVAL) strResROver = "-";
                     if (sp1.resStableTm == SysDefs.NOT_DEFVAL) strResStableTm = "-";
 
                     lsv.Items[i].SubItems[0].Text = String.Format("{0}", i + 1);
@@ -581,14 +580,16 @@ namespace Ptnr
 
                     lsv.Items[i].SubItems[7].Text = strResTOver;
                     lsv.Items[i].SubItems[8].Text = strResHOver;
-                    lsv.Items[i].SubItems[9].Text = strResROver;
-                    lsv.Items[i].SubItems[10].Text = strResStableTm;
+                    lsv.Items[i].SubItems[9].Text = strResCtrlStableTm;
 
-                    lsv.Items[i].SubItems[11].Text = strResRamp1;
-                    lsv.Items[i].SubItems[12].Text = strResUnifMin1;
-                    lsv.Items[i].SubItems[13].Text = strResUnifMax1;
+                    lsv.Items[i].SubItems[10].Text = strResROver;
+                    lsv.Items[i].SubItems[11].Text = strResStableTm;
+
+                    lsv.Items[i].SubItems[12].Text = strResRamp1;
+                    lsv.Items[i].SubItems[13].Text = strResUnifMin1;
+                    lsv.Items[i].SubItems[14].Text = strResUnifMax1;
                 
-                    lsv.Items[i].SubItems[14].Text = strResult1;
+                    lsv.Items[i].SubItems[15].Text = strResult1;
                 }
             }
 
@@ -599,8 +600,10 @@ namespace Ptnr
                 {
                     TSpecTpChamber sp1 = new TSpecTpChamber();
 
-                    if (lsv == lsvChmbSpc11) sp1 = specTpChamber1[i];
-                    if (lsv == lsvChmbSpc21) sp1 = specTpChamber2[i];
+                    if      (lsv == lsvChmbSpc11) sp1 = specTpChamber[0][i];
+                    else if (lsv == lsvChmbSpc12) sp1 = specTpChamber[1][i];
+                    else if (lsv == lsvChmbSpc21) sp1 = specTpChamber[2][i];
+                    else if (lsv == lsvChmbSpc22) sp1 = specTpChamber[3][i];
 
                     string strTsp1 = SysDefs.DotString(sp1.tsp, 1) + "℃";
                     string strWTm1 = (sp1.waitTm == 0) ? "-" : sp1.waitTm.ToString() + "Min";
@@ -610,6 +613,8 @@ namespace Ptnr
                     string strResTCtrMin1 = "-";
                     string strResTCtrMax1 = "-";
                     string strResTOver = "-";
+                    string strResCtrlStableTm = "-";
+
                     string strResROver = "-";
                     string strResStableTm = "-";
                     string strResRamp1 = "-";
@@ -645,6 +650,8 @@ namespace Ptnr
                     strResUnifMax1 = (sp1.bUseUnif == false) ? "-" : SysDefs.DotString(sp1.resUnifMax, 1);
 
                     strResTOver = (sp1.bUseTOver == false) ? "-" : SysDefs.DotString(sp1.resTOver, 1);
+                    strResCtrlStableTm = sp1.resCtrlStableTm.ToString();
+
                     strResROver = SysDefs.DotString(sp1.resROver, 1);
                     strResStableTm = sp1.resStableTm.ToString();
 
@@ -657,8 +664,9 @@ namespace Ptnr
                     if (sp1.resUnifMax == SysDefs.NOT_DEFVAL) strResUnifMax1 = "-";
 
                     if (sp1.resTOver == SysDefs.NOT_DEFVAL) strResTOver = "-";
-                    if (sp1.resROver == SysDefs.NOT_DEFVAL) strResROver = "-";
+                    if (sp1.resCtrlStableTm == SysDefs.NOT_DEFVAL) strResCtrlStableTm = "-";
 
+                    if (sp1.resROver == SysDefs.NOT_DEFVAL) strResROver = "-";
                     if (sp1.resStableTm == SysDefs.NOT_DEFVAL) strResStableTm = "-";
 
                     lsv.Items[i].SubItems[0].Text = String.Format("{0}", i + 1);
@@ -669,319 +677,38 @@ namespace Ptnr
                     lsv.Items[i].SubItems[5].Text = strResTCtrMax1;
 
                     lsv.Items[i].SubItems[6].Text = strResTOver;
-                    lsv.Items[i].SubItems[7].Text = strResROver;
-                    lsv.Items[i].SubItems[8].Text = strResStableTm;
+                    lsv.Items[i].SubItems[7].Text = strResCtrlStableTm;
 
-                    lsv.Items[i].SubItems[9].Text = strResRamp1;
-                    lsv.Items[i].SubItems[10].Text = strResUnifMin1;
-                    lsv.Items[i].SubItems[11].Text = strResUnifMax1;
+                    lsv.Items[i].SubItems[8].Text = strResROver;
+                    lsv.Items[i].SubItems[9].Text = strResStableTm;
 
-                    lsv.Items[i].SubItems[12].Text = strResult1;
+                    lsv.Items[i].SubItems[10].Text = strResRamp1;
+                    lsv.Items[i].SubItems[11].Text = strResUnifMin1;
+                    lsv.Items[i].SubItems[12].Text = strResUnifMax1;
+
+                    lsv.Items[i].SubItems[13].Text = strResult1;
                 }
             }
         }
 
-        private void UpdateChillerTestSheetList(ListViewNF lsv)
+        //-----------------------------------------------------------------//
+        // Start Chamber Test
+        //-----------------------------------------------------------------//
+        private void btnStartChamber_Click(object sender, EventArgs e)
         {
-            if (lsv.Items.Count == 0) return;
+            int ch = 0;
+            System.Windows.Forms.Button btn = sender as System.Windows.Forms.Button;
 
-            for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-            {
-                TSpecChiller sp1 = new TSpecChiller();
-
-                if (lsv == lsvChillerSpc1) sp1 = specChiller1[i];
-                if (lsv == lsvChillerSpc2) sp1 = specChiller2[i];
-
-                string strTsp1 = SysDefs.DotString(sp1.tsp, 1) + "℃";
-                string strSSp1 = SysDefs.DotString(sp1.ssp, 2) + "lpm";
-
-                string strWTm1 = (sp1.waitTm == 0) ? "-" : sp1.waitTm.ToString() + "Min";
-                string strTTm1 = (sp1.testTm == 0) ? "-" : sp1.testTm.ToString() + "Min";
-
-                string strJugTDisp1 = (sp1.bUseTDisp == false) ? "-" : ("±") + SysDefs.DotString(sp1.jugTDisp, 1) + "℃";
-                string strJugSDisp1 = (sp1.bUseSDisp == false) ? "-" : ("±") + SysDefs.DotString(sp1.jugSDisp, 2) + "lpm";
-                string strJugRamp1 = (sp1.bUseRamp == false) ? "-" : SysDefs.DotString(sp1.jugRamp, 1) + "℃/M";
-
-                string strResTCtrMin1 = "-";
-                string strResTCtrMax1 = "-";
-                string strResSpCtrMin1 = "-";
-                string strResSpCtrMax1 = "-";
-                string strResRamp1 = "-";
-                string strResult1 = "";
-
-                if (sp1.result == WorkingRes.NotDef)
-                {
-                    if (sp1.workingSts == WorkingSts.Begin) strResult1 = "Ready..";
-                    if (sp1.workingSts == WorkingSts.TouchSpCheck) strResult1 = "Checking PV";
-                    if (sp1.workingSts == WorkingSts.Waiting) strResult1 = "Wating..";
-                    if (sp1.workingSts == WorkingSts.Testing) strResult1 = "Testing..";
-                    if (sp1.workingSts == WorkingSts.Holding) strResult1 = "Holding..";
-                }
-
-                else
-                {
-                    if (sp1.result == WorkingRes.Success) strResult1 = "GOOD";
-                    if (sp1.result == WorkingRes.Fail) strResult1 = "NG";
-                }
-
-                strResTCtrMin1 = (sp1.bUseTDisp == false) ? "-" : SysDefs.DotString(sp1.resCtrTMin, 1);
-                strResTCtrMax1 = (sp1.bUseTDisp == false) ? "-" : SysDefs.DotString(sp1.resCtrTMax, 1);
-                strResSpCtrMin1 = (sp1.bUseSDisp == false) ? "-" : SysDefs.DotString(sp1.resCtrSMin, 2);
-                strResSpCtrMax1 = (sp1.bUseSDisp == false) ? "-" : SysDefs.DotString(sp1.resCtrSMax, 2);
-                strResRamp1 = (sp1.bUseRamp == false) ? "-" : SysDefs.DotString(sp1.resCtrRamp, 1);
-
-                if (sp1.resCtrTMin == SysDefs.NOT_DEFVAL) strResTCtrMin1 = "-";
-                if (sp1.resCtrTMax == SysDefs.NOT_DEFVAL) strResTCtrMax1 = "-";
-
-                if (sp1.resCtrSMin == SysDefs.NOT_DEFVAL) strResSpCtrMin1 = "-";
-                if (sp1.resCtrSMax == SysDefs.NOT_DEFVAL) strResSpCtrMax1 = "-";
-
-                if (sp1.resCtrRamp == SysDefs.NOT_DEFVAL) strResRamp1 = "-";
-
-
-                lsv.Items[i].SubItems[0].Text = String.Format("{0}", i + 1);
-                lsv.Items[i].SubItems[1].Text = strTsp1;
-                lsv.Items[i].SubItems[2].Text = strSSp1;
-                lsv.Items[i].SubItems[3].Text = strWTm1;
-                lsv.Items[i].SubItems[4].Text = strTTm1;
-                lsv.Items[i].SubItems[5].Text = strResTCtrMin1 + "/" + strResTCtrMax1;
-                lsv.Items[i].SubItems[6].Text = strResSpCtrMin1 + "/" + strResSpCtrMax1;
-                lsv.Items[i].SubItems[7].Text = strResRamp1;
-                lsv.Items[i].SubItems[8].Text = strJugTDisp1;
-                lsv.Items[i].SubItems[9].Text = strJugSDisp1;
-                lsv.Items[i].SubItems[10].Text = strJugRamp1;
-                lsv.Items[i].SubItems[11].Text = strResult1;
-            }
-        }
-
-        private void EqmtStartStop(bool bStart, RoomType rt)
-        {
-            if (bStart)
-            {
-                if (rt == RoomType.Room1)
-                {
-                    btnStartRoom1.BackColor = Color.Salmon;
-                    btnStartRoom1.ForeColor = Color.WhiteSmoke;
-
-                    _doFirstRunChamber1 = false;
-                    _doFirstRunChiller1 = false;
-
-                    _workChamber1Tmr.Start();
-                    _workChiller1Tmr.Start();
-
-                    _chamber1WorkingIdx = 0;
-                    _chiller1WorkingIdx = 0;
-
-                    _bWorkChamber1 = true;
-                    _bWorkChiller1 = true;
-
-                    _chamber1TestList.Clear();
-                    _chiller1TestList.Clear();
-
-                    int idx1 = 0;
-                    int idx2 = 0;
-
-                    // Temi
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        foreach (TSpecTmChamber spc in specTmChamber1)
-                        {
-                            spc.Reset();
-                            _chamber1TestList.Add(idx1);
-                            idx1++;
-                        }
-                    }
-
-                    // Temp
-                    else
-                    {
-                        foreach (TSpecTpChamber spc in specTpChamber1)
-                        {
-                            spc.Reset();
-                            _chamber1TestList.Add(idx1);
-                            idx1++;
-                        }
-                    }
-
-                    foreach (TSpecChiller spc in specChiller1)
-                    {
-                        spc.Reset();
-                        _chiller1TestList.Add(idx2);
-                        idx2++;
-                    }
-                }
-
-                else if (rt == RoomType.Room2)
-                {
-                    btnStartRoom2.BackColor = Color.Salmon;
-                    btnStartRoom2.ForeColor = Color.WhiteSmoke;
-
-                    _doFirstRunChamber2 = false;
-                    _doFirstRunChiller2 = false;
-
-                    _workChamber2Tmr.Start();
-                    _workChiller2Tmr.Start();
-
-                    _chamber2WorkingIdx = 0;
-                    _chiller2WorkingIdx = 0;
-
-                    _bWorkChamber2 = true;
-                    _bWorkChiller2 = true;
-
-                    _chamber2TestList.Clear();
-                    _chiller2TestList.Clear();
-
-                    int idx1 = 0;
-                    int idx2 = 0;
-
-                    // Temi
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        foreach (TSpecTmChamber spc in specTmChamber2)
-                        {
-                            spc.Reset();
-                            _chamber2TestList.Add(idx1);
-                            idx1++;
-                        }
-                    }
-                    // Temp
-                    else
-                    {
-                        foreach (TSpecTpChamber spc in specTpChamber2)
-                        {
-                            spc.Reset();
-                            _chamber2TestList.Add(idx1);
-                            idx1++;
-                        }
-                    }
-
-                    foreach (TSpecChiller spc in specChiller2)
-                    {
-                        spc.Reset();
-                        _chiller2TestList.Add(idx2);
-                        idx2++;
-                    }
-                }
-            }
+            if (sender == this.btnStartChamber11) ch = 0;
+            else if (sender == this.btnStartChamber12) ch = 1;
+            else if (sender == this.btnStartChamber21) ch = 2;
+            else if (sender == this.btnStartChamber22) ch = 3;
             else
             {
-                if (rt == RoomType.Room1)
-                {
-                    btnStartRoom1.BackColor = Color.LightGray;
-                    btnStartRoom1.ForeColor = Color.Black;
-
-                    _workChamber1Tmr.Stop();
-                    _workChiller1Tmr.Stop();
-
-                    // Temi
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        //------------------------------------------------------------------//
-                        // Write Chamber #1 Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHAMBER1, 101, 4);
-                    }
-                    else
-                    {
-                        //------------------------------------------------------------------//
-                        // Write Chamber #1 Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
-                    }
-                    //------------------------------------------------------------------//
-                    // Write Chiller #1 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHILLER1, 102, 4);
-
-                    //------------------------------------------------------------------//
-                    // Write Recorder #1 Record Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
-
-                    //--------------------------------------------------//
-                    // Subch 11 Stop(1) (유량)
-                    //--------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHILLER1, 2831, 1);
-
-                    _bWorkChamber1 = false;
-                    _bWorkChiller1 = false;
-
-                    _chamber1TestList.Clear();
-                    _chiller1TestList.Clear();
-                }
-
-                else if (rt == RoomType.Room2)
-                {
-                    btnStartRoom2.BackColor = Color.LightGray;
-                    btnStartRoom2.ForeColor = Color.Black;
-
-                    _workChamber2Tmr.Stop();
-                    _workChiller2Tmr.Stop();
-
-                    // Temi
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        //------------------------------------------------------------------//
-                        // Write Chamber #1 Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHAMBER2, 101, 4);
-                    }
-                    else
-                    {
-                        //------------------------------------------------------------------//
-                        // Write Chamber #1 Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
-                    }
-
-                    //------------------------------------------------------------------//
-                    // Write Chiller #1 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHILLER2, 102, 4);
-
-                    //------------------------------------------------------------------//
-                    // Write Recorder #1 Record Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
-
-                    //--------------------------------------------------//
-                    // Subch 11 Stop(1) (유량)
-                    //--------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHILLER2, 2831, 1);
-
-                    _bWorkChamber2 = false;
-                    _bWorkChiller2 = false;
-
-                    _chamber2TestList.Clear();
-                    _chiller2TestList.Clear();
-                }
+                return;
             }
 
-            if (rt == RoomType.Room1)
-            {
-                UpdateChamberTestSheetList(lsvChmbSpc11);
-                UpdateChillerTestSheetList(lsvChillerSpc1);
-            }
-
-            else if (rt == RoomType.Room2)
-            {
-                UpdateChamberTestSheetList(lsvChmbSpc21);
-                UpdateChillerTestSheetList(lsvChillerSpc2);
-            }
-        }
-
-        //-----------------------------------------------------------------//
-        // Chamber & Chiller All Test
-        //-----------------------------------------------------------------//
-        public void StartTest()
-        {
-            OnStartRoomTest(this.btnStartRoom1, EventArgs.Empty);
-            OnStartRoomTest(this.btnStartRoom2, EventArgs.Empty);
-        }
-
-        private void btnStartChamber1_Click(object sender, EventArgs e)
-        {
-            if (_bWorkChamber1 == true)
+            if (_bWorkChamber[ch] == true)
             {
                 if (MessageBox.Show("챔버 일괄 테스트를 중지 하시겠습니까?",
                 "테스트 정지?",
@@ -989,11 +716,8 @@ namespace Ptnr
                 {
                     return;
                 }
-
-                btnStartChamber1.BackColor = Color.LightGray;
-                btnStartChamber1.ForeColor = Color.Black;
-
-                _workChamber1Tmr.Stop();
+                _workChamberTmr[ch].Stop();
+                _chamberTestList[ch].Clear();
 
                 // Temi
                 if (_eqmtType == EqmtType.Temi)
@@ -1001,23 +725,34 @@ namespace Ptnr
                     //------------------------------------------------------------------//
                     // Write Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 101, 4);
+                    if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 101, 4);
+                    if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 101, 4);
+                    if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 101, 4);
+                    if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 101, 4);
                 }
                 else
                 {
                     //------------------------------------------------------------------//
                     // Write Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
+                    if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
+                    if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
+                    if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
+                    if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
                 }
 
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
+                if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                {
+                    Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
+                }
 
-                _bWorkChamber1 = false;
-                _chamber1TestList.Clear();
+                if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                {
+                    Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                }
             }
 
             else
@@ -1029,326 +764,165 @@ namespace Ptnr
                     return;
                 }
 
-                btnStartChamber1.BackColor = Color.Salmon;
-                btnStartChamber1.ForeColor = Color.WhiteSmoke;
+                btn.BackColor = Color.Salmon;
+                btn.ForeColor = Color.WhiteSmoke;
 
-                _doFirstRunChamber1 = false;
+                if      (ch == 0) btnStartSelectedChamber11.Enabled = false;
+                else if (ch == 1) btnStartSelectedChamber12.Enabled = false;
+                else if (ch == 2) btnStartSelectedChamber21.Enabled = false;
+                else if (ch == 3) btnStartSelectedChamber22.Enabled = false;
 
-                _workChamber1Tmr.Start();
-                _chamber1WorkingIdx = 0;
-
-                _bWorkChamber1 = true;
-                _chamber1TestList.Clear();
+                _doFirstRunChamber[ch] = false;
+                _chamberWorkingIdx[ch] = 0;
+                _chamberTestList[ch].Clear();
 
                 // Temi
-                if(_eqmtType == EqmtType.Temi)
+                if (_eqmtType == EqmtType.Temi)
                 {
-                    int idx1 = 0;
-                    foreach (TSpecTmChamber spc in specTmChamber1)
+                    for(int i=0; i < specTmChamber[ch].Length; i++)
                     {
-                        spc.Reset();
-                        _chamber1TestList.Add(idx1);
-                        idx1++;
+                        specTmChamber[ch][i].Reset();
+                        _chamberTestList[ch].Add(i);
                     }
                 }
 
                 // Temp
                 else
                 {
-                    int idx1 = 0;
-                    foreach (TSpecTpChamber spc in specTpChamber1)
+                    for (int i = 0; i < specTpChamber[ch].Length; i++)
                     {
-                        spc.Reset();
-                        _chamber1TestList.Add(idx1);
-                        idx1++;
+                        specTpChamber[ch][i].Reset();
+                        _chamberTestList[ch].Add(i);
                     }
                 }
+                _workChamberTmr[ch].Start();
             }
         }
 
-        private void btnStartChiller1_Click(object sender, EventArgs e)
+        //--------------------------------------------------------------------------//
+        // TESTING CHAMBER #1
+        //--------------------------------------------------------------------------//
+        private void OnWorkChamberTmrEvent(Object src, EventArgs e)
         {
-            if (_bWorkChiller1 == true)
-            {
-                if (MessageBox.Show("칠러 일괄 테스트를 중지 하시겠습니까?",
-                "테스트 정지?",
-                MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                btnStartChiller1.BackColor = Color.LightGray;
-                btnStartChiller1.ForeColor = Color.Black;
-
-                _workChiller1Tmr.Stop();
-
-                //------------------------------------------------------------------//
-                // Write Chiller #1 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 102, 4);
-
-                //--------------------------------------------------//
-                // Subch 11 Stop(1) (유량)
-                //--------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 2831, 1);
-
-                _bWorkChiller1 = false;
-                _chiller1TestList.Clear();
-            }
-
+            System.Windows.Forms.Timer _src = (System.Windows.Forms.Timer)src;
+            int ch = 0;
+            
+            if      (_src == _workChamberTmr[0]) ch = 0;
+            else if (_src == _workChamberTmr[1]) ch = 1;
+            else if (_src == _workChamberTmr[2]) ch = 2;
+            else if (_src == _workChamberTmr[3]) ch = 3;
             else
             {
-                if (MessageBox.Show("칠러 일괄 테스트를 수행 하시겠습니까?",
-                "테스트 수행?",
-                MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                btnStartChiller1.BackColor = Color.Salmon;
-                btnStartChiller1.ForeColor = Color.WhiteSmoke;
-
-                _doFirstRunChiller1 = false;
-
-                _workChiller1Tmr.Start();
-                _chiller1WorkingIdx = 0;
-
-                _bWorkChiller1 = true;
-                _chiller1TestList.Clear();
-
-                int idx2 = 0;
-                foreach (TSpecChiller spc in specChiller1)
-                {
-                    spc.Reset();
-                    _chiller1TestList.Add(idx2);
-                    idx2++;
-                }
+                return;
             }
-        }
 
-        private void btnStartChamber2_Click(object sender, EventArgs e)
-        {
-            if (_bWorkChamber2 == true)
+            // Temi
+            if (_eqmtType == EqmtType.Temi)
             {
-                if (MessageBox.Show("챔버 일괄 테스트를 중지 하시겠습니까?",
-                    "테스트 정지?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+                TSpecTmChamber spcChamber = specTmChamber[ch][_chamberWorkingIdx[ch]];
+                if (spcChamber.result == WorkingRes.NotDef)
                 {
-                    return;
-                }
-
-                btnStartChamber2.BackColor = Color.LightGray;
-                btnStartChamber2.ForeColor = Color.Black;
-
-                _workChamber2Tmr.Stop();
-
-                if (_eqmtType == EqmtType.Temi)
-                {
-                    //------------------------------------------------------------------//
-                    // Write Chamber #2 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 101, 4);
+                    DoTmChamberTest(ch, spcChamber);
                 }
                 else
                 {
-                    //------------------------------------------------------------------//
-                    // Write Chamber #2 Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
-                }
-
-                //------------------------------------------------------------------//
-                // Write Recorder #2 Record Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
-
-                _bWorkChamber2 = false;
-                _chamber2TestList.Clear();
-            }
-
-            else
-            {
-                if (MessageBox.Show("챔버 일괄 테스트를 실행 하시겠습니까?",
-                    "테스트 실행?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                btnStartChamber2.BackColor = Color.Salmon;
-                btnStartChamber2.ForeColor = Color.WhiteSmoke;
-
-                _doFirstRunChamber2 = false;
-
-                _workChamber2Tmr.Start();
-                _chamber2WorkingIdx = 0;
-
-                _bWorkChamber2 = true;
-                _chamber2TestList.Clear();
-
-                // Temi
-                if (_eqmtType == EqmtType.Temi)
-                {
-                    int idx1 = 0;
-                    foreach (TSpecTmChamber spc in specTmChamber2)
+                    if (_chamberTestList[ch].Count > 0)
                     {
-                        spc.Reset();
-                        _chamber2TestList.Add(idx1);
-                        idx1++;
+                        _chamberWorkingIdx[ch] = _chamberTestList[ch].ElementAt(0);
+                        _chamberTestList[ch].RemoveAt(0);
+                    }
+                    else
+                    {
+                        _workChamberTmr[ch].Stop();
+                        _bWorkChamber[ch] = false;
+
+                        //------------------------------------------------------------------//
+                        // All Chamber Test are Finished.
+                        // Write Chamber Stop
+                        //------------------------------------------------------------------//
+                        if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 101, 4);
+                        if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 101, 4);
+                        if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 101, 4);
+                        if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 101, 4);
+
+                        //------------------------------------------------------------------//
+                        // Write Recorder #1 Record Stop
+                        //------------------------------------------------------------------//
+                        if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                        {
+                            Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
+                        }
+
+                        if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                        {
+                            Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                        }
                     }
                 }
+            }
 
-                // Temp
+            // Temp
+            else
+            {
+                TSpecTpChamber spcChamber = specTpChamber[ch][_chamberWorkingIdx[ch]];
+                if (spcChamber.result == WorkingRes.NotDef)
+                {
+                    DoTpChamberTest(ch, spcChamber);
+                }
                 else
                 {
-                    int idx1 = 0;
-                    foreach (TSpecTpChamber spc in specTpChamber2)
+                    if (_chamberTestList[ch].Count > 0)
                     {
-                        spc.Reset();
-                        _chamber2TestList.Add(idx1);
-                        idx1++;
+                        _chamberWorkingIdx[ch] = _chamberTestList[ch].ElementAt(0);
+                        _chamberTestList[ch].RemoveAt(0);
+                    }
+                    else
+                    {
+                        _workChamberTmr[ch].Stop();
+                        _bWorkChamber[ch] = false;
+
+                        //------------------------------------------------------------------//
+                        // All Chamber Test are Finished.
+                        // Write Chamber Stop
+                        //------------------------------------------------------------------//
+                        if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
+                        if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
+                        if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
+                        if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
+
+                        //------------------------------------------------------------------//
+                        // Write Recorder #1 Record Stop
+                        //------------------------------------------------------------------//
+                        if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                        {
+                            Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
+                        }
+
+                        if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                        {
+                            Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                        }
                     }
                 }
             }
         }
 
-        private void btnStartChiller2_Click(object sender, EventArgs e)
-        {
-            if (_bWorkChiller2 == true)
-            {
-                if (MessageBox.Show("칠러 일괄 테스트를 중지 하시겠습니까?",
-                    "테스트 정지?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                btnStartChiller2.BackColor = Color.LightGray;
-                btnStartChiller2.ForeColor = Color.Black;
-
-                _workChiller2Tmr.Stop();
-
-                //------------------------------------------------------------------//
-                // Write Chiller #1 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER2, 102, 4);
-
-                //--------------------------------------------------//
-                // Subch 11 Stop(1) (유량)
-                //--------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER2, 2831, 1);
-
-                _bWorkChiller2 = false;
-                _chiller2TestList.Clear();
-            }
-
-            else
-            {
-                if (MessageBox.Show("칠러 일괄 테스트를 수행 하시겠습니까?",
-                    "테스트 수행?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                btnStartChiller2.BackColor = Color.Salmon;
-                btnStartChiller2.ForeColor = Color.WhiteSmoke;
-
-                _doFirstRunChiller2 = false;
-
-                _workChiller2Tmr.Start();
-                _chiller2WorkingIdx = 0;
-
-                _bWorkChiller2 = true;
-                _chiller2TestList.Clear();
-
-                int idx2 = 0;
-                foreach (TSpecChiller spc in specChiller2)
-                {
-                    spc.Reset();
-                    _chiller2TestList.Add(idx2);
-                    idx2++;
-                }
-            }
-        }
-
-        //-----------------------------------------------------------------//
-        // Chamber & Chiller All Test
-        //-----------------------------------------------------------------//
-        private void OnStartRoomTest(object sender, EventArgs e)
-        {
-            bool bWork = false;
-            RoomType rt = RoomType.Room1;
-
-            if (sender == btnStartRoom1)
-            {
-                bWork = _bWorkChamber1;
-                rt = RoomType.Room1;
-            }
-
-            else if(sender == btnStartRoom2)
-            {
-                bWork = _bWorkChamber2;
-                rt = RoomType.Room2;
-            }
-
-            if (bWork)
-            {
-                if (MessageBox.Show("장비 일괄 테스트를 중지 하시겠습니까?",
-                   "테스트 정지?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    EqmtStartStop(false, rt);
-                }
-            }
-            else
-            {
-                if(rt == RoomType.Room1)
-                {
-                    if(_chamber1.bOnLine== false || _chiller1.bOnLine==false || _recorder1.bOnLine == false)
-                    {
-                        return;
-                    }
-                }
-
-                if (rt == RoomType.Room2)
-                {
-                    if (_chamber2.bOnLine==false || _chiller2.bOnLine== false || _recorder2.bOnLine == false)
-                    {
-                        return;
-                    }
-                }
-
-                if (MessageBox.Show("장비 일괄 테스트 운전을 시작 하시겠습니까?",
-                    "테스트 시작?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    EqmtStartStop(true, rt);
-                }
-            }
-        }
-
+        // Selected Cell Test Start/Stop
         private void btnStartChamberTest_Click(object sender, EventArgs e)
         {
-            bool bWork = false;
-            int chmAddr = 0;
-            int recAddr = 0;
+            int ch = 0;
+            System.Windows.Forms.Button btn = sender as System.Windows.Forms.Button;
 
-            if (sender == this.btnStartSelectedChamber1)
+            if      (sender == this.btnStartSelectedChamber11) ch = 0;
+            else if (sender == this.btnStartSelectedChamber12) ch = 1;
+            else if (sender == this.btnStartSelectedChamber21) ch = 2;
+            else if (sender == this.btnStartSelectedChamber22) ch = 3;
+            else
             {
-                bWork = _workChamber1Tmr.Enabled;
-                chmAddr = SysDefs.ADDR_CHAMBER1;
-                recAddr = SysDefs.ADDR_RECORDER1;
+                return;
             }
 
-            else if (sender == btnStartSelectedChamber2)
-            {
-                bWork = _workChamber2Tmr.Enabled;
-                chmAddr = SysDefs.ADDR_CHAMBER2;
-                recAddr = SysDefs.ADDR_RECORDER2;
-            }
-
-            if (bWork)
+            if (_bWorkChamber[ch])
             {
                 if (MessageBox.Show("챔버 테스트를 중지 하시겠습니까?",
                                     "장비 정지?",
@@ -1356,44 +930,41 @@ namespace Ptnr
                 {
                     return;
                 }
+                _workChamberTmr[ch].Stop();
 
-                if(chmAddr == SysDefs.ADDR_CHAMBER1)
-                {
-                    _workChamber1Tmr.Stop();
-                    _bWorkChamber1 = false;
-
-                    btnStartSelectedChamber1.BackColor = Color.LightGray;
-                    btnStartSelectedChamber1.ForeColor = Color.Black;
-                }
-
-                if (chmAddr == SysDefs.ADDR_CHAMBER2)
-                {
-                    _workChamber2Tmr.Stop();
-                    _bWorkChamber2 = false;
-
-                    btnStartSelectedChamber2.BackColor = Color.LightGray;
-                    btnStartSelectedChamber2.ForeColor = Color.Black;
-                }
-
-                if(_eqmtType == EqmtType.Temi)
+                if (_eqmtType == EqmtType.Temi)
                 {
                     //------------------------------------------------------------------//
-                    // Write Chamber Temi #1 Stop
+                    // Write Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(chmAddr, 101, 4);
+                    if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 101, 4);
+                    if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 101, 4);
+                    if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 101, 4);
+                    if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 101, 4);
                 }
                 else
                 {
                     //------------------------------------------------------------------//
-                    // Write Chamber Temp #1 Stop
+                    // Write Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(chmAddr, 102, 4);
+                    if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
+                    if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
+                    if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
+                    if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
                 }
-                
+
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
                 //------------------------------------------------------------------//
-                Comm.Write(recAddr, 100, 0);
+                if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                {
+                    Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
+                }
+
+                if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                {
+                    Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                }
             }
 
             else
@@ -1405,173 +976,59 @@ namespace Ptnr
                     return;
                 }
 
-                if (chmAddr == SysDefs.ADDR_CHAMBER1)
+                btn.BackColor = Color.Salmon;
+                btn.ForeColor = Color.WhiteSmoke;
+
+                if (ch == 0) btnStartChamber11.Enabled = false;
+                else if (ch == 1) btnStartChamber12.Enabled = false;
+                else if (ch == 2) btnStartChamber21.Enabled = false;
+                else if (ch == 3) btnStartChamber22.Enabled = false;
+
+                _doFirstRunChamber[ch] = false;
+                _workChamberTmr[ch].Start();
+
+                btn.BackColor = Color.Salmon;
+                btn.ForeColor = Color.WhiteSmoke;
+
+                _doFirstRunChamber[ch] = false;
+                
+                int wrkIdx = _chamberWorkingIdx[ch];
+                if (_eqmtType == EqmtType.Temi)
                 {
-                    btnStartSelectedChamber1.BackColor = Color.Salmon;
-                    btnStartSelectedChamber1.ForeColor = Color.WhiteSmoke;
-
-                    _doFirstRunChamber1 = false;
-                    
-                    _workChamber1Tmr.Start();
-                    _bWorkChamber1 = true;
-
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        specTmChamber1[_chamber1WorkingIdx].Reset();
-                    }
-                    else
-                    {
-                        specTpChamber1[_chamber1WorkingIdx].Reset();
-                    }
-
-                    _chamber1TestList.Clear();
-                    _chamber1TestList.Add(_chamber1WorkingIdx);
+                    specTmChamber[ch][wrkIdx].Reset();
+                }
+                else
+                {
+                    specTpChamber[ch][wrkIdx].Reset();
                 }
 
-                if (chmAddr == SysDefs.ADDR_CHAMBER2)
-                {
-                    btnStartSelectedChamber2.BackColor = Color.Salmon;
-                    btnStartSelectedChamber2.ForeColor = Color.WhiteSmoke;
+                _chamberTestList[ch].Clear();
+                _chamberTestList[ch].Add(wrkIdx);
 
-                    _doFirstRunChamber2 = false;
-
-                    _workChamber2Tmr.Start();
-                    _bWorkChamber2 = true;
-
-                    if (_eqmtType == EqmtType.Temi)
-                    {
-                        specTmChamber2[_chamber2WorkingIdx].Reset();
-                    }
-                    else
-                    {
-                        specTpChamber2[_chamber2WorkingIdx].Reset();
-                    }
-
-                    _chamber2TestList.Clear();
-                    _chamber2TestList.Add(_chamber2WorkingIdx);
-                }
+                _workChamberTmr[ch].Start();
             }
         }
-
-        private void btnStartChillerTest_Click(object sender, EventArgs e)
-        {
-
-            bool bWork = false;
-            int addr = 0;
-            
-            if (sender == this.btnStartSelectedChiller1)
-            {
-                bWork = _workChiller1Tmr.Enabled;
-                addr = SysDefs.ADDR_CHILLER1;
-            }
-
-            else if (sender == btnStartSelectedChiller2)
-            {
-                bWork = _workChiller2Tmr.Enabled;
-                addr = SysDefs.ADDR_CHILLER2;
-            }
-
-            if (bWork)
-            {
-                if (MessageBox.Show("칠러 테스트를 중지 하시겠습니까?",
-                                    "장비 정지?",
-                                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                if(addr == SysDefs.ADDR_CHILLER1)
-                {
-                    _bWorkChiller1 = false;
-                    _workChiller1Tmr.Stop();
-
-                    btnStartSelectedChiller1.BackColor = Color.LightGray;
-                    btnStartSelectedChiller1.ForeColor = Color.Black;
-                }
-
-                if (addr == SysDefs.ADDR_CHILLER2)
-                {
-                    _bWorkChiller2 = false;
-                    _workChiller2Tmr.Stop();
-
-                    btnStartSelectedChiller2.BackColor = Color.LightGray;
-                    btnStartSelectedChiller2.ForeColor = Color.Black;
-                }
-
-                //------------------------------------------------------------------//
-                // Write Chiller #1 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(addr, 102, 4);
-
-                //------------------------------------------------------------------//
-                // 유량 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(addr, 2831, 1);
-            }
-
-            else
-            {
-                if (MessageBox.Show("칠러 테스트 운전을 시작 하시겠습니까?",
-                    "테스트 시작?",
-                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
-                {
-                    return;
-                }
-
-                if (addr == SysDefs.ADDR_CHILLER1)
-                {
-                    _doFirstRunChiller1 = false;
-
-                    _workChiller1Tmr.Start();
-                    _bWorkChiller1 = true;
-
-                    specChiller1[_chiller1WorkingIdx].Reset();
-
-                    _chiller1TestList.Clear();
-                    _chiller1TestList.Add(_chiller1WorkingIdx);
-
-                    btnStartSelectedChiller1.BackColor = Color.Salmon;
-                    btnStartSelectedChiller1.ForeColor = Color.WhiteSmoke;
-                }
-
-                if (addr == SysDefs.ADDR_CHILLER2)
-                {
-                    _doFirstRunChiller2 = false;
-
-                    _workChiller2Tmr.Start();
-                    _bWorkChiller2 = true;
-
-                    specChiller2[_chiller2WorkingIdx].Reset();
-
-                    _chiller2TestList.Clear();
-                    _chiller2TestList.Add(_chiller2WorkingIdx);
-
-                    btnStartSelectedChiller2.BackColor = Color.Salmon;
-                    btnStartSelectedChiller2.ForeColor = Color.WhiteSmoke;
-                }
-            }
-        }
-
-        private void DoTmChamberTest(int addr, TSpecTmChamber spcChamber)
+ 
+        private void DoTmChamberTest(int ch, TSpecTmChamber spcChamber)
         {
             if (spcChamber.workingSts == WorkingSts.Begin)
             {
-                PerformTmChamberTestBegin(addr, spcChamber);
+                PerformTmChamberTestBegin(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.TouchSpCheck)
             {
-                PerformTmChamberTestTouch(addr, spcChamber);
+                PerformTmChamberTestTouch(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.Waiting)
             {
-                PerformTmChamberTestWait(addr, spcChamber);
+                PerformTmChamberTestWait(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.Testing || spcChamber.workingSts == WorkingSts.Holding)
             {
-                PerformTmChamberDoTest(addr, spcChamber);
+                PerformTmChamberDoTest(ch, spcChamber);
             }
 
             //------------------------------------------------------------------//
@@ -1650,7 +1107,18 @@ namespace Ptnr
                     }
                 }
 
-                if(spcChamber.resStableTm > (short)(spcChamber.waitTm)){
+                //------------------------------------------------------------------//
+                // Success check : Temi Control stable time
+                //------------------------------------------------------------------//
+                if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
+                {
+                    if(spcChamber.jugCtrlStableTm > 0)
+                    { 
+                        spcChamber.result = WorkingRes.Fail;
+                    }
+                }
+
+                if (spcChamber.resStableTm > (short)(spcChamber.waitTm)){
 
                     if(spcChamber.waitTm > 0)
                     {
@@ -1662,30 +1130,32 @@ namespace Ptnr
                 GenReport();
             }
 
-            if( addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc11);
-            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc21);
+            if( ch == 0) UpdateChamberTestSheetList(lsvChmbSpc11);
+            if (ch == 1) UpdateChamberTestSheetList(lsvChmbSpc12);
+            if (ch == 2) UpdateChamberTestSheetList(lsvChmbSpc21);
+            if (ch == 3) UpdateChamberTestSheetList(lsvChmbSpc22);
         }
 
-        private void DoTpChamberTest(int addr, TSpecTpChamber spcChamber)
+        private void DoTpChamberTest(int ch, TSpecTpChamber spcChamber)
         {
             if (spcChamber.workingSts == WorkingSts.Begin)
             {
-                PerformTpChamberTestBegin(addr, spcChamber);
+                PerformTpChamberTestBegin(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.TouchSpCheck)
             {
-                PerformTpChamberTestTouch(addr, spcChamber);
+                PerformTpChamberTestTouch(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.Waiting)
             {
-                PerformTpChamberTestWait(addr, spcChamber);
+                PerformTpChamberTestWait(ch, spcChamber);
             }
 
             else if (spcChamber.workingSts == WorkingSts.Testing || spcChamber.workingSts == WorkingSts.Holding)
             {
-                PerformTpChamberDoTest(addr, spcChamber);
+                PerformTpChamberDoTest(ch, spcChamber);
             }
 
             //------------------------------------------------------------------//
@@ -1744,6 +1214,17 @@ namespace Ptnr
                     }
                 }
 
+                //------------------------------------------------------------------//
+                // Success check : Temp Control stable time
+                //------------------------------------------------------------------//
+                if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
+                {
+                    if (spcChamber.jugCtrlStableTm > 0)
+                    {
+                        spcChamber.result = WorkingRes.Fail;
+                    }
+                }
+
                 if (spcChamber.resStableTm > (short)(spcChamber.waitTm))
                 {
 
@@ -1757,318 +1238,56 @@ namespace Ptnr
                 GenReport();
             }
 
-            if (addr == SysDefs.ADDR_CHAMBER1) UpdateChamberTestSheetList(lsvChmbSpc11);
-            if (addr == SysDefs.ADDR_CHAMBER2) UpdateChamberTestSheetList(lsvChmbSpc21);
-        }
-
-        //--------------------------------------------------------------------------//
-        // TESTING CHAMBER #1
-        //--------------------------------------------------------------------------//
-        private void OnWorkChamberTmrEvent(Object src, EventArgs e)
-        {
-            System.Windows.Forms.Timer _src = (System.Windows.Forms.Timer)src;
-
-            //------------------------------------------------------------------//
-            // Do Chamber1 Test & Check Chamber Test Finish.. 
-            //------------------------------------------------------------------//
-            if (_src == _workChamber1Tmr)
-            {
-                // Temi
-                if (_eqmtType == EqmtType.Temi)
-                {
-                    TSpecTmChamber spcChamber = specTmChamber1[_chamber1WorkingIdx];
-
-                    if (spcChamber.result == WorkingRes.NotDef)
-                    {
-                        DoTmChamberTest(SysDefs.ADDR_CHAMBER1, spcChamber);
-                    }
-                    else
-                    {
-                        if (_chamber1TestList.Count > 0)
-                        {
-                            _chamber1WorkingIdx = _chamber1TestList[0];
-                            _chamber1TestList.RemoveAt(0);
-                        }
-                        else
-                        {
-                            //------------------------------------------------------------------//
-                            // All Chamber Test are Finished.
-                            // Write Chamber Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_CHAMBER1, 101, 4);
-
-                            //------------------------------------------------------------------//
-                            // Write Recorder #1 Record Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
-
-                            _workChamber1Tmr.Stop();
-                            _bWorkChamber1 = false;
-                        }
-                    }
-                }
-                // Temp
-                else
-                {
-                    TSpecTpChamber spcChamber = specTpChamber1[_chamber1WorkingIdx];
-
-                    if (spcChamber.result == WorkingRes.NotDef)
-                    {
-                        DoTpChamberTest(SysDefs.ADDR_CHAMBER1, spcChamber);
-                    }
-                    else
-                    {
-                        if (_chamber1TestList.Count > 0)
-                        {
-                            _chamber1WorkingIdx = _chamber1TestList[0];
-                            _chamber1TestList.RemoveAt(0);
-                        }
-                        else
-                        {
-                            //------------------------------------------------------------------//
-                            // All Chamber Test are Finished.
-                            // Write Chamber Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
-
-                            //------------------------------------------------------------------//
-                            // Write Recorder #1 Record Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
-
-                            _workChamber1Tmr.Stop();
-                            _bWorkChamber1 = false;
-                        }
-                    }
-                }
-            }
-
-            //------------------------------------------------------------------//
-            // Do Chamber2 Test & Check Chamber Test Finish.. 
-            //------------------------------------------------------------------//
-            else if (_src == _workChamber2Tmr)
-            {
-                // Temi
-                if (_eqmtType == EqmtType.Temi)
-                {
-                    TSpecTmChamber spcChamber = specTmChamber2[_chamber2WorkingIdx];
-                    if (spcChamber.result == WorkingRes.NotDef)
-                    {
-                        DoTmChamberTest(SysDefs.ADDR_CHAMBER2, spcChamber);
-                    }
-                    else
-                    {
-                        if (_chamber2TestList.Count > 0)
-                        {
-                            _chamber2WorkingIdx = _chamber2TestList[0];
-                            _chamber2TestList.RemoveAt(0);
-                        }
-                        else
-                        {
-                            //------------------------------------------------------------------//
-                            // All Chamber Test are Finished.
-                            // Write Chamber Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_CHAMBER2, 101, 4);
-
-                            //------------------------------------------------------------------//
-                            // Write Recorder #1 Record Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
-
-                            _workChamber2Tmr.Stop();
-                            _bWorkChamber2 = false;
-                        }
-                    }
-                }
-                // Temp
-                else
-                {
-                    TSpecTpChamber spcChamber = specTpChamber2[_chamber2WorkingIdx];
-                    if (spcChamber.result == WorkingRes.NotDef)
-                    {
-                        DoTpChamberTest(SysDefs.ADDR_CHAMBER2, spcChamber);
-                    }
-                    else
-                    {
-                        if (_chamber2TestList.Count > 0)
-                        {
-                            _chamber2WorkingIdx = _chamber2TestList[0];
-                            _chamber2TestList.RemoveAt(0);
-                        }
-                        else
-                        {
-                            //------------------------------------------------------------------//
-                            // All Chamber Test are Finished.
-                            // Write Chamber Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
-
-                            //------------------------------------------------------------------//
-                            // Write Recorder #1 Record Stop
-                            //------------------------------------------------------------------//
-                            Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
-
-                            _workChamber2Tmr.Stop();
-                            _bWorkChamber2 = false;
-                        }
-                    }
-                }
-            }
-        }
-
-        //--------------------------------------------------------------------------//
-        // TESTING TEMI CHILLER #1
-        //--------------------------------------------------------------------------//
-        private void OnWorkChillerTmrEvent(Object src, EventArgs e)
-        {
-            System.Windows.Forms.Timer _src = (System.Windows.Forms.Timer)src;
-
-            //------------------------------------------------------------------//
-            // Do Chiller1 Test & Check Chiller Test Finish.. 
-            //------------------------------------------------------------------//
-            if (_src == _workChiller1Tmr)
-            {
-                TSpecChiller spcChiller = specChiller1[_chiller1WorkingIdx];
-                if (spcChiller.result == WorkingRes.NotDef)
-                {
-                    DoChillerTest(SysDefs.ADDR_CHILLER1, spcChiller);
-                }
-                else
-                {
-                    if (_chiller1TestList.Count > 0)
-                    {
-                        _chiller1WorkingIdx = _chiller1TestList[0];
-                        _chiller1TestList.RemoveAt(0);
-                    }
-                    else
-                    {
-                        //------------------------------------------------------------------//
-                        // All Chamber Test are Finished.
-                        // Write Chiller Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHILLER1, 102, 4);
-
-                        //--------------------------------------------------//
-                        // Subch 11 Stop(1) (유량)
-                        //--------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHILLER1, 2831, 1);
-
-                        _workChiller1Tmr.Stop();
-                        _bWorkChiller1 = false;
-                    }
-                }
-            }
-
-            else if (_src == _workChiller2Tmr)
-            {
-                TSpecChiller spcChiller = specChiller2[_chiller2WorkingIdx];
-                if (spcChiller.result == WorkingRes.NotDef)
-                {
-                    DoChillerTest(SysDefs.ADDR_CHILLER2, spcChiller);
-                }
-                else
-                {
-                    if (_chiller2TestList.Count > 0)
-                    {
-                        _chiller2WorkingIdx = _chiller2TestList[0];
-                        _chiller2TestList.RemoveAt(0);
-                    }
-                    else
-                    {
-                        //------------------------------------------------------------------//
-                        // All Chamber Test are Finished.
-                        // Write Chiller Stop
-                        //------------------------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHILLER2, 102, 4);
-
-                        //--------------------------------------------------//
-                        // Subch 11 Stop(1) (유량)
-                        //--------------------------------------------------//
-                        Comm.Write(SysDefs.ADDR_CHILLER2, 2831, 1);
-
-                        _workChiller2Tmr.Stop();
-                        _bWorkChiller2 = false;
-                    }
-                }
-            }
+            if (ch == 0) UpdateChamberTestSheetList(lsvChmbSpc11);
+            if (ch == 1) UpdateChamberTestSheetList(lsvChmbSpc12);
+            if (ch == 2) UpdateChamberTestSheetList(lsvChmbSpc21);
+            if (ch == 3) UpdateChamberTestSheetList(lsvChmbSpc22);
         }
 
         //--------------------------------------------------------------------------//
         // 1. TEMI Chamber Test Begin
         //--------------------------------------------------------------------------//
-        private void PerformTmChamberTestBegin(int addr, TSpecTmChamber spc)
+        private void PerformTmChamberTestBegin(int ch, TSpecTmChamber spc)
         {
-            short tpv = 0;
-            short hpv = 0;
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
+
+            short tpv = _chamber[ch].tpv;
+            short hpv = _chamber[ch].hpv;
             
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-                hpv = _chamber1.hpv;
-            }
+            if (tpv < spc.tsp)    spc.tempSlop = Slop.Up;
+            else                  spc.tempSlop = Slop.Dn;
 
-            if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-                hpv = _chamber2.hpv;
-            }
-
-            if (tpv < spc.tsp)
-            {
-                spc.tempSlop = Slop.Up;
-            }
-            else
-            {
-                spc.tempSlop = Slop.Dn;
-            }
-
-            if (hpv < spc.hsp)
-            {
-                spc.humiSlop = Slop.Up;
-            }
-            else
-            {
-                spc.humiSlop = Slop.Dn;
-            }
+            if (hpv < spc.hsp)    spc.humiSlop = Slop.Up;
+            else                  spc.humiSlop = Slop.Dn;
 
             // Write Target Temp, Humi SP
             Comm.Write(addr, 102, spc.tsp);
             Comm.Write(addr, 103, spc.hsp);
 
-            if (addr == SysDefs.ADDR_CHAMBER1)
+            if (_doFirstRunChamber[ch] == false)
             {
-                if(_doFirstRunChamber1 == false)
+                // Write Chamber RUN
+                if ((_chamber[ch].sts & 0x0001) > 0)
                 {
-                    // Write Chamber RUN
-                    if ((_chamber1.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 101, 1);
-                        _doFirstRunChamber1 = true;
-                    }
+                    Comm.Write(addr, 101, 1);
+                    _doFirstRunChamber[ch] = true;
                 }
+            }
 
-                //------------------------------------------------------------------//
-                // Write Recorder #1 Record Start
-                //------------------------------------------------------------------//
+            //------------------------------------------------------------------//
+            // Write Recorder #1 Record Start
+            //------------------------------------------------------------------//
+            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12)
+            {
                 Comm.Write(SysDefs.ADDR_RECORDER1, 100, 1);
             }
 
-            if (addr == SysDefs.ADDR_CHAMBER2)
+            if (addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
             {
-                if (_doFirstRunChamber2 == false)
-                {
-                    //Write Chamber RUN
-                    if ((_chamber2.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 101, 1);
-                        _doFirstRunChamber2 = true;
-                    }
-                }
-
-                //------------------------------------------------------------------//
-                // Write Recorder #2 Record Start
-                //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER2, 100, 1);
             }
 
@@ -2099,21 +1318,16 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 2. TEMI Chamber : Touch Target SP Check..
         //--------------------------------------------------------------------------//
-        private void PerformTmChamberTestTouch(int addr, TSpecTmChamber spc)
+        private void PerformTmChamberTestTouch(int ch, TSpecTmChamber spc)
         {
-            short tpv = 0;
-            short hpv = 0;
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
 
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-                hpv = _chamber1.hpv;
-            }
-            else if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-                hpv = _chamber2.hpv;
-            }
+            short tpv = _chamber[ch].tpv;
+            short hpv = _chamber[ch].hpv;
 
             if (spc.hsp == 0) spc.bTouchHumi = true;
 
@@ -2160,8 +1374,7 @@ namespace Ptnr
             {
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
-                spc.stableTm = DateTime.Now;
-
+                
                 return;
             }
 
@@ -2175,25 +1388,20 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 3. TEMI Chamber : Test Wating..
         //--------------------------------------------------------------------------//
-        private void PerformTmChamberTestWait(int addr, TSpecTmChamber spc)
+        private void PerformTmChamberTestWait(int ch, TSpecTmChamber spc)
         {
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
+
+            short tpv = _chamber[ch].tpv;
+            short hpv = _chamber[ch].hpv;
+
             //--------------------------------------------------------------------------//
             // Get Hunting max value.
             //--------------------------------------------------------------------------//
-            short tpv = 0;
-            short hpv = 0;
-
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-                hpv = _chamber1.hpv;
-            }
-            else if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-                hpv = _chamber2.hpv;
-            }
-
             if (spc.resTOver == SysDefs.NOT_DEFVAL)
             {
                 spc.resTOver = tpv;
@@ -2208,11 +1416,9 @@ namespace Ptnr
             {
                 if (tpv >= spc.resTOver) spc.resTOver = tpv;
 
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    short val = 0;
-                    if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                    if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
+                    short val = _recorder[ch].ch[ofs];
 
                     if (spc.resROver == SysDefs.NOT_DEFVAL)
                     {
@@ -2225,11 +1431,9 @@ namespace Ptnr
             {
                 if (tpv <= spc.resTOver) spc.resTOver = tpv;
 
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    short val = 0;
-                    if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                    if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
+                    short val = _recorder[ch].ch[ofs];
 
                     if (spc.resROver == SysDefs.NOT_DEFVAL)
                     {
@@ -2262,16 +1466,22 @@ namespace Ptnr
             else
             {
                 //--------------------------------------------------------------------------//
+                // Get Ctrl Stable time.
+                //--------------------------------------------------------------------------//
+                if (tpv == spc.tsp && spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
+                {
+                    spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+                }
+                
+                //--------------------------------------------------------------------------//
                 // Get Stable time.
                 //--------------------------------------------------------------------------//
                 int hlmt = (spc.tsp + spc.jugUnif);
                 int llmt = (spc.tsp - spc.jugUnif);
 
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    short val = 0;
-                    if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                    if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
+                    short val = _recorder[ch].ch[ofs];
 
                     if (val > hlmt || val < llmt)
                     {
@@ -2294,57 +1504,31 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 4. TEMI Chamber : Testing...
         //--------------------------------------------------------------------------//
-        private void PerformTmChamberDoTest(int addr, TSpecTmChamber spc)
+        private void PerformTmChamberDoTest(int ch, TSpecTmChamber spc)
         {
-            //------------------------------------------------//
-            // Chamber1 Holding..
-            //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                if (_bChamber1Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
-                    
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
-            }
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
 
             //------------------------------------------------//
-            // Chamber2 Holding..
+            // Chamber Holding..
             //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER2)
+            if (_bChamberHold[ch] == true)
             {
-                if (_bChamber2Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
+                spc.workingSts = WorkingSts.Holding;
+                spc.workStartTm = DateTime.Now;
 
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
+                return;
+            }
+            else
+            {
+                spc.workingSts = WorkingSts.Testing;
             }
 
-            short tpv = 0;
-            short hpv = 0;
-
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-                hpv = _chamber1.hpv;
-            }
-            if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-                hpv = _chamber2.hpv;
-            }
+            short tpv = _chamber[ch].tpv;
+            short hpv = _chamber[ch].hpv;
 
             if ((spc.testTm - DateTime.Now.Subtract(spc.workStartTm).TotalMinutes) <= 2)
             {
@@ -2377,13 +1561,10 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             // Record pv
             //--------------------------------------------------------------------------//
-            for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+            for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
             {
-                short val = 0;
-                if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
-
-                spc.AddRecData(ch, val);
+                short val = _recorder[ch].ch[ofs];
+                spc.AddRecData(ofs, val);
             }
 
             //--------------------------------------------------------------------------//
@@ -2392,31 +1573,31 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.testTm)
             {
-                short[] avg = new short[9];
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                short[] avg = new short[SysDefs.MAX_REC_CHCNT];
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    avg[ch] = 0;
+                    avg[ofs] = 0;
                     short sum = 0;
-                    for (int i = 0; i < spc.resRec[ch].Capacity; i++)
+
+                    for (int i = 0; i < spc.resRec[ofs].Capacity; i++)
                     {
-                        sum += spc.resRec[ch][i];
+                        sum += spc.resRec[ofs][i];
                     }
-                    avg[ch] = (short)(sum / spc.resRec[ch].Capacity);
+                    avg[ofs] = (short)(sum / spc.resRec[ofs].Capacity);
 
                     if (spc.resUnifMin == SysDefs.NOT_DEFVAL)
                     {
-                        spc.resUnifMin = avg[ch];
+                        spc.resUnifMin = avg[ofs];
                     }
 
                     if (spc.resUnifMax == SysDefs.NOT_DEFVAL)
                     {
-                        spc.resUnifMax = avg[ch];
+                        spc.resUnifMax = avg[ofs];
                     }
 
-                    if (avg[ch] <= spc.resUnifMin) spc.resUnifMin = avg[ch];
-                    if (avg[ch] >= spc.resUnifMax) spc.resUnifMax = avg[ch];
+                    if (avg[ofs] <= spc.resUnifMin) spc.resUnifMin = avg[ofs];
+                    if (avg[ofs] >= spc.resUnifMax) spc.resUnifMax = avg[ofs];
                 }
-
                 spc.workingSts = WorkingSts.End;
             }
         }
@@ -2424,65 +1605,42 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 1. TEMP Chamber Test Begin
         //--------------------------------------------------------------------------//
-        private void PerformTpChamberTestBegin(int addr, TSpecTpChamber spc)
+        private void PerformTpChamberTestBegin(int ch, TSpecTpChamber spc)
         {
-            short tpv = 0;
-            
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-            }
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
 
-            if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-            }
+            short tpv = _chamber[ch].tpv;
 
-            if (tpv < spc.tsp)
-            {
-                spc.tempSlop = Slop.Up;
-            }
-            else
-            {
-                spc.tempSlop = Slop.Dn;
-            }
+            if (tpv < spc.tsp) spc.tempSlop = Slop.Up;
+            else               spc.tempSlop = Slop.Dn;
 
             // Write Target Temp
             Comm.Write(addr, 104, spc.tsp);
 
-            if (addr == SysDefs.ADDR_CHAMBER1)
+            if (_doFirstRunChamber[ch] == false)
             {
-                if (_doFirstRunChamber1 == false)
+                // Write Chamber RUN
+                if ((_chamber[ch].sts & 0x0001) > 0)
                 {
-                    // Write Chamber RUN
-                    if ((_chamber1.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 102, 1);
-                        _doFirstRunChamber1 = true;
-                    }
+                    Comm.Write(addr, 102, 1);
+                    _doFirstRunChamber[ch] = true;
                 }
+            }
 
-                //------------------------------------------------------------------//
-                // Write Recorder #1 Record Start
-                //------------------------------------------------------------------//
+            //------------------------------------------------------------------//
+            // Write Recorder #1 Record Start
+            //------------------------------------------------------------------//
+            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12)
+            {
                 Comm.Write(SysDefs.ADDR_RECORDER1, 100, 1);
             }
 
-            if (addr == SysDefs.ADDR_CHAMBER2)
+            if (addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
             {
-                if (_doFirstRunChamber2 == false)
-                {
-                    // Write Chamber RUN
-                    if ((_chamber2.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 102, 1);
-                        _doFirstRunChamber2= true;
-                    }
-                }
-
-                //------------------------------------------------------------------//
-                // Write Recorder #2 Record Start
-                //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER2, 100, 1);
             }
 
@@ -2507,18 +1665,15 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 2. TEMP Chamber : Touch Target SP Check..
         //--------------------------------------------------------------------------//
-        private void PerformTpChamberTestTouch(int addr, TSpecTpChamber spc)
+        private void PerformTpChamberTestTouch(int ch, TSpecTpChamber spc)
         {
-            short tpv = 0;
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
 
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-            }
-            else if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-            }
+            short tpv = _chamber[ch].tpv;
 
             //--------------------------------------------------------//
             // Temp touch check.
@@ -2545,8 +1700,7 @@ namespace Ptnr
 
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
-                spc.stableTm = DateTime.Now;
-
+                
                 return;
             }
 
@@ -2560,21 +1714,15 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 3. TEMP Chamber : Test Wating..
         //--------------------------------------------------------------------------//
-        private void PerformTpChamberTestWait(int addr, TSpecTpChamber spc)
+        private void PerformTpChamberTestWait(int ch, TSpecTpChamber spc)
         {
-            //--------------------------------------------------------------------------//
-            // Get Hunting max value.
-            //--------------------------------------------------------------------------//
-            short tpv = 0;
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
 
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-            }
-            else if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-            }
+            short tpv = _chamber[ch].tpv;
 
             if (spc.resTOver == SysDefs.NOT_DEFVAL)
             {
@@ -2585,12 +1733,9 @@ namespace Ptnr
             {
                 if (tpv >= spc.resTOver) spc.resTOver = tpv;
 
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    short val = 0;
-                    if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                    if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
-
+                    short val = _recorder[ch].ch[ofs];
                     if (spc.resROver == SysDefs.NOT_DEFVAL)
                     {
                         spc.resROver = val;
@@ -2602,12 +1747,9 @@ namespace Ptnr
             {
                 if (tpv <= spc.resTOver) spc.resTOver = tpv;
 
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    short val = 0;
-                    if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                    if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
-
+                    short val = _recorder[ch].ch[ofs];
                     if (spc.resROver == SysDefs.NOT_DEFVAL)
                     {
                         spc.resROver = val;
@@ -2617,16 +1759,22 @@ namespace Ptnr
             }
 
             //--------------------------------------------------------------------------//
+            // Get Ctrl Stable time.
+            //--------------------------------------------------------------------------//
+            if (tpv == spc.tsp && spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
+            {
+                spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+            }
+
+            //--------------------------------------------------------------------------//
             // Get Stable time.
             //--------------------------------------------------------------------------//
             int hlmt = (spc.tsp + spc.jugUnif);
             int llmt = (spc.tsp - spc.jugUnif);
 
-            for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+            for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
             {
-                short val = 0;
-                if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
+                short val = _recorder[ch].ch[ofs];
 
                 if (val > hlmt || val < llmt)
                 {
@@ -2649,54 +1797,24 @@ namespace Ptnr
         //--------------------------------------------------------------------------//
         // 4. TEMP Chamber : Testing...
         //--------------------------------------------------------------------------//
-        private void PerformTpChamberDoTest(int addr, TSpecTpChamber spc)
+        private void PerformTpChamberDoTest(int ch, TSpecTpChamber spc)
         {
             //------------------------------------------------//
-            // Chamber1 Holding..
+            // Chamber Holding..
             //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER1)
+            if (_bChamberHold[ch] == true)
             {
-                if (_bChamber1Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
+                spc.workingSts = WorkingSts.Holding;
+                spc.workStartTm = DateTime.Now;
 
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
+                return;
+            }
+            else
+            {
+                spc.workingSts = WorkingSts.Testing;
             }
 
-            //------------------------------------------------//
-            // Chamber2 Holding..
-            //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                if (_bChamber2Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
-
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
-            }
-
-            short tpv = 0;
-
-            if (addr == SysDefs.ADDR_CHAMBER1)
-            {
-                tpv = _chamber1.tpv;
-            }
-            if (addr == SysDefs.ADDR_CHAMBER2)
-            {
-                tpv = _chamber2.tpv;
-            }
+            short tpv = _chamber[ch].tpv;
 
             if ((spc.testTm - DateTime.Now.Subtract(spc.workStartTm).TotalMinutes) <= 2)
             {
@@ -2717,12 +1835,9 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             // Record pv
             //--------------------------------------------------------------------------//
-            for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+            for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
             {
-                short val = 0;
-                if (addr == SysDefs.ADDR_CHAMBER1) val = _recorder1.ch[ch];
-                if (addr == SysDefs.ADDR_CHAMBER2) val = _recorder2.ch[ch];
-
+                short val = _recorder[ch].ch[ofs];
                 spc.AddRecData(ch, val);
             }
 
@@ -2732,386 +1847,90 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.testTm)
             {
-                short[] avg = new short[9];
-                for (int ch = 0; ch < SysDefs.MAX_REC_CHCNT; ch++)
+                short[] avg = new short[SysDefs.MAX_REC_CHCNT];
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    avg[ch] = 0;
+                    avg[ofs] = 0;
                     short sum = 0;
-                    for (int i = 0; i < spc.resRec[ch].Capacity; i++)
+
+                    for (int i = 0; i < spc.resRec[ofs].Capacity; i++)
                     {
-                        sum += spc.resRec[ch][i];
+                        sum += spc.resRec[ofs][i];
                     }
-                    avg[ch] = (short)(sum / spc.resRec[ch].Capacity);
+                    avg[ofs] = (short)(sum / spc.resRec[ofs].Capacity);
 
                     if (spc.resUnifMin == SysDefs.NOT_DEFVAL)
                     {
-                        spc.resUnifMin = avg[ch];
+                        spc.resUnifMin = avg[ofs];
                     }
 
                     if (spc.resUnifMax == SysDefs.NOT_DEFVAL)
                     {
-                        spc.resUnifMax = avg[ch];
+                        spc.resUnifMax = avg[ofs];
                     }
 
-                    if (avg[ch] <= spc.resUnifMin) spc.resUnifMin = avg[ch];
-                    if (avg[ch] >= spc.resUnifMax) spc.resUnifMax = avg[ch];
+                    if (avg[ofs] <= spc.resUnifMin) spc.resUnifMin = avg[ofs];
+                    if (avg[ofs] >= spc.resUnifMax) spc.resUnifMax = avg[ofs];
                 }
-
                 spc.workingSts = WorkingSts.End;
             }
         }
-
-        private void DoChillerTest(int addr, TSpecChiller spc)
-        {
-            if (spc.workingSts == WorkingSts.Begin)
-            {
-                PerformChillerTestBegin(addr, spc);
-            }
-
-            else if (spc.workingSts == WorkingSts.TouchSpCheck)
-            {
-                PerformChillerTestTouch(addr, spc);
-            }
-
-            else if (spc.workingSts == WorkingSts.Waiting)
-            {
-                PerformChillerTestWait(addr, spc);
-            }
-
-            else if (spc.workingSts == WorkingSts.Testing || spc.workingSts == WorkingSts.Holding)
-            {
-                PerformChillerDoTest(addr, spc);
-            }
-
-            //------------------------------------------------------------------//
-            // Test End.
-            //------------------------------------------------------------------//
-            if (spc.workingSts == WorkingSts.End)
-            {
-                spc.result = WorkingRes.Success;
-                //------------------------------------------------------------------//
-                // Success check : Disparity
-                //------------------------------------------------------------------//
-                if (spc.bUseTDisp)
-                {
-                    if (spc.resCtrTMax > (spc.tsp + spc.jugTDisp) ||
-                        spc.resCtrTMin < (spc.tsp - spc.jugTDisp))
-                    {
-                        spc.result = WorkingRes.Fail;
-                    }
-                }
-
-                if (spc.bUseSDisp)
-                {
-                    if (spc.resCtrSMax > (spc.ssp + spc.jugSDisp) ||
-                        spc.resCtrSMin < (spc.ssp - spc.jugSDisp))
-                    {
-                        spc.result = WorkingRes.Fail;
-                    }
-                }
-
-                //------------------------------------------------------------------//
-                // Success check : Ramp 
-                //------------------------------------------------------------------//
-                if (spc.bUseRamp)
-                {
-                    if (spc.resCtrRamp < spc.jugRamp)
-                    {
-                        spc.result = WorkingRes.Fail;
-                    }
-                }
-
-                spc.workEndTm = DateTime.Now;
-                GenReport();
-            }
-              
-            if (addr == SysDefs.ADDR_CHILLER1) UpdateChillerTestSheetList(lsvChillerSpc1);
-            if (addr == SysDefs.ADDR_CHILLER2) UpdateChillerTestSheetList(lsvChillerSpc2);
-        }
-
-        //--------------------------------------------------------------------------//
-        // 1. Chiller Test Begin
-        //--------------------------------------------------------------------------//
-        private void PerformChillerTestBegin(int addr, TSpecChiller spc)
-        {
-            short tpv = 0;
-            short spv = 0;
-
-            //------------------------------------------------------------------//
-            // Write Target Temp SP
-            //------------------------------------------------------------------//
-            Comm.Write(addr, 104, spc.tsp);
-
-            if (addr == SysDefs.ADDR_CHILLER1)
-            {
-                tpv = _chiller1.tpv;
-                spv = _chiller1.spv;
-
-                if(_doFirstRunChiller1 == false)
-                {
-                    if ((_chiller1.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 102, 1);
-                        _doFirstRunChiller1 = true;
-                    }
-                }
-            }
-
-            if (addr == SysDefs.ADDR_CHILLER2)
-            {
-                tpv = _chiller2.tpv;
-                spv = _chiller2.spv;
-
-                if (_doFirstRunChiller2 == false)
-                {
-                    if ((_chiller2.sts & 0x0001) > 0)
-                    {
-                        Comm.Write(addr, 102, 1);
-                        _doFirstRunChiller2 = true;
-                    }
-                }
-            }
-
-            if (spc.bUseSDisp)
-            {
-                //------------------------------------------------------------------//
-                // Write Target Oil SP & Run
-                //------------------------------------------------------------------//
-                Comm.Write(addr, 3251, spc.ssp);
-                Comm.Write(addr, 2831, 0);
-            }
-            
-            if (tpv < spc.tsp) spc.tSlop = Slop.Up;
-            else               spc.tSlop = Slop.Dn;
-
-            if (spv < spc.ssp) spc.sSlop = Slop.Up;
-            else               spc.sSlop = Slop.Dn;
-
-            spc.startPv = tpv;
-            spc.workingSts = WorkingSts.TouchSpCheck;
-            spc.workStartTm = DateTime.Now;
-
-            spc.bTouchTSP = false;
-            spc.bTouchSSP = false;
-
-            spc.resCtrTMax = SysDefs.NOT_DEFVAL;
-            spc.resCtrTMin = SysDefs.NOT_DEFVAL;
-            spc.resCtrSMax = SysDefs.NOT_DEFVAL;
-            spc.resCtrSMin = SysDefs.NOT_DEFVAL;
-
-            spc.resCtrRamp = SysDefs.NOT_DEFVAL;
-        }
-
-        //--------------------------------------------------------------------------//
-        // 2. Chiller : Touch Target SP Check..
-        //--------------------------------------------------------------------------//
-        private void PerformChillerTestTouch(int addr, TSpecChiller spc)
-        {
-            short tpv = 0;
-            short spv = 0;
-
-            if (addr == SysDefs.ADDR_CHILLER1)
-            {
-                tpv = _chiller1.tpv;
-                spv = _chiller1.spv;
-            }
-
-            if (addr == SysDefs.ADDR_CHILLER2)
-            {
-                tpv = _chiller2.tpv;
-                spv = _chiller2.spv;
-            }
-
-            //if (spc.bUseTDisp == false) spc.bTouchTSP = true;
-            if (spc.bUseSDisp == false) spc.bTouchSSP = true;
-            
-            //--------------------------------------------------------//
-            // Temp touch check.
-            //--------------------------------------------------------//
-            if (spc.bTouchTSP == false)
-            {
-                if (spc.tSlop == Slop.Up)
-                {
-                    if (tpv >= spc.tsp) spc.bTouchTSP = true;
-                }
-                else
-                {
-                    if (tpv <= spc.tsp) spc.bTouchTSP = true;
-                }
-
-                if (spc.bTouchTSP == true)
-                {
-                    TimeSpan span = DateTime.Now.Subtract(spc.workStartTm);
-                    spc.resCtrRamp = (short)(Math.Abs(spc.tsp - spc.startPv) / (span.TotalMinutes + 1));
-                }
-            }
-
-            //--------------------------------------------------------//
-            // Oil touch check.
-            //--------------------------------------------------------//
-            if (spc.bTouchSSP == false)
-            {
-                if (spc.sSlop == Slop.Up)
-                {
-                    if (spv >= spc.ssp) spc.bTouchSSP = true;
-                }
-                else
-                {
-                    if (spv <= spc.ssp) spc.bTouchSSP = true;
-                }
-            }
-
-            if (spc.bTouchTSP == true && spc.bTouchSSP == true)
-            {
-                spc.workingSts = WorkingSts.Waiting;
-                spc.workStartTm = DateTime.Now;
-                return;
-            }
-
-            // Wait End check.
-            if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTimeOutTm)
-            {
-                spc.workingSts = WorkingSts.End;
-            }
-        }
-
-        //--------------------------------------------------------------------------//
-        // 3. Chiller : Wating..
-        //--------------------------------------------------------------------------//
-        private void PerformChillerTestWait(int addr, TSpecChiller spc)
-        {
-            // Wait End check.
-             if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTm)
-            {
-                spc.workingSts = WorkingSts.Testing;
-                spc.workStartTm = DateTime.Now;
-            }
-        }
-
-        //--------------------------------------------------------------------------//
-        // 4. Chiller : Testing...
-        //--------------------------------------------------------------------------//
-        private void PerformChillerDoTest(int addr, TSpecChiller spc)
-        {
-            //------------------------------------------------//
-            // Chiller1 Holding..
-            //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHILLER1)
-            {
-                if (_bChiller1Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
-
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
-            }
-
-            //------------------------------------------------//
-            // Chiller2 Holding..
-            //------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHILLER2)
-            {
-                if (_bChiller2Hold == true)
-                {
-                    spc.workingSts = WorkingSts.Holding;
-                    spc.workStartTm = DateTime.Now;
-
-                    return;
-                }
-                else
-                {
-                    spc.workingSts = WorkingSts.Testing;
-                }
-            }
-
-            short tpv = 0;
-            short spv = 0;
-
-            if (addr == SysDefs.ADDR_CHILLER1)
-            {
-                tpv = _chiller1.tpv;
-                spv = _chiller1.spv;
-            }
-
-            if (addr == SysDefs.ADDR_CHILLER2)
-            {
-                tpv = _chiller2.tpv;
-                spv = _chiller2.spv;
-            }
-
-            if (spc.resCtrTMax == SysDefs.NOT_DEFVAL)
-            {
-                spc.resCtrTMax = tpv;
-            }
-
-            if (spc.resCtrTMin == SysDefs.NOT_DEFVAL)
-            {
-                spc.resCtrTMin = tpv;
-            }
-
-            if (spc.resCtrSMax == SysDefs.NOT_DEFVAL)
-            {
-                spc.resCtrSMax = spv;
-            }
-
-            if (spc.resCtrSMin == SysDefs.NOT_DEFVAL)
-            {
-                spc.resCtrSMin = spv;
-            }
-
-            if (tpv >= spc.resCtrTMax) spc.resCtrTMax = tpv;
-            if (tpv <= spc.resCtrTMin) spc.resCtrTMin = tpv;
-            if (spv >= spc.resCtrSMax) spc.resCtrSMax = spv;
-            if (spv <= spc.resCtrSMin) spc.resCtrSMin = spv;
-
-            //--------------------------------------------------------------------------//
-            // Test End check.
-            //--------------------------------------------------------------------------//
-            if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.testTm)
-            {
-                if (spc.bUseSDisp)
-                {
-                    //------------------------------------------------------------------//
-                    // Write Target Oil Stop
-                    //------------------------------------------------------------------//
-                    Comm.Write(addr, 2831, 1);
-                }
-
-                spc.workingSts = WorkingSts.End;
-            }
-        }
-
+        1
         public void onUpdateCtrlSts(int addr, string strSts)
         {
+            //--------------------------------------------------------------------------//
+            // To Test..
+            //--------------------------------------------------------------------------//
+            //return;
+            //--------------------------------------------------------------------------//
+
+            int ch = 0;
+
+            if (addr == SysDefs.ADDR_CHAMBER11) ch = 0;
+            if (addr == SysDefs.ADDR_CHAMBER12) ch = 1;
+            if (addr == SysDefs.ADDR_CHAMBER21) ch = 2;
+            if (addr == SysDefs.ADDR_CHAMBER22) ch = 3;
+
             //--------------------------------------------------------------------------//
             // Check OnLine status.
             //--------------------------------------------------------------------------//
             if (strSts.IndexOf("OK") < 0)
             {
-                if (addr == SysDefs.ADDR_CHAMBER1) _chamber1.bOnLine = false;
-                if (addr == SysDefs.ADDR_CHAMBER2) _chamber2.bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER11) _chamber[0].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER12) _chamber[1].bOnLine = false;
 
-                if (addr == SysDefs.ADDR_CHILLER1) _chiller1.bOnLine = false;
-                if (addr == SysDefs.ADDR_CHILLER2) _chiller2.bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER21) _chamber[2].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER22) _chamber[3].bOnLine = false;
 
-                if (addr == SysDefs.ADDR_RECORDER1) _recorder1.bOnLine = false;
-                if (addr == SysDefs.ADDR_RECORDER2) _recorder2.bOnLine = false;
+                if (addr == SysDefs.ADDR_RECORDER1)
+                {
+                    _recorder[0].bOnLine = false;
+                    _recorder[1].bOnLine = false;
+                }
+                if (addr == SysDefs.ADDR_RECORDER2)
+                {
+                    _recorder[2].bOnLine = false;
+                    _recorder[3].bOnLine = false;
+                }
             }
             else
             {
-                if (addr == SysDefs.ADDR_CHAMBER1) _chamber1.bOnLine = true;
-                if (addr == SysDefs.ADDR_CHAMBER2) _chamber2.bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER11) _chamber[0].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER12) _chamber[1].bOnLine = true;
 
-                if (addr == SysDefs.ADDR_CHILLER1) _chiller1.bOnLine = true;
-                if (addr == SysDefs.ADDR_CHILLER2) _chiller2.bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER21) _chamber[2].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER22) _chamber[3].bOnLine = true;
 
-                if (addr == SysDefs.ADDR_RECORDER1) _recorder1.bOnLine = true;
-                if (addr == SysDefs.ADDR_RECORDER2) _recorder2.bOnLine = true;
+                if (addr == SysDefs.ADDR_RECORDER1)
+                {
+                    _recorder[0].bOnLine = true;
+                    _recorder[1].bOnLine = true;
+                }
+                if (addr == SysDefs.ADDR_RECORDER2)
+                {
+                    _recorder[2].bOnLine = true;
+                    _recorder[3].bOnLine = true;
+                }
             }
 
             if (strSts.IndexOf("OK") < 0)
@@ -3137,104 +1956,24 @@ namespace Ptnr
             // - TEMI(TPV:1, TSP:2, HPV:5, HSP:6, NOWSTS:10)
             // - TEMP(PV:1, SP:3, NOWSTS:10)
             //--------------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER1 || addr == SysDefs.ADDR_CHAMBER2)
+            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12)
             {
                 if(_eqmtType == EqmtType.Temi)
                 {
-                    if (addr == SysDefs.ADDR_CHAMBER1)
-                    {
-                        if (tmp.Length < 8)
-                        {
-                            _chamber1.bOnLine = false;
-                            return;
-                        }
-
-                        _chamber1.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.tsp = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.hpv = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.hsp = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    }
-
-                    else if (addr == SysDefs.ADDR_CHAMBER2)
-                    {
-                        if (tmp.Length < 8)
-                        {
-                            _chamber2.bOnLine = false;
-                            return;
-                        }
-
-                        _chamber2.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.tsp = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.hpv = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.hsp = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    }
+                    _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].hpv = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].hsp = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
                 }
                 else
                 {
-                    if (addr == SysDefs.ADDR_CHAMBER1)
-                    {
-                        if (tmp.Length < 8)
-                        {
-                            _chamber1.bOnLine = false;
-                            return;
-                        }
-
-                        _chamber1.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                        _chamber1.sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    }
-
-                    else if (addr == SysDefs.ADDR_CHAMBER2)
-                    {
-                        if (tmp.Length < 8)
-                        {
-                            _chamber2.bOnLine = false;
-                            return;
-                        }
-
-                        _chamber2.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                        _chamber2.sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    }
+                    _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
+                    _chamber[ch].sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
                 }
             }
-
-            //--------------------------------------------------------------------------//
-            // Read Chiller#1 Status (NPV, NSP, NOW_STS)
-            //--------------------------------------------------------------------------//
-            else if (addr == SysDefs.ADDR_CHILLER1 || addr == SysDefs.ADDR_CHILLER2)
-            {
-                if (addr == SysDefs.ADDR_CHILLER1)
-                {
-                    if (tmp.Length < 6)
-                    {
-                        _chiller1.bOnLine = false;
-                        return;
-                    }
-
-                    _chiller1.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _chiller1.tsp = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _chiller1.sts = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _chiller1.spv = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                }
-
-                else if (addr == SysDefs.ADDR_CHILLER2)
-                {
-                    if (tmp.Length < 6)
-                    {
-                        _chiller2.bOnLine = false;
-                        return;
-                    }
-
-                    _chiller2.tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _chiller2.tsp = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _chiller2.sts = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _chiller2.spv = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                }
-            }
-
+            
             //--------------------------------------------------------------------------//
             // Read Recorder#1 Status (NPV1~NPV9)
             //--------------------------------------------------------------------------//
@@ -3244,78 +1983,86 @@ namespace Ptnr
                 {
                     if (tmp.Length < 11)
                     {
-                        _recorder1.bOnLine = false;
+                        _recorder[0].bOnLine = false;
+                        _recorder[1].bOnLine = false;
                         return;
                     }
 
-                    _recorder1.ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH5] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH6] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH7] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH8] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
-                    _recorder1.ch[SysDefs.CH9] = Convert.ToInt16(Int16.Parse(tmp[10], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[0].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[0].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[0].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[0].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
+
+                    _recorder[1].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[1].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[1].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[1].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
                 }
 
                 else if (addr == SysDefs.ADDR_RECORDER2)
                 {
                     if (tmp.Length < 11)
                     {
-                        _recorder2.bOnLine = false;
+                        _recorder[2].bOnLine = false;
+                        _recorder[3].bOnLine = false;
                         return;
                     }
 
-                    _recorder2.ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH5] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH6] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH7] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH8] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
-                    _recorder2.ch[SysDefs.CH9] = Convert.ToInt16(Int16.Parse(tmp[10], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[2].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[2].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[2].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[2].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
+
+                    _recorder[3].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[3].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[3].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
+                    _recorder[3].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
                 }
             }
 
             //--------------------------------------------------------------------------//
-            // Update List controls Room1
+            // Update List controls Chamber1
             //--------------------------------------------------------------------------//
-            lblChamber11TPv.Text = "온도:" + SysDefs.DotString(_chamber1.tpv, 1) + " ℃";
-            lblChamber11HPv.Text = "습도:" + SysDefs.DotString(_chamber1.hpv, 1) + " %";
+            lblChamber11TPv.Text = "온도:" + SysDefs.DotString(_chamber[0].tpv, 1) + " ℃";
+            lblChamber11HPv.Text = "습도:" + SysDefs.DotString(_chamber[0].hpv, 1) + " %";
 
-            lblChamber12TPv.Text = "온도:" + SysDefs.DotString(_chiller1.tpv, 1) + " ℃";
-            lblChamber12HPv.Text = "유량:" + SysDefs.DotString(_chiller1.spv, 2) + " lpm";
-
-            lblRec1Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder1.ch[0], 1) + " ℃";
-            lblRec1Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder1.ch[1], 1) + " ℃";
-            lblRec1Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder1.ch[2], 1) + " ℃";
-            lblRec1Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder1.ch[3], 1) + " ℃";
-            lblRec1Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder1.ch[4], 1) + " ℃";
-            lblRec1Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder1.ch[5], 1) + " ℃";
-            lblRec1Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder1.ch[6], 1) + " ℃";
-            lblRec1Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder1.ch[7], 1) + " ℃";
-            lblRec1Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder1.ch[8], 1) + " ℃";
+            lblRec11Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[0].ch[0], 1) + " ℃";
+            lblRec11Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[0].ch[1], 1) + " ℃";
+            lblRec11Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[0].ch[2], 1) + " ℃";
+            lblRec11Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[0].ch[3], 1) + " ℃";
 
             //--------------------------------------------------------------------------//
-            // Update List controls Room2
+            // Update List controls Chamber2
             //--------------------------------------------------------------------------//
-            lblChamber21TPv.Text = "온도:" + SysDefs.DotString(_chamber2.tpv, 1) + " ℃";
-            lblChamber21HPv.Text = "습도:" + SysDefs.DotString(_chamber2.hpv, 1) + " %";
+            lblChamber12TPv.Text = "온도:" + SysDefs.DotString(_chamber[1].tpv, 1) + " ℃";
+            lblChamber12HPv.Text = "습도:" + SysDefs.DotString(_chamber[1].hpv, 1) + " %";
 
-            lblChamber22TPv.Text = "온도:" + SysDefs.DotString(_chiller2.tpv, 1) + " ℃";
-            lblChamber22HPv.Text = "유량:" + SysDefs.DotString(_chiller2.spv, 2) + " lpm";
+            lblRec12Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[1].ch[0], 1) + " ℃";
+            lblRec12Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[1].ch[1], 1) + " ℃";
+            lblRec12Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[1].ch[2], 1) + " ℃";
+            lblRec12Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[1].ch[3], 1) + " ℃";
 
-            lblRec2Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder2.ch[0], 1) + " ℃";
-            lblRec2Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder2.ch[1], 1) + " ℃";
-            lblRec2Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder2.ch[2], 1) + " ℃";
-            lblRec2Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder2.ch[3], 1) + " ℃";
-            lblRec2Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder2.ch[4], 1) + " ℃";
-            lblRec2Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder2.ch[5], 1) + " ℃";
-            lblRec2Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder2.ch[6], 1) + " ℃";
-            lblRec2Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder2.ch[7], 1) + " ℃";
-            lblRec2Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder2.ch[8], 1) + " ℃";
+            //--------------------------------------------------------------------------//
+            // Update List controls Chamber3
+            //--------------------------------------------------------------------------//
+            lblChamber21TPv.Text = "온도:" + SysDefs.DotString(_chamber[2].tpv, 1) + " ℃";
+            lblChamber21HPv.Text = "습도:" + SysDefs.DotString(_chamber[2].hpv, 1) + " %";
+
+            lblRec21Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[2].ch[0], 1) + " ℃";
+            lblRec21Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[2].ch[1], 1) + " ℃";
+            lblRec21Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[2].ch[2], 1) + " ℃";
+            lblRec21Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[2].ch[3], 1) + " ℃";
+
+            //--------------------------------------------------------------------------//
+            // Update List controls Chamber4
+            //--------------------------------------------------------------------------//
+            lblChamber22TPv.Text = "온도:" + SysDefs.DotString(_chamber[3].tpv, 1) + " ℃";
+            lblChamber22HPv.Text = "습도:" + SysDefs.DotString(_chamber[3].hpv, 1) + " %";
+
+            lblRec22Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[3].ch[0], 1) + " ℃";
+            lblRec22Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[3].ch[1], 1) + " ℃";
+            lblRec22Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[3].ch[2], 1) + " ℃";
+            lblRec22Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[3].ch[3], 1) + " ℃";
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -3551,79 +2298,6 @@ namespace Ptnr
             }
         }
 
-        private void WriteChillerResExcel(Worksheet ws, TSpecChiller spc, int srow)
-        {
-            Microsoft.Office.Interop.Excel.Range rngSp = ws.Rows.Cells[srow, 2];
-            Microsoft.Office.Interop.Excel.Range rngTMin = ws.Rows.Cells[srow, 8];
-            Microsoft.Office.Interop.Excel.Range rngTMax = ws.Rows.Cells[srow, 11];
-
-            Microsoft.Office.Interop.Excel.Range rngSMin = ws.Rows.Cells[srow, 17];
-            Microsoft.Office.Interop.Excel.Range rngSMax = ws.Rows.Cells[srow, 20];
-
-            Microsoft.Office.Interop.Excel.Range rngRamp = ws.Rows.Cells[srow, 30];
-            Microsoft.Office.Interop.Excel.Range rngRes = ws.Rows.Cells[srow, 42];
-
-            string strSP = "-";
-            string strResCtrTMin = "-";
-            string strResCtrTMax = "-";
-            string strResCtrSMin = "-";
-            string strResCtrSMax = "-";
-
-            string strResCtrRamp = "-";
-
-            // Control Min/Max
-            strSP = string.Format("{0}℃/{1}lpm", spc.tsp * 0.1, spc.ssp * 0.01);//SysDefs.DotString(spc.tsp, 1), SysDefs.DotString(spc.ssp, 2));
-
-
-            if (spc.result != WorkingRes.NotDef)
-            {
-
-                // Control Min/Max
-                if (spc.bUseTDisp == true)
-                {
-                    strResCtrTMin = SysDefs.DotString(spc.resCtrTMin, 1);
-                    strResCtrTMax = SysDefs.DotString(spc.resCtrTMax, 1);
-                }
-
-                if (spc.bUseSDisp == true)
-                {
-                    strResCtrSMin = SysDefs.DotString(spc.resCtrSMin, 2);
-                    strResCtrSMax = SysDefs.DotString(spc.resCtrSMax, 2);
-                }
-
-                // Control Ramp
-                if (spc.bUseRamp)
-                {
-                    strResCtrRamp = SysDefs.DotString(spc.resCtrRamp, 1);
-                }
-            }
-
-            //------------------------------------------------------------//
-            // Write WorkSheet
-            //------------------------------------------------------------//
-            rngSp.Value = strSP;
-            rngTMin.Value = strResCtrTMin;
-            rngTMax.Value = strResCtrTMax;
-            
-            rngSMin.Value = strResCtrSMin;
-            rngSMax.Value = strResCtrSMax;
-
-            rngRamp.Value = strResCtrRamp;
-
-            if (spc.result == WorkingRes.Success)
-            {
-                rngRes.Value = "GOOD";
-            }
-            else if (spc.result == WorkingRes.Fail)
-            {
-                rngRes.Value = "NG";
-            }
-            else
-            {
-                rngRes.Value = "-";
-            }
-        }
-
         private void GenReport()
         {
             string templeteFile = "";
@@ -3650,46 +2324,44 @@ namespace Ptnr
                 return;
             }
 
-            int idx = 0;
-
-            // Temi
-            if (_eqmtType == EqmtType.Temi)
+            for(int ch = 0; ch<4; ch++)
             {
-                for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
+                int sRow = 10;
+                int idx = 0;
+                // Temi
+                if (_eqmtType == EqmtType.Temi)
                 {
-                    TSpecTmChamber spc1 = specTmChamber1[i];
-                    TSpecTmChamber spc2 = specTmChamber2[i];
+                    if      (ch == 0) sRow = 10;
+                    else if (ch == 1) sRow = 18;
+                    else if (ch == 2) sRow = 26;
+                    else if (ch == 3) sRow = 34;
 
-                    if (spc1.bReport == false)
+                    for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
                     {
-                        continue;
+                        TSpecTmChamber spc = specTmChamber[ch][i];
+                        if (spc.bReport == false)
+                        {
+                            continue;
+                        }
+                        WriteTmChamberResExcel(worksheet, spc, sRow+idx);
+                        idx++;
                     }
-                    WriteTmChamberResExcel(worksheet, spc1, 10 + idx);
-                    WriteTmChamberResExcel(worksheet, spc2, 28 + idx);
-                    idx++;
                 }
-            }
-            // Temp
-            else
-            {
-                for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
+                // Temp
+                else
                 {
-                    TSpecTpChamber spc1 = specTpChamber1[i];
-                    TSpecTpChamber spc2 = specTpChamber2[i];
+                    if (ch == 0) sRow = 10;
+                    else if (ch == 1) sRow = 16;
+                    else if (ch == 2) sRow = 22;
+                    else if (ch == 3) sRow = 28;
 
-                    WriteTpChamberResExcel(worksheet, spc1, 10 + idx);
-                    WriteTpChamberResExcel(worksheet, spc2, 28 + idx);
-                    idx++;
+                    for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
+                    {
+                        TSpecTpChamber spc = specTpChamber[ch][i];
+                        WriteTpChamberResExcel(worksheet, spc, sRow + idx);
+                        idx++;
+                    }
                 }
-            }
-
-            for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-            {
-                TSpecChiller spc1 = specChiller1[i];
-                TSpecChiller spc2 = specChiller2[i];
-
-                WriteChillerResExcel(worksheet, spc1, 18 + i);
-                WriteChillerResExcel(worksheet, spc2, 36 + i);
             }
 
             Microsoft.Office.Interop.Excel.Range rngSerial = worksheet.Rows.Cells[5, 33];
@@ -3735,134 +2407,25 @@ namespace Ptnr
             {
                 GenReport();
             }
-
-            /*
-            if (MessageBox.Show("해당 결과 내용으로 결과 레포트를 생성 하시겠습니까?",
-                               "Export to Excel file?",
-                                MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-            {
-                string templeteFile = SysDefs.execPath + "\\" + SysDefs.RESULT_FOLDER_PATH + "\\Report_Tm.xlsx";
-                string tarPath = SysDefs.execPath + SysDefs.RESULT_FOLDER_PATH + "\\" + txtSerialNo.Text + ".xlsx";
-
-                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-                Workbook workbook = excel.Workbooks.Open(templeteFile, ReadOnly: false, Editable: true);
-                Worksheet worksheet = workbook.Worksheets.Item[1] as Worksheet;
-
-                if (worksheet == null)
-                {
-                    MessageBox.Show("엑셀 워크 시트 열기에 실패 했습니다.");
-                    return;
-                }
-
-                int idx = 0;
-
-                // Temi
-                if (_eqmtType == EqmtType.Temi)
-                {
-                    for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
-                    {
-                        TSpecTmChamber spc1 = specTmChamber1[i];
-                        TSpecTmChamber spc2 = specTmChamber2[i];
-
-                        if (spc1.bReport == false)
-                        {
-                            continue;
-                        }
-                        WriteTmChamberResExcel(worksheet, spc1, 10 + idx);
-                        WriteTmChamberResExcel(worksheet, spc2, 28 + idx);
-                        idx++;
-                    }
-                }
-                // Temp
-                else
-                {
-                    for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
-                    {
-                        TSpecTpChamber spc1 = specTpChamber1[i];
-                        TSpecTpChamber spc2 = specTpChamber2[i];
-
-                        WriteTpChamberResExcel(worksheet, spc1, 10 + idx);
-                        WriteTpChamberResExcel(worksheet, spc2, 28 + idx);
-                        idx++;
-                    }
-                }
-                
-
-                for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-                {
-                    TSpecChiller spc1 = specChiller1[i];
-                    TSpecChiller spc2 = specChiller2[i];
-
-                    WriteChillerResExcel(worksheet, spc1, 18 + i);
-                    WriteChillerResExcel(worksheet, spc2, 36 + i);
-                }
-
-                Range rngSerial = worksheet.Rows.Cells[5, 33];
-                Range rngAmbTemp = worksheet.Rows.Cells[45, 13];
-                Range rngAmbHumi = worksheet.Rows.Cells[45, 17];
-                Range rngApprov = worksheet.Rows.Cells[49, 13];
-                Range rngDate = worksheet.Rows.Cells[48, 13];
-
-                rngSerial.Value = txtSerialNo.Text;
-                rngAmbTemp.Value = txtAmbTemp.Text;
-                rngAmbHumi.Value = txtAmbHumi.Text;
-                rngApprov.Value = txtApprov.Text;
-                rngDate.Value = DateTime.Now.ToString("yyyy-MM-dd");
-
-                try
-                {
-                    excel.Application.ActiveWorkbook.SaveAs(tarPath);
-                    workbook.Close();
-
-                    excel.Application.Quit();
-                    excel.Quit();
-
-                    FileInfo fi = new FileInfo(tarPath);
-                    if (fi.Exists)
-                    {
-                        System.Diagnostics.Process.Start(tarPath);
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("엑셀 파일 저장에 실패 했습니다. 이미 다른 프로그램에서 사용중이거나 오픈 되어 있습니다.",
-                        "엑셀 파일 생성 실패");
-
-                    object misValue = System.Reflection.Missing.Value;
-
-                    workbook.Close(false, misValue, misValue);
-
-                    excel.Application.Quit();
-                    excel.Quit();
-
-                    return;
-                }
-            }
-            */
         }
 
+    
         private void InitChamberTestSheetList()
         {
             ListViewNF lsvChamber;
-            ListViewNF lsvChiller;
-
+            
             //----------------------------------------------------------------------------//
             // Temi
             //----------------------------------------------------------------------------//
             if (_eqmtType == EqmtType.Temi)
             {
-                for (int idx = 0; idx < 2; idx++){
-                    if (idx == 0){
-                        lsvChamber = lsvChmbSpc11;
-                        lsvChiller = lsvChillerSpc1;
-                    }
-                    else{
-                        lsvChamber = lsvChmbSpc21;
-                        lsvChiller = lsvChillerSpc2;
-                    }
+                for (int idx = 0; idx < 4; idx++){
+                    lsvChamber = lsvChmbSpc11;
+                    if (idx == 1) lsvChamber = lsvChmbSpc12;
+                    if (idx == 2) lsvChamber = lsvChmbSpc21;
+                    if (idx == 3) lsvChamber = lsvChmbSpc22;
 
                     lsvChamber.Columns.Clear();
-                    lsvChiller.Columns.Clear();
 
                     lsvChamber.Columns.Add("No.");
                     lsvChamber.Columns.Add("온도(℃)");
@@ -3873,8 +2436,9 @@ namespace Ptnr
                     lsvChamber.Columns.Add("제어 Max");
                     lsvChamber.Columns.Add("온도 Over(℃)");
                     lsvChamber.Columns.Add("습도 Over(%)");
+                    lsvChamber.Columns.Add("제어안정시간");
                     lsvChamber.Columns.Add("분포 Over(℃)");
-                    lsvChamber.Columns.Add("안정화시간");
+                    lsvChamber.Columns.Add("분포안정시간");
                     lsvChamber.Columns.Add("제어 Ramp");
                     lsvChamber.Columns.Add("분포도 Min");
                     lsvChamber.Columns.Add("분포도 Max");
@@ -3896,53 +2460,28 @@ namespace Ptnr
                         tw += lsvChamber.Columns[i].Width;
                     }
                     lsvChamber.Columns[lsvChamber.Columns.Count - 1].Width = w + lsvChamber.Width - tw - 5;
-
-                    //-----------------------------------------------------------------------------//
-                    // Chiller List view
-                    //-----------------------------------------------------------------------------//
-                    lsvChiller.Columns.Add("No.");
-                    lsvChiller.Columns.Add("온도(℃)");
-                    lsvChiller.Columns.Add("유량(lpm)");
-
-                    lsvChiller.Columns.Add("대기(분)");
-                    lsvChiller.Columns.Add("테스트(분)");
-                    lsvChiller.Columns.Add("제어 Min/Max");
-                    lsvChiller.Columns.Add("유량 Min/Max");
-                    lsvChiller.Columns.Add("제어 Ramp");
-
-                    lsvChiller.Columns.Add("온도편차(℃)");
-                    lsvChiller.Columns.Add("유량편차(lpm)");
-                    lsvChiller.Columns.Add("Ramp (℃/Min)");
-                    lsvChiller.Columns.Add("판정결과");
-
-                    w = lsvChiller.Width / lsvChiller.Columns.Count + 5;
-                    tw = 0;
-
-                    for (int i = 0; i < lsvChiller.Columns.Count; i++){
-                        if (i == 0){
-                            lsvChiller.Columns[i].Width = 50;
-                        }
-
-                        else{
-                            lsvChiller.Columns[i].Width = w;
-                        }
-                        tw += lsvChiller.Columns[i].Width;
-                    }
-                    lsvChiller.Columns[lsvChiller.Columns.Count - 1].Width = w + lsvChiller.Width - tw - 5;
                 }
 
                 lsvChmbSpc11.Items.Clear();
+                lsvChmbSpc12.Items.Clear();
                 lsvChmbSpc21.Items.Clear();
+                lsvChmbSpc22.Items.Clear();
 
                 for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++){
                     ListViewItem itm1;
                     ListViewItem itm2;
+                    ListViewItem itm3;
+                    ListViewItem itm4;
 
-                    itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
-                    itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm3 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm4 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
 
                     lsvChmbSpc11.Items.Add(itm1);
-                    lsvChmbSpc21.Items.Add(itm2);
+                    lsvChmbSpc12.Items.Add(itm2);
+                    lsvChmbSpc21.Items.Add(itm3);
+                    lsvChmbSpc22.Items.Add(itm4);
                 }
             }
 
@@ -3950,18 +2489,14 @@ namespace Ptnr
             // Temp
             //----------------------------------------------------------------------------//
             else{
-                for (int idx = 0; idx < 2; idx++){
-                    if (idx == 0){
-                        lsvChamber = lsvChmbSpc11;
-                        lsvChiller = lsvChillerSpc1;
-                    }
-                    else{
-                        lsvChamber = lsvChmbSpc21;
-                        lsvChiller = lsvChillerSpc2;
-                    }
+                for (int idx = 0; idx < 4; idx++){
+
+                    lsvChamber = lsvChmbSpc11;
+                    if (idx == 1) lsvChamber = lsvChmbSpc12;
+                    if (idx == 2) lsvChamber = lsvChmbSpc21;
+                    if (idx == 3) lsvChamber = lsvChmbSpc22;
 
                     lsvChamber.Columns.Clear();
-                    lsvChiller.Columns.Clear();
 
                     lsvChamber.Columns.Add("No.");
                     lsvChamber.Columns.Add("온도(℃)");
@@ -3970,8 +2505,9 @@ namespace Ptnr
                     lsvChamber.Columns.Add("제어 Min");
                     lsvChamber.Columns.Add("제어 Max");
                     lsvChamber.Columns.Add("온도 Over(℃)");
+                    lsvChamber.Columns.Add("제어안정시간");
                     lsvChamber.Columns.Add("분포 Over(℃)");
-                    lsvChamber.Columns.Add("안정화시간");
+                    lsvChamber.Columns.Add("분포안정시간");
                     lsvChamber.Columns.Add("제어 Ramp");
                     lsvChamber.Columns.Add("분포도 Min");
                     lsvChamber.Columns.Add("분포도 Max");
@@ -3998,255 +2534,102 @@ namespace Ptnr
                         tw += lsvChamber.Columns[i].Width;
                     }
                     lsvChamber.Columns[lsvChamber.Columns.Count - 1].Width = w + lsvChamber.Width - tw - 5;
-
-
-                    //-----------------------------------------------------------------------------//
-                    // Chiller List view
-                    //-----------------------------------------------------------------------------//
-                    lsvChiller.Columns.Add("No.");
-                    lsvChiller.Columns.Add("온도(℃)");
-                    lsvChiller.Columns.Add("유량(lpm)");
-
-                    lsvChiller.Columns.Add("대기(분)");
-                    lsvChiller.Columns.Add("테스트(분)");
-                    lsvChiller.Columns.Add("제어 Min/Max");
-                    lsvChiller.Columns.Add("유량 Min/Max");
-                    lsvChiller.Columns.Add("제어 Ramp");
-
-                    lsvChiller.Columns.Add("온도편차(℃)");
-                    lsvChiller.Columns.Add("유량편차(lpm)");
-                    lsvChiller.Columns.Add("Ramp (℃/Min)");
-                    lsvChiller.Columns.Add("판정결과");
-
-                    w = lsvChiller.Width / lsvChiller.Columns.Count + 5;
-                    tw = 0;
-
-                    for (int i = 0; i < lsvChiller.Columns.Count; i++)
-                    {
-                        if (i == 0)
-                        {
-                            lsvChiller.Columns[i].Width = 50;
-                        }
-
-                        else
-                        {
-                            lsvChiller.Columns[i].Width = w;
-                        }
-                        tw += lsvChiller.Columns[i].Width;
-                    }
-                    lsvChiller.Columns[lsvChiller.Columns.Count - 1].Width = w + lsvChiller.Width - tw - 5;
                 }
 
                 lsvChmbSpc11.Items.Clear();
+                lsvChmbSpc12.Items.Clear();
                 lsvChmbSpc21.Items.Clear();
+                lsvChmbSpc22.Items.Clear();
 
                 for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
                 {
                     ListViewItem itm1;
                     ListViewItem itm2;
+                    ListViewItem itm3;
+                    ListViewItem itm4;
 
-                    itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "" });
-                    itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm1 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm3 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "","", "", "", "", "", "", "", "", "", "", "", "", "" });
+                    itm4 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "", "", "", "" });
 
                     lsvChmbSpc11.Items.Add(itm1);
-                    lsvChmbSpc21.Items.Add(itm2);
+                    lsvChmbSpc12.Items.Add(itm2);
+                    lsvChmbSpc21.Items.Add(itm3);
+                    lsvChmbSpc22.Items.Add(itm4);
                 }
             }
 
-            //----------------------------------------------------------------------------//
-            // Chiller
-            //----------------------------------------------------------------------------//
-            lsvChillerSpc1.Items.Clear();
-            lsvChillerSpc2.Items.Clear();
-
-            for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-            {
-                ListViewItem itm1;
-                ListViewItem itm2;
-
-                itm1 = new ListViewItem(new String[] {  String.Format("{0}",i+1), "", "", "", "", "", "", "", "","","",""});
-                itm2 = new ListViewItem(new String[] { String.Format("{0}", i + 1), "", "", "", "", "", "", "", "", "", "", "" });
-
-                lsvChillerSpc1.Items.Add(itm1);
-                lsvChillerSpc2.Items.Add(itm2);
-            }
-
             UpdateChamberTestSheetList(lsvChmbSpc11);
+            UpdateChamberTestSheetList(lsvChmbSpc12);
             UpdateChamberTestSheetList(lsvChmbSpc21);
-
-            UpdateChillerTestSheetList(lsvChillerSpc1);
-            UpdateChillerTestSheetList(lsvChillerSpc2);
+            UpdateChamberTestSheetList(lsvChmbSpc22);
         }
 
         public void UpdateTestSheet()
         {
-            // Temi
-            for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
+            for(int ch = 0; ch <4; ch++)
             {
-                specTmChamber1[i].tsp = Cfg.TmCfg.TSp[i];
-                specTmChamber1[i].hsp = Cfg.TmCfg.HSp[i];
-                specTmChamber1[i].waitTm = Cfg.TmCfg.WaitTm[i];
-                specTmChamber1[i].testTm = Cfg.TmCfg.TestTm[i];
+                // Temi
+                for (int i = 0; i < SysDefs.TEMI_TEST_CNT; i++)
+                {
+                    specTmChamber[ch][i].tsp = Cfg.TmCfg.TSp[i];
+                    specTmChamber[ch][i].hsp = Cfg.TmCfg.HSp[i];
+                    specTmChamber[ch][i].waitTm = Cfg.TmCfg.WaitTm[i];
+                    specTmChamber[ch][i].testTm = Cfg.TmCfg.TestTm[i];
 
-                specTmChamber1[i].jugTDisp = Cfg.TmCfg.TempDiff[i];
-                specTmChamber1[i].jugHDisp = Cfg.TmCfg.HumiDiff[i];
-                specTmChamber1[i].jugRamp = Cfg.TmCfg.Ramp[i];
-                specTmChamber1[i].jugUnif = Cfg.TmCfg.Uniformity[i];
-
-                specTmChamber1[i].jugTOver = Cfg.TmCfg.TOver[i];
-                specTmChamber1[i].jugHOver = Cfg.TmCfg.HOver[i];
-
-                specTmChamber1[i].bUseTDisp = Cfg.TmCfg.bUseTDiff[i];
-                specTmChamber1[i].bUseHDisp = Cfg.TmCfg.bUseHDiff[i];
-                specTmChamber1[i].bUseRamp  = Cfg.TmCfg.bUseRamp[i];
-                specTmChamber1[i].bUseUnif  = Cfg.TmCfg.bUseUnif[i];
-
-                specTmChamber1[i].bUseTOver = Cfg.TmCfg.bUseTOver[i];
-                specTmChamber1[i].bUseHOver = Cfg.TmCfg.bUseHOver[i];
-
-                specTmChamber1[i].bReport = Cfg.TmCfg.bReport[i];
-
-                specTmChamber2[i].tsp = Cfg.TmCfg.TSp[i];
-                specTmChamber2[i].hsp = Cfg.TmCfg.HSp[i];
-                specTmChamber2[i].waitTm = Cfg.TmCfg.WaitTm[i];
-                specTmChamber2[i].testTm = Cfg.TmCfg.TestTm[i];
-
-                specTmChamber2[i].jugTDisp = Cfg.TmCfg.TempDiff[i];
-                specTmChamber2[i].jugHDisp = Cfg.TmCfg.HumiDiff[i];
-                specTmChamber2[i].jugRamp = Cfg.TmCfg.Ramp[i];
-                specTmChamber2[i].jugUnif = Cfg.TmCfg.Uniformity[i];
-
-                specTmChamber2[i].jugTOver = Cfg.TmCfg.TOver[i];
-                specTmChamber2[i].jugHOver = Cfg.TmCfg.HOver[i];
-
-                specTmChamber2[i].bUseTDisp = Cfg.TmCfg.bUseTDiff[i];
-                specTmChamber2[i].bUseHDisp = Cfg.TmCfg.bUseHDiff[i];
-                specTmChamber2[i].bUseRamp  = Cfg.TmCfg.bUseRamp[i];
-                specTmChamber2[i].bUseUnif  = Cfg.TmCfg.bUseUnif[i];
-
-                specTmChamber2[i].bUseTOver = Cfg.TmCfg.bUseTOver[i];
-                specTmChamber2[i].bUseHOver = Cfg.TmCfg.bUseHOver[i];
-
-                specTmChamber2[i].bReport = Cfg.TmCfg.bReport[i];
-            }
-            
-            //Temp
-            for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
-            {
-                specTpChamber1[i].tsp = Cfg.TpCfg.TSp[i];
-                specTpChamber1[i].waitTm = Cfg.TpCfg.WaitTm[i];
-                specTpChamber1[i].testTm = Cfg.TpCfg.TestTm[i];
-                     
-                specTpChamber1[i].jugTDisp = Cfg.TpCfg.TempDiff[i];
-                specTpChamber1[i].jugRamp = Cfg.TpCfg.Ramp[i];
-                specTpChamber1[i].jugUnif = Cfg.TpCfg.Uniformity[i];
-                     
-                specTpChamber1[i].jugTOver = Cfg.TpCfg.TOver[i];
-                     
-                specTpChamber1[i].bUseTDisp = Cfg.TpCfg.bUseTDiff[i];
-                specTpChamber1[i].bUseRamp = Cfg.TpCfg.bUseRamp[i];
-                specTpChamber1[i].bUseUnif = Cfg.TpCfg.bUseUnif[i];
-                     
-                specTpChamber1[i].bUseTOver = Cfg.TpCfg.bUseTOver[i];
                     
-                specTpChamber2[i].tsp = Cfg.TpCfg.TSp[i];
-                specTpChamber2[i].waitTm = Cfg.TpCfg.WaitTm[i];
-                specTpChamber2[i].testTm = Cfg.TpCfg.TestTm[i];
-                     
-                specTpChamber2[i].jugTDisp = Cfg.TpCfg.TempDiff[i];
-                specTpChamber2[i].jugRamp = Cfg.TpCfg.Ramp[i];
-                specTpChamber2[i].jugUnif = Cfg.TpCfg.Uniformity[i];
+                    specTmChamber[ch][i].jugTDisp = Cfg.TmCfg.TempDiff[i];
+                    specTmChamber[ch][i].jugHDisp = Cfg.TmCfg.HumiDiff[i];
+                    specTmChamber[ch][i].jugRamp = Cfg.TmCfg.Ramp[i];
+                    specTmChamber[ch][i].jugUnif = Cfg.TmCfg.Uniformity[i];
 
-                specTpChamber2[i].jugTOver = Cfg.TpCfg.TOver[i];
-                     
-                specTpChamber2[i].bUseTDisp = Cfg.TpCfg.bUseTDiff[i];
-                specTpChamber2[i].bUseRamp = Cfg.TpCfg.bUseRamp[i];
-                specTpChamber2[i].bUseUnif = Cfg.TpCfg.bUseUnif[i];
-                     
-                specTpChamber2[i].bUseTOver = Cfg.TpCfg.bUseTOver[i];
-            }
+                    specTmChamber[ch][i].jugTOver = Cfg.TmCfg.TOver[i];
+                    specTmChamber[ch][i].jugHOver = Cfg.TmCfg.HOver[i];
 
-            // Temi
-            if(_eqmtType == EqmtType.Temi)
-            {
-                for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
+                    specTmChamber[ch][i].jugCtrlStableTm = Cfg.TmCfg.CtrlStblTm[i];
+
+                    specTmChamber[ch][i].bUseTDisp = Cfg.TmCfg.bUseTDiff[i];
+                    specTmChamber[ch][i].bUseHDisp = Cfg.TmCfg.bUseHDiff[i];
+                    specTmChamber[ch][i].bUseRamp = Cfg.TmCfg.bUseRamp[i];
+                    specTmChamber[ch][i].bUseUnif = Cfg.TmCfg.bUseUnif[i];
+
+                    specTmChamber[ch][i].bUseTOver = Cfg.TmCfg.bUseTOver[i];
+                    specTmChamber[ch][i].bUseHOver = Cfg.TmCfg.bUseHOver[i];
+                    specTmChamber[ch][i].bReport = Cfg.TmCfg.bReport[i];
+                }
+
+                //Temp
+                for (int i = 0; i < SysDefs.TEMP_TEST_CNT; i++)
                 {
-                    specChiller1[i].tsp = Cfg.TmChillerCfg.TSp[i];
-                    specChiller1[i].ssp = Cfg.TmChillerCfg.SSp[i];
+                    specTpChamber[ch][i].tsp = Cfg.TpCfg.TSp[i];
+                    specTpChamber[ch][i].waitTm = Cfg.TpCfg.WaitTm[i];
+                    specTpChamber[ch][i].testTm = Cfg.TpCfg.TestTm[i];
 
-                    specChiller2[i].tsp = Cfg.TmChillerCfg.TSp[i];
-                    specChiller2[i].ssp = Cfg.TmChillerCfg.SSp[i];
+                    specTpChamber[ch][i].jugTDisp = Cfg.TpCfg.TempDiff[i];
+                    specTpChamber[ch][i].jugRamp = Cfg.TpCfg.Ramp[i];
+                    specTpChamber[ch][i].jugUnif = Cfg.TpCfg.Uniformity[i];
 
-                    specChiller1[i].waitTm = Cfg.TmChillerCfg.WaitTm[i];
-                    specChiller1[i].testTm = Cfg.TmChillerCfg.TestTm[i];
+                    specTpChamber[ch][i].jugTOver = Cfg.TpCfg.TOver[i];
 
-                    specChiller2[i].waitTm = Cfg.TmChillerCfg.WaitTm[i];
-                    specChiller2[i].testTm = Cfg.TmChillerCfg.TestTm[i];
+                    specTpChamber[ch][i].jugCtrlStableTm = Cfg.TpCfg.CtrlStblTm[i];
 
-                    specChiller1[i].jugTDisp = Cfg.TmChillerCfg.TDiff[i];
-                    specChiller1[i].jugSDisp = Cfg.TmChillerCfg.SDiff[i];
-                    specChiller1[i].jugRamp = Cfg.TmChillerCfg.Ramp[i];
+                    specTpChamber[ch][i].bUseTDisp = Cfg.TpCfg.bUseTDiff[i];
+                    specTpChamber[ch][i].bUseRamp = Cfg.TpCfg.bUseRamp[i];
+                    specTpChamber[ch][i].bUseUnif = Cfg.TpCfg.bUseUnif[i];
 
-                    specChiller2[i].jugTDisp = Cfg.TmChillerCfg.TDiff[i];
-                    specChiller2[i].jugSDisp = Cfg.TmChillerCfg.SDiff[i];
-                    specChiller2[i].jugRamp = Cfg.TmChillerCfg.Ramp[i];
-
-                    specChiller1[i].bUseTDisp = Cfg.TmChillerCfg.bUseTDiff[i];
-                    specChiller1[i].bUseSDisp = Cfg.TmChillerCfg.bUseSDiff[i];
-                    specChiller1[i].bUseRamp = Cfg.TmChillerCfg.bUseRamp[i];
-
-                    specChiller2[i].bUseTDisp = Cfg.TmChillerCfg.bUseTDiff[i];
-                    specChiller2[i].bUseSDisp = Cfg.TmChillerCfg.bUseSDiff[i];
-                    specChiller2[i].bUseRamp = Cfg.TmChillerCfg.bUseRamp[i];
+                    specTpChamber[ch][i].bUseTOver = Cfg.TpCfg.bUseTOver[i];
                 }
             }
-            // Temp
-            else
-            {
-                for (int i = 0; i < SysDefs.CHILLER_TEST_CNT; i++)
-                {
-                    specChiller1[i].tsp = Cfg.TpChillerCfg.TSp[i];
-                    specChiller1[i].ssp = Cfg.TpChillerCfg.SSp[i];
-
-                    specChiller2[i].tsp = Cfg.TpChillerCfg.TSp[i];
-                    specChiller2[i].ssp = Cfg.TpChillerCfg.SSp[i];
-
-                    specChiller1[i].waitTm = Cfg.TpChillerCfg.WaitTm[i];
-                    specChiller1[i].testTm = Cfg.TpChillerCfg.TestTm[i];
-
-                    specChiller2[i].waitTm = Cfg.TpChillerCfg.WaitTm[i];
-                    specChiller2[i].testTm = Cfg.TpChillerCfg.TestTm[i];
-
-                    specChiller1[i].jugTDisp = Cfg.TpChillerCfg.TDiff[i];
-                    specChiller1[i].jugSDisp = Cfg.TpChillerCfg.SDiff[i];
-                    specChiller1[i].jugRamp = Cfg.TpChillerCfg.Ramp[i];
-
-                    specChiller2[i].jugTDisp = Cfg.TpChillerCfg.TDiff[i];
-                    specChiller2[i].jugSDisp = Cfg.TpChillerCfg.SDiff[i];
-                    specChiller2[i].jugRamp = Cfg.TpChillerCfg.Ramp[i];
-
-                    specChiller1[i].bUseTDisp = Cfg.TpChillerCfg.bUseTDiff[i];
-                    specChiller1[i].bUseSDisp = Cfg.TpChillerCfg.bUseSDiff[i];
-                    specChiller1[i].bUseRamp = Cfg.TpChillerCfg.bUseRamp[i];
-
-                    specChiller2[i].bUseTDisp = Cfg.TpChillerCfg.bUseTDiff[i];
-                    specChiller2[i].bUseSDisp = Cfg.TpChillerCfg.bUseSDiff[i];
-                    specChiller2[i].bUseRamp = Cfg.TpChillerCfg.bUseRamp[i];
-                }
-            }
-
 
             UpdateChamberTestSheetList(lsvChmbSpc11);
             UpdateChamberTestSheetList(lsvChmbSpc21);
-
-            UpdateChillerTestSheetList(lsvChillerSpc1);
-            UpdateChillerTestSheetList(lsvChillerSpc2);
         }
 
 
         private void ListView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            if (sender == lsvChmbSpc11 || sender == lsvChmbSpc21)
+            if (sender == lsvChmbSpc11 || sender == lsvChmbSpc12 || sender == lsvChmbSpc21 || sender == lsvChmbSpc22)
             {
                 if(_eqmtType == EqmtType.Temi)
                 {
@@ -4269,17 +2652,6 @@ namespace Ptnr
                     {
                         e.Graphics.FillRectangle(Brushes.LightGray, e.Bounds);
                     }
-                }
-            }
-            else if (sender == lsvChillerSpc1 || sender == lsvChillerSpc2)
-            {
-                if (e.ColumnIndex == 5 || e.ColumnIndex == 6 || e.ColumnIndex == 7)
-                {
-                    e.Graphics.FillRectangle(Brushes.LightSalmon, e.Bounds);
-                }
-                else
-                {
-                    e.Graphics.FillRectangle(Brushes.LightGray, e.Bounds);
                 }
             }
 
@@ -4307,10 +2679,10 @@ namespace Ptnr
 
             int workingIdx = 0;
 
-            if (sender == lsvChmbSpc11) workingIdx = _chamber1WorkingIdx;
-            if (sender == lsvChmbSpc21) workingIdx = _chamber2WorkingIdx;
-            if (sender == lsvChillerSpc1) workingIdx = _chiller1WorkingIdx;
-            if (sender == lsvChillerSpc2) workingIdx = _chiller2WorkingIdx;
+            if (sender == lsvChmbSpc11) workingIdx = _chamberWorkingIdx[0];
+            if (sender == lsvChmbSpc12) workingIdx = _chamberWorkingIdx[1];
+            if (sender == lsvChmbSpc21) workingIdx = _chamberWorkingIdx[2];
+            if (sender == lsvChmbSpc22) workingIdx = _chamberWorkingIdx[3];
 
             if (workingIdx == e.ItemIndex)
             {
@@ -4331,45 +2703,22 @@ namespace Ptnr
 
         private void ListView_MouseDown(object sender, MouseEventArgs e)
         {
-            bool bWork = false;
-            ref int workingIdx = ref _chamber1WorkingIdx;
-            ListViewNF lstView = new ListViewNF();
-
-            if (sender == lsvChmbSpc11)
-            {
-                bWork = _bWorkChamber1;
-                workingIdx = ref _chamber1WorkingIdx;
-                lstView = lsvChmbSpc11;
-            }
-
-            else if (sender == lsvChmbSpc21)
-            {
-                bWork = _bWorkChamber2;
-                workingIdx = ref _chamber2WorkingIdx;
-                lstView = lsvChmbSpc21;
-            }
-
-            else if (sender == lsvChillerSpc1)
-            {
-                bWork = _bWorkChiller1;
-                workingIdx = ref _chiller1WorkingIdx;
-                lstView = lsvChillerSpc1;
-            }
-
-            else if (sender == lsvChillerSpc2)
-            {
-                bWork = _bWorkChiller2;
-                workingIdx = ref _chiller2WorkingIdx;
-                lstView = lsvChillerSpc2;
-            }
-
-            if (bWork)
-            {
-                return;
-            }
-
             if (e.Button == MouseButtons.Left)
             {
+                int listIdx = 0;
+                if (sender == lsvChmbSpc11) listIdx = 0;
+                if (sender == lsvChmbSpc12) listIdx = 1;
+                if (sender == lsvChmbSpc21) listIdx = 2;
+                if (sender == lsvChmbSpc22) listIdx = 3;
+
+                ref int workingIdx = ref _chamberWorkingIdx[listIdx];
+                ListViewNF lstView = sender as ListViewNF;
+                
+                if (_bWorkChamber[listIdx])
+                {
+                    return;
+                }
+
                 ListViewItem itm = lstView.GetItemAt(e.X, e.Y);
                 if (itm != null)
                 {
@@ -4392,38 +2741,6 @@ namespace Ptnr
             }
         }
 
-        private void btnResetChamber_Click(object sender, EventArgs e)
-        {
-            int idx = _chamber1WorkingIdx;
-
-            if (_eqmtType == EqmtType.Temi)
-            {
-                specTmChamber1[idx].Reset();
-            }
-            else
-            {
-                specTpChamber1[idx].Reset();
-            }
-            UpdateChamberTestSheetList(lsvChmbSpc11);
-            UpdateChamberTestSheetList(lsvChmbSpc21);
-
-            UpdateChillerTestSheetList(lsvChillerSpc1);
-            UpdateChillerTestSheetList(lsvChillerSpc2);
-        }
-
-        private void btnResetChiller_Click(object sender, EventArgs e)
-        {
-            int idx = _chiller1WorkingIdx;
-
-            specChiller1[idx].Reset();
-
-            UpdateChamberTestSheetList(lsvChmbSpc11);
-            UpdateChamberTestSheetList(lsvChmbSpc21);
-
-            UpdateChillerTestSheetList(lsvChillerSpc1);
-            UpdateChillerTestSheetList(lsvChillerSpc2);
-        }
-
         private void btnAllStop_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("일괄 중지 하시겠습니까?",
@@ -4433,52 +2750,6 @@ namespace Ptnr
                 return;
             }
 
-            //----------------------------------------------------//
-            // Reset Room 1 Buttons.
-            //----------------------------------------------------//
-            btnStartRoom1.BackColor = Color.LightGray;
-            btnStartRoom1.ForeColor = Color.Black;
-            btnStartRoom1.Enabled = true;
-
-            btnStartChamber1.BackColor = Color.LightGray;
-            btnStartChamber1.ForeColor = Color.Black;
-            btnStartChamber1.Enabled = true;
-
-            btnStartChiller1.BackColor = Color.LightGray;
-            btnStartChiller1.ForeColor = Color.Black;
-            btnStartChiller1.Enabled = true;
-
-            btnStartSelectedChamber1.BackColor = Color.LightGray;
-            btnStartSelectedChamber1.ForeColor = Color.Black;
-            btnStartSelectedChamber1.Enabled = true;
-
-            btnStartSelectedChiller1.BackColor = Color.LightGray;
-            btnStartSelectedChiller1.ForeColor = Color.Black;
-            btnStartSelectedChamber1.Enabled = true;
-
-            //----------------------------------------------------//
-            // Reset Room 2 Buttons.
-            //----------------------------------------------------//
-            btnStartRoom2.BackColor = Color.LightGray;
-            btnStartRoom2.ForeColor = Color.Black;
-            btnStartRoom2.Enabled = true;
-
-            btnStartChamber2.BackColor = Color.LightGray;
-            btnStartChamber2.ForeColor = Color.Black;
-            btnStartChamber2.Enabled = true;
-
-            btnStartChiller2.BackColor = Color.LightGray;
-            btnStartChiller2.ForeColor = Color.Black;
-            btnStartChiller2.Enabled = true;
-
-            btnStartSelectedChamber2.BackColor = Color.LightGray;
-            btnStartSelectedChamber2.ForeColor = Color.Black;
-            btnStartSelectedChamber2.Enabled = true;
-
-            btnStartSelectedChiller2.BackColor = Color.LightGray;
-            btnStartSelectedChiller2.ForeColor = Color.Black;
-            btnStartSelectedChamber2.Enabled = true;
-
             if (Comm.IsRun)
             {
                 if (_eqmtType == EqmtType.Temi)
@@ -4486,35 +2757,45 @@ namespace Ptnr
                     //------------------------------------------------------------------//
                     // Write Temi Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER11, 101, 4);
 
                     //------------------------------------------------------------------//
                     // Write Temi Chamber #2 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 101, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER12, 101, 4);
+
+                    //------------------------------------------------------------------//
+                    // Write Temi Chamber #3 Stop
+                    //------------------------------------------------------------------//
+                    Comm.Write(SysDefs.ADDR_CHAMBER21, 101, 4);
+
+                    //------------------------------------------------------------------//
+                    // Write Temi Chamber #4 Stop
+                    //------------------------------------------------------------------//
+                    Comm.Write(SysDefs.ADDR_CHAMBER22, 101, 4);
                 }
                 else
                 {
                     //------------------------------------------------------------------//
                     // Write Temp Chamber #1 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
 
                     //------------------------------------------------------------------//
                     // Write Temp Chamber #2 Stop
                     //------------------------------------------------------------------//
-                    Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
+                    Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
+
+                    //------------------------------------------------------------------//
+                    // Write Temp Chamber #1 Stop
+                    //------------------------------------------------------------------//
+                    Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
+
+                    //------------------------------------------------------------------//
+                    // Write Temp Chamber #1 Stop
+                    //------------------------------------------------------------------//
+                    Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
                 }
-
-                //------------------------------------------------------------------//
-                // Write Chiller #1 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 102, 4);
-
-                //------------------------------------------------------------------//
-                // Write Chiller #2 Stop
-                //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER2, 102, 4);
 
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
@@ -4525,80 +2806,31 @@ namespace Ptnr
                 // Write Recorder #2 Record Stop
                 //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
-
-                //--------------------------------------------------//
-                // Subch 11 Stop(1) (유량)
-                //--------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER1, 2831, 1);
-
-                //--------------------------------------------------//
-                // Subch 11 Stop(1) (유량)
-                //--------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHILLER2, 2831, 1);
             }
         }
 
-        private void btnChamber1Hold_Click(object sender, EventArgs e)
+        private void btnChamberHold_Click(object sender, EventArgs e)
         {
-            if(_bChamber1Hold == false)
-            {
-                _bChamber1Hold = true;
-                btnChamber1Hold.BackColor = Color.Salmon;
-                btnChamber1Hold.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                _bChamber1Hold = false;
-                btnChamber1Hold.BackColor = Color.WhiteSmoke;
-                btnChamber1Hold.ForeColor = Color.Black;
-            }
-        }
+            System.Windows.Forms.Button btn = sender as System.Windows.Forms.Button;
 
-        private void btnChiller1Hold_Click(object sender, EventArgs e)
-        {
-            if (_bChiller1Hold == false)
-            {
-                _bChiller1Hold = true;
-                btnChiller1Hold.BackColor = Color.Salmon;
-                btnChiller1Hold.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                _bChiller1Hold = false;
-                btnChiller1Hold.BackColor = Color.WhiteSmoke;
-                btnChiller1Hold.ForeColor = Color.Black;
-            }
-        }
+            int chIdx = 0;
 
-        private void btnChamber2Hold_Click(object sender, EventArgs e)
-        {
-            if (_bChamber2Hold == false)
-            {
-                _bChamber2Hold = true;
-                btnChamber2Hold.BackColor = Color.Salmon;
-                btnChamber2Hold.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                _bChamber2Hold = false;
-                btnChamber2Hold.BackColor = Color.WhiteSmoke;
-                btnChamber2Hold.ForeColor = Color.Black;
-            }
-        }
+            if      (btn == btnChamber11Hold) chIdx = 0;
+            else if (btn == btnChamber12Hold) chIdx = 1;
+            else if (btn == btnChamber21Hold) chIdx = 2;
+            else if (btn == btnChamber22Hold) chIdx = 3;
 
-        private void btnChiller2Hold_Click(object sender, EventArgs e)
-        {
-            if (_bChiller2Hold == false)
+            if (_bChamberHold[chIdx] == false)
             {
-                _bChiller2Hold = true;
-                btnChiller2Hold.BackColor = Color.Salmon;
-                btnChiller2Hold.ForeColor = Color.WhiteSmoke;
+                _bChamberHold[chIdx] = true;
+                btn.BackColor = Color.Salmon;
+                btn.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                _bChiller2Hold = false;
-                btnChiller2Hold.BackColor = Color.WhiteSmoke;
-                btnChiller2Hold.ForeColor = Color.Black;
+                _bChamberHold[chIdx] = false;
+                btn.BackColor = Color.WhiteSmoke;
+                btn.ForeColor = Color.Black;
             }
         }
     }

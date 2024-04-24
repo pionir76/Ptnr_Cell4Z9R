@@ -22,27 +22,21 @@ namespace Ptnr
 
         public const int TEMI_TEST_CNT = 9;
         public const int TEMP_TEST_CNT = 5;
-        public const int CHILLER_TEST_CNT = 9;
-
-        public const int MAX_REC_CHCNT = 9;
-
-        public const int ADDR_CHAMBER1  = 1;
-        public const int ADDR_CHILLER1  = 2;
-        public const int ADDR_RECORDER1 = 3;
         
-        public const int ADDR_CHAMBER2 = 4;
-        public const int ADDR_CHILLER2 = 5;
+        public const int MAX_REC_CHCNT = 4;
+
+        public const int ADDR_CHAMBER11  = 1;
+        public const int ADDR_CHAMBER12  = 2;
+        public const int ADDR_RECORDER1  = 3;
+        
+        public const int ADDR_CHAMBER21 = 4;
+        public const int ADDR_CHAMBER22 = 5;
         public const int ADDR_RECORDER2 = 6;
 
         public const int CH1 = 0;
         public const int CH2 = 1;
         public const int CH3 = 2;
         public const int CH4 = 3;
-        public const int CH5 = 4;
-        public const int CH6 = 5;
-        public const int CH7 = 6;
-        public const int CH8 = 7;
-        public const int CH9 = 8;
 
         public static string execPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)+"\\";
         public const string CONFIG_FILE = "sys.cfg";

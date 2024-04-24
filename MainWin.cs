@@ -66,6 +66,11 @@ namespace Ptnr
             InitializeComponent();
 
             //----------------------------------------------------------------//
+            // Set Title
+            //----------------------------------------------------------------//
+            this.lblTitle.Text = _cfg.title;
+
+            //----------------------------------------------------------------//
             // Set up clock.
             //----------------------------------------------------------------//
             System.Timers.Timer clock = new System.Timers.Timer(1000);
@@ -148,6 +153,8 @@ namespace Ptnr
                 {
                     eqmt[i].UpdateTestSheet();
                 }
+
+                this.lblTitle.Text = _cfg.title;
             }
         }
 

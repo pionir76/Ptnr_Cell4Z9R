@@ -155,24 +155,22 @@ namespace Ptnr
                 }
 
                 //|========================================================================|
-                //|                               ROOM #1                                  |
                 //|========================================================================|
                 //|                       |                        |                       |
-                //|  Chamber #1 (Addr1)   |   Chiller #1 (Addr2)   |   SDR100 #1 (Addr3)   |
+                //|  Chamber #1 (Addr1)   |   Chamber #1 (Addr2)   |   SDR100 #1 (Addr3)   |
                 //|                       |                        |                       |
                 //|========================================================================|
-                //|                               ROOM #2                                  |
                 //|========================================================================|
                 //|                       |                        |                       |
-                //|  Chamber #2 (Addr4)   |   Chiller #2 (Addr5)   |   SDR100 #2 (Addr6)   |
+                //|  Chamber #2 (Addr4)   |   Chamber #2 (Addr5)   |   SDR100 #2 (Addr6)   |
                 //|                       |                        |                       |
                 //|========================================================================|
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER1);
-                UpdateCtrlSts(SysDefs.ADDR_CHILLER1);
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER11);
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER12);
                 UpdateCtrlSts(SysDefs.ADDR_RECORDER1);
 
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER2);
-                UpdateCtrlSts(SysDefs.ADDR_CHILLER2);
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER21);
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER22);
                 UpdateCtrlSts(SysDefs.ADDR_RECORDER2);
 
                 Thread.Sleep(500);
@@ -194,19 +192,14 @@ namespace Ptnr
             // - TEMI(TPV:1, TSP:2, HPV:5, HSP:6, NOWSTS:10)
             // - TEMP(PV:1, SP:3, NOWSTS:10)
             //--------------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER1 || addr == SysDefs.ADDR_CHAMBER2)
+            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12 || 
+                addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
             {
-                if (addr == SysDefs.ADDR_CHAMBER1) cmd = string.Format("01RRD,06,0001,0002,0003,0005,0006,0010");
-                if (addr == SysDefs.ADDR_CHAMBER2) cmd = string.Format("04RRD,06,0001,0002,0003,0005,0006,0010");
-            }
+                if (addr == SysDefs.ADDR_CHAMBER11) cmd = string.Format("01RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER12) cmd = string.Format("02RRD,06,0001,0002,0003,0005,0006,0010");
 
-            //--------------------------------------------------------------------------//
-            // Read Chiller#1 Status (NPV, NSP, NOW_STS, SUBCH11 PV)
-            //--------------------------------------------------------------------------//
-            else if (addr == SysDefs.ADDR_CHILLER1 || addr == SysDefs.ADDR_CHILLER2)
-            {
-                if (addr == SysDefs.ADDR_CHILLER1) cmd = string.Format("02RRD,04,0001,0003,0010,3111");
-                if (addr == SysDefs.ADDR_CHILLER2) cmd = string.Format("05RRD,04,0001,0003,0010,3111");
+                if (addr == SysDefs.ADDR_CHAMBER21) cmd = string.Format("04RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER22) cmd = string.Format("05RRD,06,0001,0002,0003,0005,0006,0010");
             }
 
             //--------------------------------------------------------------------------//

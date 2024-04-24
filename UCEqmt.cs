@@ -66,11 +66,12 @@ namespace Ptnr
             }
         }
 
+        // not use...
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (Eqmt != null)
             {
-                Eqmt.StartTest();
+                //Eqmt.StartTest();
             }
         }
 
