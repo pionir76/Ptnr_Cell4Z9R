@@ -46,7 +46,8 @@ namespace Ptnr
 
         public DateTime workStartTm;
         public DateTime workEndTm;
-        
+        public DateTime pvPassingTm;
+
         public WorkingSts workingSts;
         public WorkingRes result;
 

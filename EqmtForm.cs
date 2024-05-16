@@ -1110,14 +1110,15 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Success check : Temi Control stable time
                 //------------------------------------------------------------------//
-                if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
+                if (spcChamber.jugCtrlStableTm > 0)
                 {
-                    if(spcChamber.jugCtrlStableTm > 0)
-                    { 
+                    if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
+                    {
                         spcChamber.result = WorkingRes.Fail;
                     }
                 }
 
+                /* Not Used
                 if (spcChamber.resStableTm > (short)(spcChamber.waitTm)){
 
                     if(spcChamber.waitTm > 0)
@@ -1125,6 +1126,7 @@ namespace Ptnr
                         spcChamber.result = WorkingRes.Fail;
                     }
                 }
+                */
                 
                 spcChamber.workEndTm = DateTime.Now;
                 GenReport();
@@ -1217,14 +1219,15 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Success check : Temp Control stable time
                 //------------------------------------------------------------------//
-                if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
+                if (spcChamber.jugCtrlStableTm > 0)
                 {
-                    if (spcChamber.jugCtrlStableTm > 0)
+                    if (spcChamber.resCtrlStableTm > (short)(spcChamber.jugCtrlStableTm))
                     {
                         spcChamber.result = WorkingRes.Fail;
                     }
                 }
 
+                /* Not Used.
                 if (spcChamber.resStableTm > (short)(spcChamber.waitTm))
                 {
 
@@ -1233,6 +1236,7 @@ namespace Ptnr
                         spcChamber.result = WorkingRes.Fail;
                     }
                 }
+                */
 
                 spcChamber.workEndTm = DateTime.Now;
                 GenReport();
@@ -1374,7 +1378,8 @@ namespace Ptnr
             {
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
-                
+                spc.pvPassingTm = DateTime.MinValue;
+
                 return;
             }
 
@@ -1414,6 +1419,12 @@ namespace Ptnr
 
             if (spc.tempSlop == Slop.Up)
             {
+                // To check control stable time
+                if (tpv > spc.tsp && spc.pvPassingTm == DateTime.MinValue)
+                {
+                    spc.pvPassingTm = DateTime.Now;
+                }
+
                 if (tpv >= spc.resTOver) spc.resTOver = tpv;
 
                 for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
@@ -1429,6 +1440,12 @@ namespace Ptnr
             }
             else
             {
+                // To check control stable time
+                if (tpv < spc.tsp && spc.pvPassingTm == DateTime.MinValue)
+                {
+                    spc.pvPassingTm = DateTime.Now;
+                }
+
                 if (tpv <= spc.resTOver) spc.resTOver = tpv;
 
                 for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
@@ -1459,43 +1476,58 @@ namespace Ptnr
                 {
                     spc.workingSts = WorkingSts.Testing;
                     spc.workStartTm = DateTime.Now;
+
                     spc.resStableTm = (short)spc.waitTm;
+                    spc.resCtrlStableTm = (short)spc.waitTm;
                 }
             }
 
             else
             {
                 //--------------------------------------------------------------------------//
-                // Get Ctrl Stable time.
+                // Check Control Stable Time
                 //--------------------------------------------------------------------------//
-                if (tpv == spc.tsp && spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
+                if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
                 {
-                    spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
-                }
-                
-                //--------------------------------------------------------------------------//
-                // Get Stable time.
-                //--------------------------------------------------------------------------//
-                int hlmt = (spc.tsp + spc.jugUnif);
-                int llmt = (spc.tsp - spc.jugUnif);
-
-                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
-                {
-                    short val = _recorder[ch].ch[ofs];
-
-                    if (val > hlmt || val < llmt)
+                    if (tpv == spc.tsp && spc.pvPassingTm != DateTime.MinValue)
                     {
-                        if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTm)
-                        {
-                            spc.resStableTm = (short)(spc.waitTm);
-                            spc.workingSts = WorkingSts.Testing;
-                            spc.workStartTm = DateTime.Now;
-                        }
-                        return;
+                        spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.pvPassingTm).TotalMinutes + 1);
                     }
                 }
 
-                spc.resStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+                //--------------------------------------------------------------------------//
+                // Get Stable time.
+                //--------------------------------------------------------------------------//
+                if (spc.resStableTm == SysDefs.NOT_DEFVAL)
+                {
+                    int hlmt = (spc.tsp + spc.jugUnif);
+                    int llmt = (spc.tsp - spc.jugUnif);
+
+                    for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
+                    {
+                        short val = _recorder[ch].ch[ofs];
+                        if (val > hlmt || val < llmt)
+                        {
+                            goto CheckTmOut;
+                        }
+                    }
+                    spc.resStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+                }
+
+            CheckTmOut:
+                if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL || spc.resStableTm == SysDefs.NOT_DEFVAL)
+                {
+                    if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTm)
+                    {
+                        if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL) spc.resCtrlStableTm = (short)(spc.waitTm);
+                        if (spc.resStableTm == SysDefs.NOT_DEFVAL) spc.resStableTm = (short)(spc.waitTm);
+
+                        spc.workingSts = WorkingSts.Testing;
+                        spc.workStartTm = DateTime.Now;
+                    }
+                    return;
+                }
+
                 spc.workingSts = WorkingSts.Testing;
                 spc.workStartTm = DateTime.Now;
             }
@@ -1700,7 +1732,8 @@ namespace Ptnr
 
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
-                
+                spc.pvPassingTm = DateTime.MinValue;
+
                 return;
             }
 
@@ -1731,6 +1764,12 @@ namespace Ptnr
 
             if (spc.tempSlop == Slop.Up)
             {
+                // To check control stable time
+                if (tpv > spc.tsp && spc.pvPassingTm == DateTime.MinValue)
+                {
+                    spc.pvPassingTm = DateTime.Now;
+                }
+
                 if (tpv >= spc.resTOver) spc.resTOver = tpv;
 
                 for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
@@ -1745,6 +1784,12 @@ namespace Ptnr
             }
             else
             {
+                // To check control stable time
+                if (tpv < spc.tsp && spc.pvPassingTm == DateTime.MinValue)
+                {
+                    spc.pvPassingTm = DateTime.Now;
+                }
+
                 if (tpv <= spc.resTOver) spc.resTOver = tpv;
 
                 for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
@@ -1759,37 +1804,47 @@ namespace Ptnr
             }
 
             //--------------------------------------------------------------------------//
-            // Get Ctrl Stable time.
+            // Check Control Stable Time
             //--------------------------------------------------------------------------//
-            if (tpv == spc.tsp && spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
+            if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL)
             {
-                spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+                if (tpv == spc.tsp && spc.pvPassingTm != DateTime.MinValue)
+                {
+                    spc.resCtrlStableTm = (short)(DateTime.Now.Subtract(spc.pvPassingTm).TotalMinutes + 1);
+                }
             }
 
             //--------------------------------------------------------------------------//
             // Get Stable time.
             //--------------------------------------------------------------------------//
-            int hlmt = (spc.tsp + spc.jugUnif);
-            int llmt = (spc.tsp - spc.jugUnif);
-
-            for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
+            if (spc.resStableTm == SysDefs.NOT_DEFVAL)
             {
-                short val = _recorder[ch].ch[ofs];
+                int hlmt = (spc.tsp + spc.jugUnif);
+                int llmt = (spc.tsp - spc.jugUnif);
 
-                if (val > hlmt || val < llmt)
+                for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
-                    if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTm)
+                    short val = _recorder[ch].ch[ofs];
+                    if (val <= hlmt && val >= llmt)
                     {
-                        spc.resStableTm = (short)(spc.waitTm + 1);
-                        //spc.workingSts = WorkingSts.End;
-                        spc.workingSts = WorkingSts.Testing;
-                        spc.workStartTm = DateTime.Now;
+                        spc.resStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
                     }
-                    return;
                 }
             }
 
-            spc.resStableTm = (short)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes + 1);
+            if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL || spc.resStableTm == SysDefs.NOT_DEFVAL)
+            {
+                if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= spc.waitTm)
+                {
+                    if (spc.resCtrlStableTm == SysDefs.NOT_DEFVAL) spc.resCtrlStableTm = (short)(spc.waitTm);
+                    if (spc.resStableTm == SysDefs.NOT_DEFVAL) spc.resStableTm = (short)(spc.waitTm);
+
+                    spc.workingSts = WorkingSts.Testing;
+                    spc.workStartTm = DateTime.Now;
+                }
+                return;
+            }
+
             spc.workingSts = WorkingSts.Testing;
             spc.workStartTm = DateTime.Now;
         }
@@ -1875,15 +1930,9 @@ namespace Ptnr
                 spc.workingSts = WorkingSts.End;
             }
         }
-        1
+        
         public void onUpdateCtrlSts(int addr, string strSts)
         {
-            //--------------------------------------------------------------------------//
-            // To Test..
-            //--------------------------------------------------------------------------//
-            //return;
-            //--------------------------------------------------------------------------//
-
             int ch = 0;
 
             if (addr == SysDefs.ADDR_CHAMBER11) ch = 0;
