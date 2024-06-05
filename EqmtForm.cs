@@ -1649,7 +1649,7 @@ namespace Ptnr
 
             if (tpv < spc.tsp) spc.tempSlop = Slop.Up;
             else               spc.tempSlop = Slop.Dn;
-
+               
             // Write Target Temp
             Comm.Write(addr, 104, spc.tsp);
 
