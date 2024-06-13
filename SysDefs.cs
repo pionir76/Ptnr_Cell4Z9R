@@ -19,9 +19,7 @@ namespace Ptnr
         public const char STX = (char)0x02;
         public const char CR = (char)0x0d;
         public const char LF = (char)0x0a;
-
-        public const int TEMI_TEST_CNT = 9;
-        public const int TEMP_TEST_CNT = 5;
+        public const int TEMP_TEST_CNT = 9;
         
         public const int MAX_REC_CHCNT = 4;
 

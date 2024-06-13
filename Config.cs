@@ -44,62 +44,12 @@ namespace Ptnr
         }
     }
 
-    public class TemiConfig
-    {
-        public short[] TSp { get; set; }
-        public short[] HSp { get; set; }
-        public int[] WaitTm { get; set; }
-        public int[] TestTm { get; set; }
-        public int[] CtrlStblTm { get; set; }
-
-        public short[] TempDiff { get; set; }
-        public short[] HumiDiff { get; set; }
-        public short[] Ramp { get; set; }
-        public short[] Uniformity { get; set; }
-        public short[] TOver { get; set; }
-        public short[] HOver { get; set; }
-
-        public bool[] bUseTDiff { get; set; }
-        public bool[] bUseHDiff { get; set; }
-        public bool[] bUseRamp { get; set; }
-        public bool[] bUseUnif { get; set; }
-        public bool[] bReport { get; set; }
-        public bool[] bUseTOver { get; set; }
-        public bool[] bUseHOver { get; set; }
-
-        public TemiConfig()
-        {
-            TSp = new short[SysDefs.TEMI_TEST_CNT];
-            HSp = new short[SysDefs.TEMI_TEST_CNT];
-            WaitTm = new int[SysDefs.TEMI_TEST_CNT];
-            TestTm = new int[SysDefs.TEMI_TEST_CNT];
-            CtrlStblTm = new int[SysDefs.TEMI_TEST_CNT];
-
-            TempDiff = new short[SysDefs.TEMI_TEST_CNT];
-            HumiDiff = new short[SysDefs.TEMI_TEST_CNT];
-            Ramp = new short[SysDefs.TEMI_TEST_CNT];
-            Uniformity = new short[SysDefs.TEMI_TEST_CNT];
-            TOver = new short[SysDefs.TEMI_TEST_CNT];
-            HOver = new short[SysDefs.TEMI_TEST_CNT];
-
-            bUseTDiff = new bool[SysDefs.TEMI_TEST_CNT];
-            bUseHDiff = new bool[SysDefs.TEMI_TEST_CNT];
-            bUseRamp = new bool[SysDefs.TEMI_TEST_CNT];
-            bUseUnif = new bool[SysDefs.TEMI_TEST_CNT];
-
-            bUseTOver = new bool[SysDefs.TEMI_TEST_CNT];
-            bUseHOver = new bool[SysDefs.TEMI_TEST_CNT];
-
-            bReport = new bool[SysDefs.TEMI_TEST_CNT];
-        }
-    }
-
     public class TempConfig
     {
         public short[] TSp { get; set; }
         public int[] WaitTm { get; set; }
         public int[] TestTm { get; set; }
-        public int[] CtrlStblTm { get; set; }
+        public int[] StblTm { get; set; }
 
         public short[] TempDiff { get; set; }
         public short[] Ramp { get; set; }
@@ -110,13 +60,14 @@ namespace Ptnr
         public bool[] bUseRamp { get; set; }
         public bool[] bUseUnif { get; set; }
         public bool[] bUseTOver { get; set; }
+        public bool[] bUseStableTm { get; set; }
 
         public TempConfig()
         {
             TSp = new short[SysDefs.TEMP_TEST_CNT];
             WaitTm = new int[SysDefs.TEMP_TEST_CNT];
             TestTm = new int[SysDefs.TEMP_TEST_CNT];
-            CtrlStblTm = new int[SysDefs.TEMP_TEST_CNT];
+            StblTm = new int[SysDefs.TEMP_TEST_CNT];
 
             TempDiff = new short[SysDefs.TEMP_TEST_CNT];
             Ramp = new short[SysDefs.TEMP_TEST_CNT];
@@ -128,13 +79,13 @@ namespace Ptnr
             bUseUnif = new bool[SysDefs.TEMP_TEST_CNT];
 
             bUseTOver = new bool[SysDefs.TEMP_TEST_CNT];
+            bUseStableTm = new bool[SysDefs.TEMP_TEST_CNT];
         }
     }
 
 
     public class Config
     {
-        public TemiConfig TmCfg {  get; set; }
         public TempConfig TpCfg { get; set; }
         public CommConfig CommCfg { get; set; }
         public EqmtConfig[] EqmtCfg { get; set; }
@@ -153,7 +104,6 @@ namespace Ptnr
             new EqmtConfig(),
             new EqmtConfig(), };
 
-            TmCfg = new TemiConfig();
             TpCfg = new TempConfig();
             CommCfg = new CommConfig();
         }

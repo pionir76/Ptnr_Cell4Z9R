@@ -65,7 +65,7 @@
             // 
             // pnlTitle
             // 
-            this.pnlTitle.BackColor = System.Drawing.Color.IndianRed;
+            this.pnlTitle.BackColor = System.Drawing.Color.YellowGreen;
             this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.Controls.Add(this.lblClock);
             this.pnlTitle.Controls.Add(this.btnSetup);

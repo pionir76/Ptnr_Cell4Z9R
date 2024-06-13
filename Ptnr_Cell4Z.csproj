@@ -92,7 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChamberSts.cs" />
-    <Compile Include="ChillerSts.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EqmtForm.cs">
       <SubType>Form</SubType>

@@ -17,7 +17,6 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 
 using static Ptnr.TSpec;
-using static Ptnr.TSpecTmChamber;
 using static Ptnr.TSpecTpChamber;
 
 namespace Ptnr
@@ -37,6 +36,8 @@ namespace Ptnr
             // Config Load
             //----------------------------------------------------------------//
             _cfg = new Config();
+
+            //SaveConfigFile(this, EventArgs.Empty);
             LoadConfigFile();
 
             //----------------------------------------------------------------//

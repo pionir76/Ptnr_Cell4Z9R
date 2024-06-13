@@ -10,8 +10,6 @@ namespace Ptnr
     {
         public short tpv;
         public short tsp;
-        public short hpv;
-        public short hsp;
         public short sts;
 
         public bool bOnLine;
@@ -20,8 +18,6 @@ namespace Ptnr
         {
             tpv = 0;
             tsp = 0;
-            hpv = 0;
-            hsp = 0;
             sts = 0;
             bOnLine = false;
         }

@@ -21,7 +21,6 @@ namespace Ptnr
         {
             InitializeComponent();
 
-            this.cmbType.Items.Add("항온항습기");
             this.cmbType.Items.Add("항온기");
             this.cmbType.SelectedIndex = 0;
 
@@ -89,15 +88,8 @@ namespace Ptnr
             {
                 return;
             }
-            
-            if (this.cmbType.SelectedIndex == 0)
-            {
-                Eqmt.SetType(EqmtType.Temi);
-            }
-            else
-            {
-                Eqmt.SetType(EqmtType.Temp);
-            }
+
+            Eqmt.SetType();
         }
     }
 }
