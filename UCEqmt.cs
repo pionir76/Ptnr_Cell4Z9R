@@ -88,8 +88,7 @@ namespace Ptnr
             {
                 return;
             }
-
-            Eqmt.SetType();
+            //Eqmt.SetType();
         }
     }
 }

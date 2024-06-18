@@ -949,6 +949,8 @@ namespace Ptnr
                 TimeSpan span = DateTime.Now.Subtract(spc.workStartTm);
                 spc.resCtrRamp = (short)(Math.Abs(spc.tsp - spc.startPv) / (span.TotalMinutes + 1));
 
+                Console.WriteLine(">> Touch PV : "+span.TotalMinutes.ToString() +" / "+ (Math.Abs(spc.tsp - spc.startPv)).ToString());
+
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
                 spc.pvPassingTm = DateTime.MinValue;
@@ -1063,7 +1065,7 @@ namespace Ptnr
 
             if (_bChamberStep[ch] == true)
             {
-                testTm = 5;
+                testTm = 10;
                 waitTm = 0;
             }
 
@@ -1092,7 +1094,7 @@ namespace Ptnr
             for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
             {
                 short val = _recorder[ch].ch[ofs];
-                spc.AddRecData(ch, val);
+                spc.AddRecData(ofs, val);
             }
 
             //--------------------------------------------------------------------------//
@@ -1102,10 +1104,13 @@ namespace Ptnr
             if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= testTm)
             {
                 short[] avg = new short[SysDefs.MAX_REC_CHCNT];
+
                 for (int ofs = 0; ofs < SysDefs.MAX_REC_CHCNT; ofs++)
                 {
                     avg[ofs] = 0;
-                    short sum = 0;
+                    int sum = 0;
+
+                    Console.WriteLine(">> Recorder count: "+ spc.resRec[ofs].Count);
 
                     for (int i = 0; i < spc.resRec[ofs].Count; i++)
                     {
@@ -1218,13 +1223,14 @@ namespace Ptnr
             // - TEMI(TPV:1, TSP:2, HPV:5, HSP:6, NOWSTS:10)
             // - TEMP(PV:1, SP:3, NOWSTS:10)
             //--------------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12)
+            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12||
+                addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
             {
                 _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
             }
-            
+
             //--------------------------------------------------------------------------//
             // Read Recorder#1 Status (NPV1~NPV9)
             //--------------------------------------------------------------------------//
@@ -1791,6 +1797,9 @@ namespace Ptnr
                     spc.resCtrTMin = SysDefs.NOT_DEFVAL;
                     spc.resCtrTMax = SysDefs.NOT_DEFVAL;
 
+                    spc.resUnifMin = SysDefs.NOT_DEFVAL;
+                    spc.resUnifMax = SysDefs.NOT_DEFVAL;
+
                     spc.resRec[SysDefs.CH1].Clear();
                     spc.resRec[SysDefs.CH2].Clear();
                     spc.resRec[SysDefs.CH3].Clear();
@@ -1811,28 +1820,44 @@ namespace Ptnr
 
             if (_bChamberStep[chIdx] == false)
             {
+                if (MessageBox.Show("Step 동작을 설정 하시겠습니까?",
+                    "Step 설정?",
+                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    return;
+                }
                 _bChamberStep[chIdx] = true;
                 btn.BackColor = Color.Salmon;
                 btn.ForeColor = Color.WhiteSmoke;
             }
             else
             {
+                if (MessageBox.Show("Step 동작을 해제 하시겠습니까?",
+                    "Step 해제?",
+                    MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    return;
+                }
+
                 _bChamberStep[chIdx] = false;
                 btn.BackColor = Color.WhiteSmoke;
                 btn.ForeColor = Color.Black;
+            }
 
-                TSpecTpChamber spc = specTpChamber[chIdx][_chamberWorkingIdx[chIdx]];
-                if(spc.workingSts == WorkingSts.Testing)
-                {
-                    spc.workStartTm = DateTime.Now;
-                    spc.resCtrTMin = SysDefs.NOT_DEFVAL;
-                    spc.resCtrTMax = SysDefs.NOT_DEFVAL;
+            TSpecTpChamber spc = specTpChamber[chIdx][_chamberWorkingIdx[chIdx]];
+            if (spc.workingSts == WorkingSts.Testing)
+            {
+                spc.workStartTm = DateTime.Now;
+                spc.resCtrTMin = SysDefs.NOT_DEFVAL;
+                spc.resCtrTMax = SysDefs.NOT_DEFVAL;
 
-                    spc.resRec[SysDefs.CH1].Clear();
-                    spc.resRec[SysDefs.CH2].Clear();
-                    spc.resRec[SysDefs.CH3].Clear();
-                    spc.resRec[SysDefs.CH4].Clear();
-                }
+                spc.resUnifMin = SysDefs.NOT_DEFVAL;
+                spc.resUnifMax = SysDefs.NOT_DEFVAL;
+
+                spc.resRec[SysDefs.CH1].Clear();
+                spc.resRec[SysDefs.CH2].Clear();
+                spc.resRec[SysDefs.CH3].Clear();
+                spc.resRec[SysDefs.CH4].Clear();
             }
         }
     }
