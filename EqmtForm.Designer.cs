@@ -31,13 +31,35 @@
             this.components = new System.ComponentModel.Container();
             this.lblStsRoom4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lsvChmbSpc22 = new Ptnr.ListViewNF();
+            this.columnHeader113 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader114 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader115 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader116 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader117 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader118 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader119 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader120 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader121 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader122 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader123 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader124 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader125 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader126 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader127 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader128 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblRec4Ch5 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblRecorder22Tlt = new System.Windows.Forms.Label();
             this.lblRecorder22Sts = new System.Windows.Forms.Label();
-            this.lblRec22Ch4 = new System.Windows.Forms.Label();
-            this.lblRec22Ch3 = new System.Windows.Forms.Label();
-            this.lblRec22Ch2 = new System.Windows.Forms.Label();
-            this.lblRec22Ch1 = new System.Windows.Forms.Label();
+            this.lblRec4Ch1 = new System.Windows.Forms.Label();
+            this.lblRec4Ch7 = new System.Windows.Forms.Label();
+            this.lblRec4Ch9 = new System.Windows.Forms.Label();
+            this.lblRec4Ch3 = new System.Windows.Forms.Label();
+            this.lblRec4Ch6 = new System.Windows.Forms.Label();
+            this.lblRec4Ch8 = new System.Windows.Forms.Label();
+            this.lblRec4Ch2 = new System.Windows.Forms.Label();
+            this.lblRec4Ch4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblChamb22Tlt = new System.Windows.Forms.Label();
             this.lblChamb22Sts = new System.Windows.Forms.Label();
@@ -50,14 +72,10 @@
             this.lblChamb21Sts = new System.Windows.Forms.Label();
             this.btnStartSelectedChamber22 = new System.Windows.Forms.Button();
             this.btnStartChamber21 = new System.Windows.Forms.Button();
-            this.lblRec21Ch1 = new System.Windows.Forms.Label();
             this.btnChamber22Hold = new System.Windows.Forms.Button();
             this.btnStartSelectedChamber21 = new System.Windows.Forms.Button();
-            this.lblRec21Ch2 = new System.Windows.Forms.Label();
             this.btnChamber21Hold = new System.Windows.Forms.Button();
-            this.lblRec21Ch3 = new System.Windows.Forms.Label();
             this.lblChamber22TPv = new System.Windows.Forms.Label();
-            this.lblRec21Ch4 = new System.Windows.Forms.Label();
             this.lblChamber21TPv = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,10 +93,10 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.serialPort = new System.IO.Ports.SerialPort(this.components);
             this.lblStsRoom1 = new System.Windows.Forms.Label();
-            this.lblRec11Ch1 = new System.Windows.Forms.Label();
-            this.lblRec11Ch2 = new System.Windows.Forms.Label();
-            this.lblRec11Ch3 = new System.Windows.Forms.Label();
-            this.lblRec11Ch4 = new System.Windows.Forms.Label();
+            this.lblRec1Ch1 = new System.Windows.Forms.Label();
+            this.lblRec1Ch2 = new System.Windows.Forms.Label();
+            this.lblRec1Ch3 = new System.Windows.Forms.Label();
+            this.lblRec1Ch4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblChamb12Tlt = new System.Windows.Forms.Label();
             this.lblChamb12Sts = new System.Windows.Forms.Label();
@@ -91,10 +109,6 @@
             this.lblRecorder12Tlt = new System.Windows.Forms.Label();
             this.lblRecorder12Sts = new System.Windows.Forms.Label();
             this.lblChamber12TPv = new System.Windows.Forms.Label();
-            this.lblRec12Ch1 = new System.Windows.Forms.Label();
-            this.lblRec12Ch2 = new System.Windows.Forms.Label();
-            this.lblRec12Ch4 = new System.Windows.Forms.Label();
-            this.lblRec12Ch3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtApprov = new System.Windows.Forms.TextBox();
@@ -172,62 +186,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAllStop = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.lblStsRoom2 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.lblStsRoom3 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.lsvChmbSpc21 = new Ptnr.ListViewNF();
-            this.columnHeader97 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader98 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader99 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader100 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader101 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader102 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader103 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader104 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader105 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader106 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader107 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader108 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader109 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader110 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader111 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader112 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lsvChmbSpc22 = new Ptnr.ListViewNF();
-            this.columnHeader113 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader114 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader115 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader116 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader117 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader118 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader119 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader120 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader121 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader122 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader123 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader124 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader125 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader126 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader127 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader128 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lsvChmbSpc12 = new Ptnr.ListViewNF();
-            this.columnHeader81 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader82 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader83 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader84 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader85 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader86 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader87 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader88 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader89 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader90 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader91 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader92 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader93 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader94 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader95 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader96 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lsvChmbSpc11 = new Ptnr.ListViewNF();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -245,6 +203,68 @@
             this.columnHeader78 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader79 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader80 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblRec1Ch5 = new System.Windows.Forms.Label();
+            this.lblRec1Ch6 = new System.Windows.Forms.Label();
+            this.lblRec1Ch7 = new System.Windows.Forms.Label();
+            this.lblRec1Ch9 = new System.Windows.Forms.Label();
+            this.lblRec1Ch8 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lblStsRoom2 = new System.Windows.Forms.Label();
+            this.lsvChmbSpc12 = new Ptnr.ListViewNF();
+            this.columnHeader81 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader82 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader83 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader84 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader85 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader86 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader87 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader88 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader89 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader90 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader91 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader92 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader93 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader94 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader95 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader96 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblRec2Ch5 = new System.Windows.Forms.Label();
+            this.lblRec2Ch1 = new System.Windows.Forms.Label();
+            this.lblRec2Ch6 = new System.Windows.Forms.Label();
+            this.lblRec2Ch4 = new System.Windows.Forms.Label();
+            this.lblRec2Ch3 = new System.Windows.Forms.Label();
+            this.lblRec2Ch7 = new System.Windows.Forms.Label();
+            this.lblRec2Ch8 = new System.Windows.Forms.Label();
+            this.lblRec2Ch2 = new System.Windows.Forms.Label();
+            this.lblRec2Ch9 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.lblStsRoom3 = new System.Windows.Forms.Label();
+            this.lsvChmbSpc21 = new Ptnr.ListViewNF();
+            this.columnHeader97 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader98 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader99 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader100 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader101 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader102 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader103 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader104 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader105 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader106 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader107 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader108 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader109 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader110 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader111 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader112 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lblRec3Ch5 = new System.Windows.Forms.Label();
+            this.lblRec3Ch1 = new System.Windows.Forms.Label();
+            this.lblRec3Ch9 = new System.Windows.Forms.Label();
+            this.lblRec3Ch6 = new System.Windows.Forms.Label();
+            this.lblRec3Ch2 = new System.Windows.Forms.Label();
+            this.lblRec3Ch4 = new System.Windows.Forms.Label();
+            this.lblRec3Ch8 = new System.Windows.Forms.Label();
+            this.lblRec3Ch3 = new System.Windows.Forms.Label();
+            this.lblRec3Ch7 = new System.Windows.Forms.Label();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.btnChamber11Step = new System.Windows.Forms.Button();
             this.btnChamber21Step = new System.Windows.Forms.Button();
             this.btnChamber12Step = new System.Windows.Forms.Button();
@@ -281,16 +301,83 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.lsvChmbSpc22);
             this.panel7.Controls.Add(this.lblStsRoom4);
+            this.panel7.Controls.Add(this.lblRec4Ch5);
             this.panel7.Controls.Add(this.panel9);
-            this.panel7.Controls.Add(this.lblRec22Ch4);
-            this.panel7.Controls.Add(this.lblRec22Ch3);
-            this.panel7.Controls.Add(this.lblRec22Ch2);
-            this.panel7.Controls.Add(this.lblRec22Ch1);
+            this.panel7.Controls.Add(this.lblRec4Ch1);
+            this.panel7.Controls.Add(this.lblRec4Ch7);
+            this.panel7.Controls.Add(this.lblRec4Ch9);
+            this.panel7.Controls.Add(this.lblRec4Ch3);
+            this.panel7.Controls.Add(this.lblRec4Ch6);
+            this.panel7.Controls.Add(this.lblRec4Ch8);
+            this.panel7.Controls.Add(this.lblRec4Ch2);
+            this.panel7.Controls.Add(this.lblRec4Ch4);
             this.panel7.Location = new System.Drawing.Point(10, 739);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1571, 217);
             this.panel7.TabIndex = 27;
+            // 
+            // lsvChmbSpc22
+            // 
+            this.lsvChmbSpc22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc22.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader113,
+            this.columnHeader114,
+            this.columnHeader115,
+            this.columnHeader116,
+            this.columnHeader117,
+            this.columnHeader118,
+            this.columnHeader119,
+            this.columnHeader120,
+            this.columnHeader121,
+            this.columnHeader122,
+            this.columnHeader123,
+            this.columnHeader124,
+            this.columnHeader125,
+            this.columnHeader126,
+            this.columnHeader127,
+            this.columnHeader128});
+            this.lsvChmbSpc22.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc22.FullRowSelect = true;
+            this.lsvChmbSpc22.GridLines = true;
+            this.lsvChmbSpc22.HideSelection = false;
+            this.lsvChmbSpc22.Location = new System.Drawing.Point(45, 6);
+            this.lsvChmbSpc22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc22.Name = "lsvChmbSpc22";
+            this.lsvChmbSpc22.OwnerDraw = true;
+            this.lsvChmbSpc22.Scrollable = false;
+            this.lsvChmbSpc22.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc22.TabIndex = 14;
+            this.lsvChmbSpc22.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc22.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc22.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc22.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader113
+            // 
+            this.columnHeader113.Text = "REG.";
+            this.columnHeader113.Width = 70;
+            // 
+            // columnHeader114
+            // 
+            this.columnHeader114.Text = "VALUE";
+            this.columnHeader114.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader114.Width = 90;
+            // 
+            // lblRec4Ch5
+            // 
+            this.lblRec4Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch5.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch5.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch5.Location = new System.Drawing.Point(1434, 115);
+            this.lblRec4Ch5.Name = "lblRec4Ch5";
+            this.lblRec4Ch5.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch5.TabIndex = 11;
+            this.lblRec4Ch5.Text = "PV :";
+            this.lblRec4Ch5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel9
             // 
@@ -328,61 +415,117 @@
             this.lblRecorder22Sts.Text = "ONLINE";
             this.lblRecorder22Sts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec22Ch4
+            // lblRec4Ch1
             // 
-            this.lblRec22Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec22Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec22Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec22Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec22Ch4.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec22Ch4.Location = new System.Drawing.Point(1432, 158);
-            this.lblRec22Ch4.Name = "lblRec22Ch4";
-            this.lblRec22Ch4.Size = new System.Drawing.Size(127, 27);
-            this.lblRec22Ch4.TabIndex = 11;
-            this.lblRec22Ch4.Text = "PV :";
-            this.lblRec22Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec4Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch1.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch1.Location = new System.Drawing.Point(1434, 35);
+            this.lblRec4Ch1.Name = "lblRec4Ch1";
+            this.lblRec4Ch1.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch1.TabIndex = 11;
+            this.lblRec4Ch1.Text = "PV :";
+            this.lblRec4Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec22Ch3
+            // lblRec4Ch7
             // 
-            this.lblRec22Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec22Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec22Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec22Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec22Ch3.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec22Ch3.Location = new System.Drawing.Point(1432, 121);
-            this.lblRec22Ch3.Name = "lblRec22Ch3";
-            this.lblRec22Ch3.Size = new System.Drawing.Size(127, 27);
-            this.lblRec22Ch3.TabIndex = 11;
-            this.lblRec22Ch3.Text = "PV :";
-            this.lblRec22Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec4Ch7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch7.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch7.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch7.Location = new System.Drawing.Point(1434, 155);
+            this.lblRec4Ch7.Name = "lblRec4Ch7";
+            this.lblRec4Ch7.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch7.TabIndex = 11;
+            this.lblRec4Ch7.Text = "PV :";
+            this.lblRec4Ch7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec22Ch2
+            // lblRec4Ch9
             // 
-            this.lblRec22Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec22Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec22Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec22Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec22Ch2.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec22Ch2.Location = new System.Drawing.Point(1432, 83);
-            this.lblRec22Ch2.Name = "lblRec22Ch2";
-            this.lblRec22Ch2.Size = new System.Drawing.Size(127, 27);
-            this.lblRec22Ch2.TabIndex = 11;
-            this.lblRec22Ch2.Text = "PV :";
-            this.lblRec22Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec4Ch9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch9.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch9.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch9.Location = new System.Drawing.Point(1434, 195);
+            this.lblRec4Ch9.Name = "lblRec4Ch9";
+            this.lblRec4Ch9.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch9.TabIndex = 11;
+            this.lblRec4Ch9.Text = "PV :";
+            this.lblRec4Ch9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec22Ch1
+            // lblRec4Ch3
             // 
-            this.lblRec22Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec22Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec22Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec22Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec22Ch1.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec22Ch1.Location = new System.Drawing.Point(1432, 46);
-            this.lblRec22Ch1.Name = "lblRec22Ch1";
-            this.lblRec22Ch1.Size = new System.Drawing.Size(127, 27);
-            this.lblRec22Ch1.TabIndex = 11;
-            this.lblRec22Ch1.Text = "PV :";
-            this.lblRec22Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec4Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch3.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch3.Location = new System.Drawing.Point(1434, 75);
+            this.lblRec4Ch3.Name = "lblRec4Ch3";
+            this.lblRec4Ch3.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch3.TabIndex = 11;
+            this.lblRec4Ch3.Text = "PV :";
+            this.lblRec4Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec4Ch6
+            // 
+            this.lblRec4Ch6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch6.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch6.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch6.Location = new System.Drawing.Point(1434, 135);
+            this.lblRec4Ch6.Name = "lblRec4Ch6";
+            this.lblRec4Ch6.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch6.TabIndex = 11;
+            this.lblRec4Ch6.Text = "PV :";
+            this.lblRec4Ch6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec4Ch8
+            // 
+            this.lblRec4Ch8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch8.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch8.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch8.Location = new System.Drawing.Point(1434, 175);
+            this.lblRec4Ch8.Name = "lblRec4Ch8";
+            this.lblRec4Ch8.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch8.TabIndex = 11;
+            this.lblRec4Ch8.Text = "PV :";
+            this.lblRec4Ch8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec4Ch2
+            // 
+            this.lblRec4Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch2.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch2.Location = new System.Drawing.Point(1434, 55);
+            this.lblRec4Ch2.Name = "lblRec4Ch2";
+            this.lblRec4Ch2.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch2.TabIndex = 11;
+            this.lblRec4Ch2.Text = "PV :";
+            this.lblRec4Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec4Ch4
+            // 
+            this.lblRec4Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec4Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec4Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec4Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec4Ch4.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec4Ch4.Location = new System.Drawing.Point(1434, 95);
+            this.lblRec4Ch4.Name = "lblRec4Ch4";
+            this.lblRec4Ch4.Size = new System.Drawing.Size(127, 17);
+            this.lblRec4Ch4.TabIndex = 11;
+            this.lblRec4Ch4.Text = "PV :";
+            this.lblRec4Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -525,20 +668,6 @@
             this.btnStartChamber21.UseVisualStyleBackColor = true;
             this.btnStartChamber21.Click += new System.EventHandler(this.btnStartChamber_Click);
             // 
-            // lblRec21Ch1
-            // 
-            this.lblRec21Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec21Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec21Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec21Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec21Ch1.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec21Ch1.Location = new System.Drawing.Point(1431, 47);
-            this.lblRec21Ch1.Name = "lblRec21Ch1";
-            this.lblRec21Ch1.Size = new System.Drawing.Size(127, 27);
-            this.lblRec21Ch1.TabIndex = 11;
-            this.lblRec21Ch1.Text = "PV :";
-            this.lblRec21Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnChamber22Hold
             // 
             this.btnChamber22Hold.Location = new System.Drawing.Point(1359, 487);
@@ -561,20 +690,6 @@
             this.btnStartSelectedChamber21.UseVisualStyleBackColor = true;
             this.btnStartSelectedChamber21.Click += new System.EventHandler(this.btnStartChamberTest_Click);
             // 
-            // lblRec21Ch2
-            // 
-            this.lblRec21Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec21Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec21Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec21Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec21Ch2.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec21Ch2.Location = new System.Drawing.Point(1431, 84);
-            this.lblRec21Ch2.Name = "lblRec21Ch2";
-            this.lblRec21Ch2.Size = new System.Drawing.Size(127, 27);
-            this.lblRec21Ch2.TabIndex = 11;
-            this.lblRec21Ch2.Text = "PV :";
-            this.lblRec21Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnChamber21Hold
             // 
             this.btnChamber21Hold.Location = new System.Drawing.Point(527, 487);
@@ -585,20 +700,6 @@
             this.btnChamber21Hold.Text = "Hold";
             this.btnChamber21Hold.UseVisualStyleBackColor = true;
             this.btnChamber21Hold.Click += new System.EventHandler(this.btnChamberHold_Click);
-            // 
-            // lblRec21Ch3
-            // 
-            this.lblRec21Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec21Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec21Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec21Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec21Ch3.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec21Ch3.Location = new System.Drawing.Point(1431, 121);
-            this.lblRec21Ch3.Name = "lblRec21Ch3";
-            this.lblRec21Ch3.Size = new System.Drawing.Size(127, 27);
-            this.lblRec21Ch3.TabIndex = 11;
-            this.lblRec21Ch3.Text = "PV :";
-            this.lblRec21Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblChamber22TPv
             // 
@@ -611,20 +712,6 @@
             this.lblChamber22TPv.TabIndex = 11;
             this.lblChamber22TPv.Text = "PV :";
             this.lblChamber22TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblRec21Ch4
-            // 
-            this.lblRec21Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec21Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec21Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec21Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec21Ch4.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec21Ch4.Location = new System.Drawing.Point(1431, 158);
-            this.lblRec21Ch4.Name = "lblRec21Ch4";
-            this.lblRec21Ch4.Size = new System.Drawing.Size(127, 27);
-            this.lblRec21Ch4.TabIndex = 11;
-            this.lblRec21Ch4.Text = "PV :";
-            this.lblRec21Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblChamber21TPv
             // 
@@ -824,61 +911,61 @@
             this.lblStsRoom1.Text = "R1";
             this.lblStsRoom1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec11Ch1
+            // lblRec1Ch1
             // 
-            this.lblRec11Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec11Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec11Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec11Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec11Ch1.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec11Ch1.Location = new System.Drawing.Point(1432, 38);
-            this.lblRec11Ch1.Name = "lblRec11Ch1";
-            this.lblRec11Ch1.Size = new System.Drawing.Size(127, 27);
-            this.lblRec11Ch1.TabIndex = 11;
-            this.lblRec11Ch1.Text = "PV :";
-            this.lblRec11Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec1Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch1.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch1.Location = new System.Drawing.Point(1432, 34);
+            this.lblRec1Ch1.Name = "lblRec1Ch1";
+            this.lblRec1Ch1.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch1.TabIndex = 11;
+            this.lblRec1Ch1.Text = "PV :";
+            this.lblRec1Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec11Ch2
+            // lblRec1Ch2
             // 
-            this.lblRec11Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec11Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec11Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec11Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec11Ch2.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec11Ch2.Location = new System.Drawing.Point(1432, 74);
-            this.lblRec11Ch2.Name = "lblRec11Ch2";
-            this.lblRec11Ch2.Size = new System.Drawing.Size(127, 27);
-            this.lblRec11Ch2.TabIndex = 11;
-            this.lblRec11Ch2.Text = "PV :";
-            this.lblRec11Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec1Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch2.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch2.Location = new System.Drawing.Point(1432, 54);
+            this.lblRec1Ch2.Name = "lblRec1Ch2";
+            this.lblRec1Ch2.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch2.TabIndex = 11;
+            this.lblRec1Ch2.Text = "PV :";
+            this.lblRec1Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec11Ch3
+            // lblRec1Ch3
             // 
-            this.lblRec11Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec11Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec11Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec11Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec11Ch3.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec11Ch3.Location = new System.Drawing.Point(1433, 110);
-            this.lblRec11Ch3.Name = "lblRec11Ch3";
-            this.lblRec11Ch3.Size = new System.Drawing.Size(127, 27);
-            this.lblRec11Ch3.TabIndex = 11;
-            this.lblRec11Ch3.Text = "PV :";
-            this.lblRec11Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec1Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch3.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch3.Location = new System.Drawing.Point(1432, 74);
+            this.lblRec1Ch3.Name = "lblRec1Ch3";
+            this.lblRec1Ch3.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch3.TabIndex = 11;
+            this.lblRec1Ch3.Text = "PV :";
+            this.lblRec1Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblRec11Ch4
+            // lblRec1Ch4
             // 
-            this.lblRec11Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec11Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec11Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec11Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec11Ch4.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec11Ch4.Location = new System.Drawing.Point(1433, 146);
-            this.lblRec11Ch4.Name = "lblRec11Ch4";
-            this.lblRec11Ch4.Size = new System.Drawing.Size(127, 27);
-            this.lblRec11Ch4.TabIndex = 11;
-            this.lblRec11Ch4.Text = "PV :";
-            this.lblRec11Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRec1Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch4.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch4.Location = new System.Drawing.Point(1432, 94);
+            this.lblRec1Ch4.Name = "lblRec1Ch4";
+            this.lblRec1Ch4.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch4.TabIndex = 11;
+            this.lblRec1Ch4.Text = "PV :";
+            this.lblRec1Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -1019,62 +1106,6 @@
             this.lblChamber12TPv.Text = "PV :";
             this.lblChamber12TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblRec12Ch1
-            // 
-            this.lblRec12Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec12Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec12Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec12Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec12Ch1.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec12Ch1.Location = new System.Drawing.Point(1432, 40);
-            this.lblRec12Ch1.Name = "lblRec12Ch1";
-            this.lblRec12Ch1.Size = new System.Drawing.Size(127, 27);
-            this.lblRec12Ch1.TabIndex = 11;
-            this.lblRec12Ch1.Text = "PV :";
-            this.lblRec12Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblRec12Ch2
-            // 
-            this.lblRec12Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec12Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec12Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec12Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec12Ch2.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec12Ch2.Location = new System.Drawing.Point(1432, 76);
-            this.lblRec12Ch2.Name = "lblRec12Ch2";
-            this.lblRec12Ch2.Size = new System.Drawing.Size(127, 27);
-            this.lblRec12Ch2.TabIndex = 11;
-            this.lblRec12Ch2.Text = "PV :";
-            this.lblRec12Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblRec12Ch4
-            // 
-            this.lblRec12Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec12Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec12Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec12Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec12Ch4.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec12Ch4.Location = new System.Drawing.Point(1432, 148);
-            this.lblRec12Ch4.Name = "lblRec12Ch4";
-            this.lblRec12Ch4.Size = new System.Drawing.Size(127, 27);
-            this.lblRec12Ch4.TabIndex = 11;
-            this.lblRec12Ch4.Text = "PV :";
-            this.lblRec12Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblRec12Ch3
-            // 
-            this.lblRec12Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblRec12Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblRec12Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblRec12Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblRec12Ch3.ForeColor = System.Drawing.Color.Orange;
-            this.lblRec12Ch3.Location = new System.Drawing.Point(1432, 112);
-            this.lblRec12Ch3.Name = "lblRec12Ch3";
-            this.lblRec12Ch3.Size = new System.Drawing.Size(127, 27);
-            this.lblRec12Ch3.TabIndex = 11;
-            this.lblRec12Ch3.Text = "PV :";
-            this.lblRec12Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label8
             // 
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1158,11 +1189,11 @@
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.OrangeRed;
             this.btnExit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExit.Location = new System.Drawing.Point(-1, 382);
+            this.btnExit.Location = new System.Drawing.Point(1587, 909);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.MinimumSize = new System.Drawing.Size(196, 45);
             this.btnExit.Name = "btnExit";
@@ -1273,11 +1304,11 @@
             // 
             // btnAllStop
             // 
-            this.btnAllStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAllStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAllStop.BackColor = System.Drawing.Color.LightCoral;
             this.btnAllStop.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAllStop.Location = new System.Drawing.Point(-1, 334);
+            this.btnAllStop.Location = new System.Drawing.Point(1587, 861);
             this.btnAllStop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAllStop.MinimumSize = new System.Drawing.Size(172, 36);
             this.btnAllStop.Name = "btnAllStop";
@@ -1292,27 +1323,156 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.lblStsRoom1);
             this.panel6.Controls.Add(this.lsvChmbSpc11);
-            this.panel6.Controls.Add(this.lblRec11Ch1);
+            this.panel6.Controls.Add(this.lblRec1Ch5);
+            this.panel6.Controls.Add(this.lblRec1Ch1);
+            this.panel6.Controls.Add(this.lblRec1Ch6);
             this.panel6.Controls.Add(this.panel2);
-            this.panel6.Controls.Add(this.lblRec11Ch2);
-            this.panel6.Controls.Add(this.lblRec11Ch3);
-            this.panel6.Controls.Add(this.lblRec11Ch4);
+            this.panel6.Controls.Add(this.lblRec1Ch7);
+            this.panel6.Controls.Add(this.lblRec1Ch2);
+            this.panel6.Controls.Add(this.lblRec1Ch9);
+            this.panel6.Controls.Add(this.lblRec1Ch8);
+            this.panel6.Controls.Add(this.lblRec1Ch3);
+            this.panel6.Controls.Add(this.lblRec1Ch4);
             this.panel6.Location = new System.Drawing.Point(10, 41);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1571, 217);
             this.panel6.TabIndex = 31;
             // 
+            // lsvChmbSpc11
+            // 
+            this.lsvChmbSpc11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc11.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader73,
+            this.columnHeader74,
+            this.columnHeader75,
+            this.columnHeader76,
+            this.columnHeader77,
+            this.columnHeader78,
+            this.columnHeader79,
+            this.columnHeader80});
+            this.lsvChmbSpc11.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc11.FullRowSelect = true;
+            this.lsvChmbSpc11.GridLines = true;
+            this.lsvChmbSpc11.HideSelection = false;
+            this.lsvChmbSpc11.Location = new System.Drawing.Point(42, 2);
+            this.lsvChmbSpc11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc11.MultiSelect = false;
+            this.lsvChmbSpc11.Name = "lsvChmbSpc11";
+            this.lsvChmbSpc11.OwnerDraw = true;
+            this.lsvChmbSpc11.ShowGroups = false;
+            this.lsvChmbSpc11.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc11.TabIndex = 15;
+            this.lsvChmbSpc11.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc11.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc11.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc11.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "REG.";
+            this.columnHeader1.Width = 70;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "VALUE";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 90;
+            // 
+            // lblRec1Ch5
+            // 
+            this.lblRec1Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch5.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch5.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch5.Location = new System.Drawing.Point(1432, 114);
+            this.lblRec1Ch5.Name = "lblRec1Ch5";
+            this.lblRec1Ch5.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch5.TabIndex = 11;
+            this.lblRec1Ch5.Text = "PV :";
+            this.lblRec1Ch5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec1Ch6
+            // 
+            this.lblRec1Ch6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch6.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch6.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch6.Location = new System.Drawing.Point(1432, 134);
+            this.lblRec1Ch6.Name = "lblRec1Ch6";
+            this.lblRec1Ch6.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch6.TabIndex = 11;
+            this.lblRec1Ch6.Text = "PV :";
+            this.lblRec1Ch6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec1Ch7
+            // 
+            this.lblRec1Ch7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch7.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch7.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch7.Location = new System.Drawing.Point(1432, 154);
+            this.lblRec1Ch7.Name = "lblRec1Ch7";
+            this.lblRec1Ch7.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch7.TabIndex = 11;
+            this.lblRec1Ch7.Text = "PV :";
+            this.lblRec1Ch7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec1Ch9
+            // 
+            this.lblRec1Ch9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch9.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch9.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch9.Location = new System.Drawing.Point(1432, 194);
+            this.lblRec1Ch9.Name = "lblRec1Ch9";
+            this.lblRec1Ch9.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch9.TabIndex = 11;
+            this.lblRec1Ch9.Text = "PV :";
+            this.lblRec1Ch9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec1Ch8
+            // 
+            this.lblRec1Ch8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec1Ch8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec1Ch8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec1Ch8.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec1Ch8.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec1Ch8.Location = new System.Drawing.Point(1432, 174);
+            this.lblRec1Ch8.Name = "lblRec1Ch8";
+            this.lblRec1Ch8.Size = new System.Drawing.Size(127, 17);
+            this.lblRec1Ch8.TabIndex = 11;
+            this.lblRec1Ch8.Text = "PV :";
+            this.lblRec1Ch8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.lblStsRoom2);
             this.panel10.Controls.Add(this.lsvChmbSpc12);
-            this.panel10.Controls.Add(this.lblRec12Ch4);
-            this.panel10.Controls.Add(this.lblRec12Ch2);
-            this.panel10.Controls.Add(this.lblRec12Ch3);
-            this.panel10.Controls.Add(this.lblRec12Ch1);
+            this.panel10.Controls.Add(this.lblRec2Ch5);
             this.panel10.Controls.Add(this.panel8);
+            this.panel10.Controls.Add(this.lblRec2Ch1);
+            this.panel10.Controls.Add(this.lblRec2Ch6);
+            this.panel10.Controls.Add(this.lblRec2Ch4);
+            this.panel10.Controls.Add(this.lblRec2Ch3);
+            this.panel10.Controls.Add(this.lblRec2Ch7);
+            this.panel10.Controls.Add(this.lblRec2Ch8);
+            this.panel10.Controls.Add(this.lblRec2Ch2);
+            this.panel10.Controls.Add(this.lblRec2Ch9);
             this.panel10.Location = new System.Drawing.Point(10, 263);
             this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
@@ -1330,154 +1490,6 @@
             this.lblStsRoom2.TabIndex = 12;
             this.lblStsRoom2.Text = "R2";
             this.lblStsRoom2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel11
-            // 
-            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.lblStsRoom3);
-            this.panel11.Controls.Add(this.lsvChmbSpc21);
-            this.panel11.Controls.Add(this.lblRec21Ch4);
-            this.panel11.Controls.Add(this.lblRec21Ch3);
-            this.panel11.Controls.Add(this.panel5);
-            this.panel11.Controls.Add(this.lblRec21Ch2);
-            this.panel11.Controls.Add(this.lblRec21Ch1);
-            this.panel11.Location = new System.Drawing.Point(10, 517);
-            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(1571, 217);
-            this.panel11.TabIndex = 32;
-            // 
-            // lblStsRoom3
-            // 
-            this.lblStsRoom3.BackColor = System.Drawing.Color.DimGray;
-            this.lblStsRoom3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblStsRoom3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblStsRoom3.Location = new System.Drawing.Point(0, 0);
-            this.lblStsRoom3.Name = "lblStsRoom3";
-            this.lblStsRoom3.Size = new System.Drawing.Size(39, 215);
-            this.lblStsRoom3.TabIndex = 12;
-            this.lblStsRoom3.Text = "R3";
-            this.lblStsRoom3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel12
-            // 
-            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel12.Controls.Add(this.btnExportExcel);
-            this.panel12.Controls.Add(this.btnConnect);
-            this.panel12.Controls.Add(this.btnExit);
-            this.panel12.Controls.Add(this.btnAllStop);
-            this.panel12.Controls.Add(this.label1);
-            this.panel12.Controls.Add(this.label6);
-            this.panel12.Controls.Add(this.label4);
-            this.panel12.Controls.Add(this.txtAmbTemp);
-            this.panel12.Controls.Add(this.txtCoolTemp);
-            this.panel12.Controls.Add(this.txtAmbHumi);
-            this.panel12.Controls.Add(this.txtApprov);
-            this.panel12.Controls.Add(this.label7);
-            this.panel12.Controls.Add(this.label8);
-            this.panel12.Controls.Add(this.txtSerialNo);
-            this.panel12.Controls.Add(this.lblTitle);
-            this.panel12.Location = new System.Drawing.Point(1587, 10);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(301, 427);
-            this.panel12.TabIndex = 33;
-            // 
-            // lsvChmbSpc21
-            // 
-            this.lsvChmbSpc21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc21.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader97,
-            this.columnHeader98,
-            this.columnHeader99,
-            this.columnHeader100,
-            this.columnHeader101,
-            this.columnHeader102,
-            this.columnHeader103,
-            this.columnHeader104,
-            this.columnHeader105,
-            this.columnHeader106,
-            this.columnHeader107,
-            this.columnHeader108,
-            this.columnHeader109,
-            this.columnHeader110,
-            this.columnHeader111,
-            this.columnHeader112});
-            this.lsvChmbSpc21.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc21.FullRowSelect = true;
-            this.lsvChmbSpc21.GridLines = true;
-            this.lsvChmbSpc21.HideSelection = false;
-            this.lsvChmbSpc21.Location = new System.Drawing.Point(42, 7);
-            this.lsvChmbSpc21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc21.Name = "lsvChmbSpc21";
-            this.lsvChmbSpc21.OwnerDraw = true;
-            this.lsvChmbSpc21.Scrollable = false;
-            this.lsvChmbSpc21.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc21.TabIndex = 13;
-            this.lsvChmbSpc21.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc21.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc21.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc21.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader97
-            // 
-            this.columnHeader97.Text = "REG.";
-            this.columnHeader97.Width = 70;
-            // 
-            // columnHeader98
-            // 
-            this.columnHeader98.Text = "VALUE";
-            this.columnHeader98.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader98.Width = 90;
-            // 
-            // lsvChmbSpc22
-            // 
-            this.lsvChmbSpc22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc22.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader113,
-            this.columnHeader114,
-            this.columnHeader115,
-            this.columnHeader116,
-            this.columnHeader117,
-            this.columnHeader118,
-            this.columnHeader119,
-            this.columnHeader120,
-            this.columnHeader121,
-            this.columnHeader122,
-            this.columnHeader123,
-            this.columnHeader124,
-            this.columnHeader125,
-            this.columnHeader126,
-            this.columnHeader127,
-            this.columnHeader128});
-            this.lsvChmbSpc22.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc22.FullRowSelect = true;
-            this.lsvChmbSpc22.GridLines = true;
-            this.lsvChmbSpc22.HideSelection = false;
-            this.lsvChmbSpc22.Location = new System.Drawing.Point(45, 6);
-            this.lsvChmbSpc22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc22.Name = "lsvChmbSpc22";
-            this.lsvChmbSpc22.OwnerDraw = true;
-            this.lsvChmbSpc22.Scrollable = false;
-            this.lsvChmbSpc22.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc22.TabIndex = 14;
-            this.lsvChmbSpc22.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc22.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc22.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc22.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader113
-            // 
-            this.columnHeader113.Text = "REG.";
-            this.columnHeader113.Width = 70;
-            // 
-            // columnHeader114
-            // 
-            this.columnHeader114.Text = "VALUE";
-            this.columnHeader114.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader114.Width = 90;
             // 
             // lsvChmbSpc12
             // 
@@ -1528,54 +1540,360 @@
             this.columnHeader82.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader82.Width = 90;
             // 
-            // lsvChmbSpc11
+            // lblRec2Ch5
             // 
-            this.lsvChmbSpc11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc11.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader73,
-            this.columnHeader74,
-            this.columnHeader75,
-            this.columnHeader76,
-            this.columnHeader77,
-            this.columnHeader78,
-            this.columnHeader79,
-            this.columnHeader80});
-            this.lsvChmbSpc11.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc11.FullRowSelect = true;
-            this.lsvChmbSpc11.GridLines = true;
-            this.lsvChmbSpc11.HideSelection = false;
-            this.lsvChmbSpc11.Location = new System.Drawing.Point(42, 2);
-            this.lsvChmbSpc11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc11.MultiSelect = false;
-            this.lsvChmbSpc11.Name = "lsvChmbSpc11";
-            this.lsvChmbSpc11.OwnerDraw = true;
-            this.lsvChmbSpc11.ShowGroups = false;
-            this.lsvChmbSpc11.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc11.TabIndex = 15;
-            this.lsvChmbSpc11.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc11.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc11.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc11.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            this.lblRec2Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch5.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch5.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch5.Location = new System.Drawing.Point(1433, 114);
+            this.lblRec2Ch5.Name = "lblRec2Ch5";
+            this.lblRec2Ch5.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch5.TabIndex = 11;
+            this.lblRec2Ch5.Text = "PV :";
+            this.lblRec2Ch5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // columnHeader1
+            // lblRec2Ch1
             // 
-            this.columnHeader1.Text = "REG.";
-            this.columnHeader1.Width = 70;
+            this.lblRec2Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch1.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch1.Location = new System.Drawing.Point(1433, 34);
+            this.lblRec2Ch1.Name = "lblRec2Ch1";
+            this.lblRec2Ch1.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch1.TabIndex = 11;
+            this.lblRec2Ch1.Text = "PV :";
+            this.lblRec2Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // columnHeader2
+            // lblRec2Ch6
             // 
-            this.columnHeader2.Text = "VALUE";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 90;
+            this.lblRec2Ch6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch6.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch6.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch6.Location = new System.Drawing.Point(1433, 134);
+            this.lblRec2Ch6.Name = "lblRec2Ch6";
+            this.lblRec2Ch6.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch6.TabIndex = 11;
+            this.lblRec2Ch6.Text = "PV :";
+            this.lblRec2Ch6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch4
+            // 
+            this.lblRec2Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch4.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch4.Location = new System.Drawing.Point(1433, 94);
+            this.lblRec2Ch4.Name = "lblRec2Ch4";
+            this.lblRec2Ch4.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch4.TabIndex = 11;
+            this.lblRec2Ch4.Text = "PV :";
+            this.lblRec2Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch3
+            // 
+            this.lblRec2Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch3.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch3.Location = new System.Drawing.Point(1433, 74);
+            this.lblRec2Ch3.Name = "lblRec2Ch3";
+            this.lblRec2Ch3.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch3.TabIndex = 11;
+            this.lblRec2Ch3.Text = "PV :";
+            this.lblRec2Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch7
+            // 
+            this.lblRec2Ch7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch7.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch7.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch7.Location = new System.Drawing.Point(1433, 154);
+            this.lblRec2Ch7.Name = "lblRec2Ch7";
+            this.lblRec2Ch7.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch7.TabIndex = 11;
+            this.lblRec2Ch7.Text = "PV :";
+            this.lblRec2Ch7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch8
+            // 
+            this.lblRec2Ch8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch8.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch8.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch8.Location = new System.Drawing.Point(1433, 174);
+            this.lblRec2Ch8.Name = "lblRec2Ch8";
+            this.lblRec2Ch8.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch8.TabIndex = 11;
+            this.lblRec2Ch8.Text = "PV :";
+            this.lblRec2Ch8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch2
+            // 
+            this.lblRec2Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch2.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch2.Location = new System.Drawing.Point(1433, 54);
+            this.lblRec2Ch2.Name = "lblRec2Ch2";
+            this.lblRec2Ch2.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch2.TabIndex = 11;
+            this.lblRec2Ch2.Text = "PV :";
+            this.lblRec2Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec2Ch9
+            // 
+            this.lblRec2Ch9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec2Ch9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec2Ch9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec2Ch9.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec2Ch9.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec2Ch9.Location = new System.Drawing.Point(1433, 194);
+            this.lblRec2Ch9.Name = "lblRec2Ch9";
+            this.lblRec2Ch9.Size = new System.Drawing.Size(127, 17);
+            this.lblRec2Ch9.TabIndex = 11;
+            this.lblRec2Ch9.Text = "PV :";
+            this.lblRec2Ch9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.lblStsRoom3);
+            this.panel11.Controls.Add(this.lsvChmbSpc21);
+            this.panel11.Controls.Add(this.lblRec3Ch5);
+            this.panel11.Controls.Add(this.panel5);
+            this.panel11.Controls.Add(this.lblRec3Ch1);
+            this.panel11.Controls.Add(this.lblRec3Ch9);
+            this.panel11.Controls.Add(this.lblRec3Ch6);
+            this.panel11.Controls.Add(this.lblRec3Ch2);
+            this.panel11.Controls.Add(this.lblRec3Ch4);
+            this.panel11.Controls.Add(this.lblRec3Ch8);
+            this.panel11.Controls.Add(this.lblRec3Ch3);
+            this.panel11.Controls.Add(this.lblRec3Ch7);
+            this.panel11.Location = new System.Drawing.Point(10, 517);
+            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1571, 217);
+            this.panel11.TabIndex = 32;
+            // 
+            // lblStsRoom3
+            // 
+            this.lblStsRoom3.BackColor = System.Drawing.Color.DimGray;
+            this.lblStsRoom3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblStsRoom3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblStsRoom3.Location = new System.Drawing.Point(0, 0);
+            this.lblStsRoom3.Name = "lblStsRoom3";
+            this.lblStsRoom3.Size = new System.Drawing.Size(39, 215);
+            this.lblStsRoom3.TabIndex = 12;
+            this.lblStsRoom3.Text = "R3";
+            this.lblStsRoom3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lsvChmbSpc21
+            // 
+            this.lsvChmbSpc21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc21.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader97,
+            this.columnHeader98,
+            this.columnHeader99,
+            this.columnHeader100,
+            this.columnHeader101,
+            this.columnHeader102,
+            this.columnHeader103,
+            this.columnHeader104,
+            this.columnHeader105,
+            this.columnHeader106,
+            this.columnHeader107,
+            this.columnHeader108,
+            this.columnHeader109,
+            this.columnHeader110,
+            this.columnHeader111,
+            this.columnHeader112});
+            this.lsvChmbSpc21.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc21.FullRowSelect = true;
+            this.lsvChmbSpc21.GridLines = true;
+            this.lsvChmbSpc21.HideSelection = false;
+            this.lsvChmbSpc21.Location = new System.Drawing.Point(42, 7);
+            this.lsvChmbSpc21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc21.Name = "lsvChmbSpc21";
+            this.lsvChmbSpc21.OwnerDraw = true;
+            this.lsvChmbSpc21.Scrollable = false;
+            this.lsvChmbSpc21.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc21.TabIndex = 13;
+            this.lsvChmbSpc21.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc21.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc21.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc21.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader97
+            // 
+            this.columnHeader97.Text = "REG.";
+            this.columnHeader97.Width = 70;
+            // 
+            // columnHeader98
+            // 
+            this.columnHeader98.Text = "VALUE";
+            this.columnHeader98.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader98.Width = 90;
+            // 
+            // lblRec3Ch5
+            // 
+            this.lblRec3Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch5.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch5.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch5.Location = new System.Drawing.Point(1432, 117);
+            this.lblRec3Ch5.Name = "lblRec3Ch5";
+            this.lblRec3Ch5.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch5.TabIndex = 11;
+            this.lblRec3Ch5.Text = "PV :";
+            this.lblRec3Ch5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch1
+            // 
+            this.lblRec3Ch1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch1.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch1.Location = new System.Drawing.Point(1432, 37);
+            this.lblRec3Ch1.Name = "lblRec3Ch1";
+            this.lblRec3Ch1.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch1.TabIndex = 11;
+            this.lblRec3Ch1.Text = "PV :";
+            this.lblRec3Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch9
+            // 
+            this.lblRec3Ch9.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch9.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch9.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch9.Location = new System.Drawing.Point(1432, 197);
+            this.lblRec3Ch9.Name = "lblRec3Ch9";
+            this.lblRec3Ch9.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch9.TabIndex = 11;
+            this.lblRec3Ch9.Text = "PV :";
+            this.lblRec3Ch9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch6
+            // 
+            this.lblRec3Ch6.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch6.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch6.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch6.Location = new System.Drawing.Point(1432, 137);
+            this.lblRec3Ch6.Name = "lblRec3Ch6";
+            this.lblRec3Ch6.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch6.TabIndex = 11;
+            this.lblRec3Ch6.Text = "PV :";
+            this.lblRec3Ch6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch2
+            // 
+            this.lblRec3Ch2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch2.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch2.Location = new System.Drawing.Point(1432, 57);
+            this.lblRec3Ch2.Name = "lblRec3Ch2";
+            this.lblRec3Ch2.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch2.TabIndex = 11;
+            this.lblRec3Ch2.Text = "PV :";
+            this.lblRec3Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch4
+            // 
+            this.lblRec3Ch4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch4.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch4.Location = new System.Drawing.Point(1432, 97);
+            this.lblRec3Ch4.Name = "lblRec3Ch4";
+            this.lblRec3Ch4.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch4.TabIndex = 11;
+            this.lblRec3Ch4.Text = "PV :";
+            this.lblRec3Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch8
+            // 
+            this.lblRec3Ch8.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch8.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch8.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch8.Location = new System.Drawing.Point(1432, 177);
+            this.lblRec3Ch8.Name = "lblRec3Ch8";
+            this.lblRec3Ch8.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch8.TabIndex = 11;
+            this.lblRec3Ch8.Text = "PV :";
+            this.lblRec3Ch8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch3
+            // 
+            this.lblRec3Ch3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch3.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch3.Location = new System.Drawing.Point(1432, 77);
+            this.lblRec3Ch3.Name = "lblRec3Ch3";
+            this.lblRec3Ch3.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch3.TabIndex = 11;
+            this.lblRec3Ch3.Text = "PV :";
+            this.lblRec3Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRec3Ch7
+            // 
+            this.lblRec3Ch7.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRec3Ch7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRec3Ch7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRec3Ch7.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRec3Ch7.ForeColor = System.Drawing.Color.Orange;
+            this.lblRec3Ch7.Location = new System.Drawing.Point(1432, 157);
+            this.lblRec3Ch7.Name = "lblRec3Ch7";
+            this.lblRec3Ch7.Size = new System.Drawing.Size(127, 17);
+            this.lblRec3Ch7.TabIndex = 11;
+            this.lblRec3Ch7.Text = "PV :";
+            this.lblRec3Ch7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.Controls.Add(this.btnExportExcel);
+            this.panel12.Controls.Add(this.btnConnect);
+            this.panel12.Controls.Add(this.label1);
+            this.panel12.Controls.Add(this.label6);
+            this.panel12.Controls.Add(this.label4);
+            this.panel12.Controls.Add(this.txtAmbTemp);
+            this.panel12.Controls.Add(this.txtCoolTemp);
+            this.panel12.Controls.Add(this.txtAmbHumi);
+            this.panel12.Controls.Add(this.txtApprov);
+            this.panel12.Controls.Add(this.label7);
+            this.panel12.Controls.Add(this.label8);
+            this.panel12.Controls.Add(this.txtSerialNo);
+            this.panel12.Controls.Add(this.lblTitle);
+            this.panel12.Location = new System.Drawing.Point(1587, 10);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(301, 336);
+            this.panel12.TabIndex = 33;
             // 
             // btnChamber11Step
             // 
@@ -1628,7 +1946,9 @@
             this.ClientSize = new System.Drawing.Size(1900, 986);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel11);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel7);
+            this.Controls.Add(this.btnAllStop);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel6);
@@ -1723,14 +2043,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader70;
         private System.Windows.Forms.ColumnHeader columnHeader71;
         private System.Windows.Forms.ColumnHeader columnHeader72;
-        private System.Windows.Forms.Label lblRec22Ch4;
-        private System.Windows.Forms.Label lblRec21Ch1;
-        private System.Windows.Forms.Label lblRec22Ch3;
-        private System.Windows.Forms.Label lblRec21Ch2;
-        private System.Windows.Forms.Label lblRec22Ch2;
-        private System.Windows.Forms.Label lblRec21Ch3;
-        private System.Windows.Forms.Label lblRec22Ch1;
-        private System.Windows.Forms.Label lblRec21Ch4;
         private System.Windows.Forms.ColumnHeader columnHeader60;
         private System.Windows.Forms.ColumnHeader columnHeader59;
         private System.Windows.Forms.ColumnHeader columnHeader58;
@@ -1778,14 +2090,10 @@
         private System.Windows.Forms.Label lblStsRoom1;
         private System.Windows.Forms.ColumnHeader columnHeader7;
         private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.Label lblRec11Ch1;
-        private System.Windows.Forms.Label lblRec11Ch2;
-        private System.Windows.Forms.Label lblRec11Ch3;
-        private System.Windows.Forms.Label lblRec11Ch4;
-        private System.Windows.Forms.Label lblRec12Ch1;
-        private System.Windows.Forms.Label lblRec12Ch2;
-        private System.Windows.Forms.Label lblRec12Ch4;
-        private System.Windows.Forms.Label lblRec12Ch3;
+        private System.Windows.Forms.Label lblRec1Ch1;
+        private System.Windows.Forms.Label lblRec1Ch2;
+        private System.Windows.Forms.Label lblRec1Ch3;
+        private System.Windows.Forms.Label lblRec1Ch4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtApprov;
@@ -1905,5 +2213,37 @@
         private System.Windows.Forms.Button btnChamber21Step;
         private System.Windows.Forms.Button btnChamber12Step;
         private System.Windows.Forms.Button btnChamber22Step;
+        private System.Windows.Forms.Label lblRec1Ch5;
+        private System.Windows.Forms.Label lblRec1Ch6;
+        private System.Windows.Forms.Label lblRec1Ch7;
+        private System.Windows.Forms.Label lblRec1Ch9;
+        private System.Windows.Forms.Label lblRec1Ch8;
+        private System.Windows.Forms.Label lblRec4Ch5;
+        private System.Windows.Forms.Label lblRec4Ch1;
+        private System.Windows.Forms.Label lblRec4Ch7;
+        private System.Windows.Forms.Label lblRec4Ch9;
+        private System.Windows.Forms.Label lblRec4Ch3;
+        private System.Windows.Forms.Label lblRec4Ch6;
+        private System.Windows.Forms.Label lblRec4Ch8;
+        private System.Windows.Forms.Label lblRec4Ch2;
+        private System.Windows.Forms.Label lblRec4Ch4;
+        private System.Windows.Forms.Label lblRec2Ch5;
+        private System.Windows.Forms.Label lblRec2Ch1;
+        private System.Windows.Forms.Label lblRec2Ch6;
+        private System.Windows.Forms.Label lblRec2Ch4;
+        private System.Windows.Forms.Label lblRec2Ch3;
+        private System.Windows.Forms.Label lblRec2Ch7;
+        private System.Windows.Forms.Label lblRec2Ch8;
+        private System.Windows.Forms.Label lblRec2Ch2;
+        private System.Windows.Forms.Label lblRec2Ch9;
+        private System.Windows.Forms.Label lblRec3Ch5;
+        private System.Windows.Forms.Label lblRec3Ch1;
+        private System.Windows.Forms.Label lblRec3Ch9;
+        private System.Windows.Forms.Label lblRec3Ch6;
+        private System.Windows.Forms.Label lblRec3Ch2;
+        private System.Windows.Forms.Label lblRec3Ch4;
+        private System.Windows.Forms.Label lblRec3Ch8;
+        private System.Windows.Forms.Label lblRec3Ch3;
+        private System.Windows.Forms.Label lblRec3Ch7;
     }
 }

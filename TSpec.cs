@@ -131,11 +131,21 @@ namespace Ptnr
             resRec[SysDefs.CH2] = new List<short>();
             resRec[SysDefs.CH3] = new List<short>();
             resRec[SysDefs.CH4] = new List<short>();
-            
+            resRec[SysDefs.CH5] = new List<short>();
+            resRec[SysDefs.CH6] = new List<short>();
+            resRec[SysDefs.CH7] = new List<short>();
+            resRec[SysDefs.CH8] = new List<short>();
+            resRec[SysDefs.CH9] = new List<short>();
+
             resRec[SysDefs.CH1].Capacity = 600;
             resRec[SysDefs.CH2].Capacity = 600;
             resRec[SysDefs.CH3].Capacity = 600;
             resRec[SysDefs.CH4].Capacity = 600;
+            resRec[SysDefs.CH5].Capacity = 600;
+            resRec[SysDefs.CH6].Capacity = 600;
+            resRec[SysDefs.CH7].Capacity = 600;
+            resRec[SysDefs.CH8].Capacity = 600;
+            resRec[SysDefs.CH9].Capacity = 600;
         }
 
         public void Reset()
@@ -161,6 +171,11 @@ namespace Ptnr
             resRec[SysDefs.CH2].Clear();
             resRec[SysDefs.CH3].Clear();
             resRec[SysDefs.CH4].Clear();
+            resRec[SysDefs.CH5].Clear();
+            resRec[SysDefs.CH6].Clear();
+            resRec[SysDefs.CH7].Clear();
+            resRec[SysDefs.CH8].Clear();
+            resRec[SysDefs.CH9].Clear();
         }
 
         public void AddRecData(int ch, short val)

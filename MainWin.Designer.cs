@@ -65,7 +65,7 @@
             // 
             // pnlTitle
             // 
-            this.pnlTitle.BackColor = System.Drawing.Color.YellowGreen;
+            this.pnlTitle.BackColor = System.Drawing.Color.Fuchsia;
             this.pnlTitle.Controls.Add(this.lblTitle);
             this.pnlTitle.Controls.Add(this.lblClock);
             this.pnlTitle.Controls.Add(this.btnSetup);
@@ -82,7 +82,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblTitle.Location = new System.Drawing.Point(12, 4);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(420, 41);
+            this.lblTitle.Size = new System.Drawing.Size(978, 41);
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "BOSK Chamber Tester";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

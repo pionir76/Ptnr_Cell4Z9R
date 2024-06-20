@@ -154,24 +154,38 @@ namespace Ptnr
                     }
                 }
 
-                //|========================================================================|
-                //|========================================================================|
-                //|                       |                        |                       |
-                //|  Chamber #1 (Addr1)   |   Chamber #1 (Addr2)   |   SDR100 #1 (Addr3)   |
-                //|                       |                        |                       |
-                //|========================================================================|
-                //|========================================================================|
-                //|                       |                        |                       |
-                //|  Chamber #2 (Addr4)   |   Chamber #2 (Addr5)   |   SDR100 #2 (Addr6)   |
-                //|                       |                        |                       |
-                //|========================================================================|
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER11);
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER12);
+                //|================================================|
+                //|                       |                        |
+                //|  Chamber #1 (Addr1)   |   SDR100 #1 (Addr3)    |
+                //|                       |                        |
+                //|=================================================
+                //|================================================|
+                //|                       |                        |
+                //|  Chamber #2 (Addr2)   |   SDR100 #2 (Addr6)    |
+                //|                       |                        |
+                //|=================================================
+                //|================================================|
+                //|                       |                        |
+                //|  Chamber #3 (Addr4)   |   SDR100 #3 (Addr7)    |
+                //|                       |                        |
+                //|=================================================
+                //|================================================|
+                //|                       |                        |
+                //|  Chamber #4 (Addr5)   |   SDR100 #4 (Addr8)    |
+                //|                       |                        |
+                //|================================================|
+
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER1);
                 UpdateCtrlSts(SysDefs.ADDR_RECORDER1);
 
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER21);
-                UpdateCtrlSts(SysDefs.ADDR_CHAMBER22);
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER2);
                 UpdateCtrlSts(SysDefs.ADDR_RECORDER2);
+
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER3);
+                UpdateCtrlSts(SysDefs.ADDR_RECORDER3);
+
+                UpdateCtrlSts(SysDefs.ADDR_CHAMBER4);
+                UpdateCtrlSts(SysDefs.ADDR_RECORDER4);
 
                 Thread.Sleep(500);
             }
@@ -192,23 +206,26 @@ namespace Ptnr
             // - TEMI(TPV:1, TSP:2, HPV:5, HSP:6, NOWSTS:10)
             // - TEMP(PV:1, SP:3, NOWSTS:10)
             //--------------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12 || 
-                addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
+            if (addr == SysDefs.ADDR_CHAMBER1 || addr == SysDefs.ADDR_CHAMBER2 || 
+                addr == SysDefs.ADDR_CHAMBER3 || addr == SysDefs.ADDR_CHAMBER4)
             {
-                if (addr == SysDefs.ADDR_CHAMBER11) cmd = string.Format("01RRD,06,0001,0002,0003,0005,0006,0010");
-                if (addr == SysDefs.ADDR_CHAMBER12) cmd = string.Format("02RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER1) cmd = string.Format("01RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER2) cmd = string.Format("02RRD,06,0001,0002,0003,0005,0006,0010");
 
-                if (addr == SysDefs.ADDR_CHAMBER21) cmd = string.Format("04RRD,06,0001,0002,0003,0005,0006,0010");
-                if (addr == SysDefs.ADDR_CHAMBER22) cmd = string.Format("05RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER3) cmd = string.Format("04RRD,06,0001,0002,0003,0005,0006,0010");
+                if (addr == SysDefs.ADDR_CHAMBER4) cmd = string.Format("05RRD,06,0001,0002,0003,0005,0006,0010");
             }
 
             //--------------------------------------------------------------------------//
             // Read Recorder#1 Status (NPV1~NPV9)
             //--------------------------------------------------------------------------//
-            else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2)
+            else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2 ||
+                     addr == SysDefs.ADDR_RECORDER3 || addr == SysDefs.ADDR_RECORDER4 )
             {
                 if (addr == SysDefs.ADDR_RECORDER1) cmd = string.Format("03RSD,09,0001");
                 if (addr == SysDefs.ADDR_RECORDER2) cmd = string.Format("06RSD,09,0001");
+                if (addr == SysDefs.ADDR_RECORDER3) cmd = string.Format("07RSD,09,0001");
+                if (addr == SysDefs.ADDR_RECORDER4) cmd = string.Format("08RSD,09,0001");
             }
 
             List<byte> dTx = Encoding.ASCII.GetBytes(cmd).ToList();

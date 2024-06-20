@@ -83,7 +83,6 @@ namespace Ptnr
         }
     }
 
-
     public class Config
     {
         public TempConfig TpCfg { get; set; }

@@ -168,17 +168,18 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Write Temp Chamber #1 Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHAMBER11, 104, 4);
-                Comm.Write(SysDefs.ADDR_CHAMBER12, 104, 4);
-
-                Comm.Write(SysDefs.ADDR_CHAMBER21, 104, 4);
-                Comm.Write(SysDefs.ADDR_CHAMBER22, 104, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER1, 104, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER2, 104, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER3, 104, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER4, 104, 4);
 
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
                 //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                 Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
+                Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
 
                 Comm.CommStop();
             }
@@ -223,7 +224,6 @@ namespace Ptnr
                 else
                 {
                     _bWorkChamber[i] = false;
-
                 }
             }
 
@@ -295,22 +295,6 @@ namespace Ptnr
             }
 
             //--------------------------------------------------------------------------//
-            // Chamber#12 Comm. Status
-            //--------------------------------------------------------------------------//
-            if (_chamber[1].bOnLine)
-            {
-                lblChamb12Sts.Text = "ONLINE";
-                lblChamb12Sts.BackColor = Color.Salmon;
-                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                lblChamb12Sts.Text = "OFFLINE";
-                lblChamb12Sts.BackColor = Color.DarkGray;
-                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
-            }
-
-            //--------------------------------------------------------------------------//
             // Recorder#11 Comm. Status
             //--------------------------------------------------------------------------//
             if (_recorder[0].bOnLine)
@@ -324,6 +308,23 @@ namespace Ptnr
                 lblRecorder11Sts.Text = "OFFLINE";
                 lblRecorder11Sts.BackColor = Color.DarkGray;
                 lblRecorder11Sts.ForeColor = Color.WhiteSmoke;
+            }
+
+
+            //--------------------------------------------------------------------------//
+            // Chamber#12 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_chamber[1].bOnLine)
+            {
+                lblChamb12Sts.Text = "ONLINE";
+                lblChamb12Sts.BackColor = Color.Salmon;
+                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
+            }
+            else
+            {
+                lblChamb12Sts.Text = "OFFLINE";
+                lblChamb12Sts.BackColor = Color.DarkGray;
+                lblChamb12Sts.ForeColor = Color.WhiteSmoke;
             }
 
             //--------------------------------------------------------------------------//
@@ -359,22 +360,6 @@ namespace Ptnr
             }
 
             //--------------------------------------------------------------------------//
-            // Chamber#2 Comm. Status
-            //--------------------------------------------------------------------------//
-            if (_chamber[3].bOnLine)
-            {
-                lblChamb22Sts.Text = "ONLINE";
-                lblChamb22Sts.BackColor = Color.Salmon;
-                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
-            }
-            else
-            {
-                lblChamb22Sts.Text = "OFFLINE";
-                lblChamb22Sts.BackColor = Color.DarkGray;
-                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
-            }
-
-            //--------------------------------------------------------------------------//
             // Recorder#21 Comm. Status
             //--------------------------------------------------------------------------//
             if (_recorder[2].bOnLine)
@@ -388,6 +373,22 @@ namespace Ptnr
                 lblRecorder21Sts.Text = "OFFLINE";
                 lblRecorder21Sts.BackColor = Color.DarkGray;
                 lblRecorder21Sts.ForeColor = Color.WhiteSmoke;
+            }
+
+            //--------------------------------------------------------------------------//
+            // Chamber#2 Comm. Status
+            //--------------------------------------------------------------------------//
+            if (_chamber[3].bOnLine)
+            {
+                lblChamb22Sts.Text = "ONLINE";
+                lblChamb22Sts.BackColor = Color.Salmon;
+                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
+            }
+            else
+            {
+                lblChamb22Sts.Text = "OFFLINE";
+                lblChamb22Sts.BackColor = Color.DarkGray;
+                lblChamb22Sts.ForeColor = Color.WhiteSmoke;
             }
 
             //--------------------------------------------------------------------------//
@@ -563,22 +564,26 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Write Chamber #1 Stop
                 //------------------------------------------------------------------//
-                if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
-                if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
-                if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
-                if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
-
-                //------------------------------------------------------------------//
-                // Write Recorder #1 Record Stop
-                //------------------------------------------------------------------//
-                if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                if (ch == 0)
                 {
+                    Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
                     Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                 }
 
-                if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                else if (ch == 1)
                 {
+                    Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
                     Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                }
+                else if (ch == 2)
+                {
+                    Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
+                    Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
+                }
+                else if (ch == 3)
+                {
+                    Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
+                    Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
                 }
             }
 
@@ -651,22 +656,26 @@ namespace Ptnr
                     // All Chamber Test are Finished.
                     // Write Chamber Stop
                     //------------------------------------------------------------------//
-                    if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
-                    if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
-                    if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
-                    if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
-
-                    //------------------------------------------------------------------//
-                    // Write Recorder #1 Record Stop
-                    //------------------------------------------------------------------//
-                    if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                    if (ch == 0)
                     {
+                        Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
                         Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                     }
 
-                    if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                    else if (ch == 1)
                     {
+                        Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
                         Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                    }
+                    else if (ch == 2)
+                    {
+                        Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
+                        Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
+                    }
+                    else if (ch == 3)
+                    {
+                        Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
+                        Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
                     }
                 }
             }
@@ -700,22 +709,26 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Write Chamber #1 Stop
                 //------------------------------------------------------------------//
-                if (ch == 0) Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
-                if (ch == 1) Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
-                if (ch == 2) Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
-                if (ch == 3) Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
-
-                //------------------------------------------------------------------//
-                // Write Recorder #1 Record Stop
-                //------------------------------------------------------------------//
-                if (_bWorkChamber[0] == false && _bWorkChamber[1] == false)
+                if (ch == 0)
                 {
+                    Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
                     Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                 }
 
-                if (_bWorkChamber[2] == false && _bWorkChamber[3] == false)
+                else if (ch == 1)
                 {
+                    Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
                     Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+                }
+                else if (ch == 2)
+                {
+                    Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
+                    Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
+                }
+                else if (ch == 3)
+                {
+                    Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
+                    Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
                 }
             }
 
@@ -859,10 +872,10 @@ namespace Ptnr
         private void PerformTpChamberTestBegin(int ch, TSpecTpChamber spc)
         {
             int addr = 0;
-            if (ch == 0) addr = SysDefs.ADDR_CHAMBER11;
-            if (ch == 1) addr = SysDefs.ADDR_CHAMBER12;
-            if (ch == 2) addr = SysDefs.ADDR_CHAMBER21;
-            if (ch == 3) addr = SysDefs.ADDR_CHAMBER22;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER1;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER2;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER3;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER4;
 
             short tpv = _chamber[ch].tpv;
 
@@ -885,16 +898,11 @@ namespace Ptnr
             //------------------------------------------------------------------//
             // Write Recorder #1 Record Start
             //------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12)
-            {
-                Comm.Write(SysDefs.ADDR_RECORDER1, 100, 1);
-            }
-
-            if (addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
-            {
-                Comm.Write(SysDefs.ADDR_RECORDER2, 100, 1);
-            }
-
+            if      (addr == SysDefs.ADDR_CHAMBER1) Comm.Write(SysDefs.ADDR_RECORDER1, 100, 1);
+            else if (addr == SysDefs.ADDR_CHAMBER2) Comm.Write(SysDefs.ADDR_RECORDER2, 100, 1);
+            else if (addr == SysDefs.ADDR_CHAMBER3) Comm.Write(SysDefs.ADDR_RECORDER3, 100, 1);
+            else if (addr == SysDefs.ADDR_CHAMBER4) Comm.Write(SysDefs.ADDR_RECORDER4, 100, 1);
+            
             spc.startPv = tpv;
             spc.workingSts = WorkingSts.TouchSpCheck;
             spc.workStartTm = DateTime.Now;
@@ -917,6 +925,11 @@ namespace Ptnr
             spc.resRec[SysDefs.CH2].Clear();
             spc.resRec[SysDefs.CH3].Clear();
             spc.resRec[SysDefs.CH4].Clear();
+            spc.resRec[SysDefs.CH5].Clear();
+            spc.resRec[SysDefs.CH6].Clear();
+            spc.resRec[SysDefs.CH7].Clear();
+            spc.resRec[SysDefs.CH8].Clear();
+            spc.resRec[SysDefs.CH9].Clear();
         }
 
         //--------------------------------------------------------------------------//
@@ -1153,51 +1166,37 @@ namespace Ptnr
         {
             int ch = 0;
 
-            if (addr == SysDefs.ADDR_CHAMBER11) ch = 0;
-            if (addr == SysDefs.ADDR_CHAMBER12) ch = 1;
-            if (addr == SysDefs.ADDR_CHAMBER21) ch = 2;
-            if (addr == SysDefs.ADDR_CHAMBER22) ch = 3;
+            if (addr == SysDefs.ADDR_CHAMBER1) ch = 0;
+            if (addr == SysDefs.ADDR_CHAMBER2) ch = 1;
+            if (addr == SysDefs.ADDR_CHAMBER3) ch = 2;
+            if (addr == SysDefs.ADDR_CHAMBER4) ch = 3;
 
             //--------------------------------------------------------------------------//
             // Check OnLine status.
             //--------------------------------------------------------------------------//
             if (strSts.IndexOf("OK") < 0)
             {
-                if (addr == SysDefs.ADDR_CHAMBER11) _chamber[0].bOnLine = false;
-                if (addr == SysDefs.ADDR_CHAMBER12) _chamber[1].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER1) _chamber[0].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER2) _chamber[1].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER3) _chamber[2].bOnLine = false;
+                if (addr == SysDefs.ADDR_CHAMBER4) _chamber[3].bOnLine = false;
 
-                if (addr == SysDefs.ADDR_CHAMBER21) _chamber[2].bOnLine = false;
-                if (addr == SysDefs.ADDR_CHAMBER22) _chamber[3].bOnLine = false;
-
-                if (addr == SysDefs.ADDR_RECORDER1)
-                {
-                    _recorder[0].bOnLine = false;
-                    _recorder[1].bOnLine = false;
-                }
-                if (addr == SysDefs.ADDR_RECORDER2)
-                {
-                    _recorder[2].bOnLine = false;
-                    _recorder[3].bOnLine = false;
-                }
+                if (addr == SysDefs.ADDR_RECORDER1) _recorder[0].bOnLine = false;
+                if (addr == SysDefs.ADDR_RECORDER2) _recorder[1].bOnLine = false;
+                if (addr == SysDefs.ADDR_RECORDER3) _recorder[2].bOnLine = false;
+                if (addr == SysDefs.ADDR_RECORDER4) _recorder[3].bOnLine = false;
             }
             else
             {
-                if (addr == SysDefs.ADDR_CHAMBER11) _chamber[0].bOnLine = true;
-                if (addr == SysDefs.ADDR_CHAMBER12) _chamber[1].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER1) _chamber[0].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER2) _chamber[1].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER3) _chamber[2].bOnLine = true;
+                if (addr == SysDefs.ADDR_CHAMBER4) _chamber[3].bOnLine = true;
 
-                if (addr == SysDefs.ADDR_CHAMBER21) _chamber[2].bOnLine = true;
-                if (addr == SysDefs.ADDR_CHAMBER22) _chamber[3].bOnLine = true;
-
-                if (addr == SysDefs.ADDR_RECORDER1)
-                {
-                    _recorder[0].bOnLine = true;
-                    _recorder[1].bOnLine = true;
-                }
-                if (addr == SysDefs.ADDR_RECORDER2)
-                {
-                    _recorder[2].bOnLine = true;
-                    _recorder[3].bOnLine = true;
-                }
+                if (addr == SysDefs.ADDR_RECORDER1) _recorder[0].bOnLine = true;
+                if (addr == SysDefs.ADDR_RECORDER2) _recorder[1].bOnLine = true;
+                if (addr == SysDefs.ADDR_RECORDER3) _recorder[2].bOnLine = true;
+                if (addr == SysDefs.ADDR_RECORDER4) _recorder[3].bOnLine = true;
             }
 
             if (strSts.IndexOf("OK") < 0)
@@ -1223,8 +1222,8 @@ namespace Ptnr
             // - TEMI(TPV:1, TSP:2, HPV:5, HSP:6, NOWSTS:10)
             // - TEMP(PV:1, SP:3, NOWSTS:10)
             //--------------------------------------------------------------------------//
-            if (addr == SysDefs.ADDR_CHAMBER11 || addr == SysDefs.ADDR_CHAMBER12||
-                addr == SysDefs.ADDR_CHAMBER21 || addr == SysDefs.ADDR_CHAMBER22)
+            if (addr == SysDefs.ADDR_CHAMBER1 || addr == SysDefs.ADDR_CHAMBER2||
+                addr == SysDefs.ADDR_CHAMBER3 || addr == SysDefs.ADDR_CHAMBER4)
             {
                 _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
@@ -1234,47 +1233,28 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             // Read Recorder#1 Status (NPV1~NPV9)
             //--------------------------------------------------------------------------//
-            else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2)
+            else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2 ||
+                     addr == SysDefs.ADDR_RECORDER3 || addr == SysDefs.ADDR_RECORDER4)
             {
-                if (addr == SysDefs.ADDR_RECORDER1)
+                if (tmp.Length < 11)
                 {
-                    if (tmp.Length < 11)
-                    {
-                        _recorder[0].bOnLine = false;
-                        _recorder[1].bOnLine = false;
-                        return;
-                    }
-
-                    _recorder[0].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[0].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[0].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[0].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-
-                    _recorder[1].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[1].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[1].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[1].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
+                    return;
                 }
 
-                else if (addr == SysDefs.ADDR_RECORDER2)
-                {
-                    if (tmp.Length < 11)
-                    {
-                        _recorder[2].bOnLine = false;
-                        _recorder[3].bOnLine = false;
-                        return;
-                    }
+                if (addr == SysDefs.ADDR_RECORDER1) ch = 0;
+                if (addr == SysDefs.ADDR_RECORDER2) ch = 1;
+                if (addr == SysDefs.ADDR_RECORDER3) ch = 2;
+                if (addr == SysDefs.ADDR_RECORDER4) ch = 3;
 
-                    _recorder[2].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[2].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[3], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[2].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[2].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[5], System.Globalization.NumberStyles.HexNumber));
-
-                    _recorder[3].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[6], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[3].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[3].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[8], System.Globalization.NumberStyles.HexNumber));
-                    _recorder[3].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[9], System.Globalization.NumberStyles.HexNumber));
-                }
+                _recorder[ch].ch[SysDefs.CH1] = Convert.ToInt16(Int16.Parse(tmp[ 2], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH2] = Convert.ToInt16(Int16.Parse(tmp[ 3], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH3] = Convert.ToInt16(Int16.Parse(tmp[ 4], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH4] = Convert.ToInt16(Int16.Parse(tmp[ 5], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH5] = Convert.ToInt16(Int16.Parse(tmp[ 6], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH6] = Convert.ToInt16(Int16.Parse(tmp[ 7], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH7] = Convert.ToInt16(Int16.Parse(tmp[ 8], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH8] = Convert.ToInt16(Int16.Parse(tmp[ 9], System.Globalization.NumberStyles.HexNumber));
+                _recorder[ch].ch[SysDefs.CH9] = Convert.ToInt16(Int16.Parse(tmp[10], System.Globalization.NumberStyles.HexNumber));
             }
 
             //--------------------------------------------------------------------------//
@@ -1282,40 +1262,61 @@ namespace Ptnr
             //--------------------------------------------------------------------------//
             lblChamber11TPv.Text = "온도:" + SysDefs.DotString(_chamber[0].tpv, 1) + " ℃";
 
-            lblRec11Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[0].ch[0], 1) + " ℃";
-            lblRec11Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[0].ch[1], 1) + " ℃";
-            lblRec11Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[0].ch[2], 1) + " ℃";
-            lblRec11Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[0].ch[3], 1) + " ℃";
+            lblRec1Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[0].ch[0], 1) + " ℃";
+            lblRec1Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[0].ch[1], 1) + " ℃";
+            lblRec1Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[0].ch[2], 1) + " ℃";
+            lblRec1Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[0].ch[3], 1) + " ℃";
+            lblRec1Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder[0].ch[4], 1) + " ℃";
+            lblRec1Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder[0].ch[5], 1) + " ℃";
+            lblRec1Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[0].ch[6], 1) + " ℃";
+            lblRec1Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[0].ch[7], 1) + " ℃";
+            lblRec1Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[0].ch[8], 1) + " ℃";
+
 
             //--------------------------------------------------------------------------//
             // Update List controls Chamber2
             //--------------------------------------------------------------------------//
             lblChamber12TPv.Text = "온도:" + SysDefs.DotString(_chamber[1].tpv, 1) + " ℃";
 
-            lblRec12Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[1].ch[0], 1) + " ℃";
-            lblRec12Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[1].ch[1], 1) + " ℃";
-            lblRec12Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[1].ch[2], 1) + " ℃";
-            lblRec12Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[1].ch[3], 1) + " ℃";
+            lblRec2Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[1].ch[0], 1) + " ℃";
+            lblRec2Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[1].ch[1], 1) + " ℃";
+            lblRec2Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[1].ch[2], 1) + " ℃";
+            lblRec2Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[1].ch[3], 1) + " ℃";
+            lblRec2Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder[1].ch[4], 1) + " ℃";
+            lblRec2Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder[1].ch[5], 1) + " ℃";
+            lblRec2Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[1].ch[6], 1) + " ℃";
+            lblRec2Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[1].ch[7], 1) + " ℃";
+            lblRec2Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[1].ch[8], 1) + " ℃";
 
             //--------------------------------------------------------------------------//
             // Update List controls Chamber3
             //--------------------------------------------------------------------------//
             lblChamber21TPv.Text = "온도:" + SysDefs.DotString(_chamber[2].tpv, 1) + " ℃";
 
-            lblRec21Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[2].ch[0], 1) + " ℃";
-            lblRec21Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[2].ch[1], 1) + " ℃";
-            lblRec21Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[2].ch[2], 1) + " ℃";
-            lblRec21Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[2].ch[3], 1) + " ℃";
+            lblRec3Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[2].ch[0], 1) + " ℃";
+            lblRec3Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[2].ch[1], 1) + " ℃";
+            lblRec3Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[2].ch[2], 1) + " ℃";
+            lblRec3Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[2].ch[3], 1) + " ℃";
+            lblRec3Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder[2].ch[4], 1) + " ℃";
+            lblRec3Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder[2].ch[5], 1) + " ℃";
+            lblRec3Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[2].ch[6], 1) + " ℃";
+            lblRec3Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[2].ch[7], 1) + " ℃";
+            lblRec3Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[2].ch[8], 1) + " ℃";
 
             //--------------------------------------------------------------------------//
             // Update List controls Chamber4
             //--------------------------------------------------------------------------//
             lblChamber22TPv.Text = "온도:" + SysDefs.DotString(_chamber[3].tpv, 1) + " ℃";
- 
-            lblRec22Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[3].ch[0], 1) + " ℃";
-            lblRec22Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[3].ch[1], 1) + " ℃";
-            lblRec22Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[3].ch[2], 1) + " ℃";
-            lblRec22Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[3].ch[3], 1) + " ℃";
+
+            lblRec4Ch1.Text = "[Ch1]  " + SysDefs.DotString(_recorder[3].ch[0], 1) + " ℃";
+            lblRec4Ch2.Text = "[Ch2]  " + SysDefs.DotString(_recorder[3].ch[1], 1) + " ℃";
+            lblRec4Ch3.Text = "[Ch3]  " + SysDefs.DotString(_recorder[3].ch[2], 1) + " ℃";
+            lblRec4Ch4.Text = "[Ch4]  " + SysDefs.DotString(_recorder[3].ch[3], 1) + " ℃";
+            lblRec4Ch5.Text = "[Ch5]  " + SysDefs.DotString(_recorder[3].ch[4], 1) + " ℃";
+            lblRec4Ch6.Text = "[Ch6]  " + SysDefs.DotString(_recorder[3].ch[5], 1) + " ℃";
+            lblRec4Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[3].ch[6], 1) + " ℃";
+            lblRec4Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[3].ch[7], 1) + " ℃";
+            lblRec4Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[3].ch[8], 1) + " ℃";
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -1738,22 +1739,22 @@ namespace Ptnr
                 //------------------------------------------------------------------//
                 // Write Temp Chamber #1 Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHAMBER11, 102, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
                 
                 //------------------------------------------------------------------//
                 // Write Temp Chamber #2 Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHAMBER12, 102, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
                 
                 //------------------------------------------------------------------//
                 // Write Temp Chamber #1 Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHAMBER21, 102, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
                 
                 //------------------------------------------------------------------//
                 // Write Temp Chamber #1 Stop
                 //------------------------------------------------------------------//
-                Comm.Write(SysDefs.ADDR_CHAMBER22, 102, 4);
+                Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
 
                 //------------------------------------------------------------------//
                 // Write Recorder #1 Record Stop
@@ -1764,6 +1765,16 @@ namespace Ptnr
                 // Write Recorder #2 Record Stop
                 //------------------------------------------------------------------//
                 Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
+
+                //------------------------------------------------------------------//
+                // Write Recorder #3 Record Stop
+                //------------------------------------------------------------------//
+                Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
+
+                //------------------------------------------------------------------//
+                // Write Recorder #4 Record Stop
+                //------------------------------------------------------------------//
+                Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
             }
         }
 
@@ -1804,6 +1815,11 @@ namespace Ptnr
                     spc.resRec[SysDefs.CH2].Clear();
                     spc.resRec[SysDefs.CH3].Clear();
                     spc.resRec[SysDefs.CH4].Clear();
+                    spc.resRec[SysDefs.CH5].Clear();
+                    spc.resRec[SysDefs.CH6].Clear();
+                    spc.resRec[SysDefs.CH7].Clear();
+                    spc.resRec[SysDefs.CH8].Clear();
+                    spc.resRec[SysDefs.CH9].Clear();
                 }
             }
         }
@@ -1858,6 +1874,11 @@ namespace Ptnr
                 spc.resRec[SysDefs.CH2].Clear();
                 spc.resRec[SysDefs.CH3].Clear();
                 spc.resRec[SysDefs.CH4].Clear();
+                spc.resRec[SysDefs.CH5].Clear();
+                spc.resRec[SysDefs.CH6].Clear();
+                spc.resRec[SysDefs.CH7].Clear();
+                spc.resRec[SysDefs.CH8].Clear();
+                spc.resRec[SysDefs.CH9].Clear();
             }
         }
     }
