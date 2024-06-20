@@ -1,0 +1,14 @@
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\bin\Debug\Ptnr_Cell4Z9R.exe.config
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\bin\Debug\Ptnr_Cell4Z9R.exe
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\bin\Debug\Ptnr_Cell4Z9R.pdb
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.csproj.AssemblyReference.cache
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.csproj.SuggestedBindingRedirects.cache
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr.EqmtForm.resources
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr.MainWin.resources
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.Properties.Resources.resources
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr.SetupForm.resources
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr.UCEqmt.resources
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.csproj.GenerateResource.cache
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.csproj.CoreCompileInputs.cache
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.exe
+C:\Users\pioni\source\repos\Ptnr_Cell4Z9R\obj\Debug\Ptnr_Cell4Z9R.pdb

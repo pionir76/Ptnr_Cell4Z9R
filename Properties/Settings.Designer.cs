@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Ptnr_Cell4Z.Properties {
+namespace Ptnr_Cell4Z9R.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
