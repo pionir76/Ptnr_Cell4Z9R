@@ -492,7 +492,8 @@ namespace Ptnr
                     
                     strResTOver = (sp1.bUseTOver == false) ? "-" : SysDefs.DotString(sp1.resTOver, 1);
                     strResROver = SysDefs.DotString(sp1.resROver, 1);
-                    strResStableTm = sp1.resStableTm.ToString();
+
+                    strResStableTm = (sp1.bUseStableTm == false) ? "-" : sp1.resStableTm.ToString();
 
                     strResRamp1 = (sp1.bUseRamp == false) ? "-" : SysDefs.DotString(sp1.resCtrRamp, 1);
 
@@ -960,9 +961,7 @@ namespace Ptnr
             if (spc.bTouchTemp == true)
             {
                 TimeSpan span = DateTime.Now.Subtract(spc.workStartTm);
-                spc.resCtrRamp = (short)(Math.Abs(spc.tsp - spc.startPv) / (span.TotalMinutes + 1));
-
-                Console.WriteLine(">> Touch PV : "+span.TotalMinutes.ToString() +" / "+ (Math.Abs(spc.tsp - spc.startPv)).ToString());
+                spc.resCtrRamp = (short)((Math.Abs(spc.tsp - spc.startPv) / (span.TotalSeconds + 1)) * 60);
 
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
