@@ -931,6 +931,11 @@ namespace Ptnr
             spc.resRec[SysDefs.CH7].Clear();
             spc.resRec[SysDefs.CH8].Clear();
             spc.resRec[SysDefs.CH9].Clear();
+
+            if (ch == 0) lblRmtCh1.Text = "RMT:000m";
+            else if (ch == 1) lblRmtCh2.Text = "RMT:000m";
+            else if (ch == 2) lblRmtCh3.Text = "RMT:000m";
+            else if (ch == 3) lblRmtCh4.Text = "RMT:000m";
         }
 
         //--------------------------------------------------------------------------//
@@ -1080,6 +1085,12 @@ namespace Ptnr
                 testTm = 10;
                 waitTm = 0;
             }
+
+            int rmt = testTm - (int)(DateTime.Now.Subtract(spc.workStartTm).TotalMinutes);
+            if (ch == 0) lblRmtCh1.Text = "RMT:" + rmt.ToString() + "M";
+            else if (ch == 1) lblRmtCh2.Text = "RMT:" + rmt.ToString() + "M";
+            else if (ch == 2) lblRmtCh3.Text = "RMT:" + rmt.ToString() + "M";
+            else if (ch == 3) lblRmtCh4.Text = "RMT:" + rmt.ToString() + "M";
 
             short tpv = _chamber[ch].tpv;
 
@@ -1398,7 +1409,10 @@ namespace Ptnr
                 {
                     strResUnifMin = SysDefs.DotString(spc.resUnifMin, 1);
                     strResUnifMax = SysDefs.DotString(spc.resUnifMax, 1);
+                }
 
+                if (spc.bUseStableTm)
+                {
                     strResSettlingTm = spc.resStableTm.ToString();
                 }
             }
@@ -1615,6 +1629,7 @@ namespace Ptnr
                     specTpChamber[ch][i].bUseRamp = Cfg.TpCfg.bUseRamp[i];
                     specTpChamber[ch][i].bUseUnif = Cfg.TpCfg.bUseUnif[i];
                     specTpChamber[ch][i].bUseTOver = Cfg.TpCfg.bUseTOver[i];
+                    specTpChamber[ch][i].bUseStableTm = Cfg.TpCfg.bUseStableTm[i];
                 }
             }
 

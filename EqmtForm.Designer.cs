@@ -269,6 +269,10 @@
             this.btnChamber21Step = new System.Windows.Forms.Button();
             this.btnChamber12Step = new System.Windows.Forms.Button();
             this.btnChamber22Step = new System.Windows.Forms.Button();
+            this.lblRmtCh1 = new System.Windows.Forms.Label();
+            this.lblRmtCh3 = new System.Windows.Forms.Label();
+            this.lblRmtCh2 = new System.Windows.Forms.Label();
+            this.lblRmtCh4 = new System.Windows.Forms.Label();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -531,7 +535,7 @@
             // 
             this.panel4.Controls.Add(this.lblChamb22Tlt);
             this.panel4.Controls.Add(this.lblChamb22Sts);
-            this.panel4.Location = new System.Drawing.Point(841, 487);
+            this.panel4.Location = new System.Drawing.Point(812, 487);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(172, 26);
@@ -601,7 +605,7 @@
             // 
             // btnStartChamber22
             // 
-            this.btnStartChamber22.Location = new System.Drawing.Point(1132, 487);
+            this.btnStartChamber22.Location = new System.Drawing.Point(1082, 487);
             this.btnStartChamber22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartChamber22.Name = "btnStartChamber22";
             this.btnStartChamber22.Size = new System.Drawing.Size(107, 27);
@@ -648,7 +652,7 @@
             // 
             // btnStartSelectedChamber22
             // 
-            this.btnStartSelectedChamber22.Location = new System.Drawing.Point(1244, 487);
+            this.btnStartSelectedChamber22.Location = new System.Drawing.Point(1194, 487);
             this.btnStartSelectedChamber22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartSelectedChamber22.Name = "btnStartSelectedChamber22";
             this.btnStartSelectedChamber22.Size = new System.Drawing.Size(107, 27);
@@ -659,7 +663,7 @@
             // 
             // btnStartChamber21
             // 
-            this.btnStartChamber21.Location = new System.Drawing.Point(300, 487);
+            this.btnStartChamber21.Location = new System.Drawing.Point(279, 487);
             this.btnStartChamber21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartChamber21.Name = "btnStartChamber21";
             this.btnStartChamber21.Size = new System.Drawing.Size(107, 27);
@@ -670,10 +674,10 @@
             // 
             // btnChamber22Hold
             // 
-            this.btnChamber22Hold.Location = new System.Drawing.Point(1359, 487);
+            this.btnChamber22Hold.Location = new System.Drawing.Point(1307, 487);
             this.btnChamber22Hold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber22Hold.Name = "btnChamber22Hold";
-            this.btnChamber22Hold.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber22Hold.Size = new System.Drawing.Size(80, 27);
             this.btnChamber22Hold.TabIndex = 0;
             this.btnChamber22Hold.Text = "Hold";
             this.btnChamber22Hold.UseVisualStyleBackColor = true;
@@ -681,7 +685,7 @@
             // 
             // btnStartSelectedChamber21
             // 
-            this.btnStartSelectedChamber21.Location = new System.Drawing.Point(412, 487);
+            this.btnStartSelectedChamber21.Location = new System.Drawing.Point(391, 487);
             this.btnStartSelectedChamber21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartSelectedChamber21.Name = "btnStartSelectedChamber21";
             this.btnStartSelectedChamber21.Size = new System.Drawing.Size(107, 27);
@@ -692,10 +696,10 @@
             // 
             // btnChamber21Hold
             // 
-            this.btnChamber21Hold.Location = new System.Drawing.Point(527, 487);
+            this.btnChamber21Hold.Location = new System.Drawing.Point(504, 487);
             this.btnChamber21Hold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber21Hold.Name = "btnChamber21Hold";
-            this.btnChamber21Hold.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber21Hold.Size = new System.Drawing.Size(80, 27);
             this.btnChamber21Hold.TabIndex = 0;
             this.btnChamber21Hold.Text = "Hold";
             this.btnChamber21Hold.UseVisualStyleBackColor = true;
@@ -706,9 +710,9 @@
             this.lblChamber22TPv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChamber22TPv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChamber22TPv.Font = new System.Drawing.Font("돋움체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblChamber22TPv.Location = new System.Drawing.Point(1018, 487);
+            this.lblChamber22TPv.Location = new System.Drawing.Point(989, 487);
             this.lblChamber22TPv.Name = "lblChamber22TPv";
-            this.lblChamber22TPv.Size = new System.Drawing.Size(102, 27);
+            this.lblChamber22TPv.Size = new System.Drawing.Size(87, 27);
             this.lblChamber22TPv.TabIndex = 11;
             this.lblChamber22TPv.Text = "PV :";
             this.lblChamber22TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -720,7 +724,7 @@
             this.lblChamber21TPv.Font = new System.Drawing.Font("돋움체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblChamber21TPv.Location = new System.Drawing.Point(188, 487);
             this.lblChamber21TPv.Name = "lblChamber21TPv";
-            this.lblChamber21TPv.Size = new System.Drawing.Size(102, 27);
+            this.lblChamber21TPv.Size = new System.Drawing.Size(87, 27);
             this.lblChamber21TPv.TabIndex = 11;
             this.lblChamber21TPv.Text = "PV :";
             this.lblChamber21TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -779,7 +783,7 @@
             // 
             // btnStartSelectedChamber11
             // 
-            this.btnStartSelectedChamber11.Location = new System.Drawing.Point(413, 10);
+            this.btnStartSelectedChamber11.Location = new System.Drawing.Point(392, 10);
             this.btnStartSelectedChamber11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartSelectedChamber11.Name = "btnStartSelectedChamber11";
             this.btnStartSelectedChamber11.Size = new System.Drawing.Size(107, 27);
@@ -795,7 +799,7 @@
             this.lblChamber11TPv.Font = new System.Drawing.Font("돋움체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblChamber11TPv.Location = new System.Drawing.Point(189, 10);
             this.lblChamber11TPv.Name = "lblChamber11TPv";
-            this.lblChamber11TPv.Size = new System.Drawing.Size(102, 27);
+            this.lblChamber11TPv.Size = new System.Drawing.Size(87, 27);
             this.lblChamber11TPv.TabIndex = 11;
             this.lblChamber11TPv.Text = "PV :";
             this.lblChamber11TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -971,7 +975,7 @@
             // 
             this.panel1.Controls.Add(this.lblChamb12Tlt);
             this.panel1.Controls.Add(this.lblChamb12Sts);
-            this.panel1.Location = new System.Drawing.Point(839, 10);
+            this.panel1.Location = new System.Drawing.Point(810, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(172, 26);
@@ -1005,7 +1009,7 @@
             // 
             // btnStartChamber12
             // 
-            this.btnStartChamber12.Location = new System.Drawing.Point(1130, 10);
+            this.btnStartChamber12.Location = new System.Drawing.Point(1080, 10);
             this.btnStartChamber12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartChamber12.Name = "btnStartChamber12";
             this.btnStartChamber12.Size = new System.Drawing.Size(107, 27);
@@ -1016,7 +1020,7 @@
             // 
             // btnStartSelectedChamber12
             // 
-            this.btnStartSelectedChamber12.Location = new System.Drawing.Point(1242, 10);
+            this.btnStartSelectedChamber12.Location = new System.Drawing.Point(1192, 10);
             this.btnStartSelectedChamber12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartSelectedChamber12.Name = "btnStartSelectedChamber12";
             this.btnStartSelectedChamber12.Size = new System.Drawing.Size(107, 27);
@@ -1027,7 +1031,7 @@
             // 
             // btnStartChamber11
             // 
-            this.btnStartChamber11.Location = new System.Drawing.Point(301, 10);
+            this.btnStartChamber11.Location = new System.Drawing.Point(280, 10);
             this.btnStartChamber11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStartChamber11.Name = "btnStartChamber11";
             this.btnStartChamber11.Size = new System.Drawing.Size(107, 27);
@@ -1038,10 +1042,10 @@
             // 
             // btnChamber12Hold
             // 
-            this.btnChamber12Hold.Location = new System.Drawing.Point(1357, 10);
+            this.btnChamber12Hold.Location = new System.Drawing.Point(1305, 10);
             this.btnChamber12Hold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber12Hold.Name = "btnChamber12Hold";
-            this.btnChamber12Hold.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber12Hold.Size = new System.Drawing.Size(80, 27);
             this.btnChamber12Hold.TabIndex = 0;
             this.btnChamber12Hold.Text = "Hold";
             this.btnChamber12Hold.UseVisualStyleBackColor = true;
@@ -1049,10 +1053,10 @@
             // 
             // btnChamber11Hold
             // 
-            this.btnChamber11Hold.Location = new System.Drawing.Point(528, 10);
+            this.btnChamber11Hold.Location = new System.Drawing.Point(505, 10);
             this.btnChamber11Hold.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber11Hold.Name = "btnChamber11Hold";
-            this.btnChamber11Hold.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber11Hold.Size = new System.Drawing.Size(80, 27);
             this.btnChamber11Hold.TabIndex = 0;
             this.btnChamber11Hold.Text = "Hold";
             this.btnChamber11Hold.UseVisualStyleBackColor = true;
@@ -1099,9 +1103,9 @@
             this.lblChamber12TPv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChamber12TPv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChamber12TPv.Font = new System.Drawing.Font("돋움체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblChamber12TPv.Location = new System.Drawing.Point(1016, 10);
+            this.lblChamber12TPv.Location = new System.Drawing.Point(987, 10);
             this.lblChamber12TPv.Name = "lblChamber12TPv";
-            this.lblChamber12TPv.Size = new System.Drawing.Size(102, 27);
+            this.lblChamber12TPv.Size = new System.Drawing.Size(87, 27);
             this.lblChamber12TPv.TabIndex = 11;
             this.lblChamber12TPv.Text = "PV :";
             this.lblChamber12TPv.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1897,10 +1901,10 @@
             // 
             // btnChamber11Step
             // 
-            this.btnChamber11Step.Location = new System.Drawing.Point(641, 10);
+            this.btnChamber11Step.Location = new System.Drawing.Point(590, 10);
             this.btnChamber11Step.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber11Step.Name = "btnChamber11Step";
-            this.btnChamber11Step.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber11Step.Size = new System.Drawing.Size(80, 27);
             this.btnChamber11Step.TabIndex = 0;
             this.btnChamber11Step.Text = "Step";
             this.btnChamber11Step.UseVisualStyleBackColor = true;
@@ -1908,10 +1912,10 @@
             // 
             // btnChamber21Step
             // 
-            this.btnChamber21Step.Location = new System.Drawing.Point(640, 487);
+            this.btnChamber21Step.Location = new System.Drawing.Point(589, 487);
             this.btnChamber21Step.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber21Step.Name = "btnChamber21Step";
-            this.btnChamber21Step.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber21Step.Size = new System.Drawing.Size(80, 27);
             this.btnChamber21Step.TabIndex = 0;
             this.btnChamber21Step.Text = "Step";
             this.btnChamber21Step.UseVisualStyleBackColor = true;
@@ -1919,10 +1923,10 @@
             // 
             // btnChamber12Step
             // 
-            this.btnChamber12Step.Location = new System.Drawing.Point(1470, 10);
+            this.btnChamber12Step.Location = new System.Drawing.Point(1390, 10);
             this.btnChamber12Step.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber12Step.Name = "btnChamber12Step";
-            this.btnChamber12Step.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber12Step.Size = new System.Drawing.Size(80, 27);
             this.btnChamber12Step.TabIndex = 0;
             this.btnChamber12Step.Text = "Step";
             this.btnChamber12Step.UseVisualStyleBackColor = true;
@@ -1930,14 +1934,70 @@
             // 
             // btnChamber22Step
             // 
-            this.btnChamber22Step.Location = new System.Drawing.Point(1472, 487);
+            this.btnChamber22Step.Location = new System.Drawing.Point(1392, 487);
             this.btnChamber22Step.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChamber22Step.Name = "btnChamber22Step";
-            this.btnChamber22Step.Size = new System.Drawing.Size(107, 27);
+            this.btnChamber22Step.Size = new System.Drawing.Size(80, 27);
             this.btnChamber22Step.TabIndex = 0;
             this.btnChamber22Step.Text = "Step";
             this.btnChamber22Step.UseVisualStyleBackColor = true;
             this.btnChamber22Step.Click += new System.EventHandler(this.btnChamberStep_Click);
+            // 
+            // lblRmtCh1
+            // 
+            this.lblRmtCh1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRmtCh1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRmtCh1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRmtCh1.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRmtCh1.ForeColor = System.Drawing.Color.Orange;
+            this.lblRmtCh1.Location = new System.Drawing.Point(677, 10);
+            this.lblRmtCh1.Name = "lblRmtCh1";
+            this.lblRmtCh1.Size = new System.Drawing.Size(108, 26);
+            this.lblRmtCh1.TabIndex = 11;
+            this.lblRmtCh1.Text = "RMT: 000M";
+            this.lblRmtCh1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRmtCh3
+            // 
+            this.lblRmtCh3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRmtCh3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRmtCh3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRmtCh3.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRmtCh3.ForeColor = System.Drawing.Color.Orange;
+            this.lblRmtCh3.Location = new System.Drawing.Point(677, 487);
+            this.lblRmtCh3.Name = "lblRmtCh3";
+            this.lblRmtCh3.Size = new System.Drawing.Size(108, 26);
+            this.lblRmtCh3.TabIndex = 11;
+            this.lblRmtCh3.Text = "RMT: 000M";
+            this.lblRmtCh3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRmtCh2
+            // 
+            this.lblRmtCh2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRmtCh2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRmtCh2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRmtCh2.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRmtCh2.ForeColor = System.Drawing.Color.Orange;
+            this.lblRmtCh2.Location = new System.Drawing.Point(1473, 9);
+            this.lblRmtCh2.Name = "lblRmtCh2";
+            this.lblRmtCh2.Size = new System.Drawing.Size(108, 26);
+            this.lblRmtCh2.TabIndex = 11;
+            this.lblRmtCh2.Text = "RMT: 000M";
+            this.lblRmtCh2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblRmtCh4
+            // 
+            this.lblRmtCh4.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblRmtCh4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRmtCh4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRmtCh4.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRmtCh4.ForeColor = System.Drawing.Color.Orange;
+            this.lblRmtCh4.Location = new System.Drawing.Point(1473, 486);
+            this.lblRmtCh4.Name = "lblRmtCh4";
+            this.lblRmtCh4.Size = new System.Drawing.Size(108, 26);
+            this.lblRmtCh4.TabIndex = 11;
+            this.lblRmtCh4.Text = "RMT: 000M";
+            this.lblRmtCh4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EqmtForm
             // 
@@ -1947,6 +2007,10 @@
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.lblRmtCh4);
+            this.Controls.Add(this.lblRmtCh3);
+            this.Controls.Add(this.lblRmtCh2);
+            this.Controls.Add(this.lblRmtCh1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.btnAllStop);
             this.Controls.Add(this.panel10);
@@ -2245,5 +2309,9 @@
         private System.Windows.Forms.Label lblRec3Ch8;
         private System.Windows.Forms.Label lblRec3Ch3;
         private System.Windows.Forms.Label lblRec3Ch7;
+        private System.Windows.Forms.Label lblRmtCh1;
+        private System.Windows.Forms.Label lblRmtCh3;
+        private System.Windows.Forms.Label lblRmtCh2;
+        private System.Windows.Forms.Label lblRmtCh4;
     }
 }
