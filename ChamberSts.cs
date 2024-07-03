@@ -13,6 +13,7 @@ namespace Ptnr
         public short sts;
 
         public bool bOnLine;
+        public bool bRun;
 
         public ChamberSts()
         {
@@ -20,6 +21,7 @@ namespace Ptnr
             tsp = 0;
             sts = 0;
             bOnLine = false;
+            bRun =false;
         }
     }
 }

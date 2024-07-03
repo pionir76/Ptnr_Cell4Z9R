@@ -12,5 +12,6 @@ namespace Ptnr
         
         public int[] dp = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1};
         public bool bOnLine;
+        public bool bRec;
     }
 }

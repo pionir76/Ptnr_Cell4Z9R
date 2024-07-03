@@ -222,10 +222,10 @@ namespace Ptnr
             else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2 ||
                      addr == SysDefs.ADDR_RECORDER3 || addr == SysDefs.ADDR_RECORDER4 )
             {
-                if (addr == SysDefs.ADDR_RECORDER1) cmd = string.Format("03RSD,09,0001");
-                if (addr == SysDefs.ADDR_RECORDER2) cmd = string.Format("06RSD,09,0001");
-                if (addr == SysDefs.ADDR_RECORDER3) cmd = string.Format("07RSD,09,0001");
-                if (addr == SysDefs.ADDR_RECORDER4) cmd = string.Format("08RSD,09,0001");
+                if (addr == SysDefs.ADDR_RECORDER1) cmd = string.Format("03RRD,10,0001,0002,0003,0004,0005,0006,0007,0008,0009,0016");
+                if (addr == SysDefs.ADDR_RECORDER2) cmd = string.Format("06RRD,10,0001,0002,0003,0004,0005,0006,0007,0008,0009,0016");
+                if (addr == SysDefs.ADDR_RECORDER3) cmd = string.Format("07RRD,10,0001,0002,0003,0004,0005,0006,0007,0008,0009,0016");
+                if (addr == SysDefs.ADDR_RECORDER4) cmd = string.Format("08RRD,10,0001,0002,0003,0004,0005,0006,0007,0008,0009,0016");
             }
 
             List<byte> dTx = Encoding.ASCII.GetBytes(cmd).ToList();

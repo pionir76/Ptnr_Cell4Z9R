@@ -1111,6 +1111,18 @@ namespace Ptnr
                 if (tpv <= spc.resCtrTMin) spc.resCtrTMin = tpv;
             }
 
+            else
+            {
+                if (spc.tempSlop == Slop.Up)
+                {
+                    if (tpv >= spc.resTOver) spc.resTOver = tpv;
+                }
+                else
+                {
+                    if (tpv <= spc.resTOver) spc.resTOver = tpv;
+                }
+            }
+
             //--------------------------------------------------------------------------//
             // Record pv
             //--------------------------------------------------------------------------//
@@ -1132,8 +1144,6 @@ namespace Ptnr
                 {
                     avg[ofs] = 0;
                     int sum = 0;
-
-                    Console.WriteLine(">> Recorder count: "+ spc.resRec[ofs].Count);
 
                     for (int i = 0; i < spc.resRec[ofs].Count; i++)
                     {
@@ -1238,6 +1248,15 @@ namespace Ptnr
                 _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
+
+                if ((_chamber[ch].sts & 0x0001) > 0)
+                {
+                    _chamber[ch].bRun = false;
+                }
+                else
+                {
+                    _chamber[ch].bRun = true;
+                }
             }
 
             //--------------------------------------------------------------------------//
@@ -1246,7 +1265,7 @@ namespace Ptnr
             else if (addr == SysDefs.ADDR_RECORDER1 || addr == SysDefs.ADDR_RECORDER2 ||
                      addr == SysDefs.ADDR_RECORDER3 || addr == SysDefs.ADDR_RECORDER4)
             {
-                if (tmp.Length < 11)
+                if (tmp.Length < 12)
                 {
                     return;
                 }
@@ -1265,6 +1284,16 @@ namespace Ptnr
                 _recorder[ch].ch[SysDefs.CH7] = Convert.ToInt16(Int16.Parse(tmp[ 8], System.Globalization.NumberStyles.HexNumber));
                 _recorder[ch].ch[SysDefs.CH8] = Convert.ToInt16(Int16.Parse(tmp[ 9], System.Globalization.NumberStyles.HexNumber));
                 _recorder[ch].ch[SysDefs.CH9] = Convert.ToInt16(Int16.Parse(tmp[10], System.Globalization.NumberStyles.HexNumber));
+
+                short nowSts = Convert.ToInt16(Int16.Parse(tmp[11], System.Globalization.NumberStyles.HexNumber));
+                if ((nowSts & 0x0001) > 0)
+                {
+                    _recorder[ch].bRec = true;
+                }
+                else
+                {
+                    _recorder[ch].bRec = false;
+                }
             }
 
             //--------------------------------------------------------------------------//
@@ -1282,7 +1311,12 @@ namespace Ptnr
             lblRec1Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[0].ch[7], 1) + " ℃";
             lblRec1Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[0].ch[8], 1) + " ℃";
 
-
+            if (_chamber[0].bRun == true) lblChamb11Tlt.BackColor = System.Drawing.Color.Green;
+            else lblChamb11Tlt.BackColor = System.Drawing.Color.Black;
+            
+            if (_recorder[0].bRec == true) lblRecorder11Tlt.BackColor = System.Drawing.Color.Green;
+            else lblRecorder11Tlt.BackColor = System.Drawing.Color.Black;
+            
             //--------------------------------------------------------------------------//
             // Update List controls Chamber2
             //--------------------------------------------------------------------------//
@@ -1297,6 +1331,12 @@ namespace Ptnr
             lblRec2Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[1].ch[6], 1) + " ℃";
             lblRec2Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[1].ch[7], 1) + " ℃";
             lblRec2Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[1].ch[8], 1) + " ℃";
+
+            if (_chamber[1].bRun == true) lblChamb12Tlt.BackColor = System.Drawing.Color.Green;
+            else lblChamb12Tlt.BackColor = System.Drawing.Color.Black;
+
+            if (_recorder[1].bRec == true) lblRecorder12Tlt.BackColor = System.Drawing.Color.Green;
+            else lblRecorder12Tlt.BackColor = System.Drawing.Color.Black;
 
             //--------------------------------------------------------------------------//
             // Update List controls Chamber3
@@ -1313,6 +1353,12 @@ namespace Ptnr
             lblRec3Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[2].ch[7], 1) + " ℃";
             lblRec3Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[2].ch[8], 1) + " ℃";
 
+            if (_chamber[2].bRun == true) lblChamb21Tlt.BackColor = System.Drawing.Color.Green;
+            else lblChamb21Tlt.BackColor = System.Drawing.Color.Black;
+
+            if (_recorder[2].bRec == true) lblRecorder21Tlt.BackColor = System.Drawing.Color.Green;
+            else lblRecorder21Tlt.BackColor = System.Drawing.Color.Black;
+
             //--------------------------------------------------------------------------//
             // Update List controls Chamber4
             //--------------------------------------------------------------------------//
@@ -1327,6 +1373,12 @@ namespace Ptnr
             lblRec4Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[3].ch[6], 1) + " ℃";
             lblRec4Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[3].ch[7], 1) + " ℃";
             lblRec4Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[3].ch[8], 1) + " ℃";
+
+            if (_chamber[3].bRun == true) lblChamb22Tlt.BackColor = System.Drawing.Color.Green;
+            else lblChamb22Tlt.BackColor = System.Drawing.Color.Black;
+
+            if (_recorder[3].bRec == true) lblRecorder22Tlt.BackColor = System.Drawing.Color.Green;
+            else lblRecorder22Tlt.BackColor = System.Drawing.Color.Black;
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
