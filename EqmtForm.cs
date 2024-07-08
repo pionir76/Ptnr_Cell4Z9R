@@ -966,7 +966,12 @@ namespace Ptnr
             if (spc.bTouchTemp == true)
             {
                 TimeSpan span = DateTime.Now.Subtract(spc.workStartTm);
-                spc.resCtrRamp = (short)((Math.Abs(spc.tsp - spc.startPv) / (span.TotalSeconds + 1)) * 60);
+                double ts = span.TotalSeconds;
+                if (ts == 0)
+                {
+                    ts += 1;
+                }
+                spc.resCtrRamp = (short)((Math.Abs(spc.tsp - spc.startPv) / ts) * 60);
 
                 spc.workingSts = WorkingSts.Waiting;
                 spc.workStartTm = DateTime.Now;
@@ -1245,6 +1250,16 @@ namespace Ptnr
             if (addr == SysDefs.ADDR_CHAMBER1 || addr == SysDefs.ADDR_CHAMBER2||
                 addr == SysDefs.ADDR_CHAMBER3 || addr == SysDefs.ADDR_CHAMBER4)
             {
+                if(tmp.Length < 8)
+                {
+                    if (addr == SysDefs.ADDR_CHAMBER1) _chamber[0].bOnLine = false;
+                    if (addr == SysDefs.ADDR_CHAMBER2) _chamber[1].bOnLine = false;
+                    if (addr == SysDefs.ADDR_CHAMBER3) _chamber[2].bOnLine = false;
+                    if (addr == SysDefs.ADDR_CHAMBER4) _chamber[3].bOnLine = false;
+
+                    return;
+                }
+
                 _chamber[ch].tpv = Convert.ToInt16(Int16.Parse(tmp[2], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].tsp = Convert.ToInt16(Int16.Parse(tmp[4], System.Globalization.NumberStyles.HexNumber));
                 _chamber[ch].sts = Convert.ToInt16(Int16.Parse(tmp[7], System.Globalization.NumberStyles.HexNumber));
@@ -1267,7 +1282,12 @@ namespace Ptnr
             {
                 if (tmp.Length < 12)
                 {
-                    return;
+                    if (addr == SysDefs.ADDR_RECORDER1) _recorder[0].bOnLine = false;
+                    if (addr == SysDefs.ADDR_RECORDER2) _recorder[1].bOnLine = false;
+                    if (addr == SysDefs.ADDR_RECORDER3) _recorder[2].bOnLine = false;
+                    if (addr == SysDefs.ADDR_RECORDER4) _recorder[3].bOnLine = false;
+
+                    //return;
                 }
 
                 if (addr == SysDefs.ADDR_RECORDER1) ch = 0;

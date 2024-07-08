@@ -121,6 +121,12 @@ namespace Ptnr
         {
             while (IsRun)
             {
+                if (!_port.IsOpen)
+                {
+                    Thread.Sleep(1000);
+                    return;
+                }
+                
                 if (WriteBuff.Count > 0)
                 {
                     string cmd = WriteBuff[0].StrCmd;
@@ -260,6 +266,11 @@ namespace Ptnr
 
         public string Send(List<byte> dTx)
         {
+            if (!_port.IsOpen)
+            {
+                return "";
+            }
+
             Thread.Sleep(100);
             string strRes = "";
 
@@ -274,8 +285,11 @@ namespace Ptnr
                 if (nRecv>0)
                 {
                     byte[] rBuff = new byte[nRecv];
-                    _port.Read(rBuff, 0, nRecv);
-
+                    if (_port.IsOpen)
+                    {
+                        _port.Read(rBuff, 0, nRecv);
+                    }
+                    
                     strRes = Encoding.ASCII.GetString(rBuff, 0, nRecv);
                 }
             }

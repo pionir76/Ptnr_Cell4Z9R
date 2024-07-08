@@ -403,7 +403,7 @@
             this.lblRecorder22Tlt.Name = "lblRecorder22Tlt";
             this.lblRecorder22Tlt.Size = new System.Drawing.Size(63, 26);
             this.lblRecorder22Tlt.TabIndex = 4;
-            this.lblRecorder22Tlt.Text = "SDR 2.2";
+            this.lblRecorder22Tlt.Text = "SDR #4";
             this.lblRecorder22Tlt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRecorder22Sts
@@ -587,7 +587,7 @@
             this.lblRecorder21Tlt.Name = "lblRecorder21Tlt";
             this.lblRecorder21Tlt.Size = new System.Drawing.Size(63, 26);
             this.lblRecorder21Tlt.TabIndex = 4;
-            this.lblRecorder21Tlt.Text = "SDR 2.1";
+            this.lblRecorder21Tlt.Text = "SDR #3";
             this.lblRecorder21Tlt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRecorder21Sts
@@ -827,7 +827,7 @@
             this.lblRecorder11Tlt.Name = "lblRecorder11Tlt";
             this.lblRecorder11Tlt.Size = new System.Drawing.Size(66, 26);
             this.lblRecorder11Tlt.TabIndex = 4;
-            this.lblRecorder11Tlt.Text = "SDR 1.1";
+            this.lblRecorder11Tlt.Text = "SDR #1";
             this.lblRecorder11Tlt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRecorder11Sts
@@ -1082,7 +1082,7 @@
             this.lblRecorder12Tlt.Name = "lblRecorder12Tlt";
             this.lblRecorder12Tlt.Size = new System.Drawing.Size(66, 26);
             this.lblRecorder12Tlt.TabIndex = 4;
-            this.lblRecorder12Tlt.Text = "SDR 1.2";
+            this.lblRecorder12Tlt.Text = "SDR #2";
             this.lblRecorder12Tlt.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRecorder12Sts
