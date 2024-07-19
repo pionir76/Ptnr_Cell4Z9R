@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
@@ -456,6 +457,7 @@ namespace Ptnr
 
                 if (sp1.result == WorkingRes.NotDef)
                 {
+                    if (sp1.workingSts == WorkingSts.WarmUp) strResult1 = "WarmUp..";
                     if (sp1.workingSts == WorkingSts.Begin) strResult1 = "Ready..";
                     if (sp1.workingSts == WorkingSts.TouchSpCheck) strResult1 = "Checking PV";
                     if (sp1.workingSts == WorkingSts.Waiting) strResult1 = "Wating..";
@@ -659,23 +661,31 @@ namespace Ptnr
                     //------------------------------------------------------------------//
                     if (ch == 0)
                     {
-                        Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
+                        Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);  
+                        Thread.Sleep(200);
+
                         Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                     }
 
                     else if (ch == 1)
                     {
                         Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
+                        Thread.Sleep(200);
+
                         Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
                     }
                     else if (ch == 2)
                     {
                         Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
+                        Thread.Sleep(200);
+
                         Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
                     }
                     else if (ch == 3)
                     {
                         Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
+                        Thread.Sleep(200);
+
                         Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
                     }
                 }
@@ -713,22 +723,30 @@ namespace Ptnr
                 if (ch == 0)
                 {
                     Comm.Write(SysDefs.ADDR_CHAMBER1, 102, 4);
+                    Thread.Sleep(200);
+
                     Comm.Write(SysDefs.ADDR_RECORDER1, 100, 0);
                 }
 
                 else if (ch == 1)
                 {
                     Comm.Write(SysDefs.ADDR_CHAMBER2, 102, 4);
+                    Thread.Sleep(200);
+
                     Comm.Write(SysDefs.ADDR_RECORDER2, 100, 0);
                 }
                 else if (ch == 2)
                 {
                     Comm.Write(SysDefs.ADDR_CHAMBER3, 102, 4);
+                    Thread.Sleep(200);
+
                     Comm.Write(SysDefs.ADDR_RECORDER3, 100, 0);
                 }
                 else if (ch == 3)
                 {
                     Comm.Write(SysDefs.ADDR_CHAMBER4, 102, 4);
+                    Thread.Sleep(200);
+
                     Comm.Write(SysDefs.ADDR_RECORDER4, 100, 0);
                 }
             }
@@ -770,7 +788,17 @@ namespace Ptnr
 
         private void DoTpChamberTest(int ch, TSpecTpChamber spcChamber)
         {
-            if (spcChamber.workingSts == WorkingSts.Begin)
+            if (spcChamber.workingSts == WorkingSts.WarmUp)
+            {
+                if(Cfg.DoWarmUp == false)
+                {
+                    spcChamber.workingSts = WorkingSts.Begin;
+                    return;
+                }
+                PerformTpChamberTestWarmUp(ch, spcChamber);
+            }
+
+            else if (spcChamber.workingSts == WorkingSts.Begin)
             {
                 PerformTpChamberTestBegin(ch, spcChamber);
             }
@@ -868,6 +896,50 @@ namespace Ptnr
         }
 
         //--------------------------------------------------------------------------//
+        // 1. TEMP Chamber Test WarmUp
+        //--------------------------------------------------------------------------//
+        private void PerformTpChamberTestWarmUp(int ch, TSpecTpChamber spc)
+        {
+            int addr = 0;
+            if (ch == 0) addr = SysDefs.ADDR_CHAMBER1;
+            if (ch == 1) addr = SysDefs.ADDR_CHAMBER2;
+            if (ch == 2) addr = SysDefs.ADDR_CHAMBER3;
+            if (ch == 3) addr = SysDefs.ADDR_CHAMBER4;
+
+            if (_doFirstRunChamber[ch] == false)
+            {
+                // Write Target Temp
+                Comm.Write(addr, 104, Cfg.WarmUpSp);
+                Thread.Sleep(200);
+
+                // Write Chamber RUN
+                if ((_chamber[ch].sts & 0x0001) > 0)
+                {
+                    Comm.Write(addr, 102, 1);
+                    Thread.Sleep(200);
+                }
+
+                //------------------------------------------------------------------//
+                // Write Recorder #1 Record Start
+                //------------------------------------------------------------------//
+                if (addr == SysDefs.ADDR_CHAMBER1) Comm.Write(SysDefs.ADDR_RECORDER1, 100, 1);
+                else if (addr == SysDefs.ADDR_CHAMBER2) Comm.Write(SysDefs.ADDR_RECORDER2, 100, 1);
+                else if (addr == SysDefs.ADDR_CHAMBER3) Comm.Write(SysDefs.ADDR_RECORDER3, 100, 1);
+                else if (addr == SysDefs.ADDR_CHAMBER4) Comm.Write(SysDefs.ADDR_RECORDER4, 100, 1);
+
+                spc.workStartTm = DateTime.Now;
+                _doFirstRunChamber[ch] = true;
+            }
+
+            // Wait End check.
+            if (DateTime.Now.Subtract(spc.workStartTm).TotalMinutes >= Cfg.WarmUpTm)
+            {
+                spc.workingSts = WorkingSts.Begin;
+                _doFirstRunChamber[ch] = false;
+            }
+        }
+
+        //--------------------------------------------------------------------------//
         // 1. TEMP Chamber Test Begin
         //--------------------------------------------------------------------------//
         private void PerformTpChamberTestBegin(int ch, TSpecTpChamber spc)
@@ -885,6 +957,7 @@ namespace Ptnr
                
             // Write Target Temp
             Comm.Write(addr, 104, spc.tsp);
+            Thread.Sleep(200);
 
             if (_doFirstRunChamber[ch] == false)
             {
@@ -892,6 +965,8 @@ namespace Ptnr
                 if ((_chamber[ch].sts & 0x0001) > 0)
                 {
                     Comm.Write(addr, 102, 1);
+                    Thread.Sleep(200);
+
                     _doFirstRunChamber[ch] = true;
                 }
             }

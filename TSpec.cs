@@ -23,6 +23,7 @@ namespace Ptnr
 
         public enum WorkingSts
         {
+            WarmUp,
             Begin,
             TouchSpCheck,
             Waiting,
@@ -162,7 +163,7 @@ namespace Ptnr
 
             resStableTm = SysDefs.NOT_DEFVAL;
 
-            workingSts = WorkingSts.Begin;
+            workingSts = WorkingSts.WarmUp;
             result = WorkingRes.NotDef;
 
             bTouchTemp = false;

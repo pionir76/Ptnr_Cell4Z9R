@@ -270,6 +270,11 @@ namespace Ptnr
             txtTempUnifStblTm7.Text = (Cfg.TpCfg.StblTm[6] == 0) ? "-" : Cfg.TpCfg.StblTm[6].ToString();
             txtTempUnifStblTm8.Text = (Cfg.TpCfg.StblTm[7] == 0) ? "-" : Cfg.TpCfg.StblTm[7].ToString();
             txtTempUnifStblTm9.Text = (Cfg.TpCfg.StblTm[8] == 0) ? "-" : Cfg.TpCfg.StblTm[8].ToString();
+
+
+            txtWarmUpSp.Text = SysDefs.DotString(Cfg.WarmUpSp, 1);
+            txtWarmUpTm.Text = Cfg.WarmUpTm.ToString();
+            chkWarmUp.Checked = Cfg.DoWarmUp;
         }
 
         private void OnOk(object sender, EventArgs e)
@@ -431,6 +436,10 @@ namespace Ptnr
             if (this.txtTempUnifStblTm7.Text == "-") Cfg.TpCfg.bUseStableTm[6] = false; else Cfg.TpCfg.bUseStableTm[6] = true;
             if (this.txtTempUnifStblTm8.Text == "-") Cfg.TpCfg.bUseStableTm[7] = false; else Cfg.TpCfg.bUseStableTm[7] = true;
             if (this.txtTempUnifStblTm9.Text == "-") Cfg.TpCfg.bUseStableTm[8] = false; else Cfg.TpCfg.bUseStableTm[8] = true;
+
+            Cfg.WarmUpSp = SysDefs.DotStringToVal(this.txtWarmUpSp.Text, 1);
+            Cfg.WarmUpTm = Convert.ToInt32(this.txtWarmUpTm.Text);
+            Cfg.DoWarmUp = chkWarmUp.Checked;
         }
     }
 }

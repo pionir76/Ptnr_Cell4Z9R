@@ -153,10 +153,11 @@ namespace Ptnr
                     if (bSuccess == false)
                     {
                         WriteBuff[0].ErrCnt++;
-                        if (WriteBuff[0].ErrCnt > 10)
+                        if (WriteBuff[0].ErrCnt > 15)
                         {
                             WriteBuff.RemoveAt(0);
                         }
+                        Thread.Sleep(200);
                     }
                 }
 

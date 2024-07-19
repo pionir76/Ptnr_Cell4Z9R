@@ -91,6 +91,10 @@ namespace Ptnr
 
         public string title;
 
+        public bool DoWarmUp { get; set; }
+        public short WarmUpSp { get; set; }
+        public int WarmUpTm { get; set; }
+
         public Config()
         {
             EqmtCfg = new EqmtConfig[] {
@@ -105,6 +109,10 @@ namespace Ptnr
 
             TpCfg = new TempConfig();
             CommCfg = new CommConfig();
+
+            DoWarmUp = true;
+            WarmUpSp = 250;
+            WarmUpTm = 10;
         }
     }
 }

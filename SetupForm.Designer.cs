@@ -157,6 +157,14 @@
             this.txtTempWTm5 = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.txtWarmUpTm = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtWarmUpSp = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkWarmUp = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabSetComm.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -165,6 +173,7 @@
             this.groupBox1.SuspendLayout();
             this.tabSetTemp.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -569,6 +578,7 @@
             // tabSetTemp
             // 
             this.tabSetTemp.BackColor = System.Drawing.Color.White;
+            this.tabSetTemp.Controls.Add(this.groupBox5);
             this.tabSetTemp.Controls.Add(this.groupBox7);
             this.tabSetTemp.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabSetTemp.Location = new System.Drawing.Point(4, 34);
@@ -1621,6 +1631,94 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // txtWarmUpTm
+            // 
+            this.txtWarmUpTm.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtWarmUpTm.Location = new System.Drawing.Point(132, 34);
+            this.txtWarmUpTm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtWarmUpTm.Name = "txtWarmUpTm";
+            this.txtWarmUpTm.Size = new System.Drawing.Size(103, 26);
+            this.txtWarmUpTm.TabIndex = 61;
+            this.txtWarmUpTm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(15, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(111, 16);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "WarmUp Time :";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chkWarmUp);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.txtWarmUpSp);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.txtWarmUpTm);
+            this.groupBox5.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox5.Location = new System.Drawing.Point(33, 460);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(429, 113);
+            this.groupBox5.TabIndex = 62;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "WarmUp Set";
+            // 
+            // txtWarmUpSp
+            // 
+            this.txtWarmUpSp.Font = new System.Drawing.Font("돋움", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtWarmUpSp.Location = new System.Drawing.Point(132, 73);
+            this.txtWarmUpSp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtWarmUpSp.Name = "txtWarmUpSp";
+            this.txtWarmUpSp.Size = new System.Drawing.Size(103, 26);
+            this.txtWarmUpSp.TabIndex = 61;
+            this.txtWarmUpSp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(15, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "WarmUp SP :";
+            // 
+            // chkWarmUp
+            // 
+            this.chkWarmUp.AutoSize = true;
+            this.chkWarmUp.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.chkWarmUp.Location = new System.Drawing.Point(304, 36);
+            this.chkWarmUp.Name = "chkWarmUp";
+            this.chkWarmUp.Size = new System.Drawing.Size(98, 20);
+            this.chkWarmUp.TabIndex = 62;
+            this.chkWarmUp.Text = "Do WarmUp";
+            this.chkWarmUp.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(241, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 16);
+            this.label7.TabIndex = 60;
+            this.label7.Text = "Min";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(241, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 16);
+            this.label8.TabIndex = 60;
+            this.label8.Text = "℃";
+            // 
             // SetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1646,6 +1744,8 @@
             this.tabSetTemp.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1781,5 +1881,13 @@
         private System.Windows.Forms.TextBox txtTempRamp9;
         private System.Windows.Forms.TextBox txtTempRamp8;
         private System.Windows.Forms.TextBox txtTempWTm9;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox chkWarmUp;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtWarmUpSp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtWarmUpTm;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
