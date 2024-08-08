@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.IO.Ports;
 using System.Threading;
-using System.Windows.Forms;
-using System.Security.Cryptography;
 
 namespace Ptnr
 {
@@ -157,7 +154,6 @@ namespace Ptnr
                         {
                             WriteBuff.RemoveAt(0);
                         }
-                        Thread.Sleep(200);
                     }
                 }
 
@@ -193,8 +189,6 @@ namespace Ptnr
 
                 UpdateCtrlSts(SysDefs.ADDR_CHAMBER4);
                 UpdateCtrlSts(SysDefs.ADDR_RECORDER4);
-
-                Thread.Sleep(500);
             }
             PortClose();
 
@@ -241,8 +235,9 @@ namespace Ptnr
 
             if (rcv != null)
             {
-                //Console.WriteLine("SND> "+cmd);
-                //Console.WriteLine("RCV> " + rcv);
+                //string strTicTm = DateTime.Now.Millisecond.ToString();
+                //Console.WriteLine("SND> " + strTicTm + ":" +cmd);
+                //Console.WriteLine("RCV> " + strTicTm + ":" + rcv);
 
                 if (SysDefs.checkPcLinkSum(rcv))
                 {
@@ -271,8 +266,8 @@ namespace Ptnr
             {
                 return "";
             }
+            Thread.Sleep(200);
 
-            Thread.Sleep(100);
             string strRes = "";
 
             try
@@ -286,10 +281,7 @@ namespace Ptnr
                 if (nRecv>0)
                 {
                     byte[] rBuff = new byte[nRecv];
-                    if (_port.IsOpen)
-                    {
-                        _port.Read(rBuff, 0, nRecv);
-                    }
+                    _port.Read(rBuff, 0, nRecv);
                     
                     strRes = Encoding.ASCII.GetString(rBuff, 0, nRecv);
                 }

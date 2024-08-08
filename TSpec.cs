@@ -149,7 +149,7 @@ namespace Ptnr
             resRec[SysDefs.CH9].Capacity = 600;
         }
 
-        public void Reset()
+        public void Reset(int idx)
         {
             resCtrTMin = SysDefs.NOT_DEFVAL;
             resCtrTMax = SysDefs.NOT_DEFVAL;
@@ -163,7 +163,14 @@ namespace Ptnr
 
             resStableTm = SysDefs.NOT_DEFVAL;
 
-            workingSts = WorkingSts.WarmUp;
+            if (idx == 0)
+            {
+                workingSts = WorkingSts.WarmUp;
+            }
+            else
+            {
+                workingSts = WorkingSts.Begin;
+            }
             result = WorkingRes.NotDef;
 
             bTouchTemp = false;

@@ -613,7 +613,7 @@ namespace Ptnr
 
                 for (int i = 0; i < specTpChamber[ch].Length; i++)
                 {
-                    specTpChamber[ch][i].Reset();
+                    specTpChamber[ch][i].Reset(i);
                     _chamberTestList[ch].Add(i);
                 }
                 _workChamberTmr[ch].Start();
@@ -777,7 +777,7 @@ namespace Ptnr
                 _doFirstRunChamber[ch] = false;
                 
                 int wrkIdx = _chamberWorkingIdx[ch];
-                specTpChamber[ch][wrkIdx].Reset();
+                specTpChamber[ch][wrkIdx].Reset(1);
                 
                 _chamberTestList[ch].Clear();
                 _chamberTestList[ch].Add(wrkIdx);
@@ -910,13 +910,11 @@ namespace Ptnr
             {
                 // Write Target Temp
                 Comm.Write(addr, 104, Cfg.WarmUpSp);
-                Thread.Sleep(200);
 
                 // Write Chamber RUN
                 if ((_chamber[ch].sts & 0x0001) > 0)
                 {
                     Comm.Write(addr, 102, 1);
-                    Thread.Sleep(200);
                 }
 
                 //------------------------------------------------------------------//
@@ -957,7 +955,6 @@ namespace Ptnr
                
             // Write Target Temp
             Comm.Write(addr, 104, spc.tsp);
-            Thread.Sleep(200);
 
             if (_doFirstRunChamber[ch] == false)
             {
@@ -965,10 +962,8 @@ namespace Ptnr
                 if ((_chamber[ch].sts & 0x0001) > 0)
                 {
                     Comm.Write(addr, 102, 1);
-                    Thread.Sleep(200);
-
-                    _doFirstRunChamber[ch] = true;
                 }
+                _doFirstRunChamber[ch] = true;
             }
 
             //------------------------------------------------------------------//
@@ -1285,6 +1280,8 @@ namespace Ptnr
                 if (addr == SysDefs.ADDR_RECORDER2) _recorder[1].bOnLine = false;
                 if (addr == SysDefs.ADDR_RECORDER3) _recorder[2].bOnLine = false;
                 if (addr == SysDefs.ADDR_RECORDER4) _recorder[3].bOnLine = false;
+
+                Console.WriteLine(strSts);
             }
             else
             {
@@ -1406,6 +1403,37 @@ namespace Ptnr
             lblRec1Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[0].ch[7], 1) + " ℃";
             lblRec1Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[0].ch[8], 1) + " ℃";
 
+            short[] ary = (short[])_recorder[0].ch.Clone();
+            Array.Sort(ary);
+            int minIdx = 0;
+            int maxIdx = 0;
+
+            for(int i=0; i< ary.Length; i++)
+            {
+                if(_recorder[0].ch[i] == ary[0]) minIdx = i;
+                if(_recorder[0].ch[i] == ary[ary.Length-1]) maxIdx = i;
+            }
+
+            if (minIdx == 0) lblRec1Ch1.BackColor = Color.Gray;
+            if (minIdx == 1) lblRec1Ch2.BackColor = Color.Gray;
+            if (minIdx == 2) lblRec1Ch3.BackColor = Color.Gray;
+            if (minIdx == 3) lblRec1Ch4.BackColor = Color.Gray;
+            if (minIdx == 4) lblRec1Ch5.BackColor = Color.Gray;
+            if (minIdx == 5) lblRec1Ch6.BackColor = Color.Gray;
+            if (minIdx == 6) lblRec1Ch7.BackColor = Color.Gray;
+            if (minIdx == 7) lblRec1Ch8.BackColor = Color.Gray;
+            if (minIdx == 8) lblRec1Ch9.BackColor = Color.Gray;
+
+            if (maxIdx == 0) lblRec1Ch1.BackColor = Color.Green;
+            if (maxIdx == 1) lblRec1Ch2.BackColor = Color.Green;
+            if (maxIdx == 2) lblRec1Ch3.BackColor = Color.Green;
+            if (maxIdx == 3) lblRec1Ch4.BackColor = Color.Green;
+            if (maxIdx == 4) lblRec1Ch5.BackColor = Color.Green;
+            if (maxIdx == 5) lblRec1Ch6.BackColor = Color.Green;
+            if (maxIdx == 6) lblRec1Ch7.BackColor = Color.Green;
+            if (maxIdx == 7) lblRec1Ch8.BackColor = Color.Green;
+            if (maxIdx == 8) lblRec1Ch9.BackColor = Color.Green;
+
             if (_chamber[0].bRun == true) lblChamb11Tlt.BackColor = System.Drawing.Color.Green;
             else lblChamb11Tlt.BackColor = System.Drawing.Color.Black;
             
@@ -1426,6 +1454,35 @@ namespace Ptnr
             lblRec2Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[1].ch[6], 1) + " ℃";
             lblRec2Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[1].ch[7], 1) + " ℃";
             lblRec2Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[1].ch[8], 1) + " ℃";
+
+            ary = (short[])_recorder[1].ch.Clone();
+            Array.Sort(ary);
+
+            for (int i = 0; i < ary.Length; i++)
+            {
+                if (_recorder[1].ch[i] == ary[0]) minIdx = i;
+                if (_recorder[1].ch[i] == ary[ary.Length - 1]) maxIdx = i;
+            }
+
+            if (minIdx == 0) lblRec2Ch1.BackColor = Color.Gray;
+            if (minIdx == 1) lblRec2Ch2.BackColor = Color.Gray;
+            if (minIdx == 2) lblRec2Ch3.BackColor = Color.Gray;
+            if (minIdx == 3) lblRec2Ch4.BackColor = Color.Gray;
+            if (minIdx == 4) lblRec2Ch5.BackColor = Color.Gray;
+            if (minIdx == 5) lblRec2Ch6.BackColor = Color.Gray;
+            if (minIdx == 6) lblRec2Ch7.BackColor = Color.Gray;
+            if (minIdx == 7) lblRec2Ch8.BackColor = Color.Gray;
+            if (minIdx == 8) lblRec2Ch9.BackColor = Color.Gray;
+
+            if (maxIdx == 0) lblRec2Ch1.BackColor = Color.Green;
+            if (maxIdx == 1) lblRec2Ch2.BackColor = Color.Green;
+            if (maxIdx == 2) lblRec2Ch3.BackColor = Color.Green;
+            if (maxIdx == 3) lblRec2Ch4.BackColor = Color.Green;
+            if (maxIdx == 4) lblRec2Ch5.BackColor = Color.Green;
+            if (maxIdx == 5) lblRec2Ch6.BackColor = Color.Green;
+            if (maxIdx == 6) lblRec2Ch7.BackColor = Color.Green;
+            if (maxIdx == 7) lblRec2Ch8.BackColor = Color.Green;
+            if (maxIdx == 8) lblRec2Ch9.BackColor = Color.Green;
 
             if (_chamber[1].bRun == true) lblChamb12Tlt.BackColor = System.Drawing.Color.Green;
             else lblChamb12Tlt.BackColor = System.Drawing.Color.Black;
@@ -1448,6 +1505,35 @@ namespace Ptnr
             lblRec3Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[2].ch[7], 1) + " ℃";
             lblRec3Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[2].ch[8], 1) + " ℃";
 
+            ary = (short[])_recorder[2].ch.Clone();
+            Array.Sort(ary);
+
+            for (int i = 0; i < ary.Length; i++)
+            {
+                if (_recorder[2].ch[i] == ary[0]) minIdx = i;
+                if (_recorder[2].ch[i] == ary[ary.Length - 1]) maxIdx = i;
+            }
+
+            if (minIdx == 0) lblRec3Ch1.BackColor = Color.Gray;
+            if (minIdx == 1) lblRec3Ch2.BackColor = Color.Gray;
+            if (minIdx == 2) lblRec3Ch3.BackColor = Color.Gray;
+            if (minIdx == 3) lblRec3Ch4.BackColor = Color.Gray;
+            if (minIdx == 4) lblRec3Ch5.BackColor = Color.Gray;
+            if (minIdx == 5) lblRec3Ch6.BackColor = Color.Gray;
+            if (minIdx == 6) lblRec3Ch7.BackColor = Color.Gray;
+            if (minIdx == 7) lblRec3Ch8.BackColor = Color.Gray;
+            if (minIdx == 8) lblRec3Ch9.BackColor = Color.Gray;
+
+            if (maxIdx == 0) lblRec3Ch1.BackColor = Color.Green;
+            if (maxIdx == 1) lblRec3Ch2.BackColor = Color.Green;
+            if (maxIdx == 2) lblRec3Ch3.BackColor = Color.Green;
+            if (maxIdx == 3) lblRec3Ch4.BackColor = Color.Green;
+            if (maxIdx == 4) lblRec3Ch5.BackColor = Color.Green;
+            if (maxIdx == 5) lblRec3Ch6.BackColor = Color.Green;
+            if (maxIdx == 6) lblRec3Ch7.BackColor = Color.Green;
+            if (maxIdx == 7) lblRec3Ch8.BackColor = Color.Green;
+            if (maxIdx == 8) lblRec3Ch9.BackColor = Color.Green;
+
             if (_chamber[2].bRun == true) lblChamb21Tlt.BackColor = System.Drawing.Color.Green;
             else lblChamb21Tlt.BackColor = System.Drawing.Color.Black;
 
@@ -1468,6 +1554,35 @@ namespace Ptnr
             lblRec4Ch7.Text = "[Ch7]  " + SysDefs.DotString(_recorder[3].ch[6], 1) + " ℃";
             lblRec4Ch8.Text = "[Ch8]  " + SysDefs.DotString(_recorder[3].ch[7], 1) + " ℃";
             lblRec4Ch9.Text = "[Ch9]  " + SysDefs.DotString(_recorder[3].ch[8], 1) + " ℃";
+
+            ary = (short[])_recorder[3].ch.Clone();
+            Array.Sort(ary);
+
+            for (int i = 0; i < ary.Length; i++)
+            {
+                if (_recorder[3].ch[i] == ary[0]) minIdx = i;
+                if (_recorder[3].ch[i] == ary[ary.Length - 1]) maxIdx = i;
+            }
+
+            if (minIdx == 0) lblRec4Ch1.BackColor = Color.Gray;
+            if (minIdx == 1) lblRec4Ch2.BackColor = Color.Gray;
+            if (minIdx == 2) lblRec4Ch3.BackColor = Color.Gray;
+            if (minIdx == 3) lblRec4Ch4.BackColor = Color.Gray;
+            if (minIdx == 4) lblRec4Ch5.BackColor = Color.Gray;
+            if (minIdx == 5) lblRec4Ch6.BackColor = Color.Gray;
+            if (minIdx == 6) lblRec4Ch7.BackColor = Color.Gray;
+            if (minIdx == 7) lblRec4Ch8.BackColor = Color.Gray;
+            if (minIdx == 8) lblRec4Ch9.BackColor = Color.Gray;
+
+            if (maxIdx == 0) lblRec4Ch1.BackColor = Color.Green;
+            if (maxIdx == 1) lblRec4Ch2.BackColor = Color.Green;
+            if (maxIdx == 2) lblRec4Ch3.BackColor = Color.Green;
+            if (maxIdx == 3) lblRec4Ch4.BackColor = Color.Green;
+            if (maxIdx == 4) lblRec4Ch5.BackColor = Color.Green;
+            if (maxIdx == 5) lblRec4Ch6.BackColor = Color.Green;
+            if (maxIdx == 6) lblRec4Ch7.BackColor = Color.Green;
+            if (maxIdx == 7) lblRec4Ch8.BackColor = Color.Green;
+            if (maxIdx == 8) lblRec4Ch9.BackColor = Color.Green;
 
             if (_chamber[3].bRun == true) lblChamb22Tlt.BackColor = System.Drawing.Color.Green;
             else lblChamb22Tlt.BackColor = System.Drawing.Color.Black;
