@@ -31,23 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.lblStsRoom4 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.lsvChmbSpc22 = new Ptnr.ListViewNF();
-            this.columnHeader113 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader114 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader115 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader116 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader117 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader118 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader119 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader120 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader121 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader122 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader123 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader124 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader125 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader126 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader127 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader128 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblRec4Ch5 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblRecorder22Tlt = new System.Windows.Forms.Label();
@@ -186,23 +169,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAllStop = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.lsvChmbSpc11 = new Ptnr.ListViewNF();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader73 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader74 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader75 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader76 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader77 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader78 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader79 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader80 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblRec1Ch5 = new System.Windows.Forms.Label();
             this.lblRec1Ch6 = new System.Windows.Forms.Label();
             this.lblRec1Ch7 = new System.Windows.Forms.Label();
@@ -210,23 +176,6 @@
             this.lblRec1Ch8 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.lblStsRoom2 = new System.Windows.Forms.Label();
-            this.lsvChmbSpc12 = new Ptnr.ListViewNF();
-            this.columnHeader81 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader82 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader83 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader84 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader85 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader86 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader87 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader88 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader89 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader90 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader91 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader92 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader93 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader94 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader95 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader96 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblRec2Ch5 = new System.Windows.Forms.Label();
             this.lblRec2Ch1 = new System.Windows.Forms.Label();
             this.lblRec2Ch6 = new System.Windows.Forms.Label();
@@ -238,23 +187,6 @@
             this.lblRec2Ch9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblStsRoom3 = new System.Windows.Forms.Label();
-            this.lsvChmbSpc21 = new Ptnr.ListViewNF();
-            this.columnHeader97 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader98 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader99 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader100 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader101 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader102 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader103 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader104 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader105 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader106 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader107 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader108 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader109 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader110 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader111 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader112 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblRec3Ch5 = new System.Windows.Forms.Label();
             this.lblRec3Ch1 = new System.Windows.Forms.Label();
             this.lblRec3Ch9 = new System.Windows.Forms.Label();
@@ -273,6 +205,86 @@
             this.lblRmtCh3 = new System.Windows.Forms.Label();
             this.lblRmtCh2 = new System.Windows.Forms.Label();
             this.lblRmtCh4 = new System.Windows.Forms.Label();
+            this.lblSdr1Max = new System.Windows.Forms.Label();
+            this.lblSdr1Min = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblSdr2Max = new System.Windows.Forms.Label();
+            this.lblSdr2Min = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblSdr3Max = new System.Windows.Forms.Label();
+            this.lblSdr3Min = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblSdr4Max = new System.Windows.Forms.Label();
+            this.lblSdr4Min = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.lsvChmbSpc21 = new Ptnr.ListViewNF();
+            this.columnHeader97 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader98 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader99 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader100 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader101 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader102 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader103 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader104 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader105 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader106 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader107 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader108 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader109 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader110 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader111 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader112 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lsvChmbSpc22 = new Ptnr.ListViewNF();
+            this.columnHeader113 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader114 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader115 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader116 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader117 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader118 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader119 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader120 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader121 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader122 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader123 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader124 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader125 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader126 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader127 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader128 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lsvChmbSpc12 = new Ptnr.ListViewNF();
+            this.columnHeader81 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader82 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader83 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader84 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader85 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader86 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader87 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader88 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader89 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader90 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader91 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader92 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader93 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader94 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader95 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader96 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lsvChmbSpc11 = new Ptnr.ListViewNF();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader73 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader74 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader75 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader76 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader77 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader78 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader79 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader80 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -320,54 +332,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1571, 217);
             this.panel7.TabIndex = 27;
-            // 
-            // lsvChmbSpc22
-            // 
-            this.lsvChmbSpc22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc22.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader113,
-            this.columnHeader114,
-            this.columnHeader115,
-            this.columnHeader116,
-            this.columnHeader117,
-            this.columnHeader118,
-            this.columnHeader119,
-            this.columnHeader120,
-            this.columnHeader121,
-            this.columnHeader122,
-            this.columnHeader123,
-            this.columnHeader124,
-            this.columnHeader125,
-            this.columnHeader126,
-            this.columnHeader127,
-            this.columnHeader128});
-            this.lsvChmbSpc22.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc22.FullRowSelect = true;
-            this.lsvChmbSpc22.GridLines = true;
-            this.lsvChmbSpc22.HideSelection = false;
-            this.lsvChmbSpc22.Location = new System.Drawing.Point(45, 6);
-            this.lsvChmbSpc22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc22.Name = "lsvChmbSpc22";
-            this.lsvChmbSpc22.OwnerDraw = true;
-            this.lsvChmbSpc22.Scrollable = false;
-            this.lsvChmbSpc22.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc22.TabIndex = 14;
-            this.lsvChmbSpc22.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc22.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc22.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc22.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader113
-            // 
-            this.columnHeader113.Text = "REG.";
-            this.columnHeader113.Width = 70;
-            // 
-            // columnHeader114
-            // 
-            this.columnHeader114.Text = "VALUE";
-            this.columnHeader114.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader114.Width = 90;
             // 
             // lblRec4Ch5
             // 
@@ -1343,55 +1307,6 @@
             this.panel6.Size = new System.Drawing.Size(1571, 217);
             this.panel6.TabIndex = 31;
             // 
-            // lsvChmbSpc11
-            // 
-            this.lsvChmbSpc11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc11.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader73,
-            this.columnHeader74,
-            this.columnHeader75,
-            this.columnHeader76,
-            this.columnHeader77,
-            this.columnHeader78,
-            this.columnHeader79,
-            this.columnHeader80});
-            this.lsvChmbSpc11.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc11.FullRowSelect = true;
-            this.lsvChmbSpc11.GridLines = true;
-            this.lsvChmbSpc11.HideSelection = false;
-            this.lsvChmbSpc11.Location = new System.Drawing.Point(42, 2);
-            this.lsvChmbSpc11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc11.MultiSelect = false;
-            this.lsvChmbSpc11.Name = "lsvChmbSpc11";
-            this.lsvChmbSpc11.OwnerDraw = true;
-            this.lsvChmbSpc11.ShowGroups = false;
-            this.lsvChmbSpc11.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc11.TabIndex = 15;
-            this.lsvChmbSpc11.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc11.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc11.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc11.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "REG.";
-            this.columnHeader1.Width = 70;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "VALUE";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 90;
-            // 
             // lblRec1Ch5
             // 
             this.lblRec1Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1494,55 +1409,6 @@
             this.lblStsRoom2.TabIndex = 12;
             this.lblStsRoom2.Text = "R2";
             this.lblStsRoom2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lsvChmbSpc12
-            // 
-            this.lsvChmbSpc12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc12.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader81,
-            this.columnHeader82,
-            this.columnHeader83,
-            this.columnHeader84,
-            this.columnHeader85,
-            this.columnHeader86,
-            this.columnHeader87,
-            this.columnHeader88,
-            this.columnHeader89,
-            this.columnHeader90,
-            this.columnHeader91,
-            this.columnHeader92,
-            this.columnHeader93,
-            this.columnHeader94,
-            this.columnHeader95,
-            this.columnHeader96});
-            this.lsvChmbSpc12.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc12.FullRowSelect = true;
-            this.lsvChmbSpc12.GridLines = true;
-            this.lsvChmbSpc12.HideSelection = false;
-            this.lsvChmbSpc12.Location = new System.Drawing.Point(42, 4);
-            this.lsvChmbSpc12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc12.MultiSelect = false;
-            this.lsvChmbSpc12.Name = "lsvChmbSpc12";
-            this.lsvChmbSpc12.OwnerDraw = true;
-            this.lsvChmbSpc12.ShowGroups = false;
-            this.lsvChmbSpc12.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc12.TabIndex = 15;
-            this.lsvChmbSpc12.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc12.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc12.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc12.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader81
-            // 
-            this.columnHeader81.Text = "REG.";
-            this.columnHeader81.Width = 70;
-            // 
-            // columnHeader82
-            // 
-            this.columnHeader82.Text = "VALUE";
-            this.columnHeader82.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader82.Width = 90;
             // 
             // lblRec2Ch5
             // 
@@ -1703,54 +1569,6 @@
             this.lblStsRoom3.Text = "R3";
             this.lblStsRoom3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lsvChmbSpc21
-            // 
-            this.lsvChmbSpc21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvChmbSpc21.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader97,
-            this.columnHeader98,
-            this.columnHeader99,
-            this.columnHeader100,
-            this.columnHeader101,
-            this.columnHeader102,
-            this.columnHeader103,
-            this.columnHeader104,
-            this.columnHeader105,
-            this.columnHeader106,
-            this.columnHeader107,
-            this.columnHeader108,
-            this.columnHeader109,
-            this.columnHeader110,
-            this.columnHeader111,
-            this.columnHeader112});
-            this.lsvChmbSpc21.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lsvChmbSpc21.FullRowSelect = true;
-            this.lsvChmbSpc21.GridLines = true;
-            this.lsvChmbSpc21.HideSelection = false;
-            this.lsvChmbSpc21.Location = new System.Drawing.Point(42, 7);
-            this.lsvChmbSpc21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lsvChmbSpc21.Name = "lsvChmbSpc21";
-            this.lsvChmbSpc21.OwnerDraw = true;
-            this.lsvChmbSpc21.Scrollable = false;
-            this.lsvChmbSpc21.Size = new System.Drawing.Size(1383, 206);
-            this.lsvChmbSpc21.TabIndex = 13;
-            this.lsvChmbSpc21.UseCompatibleStateImageBehavior = false;
-            this.lsvChmbSpc21.View = System.Windows.Forms.View.Details;
-            this.lsvChmbSpc21.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
-            this.lsvChmbSpc21.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
-            this.lsvChmbSpc21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
-            // 
-            // columnHeader97
-            // 
-            this.columnHeader97.Text = "REG.";
-            this.columnHeader97.Width = 70;
-            // 
-            // columnHeader98
-            // 
-            this.columnHeader98.Text = "VALUE";
-            this.columnHeader98.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader98.Width = 90;
-            // 
             // lblRec3Ch5
             // 
             this.lblRec3Ch5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1884,19 +1702,31 @@
             this.panel12.Controls.Add(this.btnExportExcel);
             this.panel12.Controls.Add(this.btnConnect);
             this.panel12.Controls.Add(this.label1);
+            this.panel12.Controls.Add(this.label18);
             this.panel12.Controls.Add(this.label6);
+            this.panel12.Controls.Add(this.lblSdr4Min);
             this.panel12.Controls.Add(this.label4);
+            this.panel12.Controls.Add(this.label15);
             this.panel12.Controls.Add(this.txtAmbTemp);
+            this.panel12.Controls.Add(this.lblSdr3Min);
             this.panel12.Controls.Add(this.txtCoolTemp);
+            this.panel12.Controls.Add(this.label12);
             this.panel12.Controls.Add(this.txtAmbHumi);
+            this.panel12.Controls.Add(this.lblSdr2Min);
             this.panel12.Controls.Add(this.txtApprov);
+            this.panel12.Controls.Add(this.label11);
+            this.panel12.Controls.Add(this.lblSdr1Min);
             this.panel12.Controls.Add(this.label7);
             this.panel12.Controls.Add(this.label8);
+            this.panel12.Controls.Add(this.lblSdr4Max);
             this.panel12.Controls.Add(this.txtSerialNo);
             this.panel12.Controls.Add(this.lblTitle);
+            this.panel12.Controls.Add(this.lblSdr3Max);
+            this.panel12.Controls.Add(this.lblSdr1Max);
+            this.panel12.Controls.Add(this.lblSdr2Max);
             this.panel12.Location = new System.Drawing.Point(1587, 10);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(301, 336);
+            this.panel12.Size = new System.Drawing.Size(301, 541);
             this.panel12.TabIndex = 33;
             // 
             // btnChamber11Step
@@ -1998,6 +1828,376 @@
             this.lblRmtCh4.TabIndex = 11;
             this.lblRmtCh4.Text = "RMT: 000M";
             this.lblRmtCh4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr1Max
+            // 
+            this.lblSdr1Max.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSdr1Max.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr1Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr1Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr1Max.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr1Max.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr1Max.Location = new System.Drawing.Point(203, 368);
+            this.lblSdr1Max.Name = "lblSdr1Max";
+            this.lblSdr1Max.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr1Max.TabIndex = 11;
+            this.lblSdr1Max.Text = "0.0";
+            this.lblSdr1Max.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr1Min
+            // 
+            this.lblSdr1Min.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr1Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr1Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr1Min.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr1Min.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr1Min.Location = new System.Drawing.Point(99, 368);
+            this.lblSdr1Min.Name = "lblSdr1Min";
+            this.lblSdr1Min.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr1Min.TabIndex = 11;
+            this.lblSdr1Min.Text = "0.0";
+            this.lblSdr1Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.Control;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label11.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label11.Location = new System.Drawing.Point(0, 368);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 37);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "SDR #1";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr2Max
+            // 
+            this.lblSdr2Max.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSdr2Max.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr2Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr2Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr2Max.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr2Max.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr2Max.Location = new System.Drawing.Point(203, 413);
+            this.lblSdr2Max.Name = "lblSdr2Max";
+            this.lblSdr2Max.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr2Max.TabIndex = 11;
+            this.lblSdr2Max.Text = "0.0";
+            this.lblSdr2Max.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr2Min
+            // 
+            this.lblSdr2Min.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr2Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr2Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr2Min.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr2Min.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr2Min.Location = new System.Drawing.Point(99, 413);
+            this.lblSdr2Min.Name = "lblSdr2Min";
+            this.lblSdr2Min.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr2Min.TabIndex = 11;
+            this.lblSdr2Min.Text = "0.0";
+            this.lblSdr2Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.SystemColors.Control;
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label12.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label12.Location = new System.Drawing.Point(0, 413);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 37);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "SDR #2";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr3Max
+            // 
+            this.lblSdr3Max.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSdr3Max.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr3Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr3Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr3Max.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr3Max.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr3Max.Location = new System.Drawing.Point(203, 457);
+            this.lblSdr3Max.Name = "lblSdr3Max";
+            this.lblSdr3Max.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr3Max.TabIndex = 11;
+            this.lblSdr3Max.Text = "0.0";
+            this.lblSdr3Max.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr3Min
+            // 
+            this.lblSdr3Min.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr3Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr3Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr3Min.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr3Min.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr3Min.Location = new System.Drawing.Point(99, 457);
+            this.lblSdr3Min.Name = "lblSdr3Min";
+            this.lblSdr3Min.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr3Min.TabIndex = 11;
+            this.lblSdr3Min.Text = "0.0";
+            this.lblSdr3Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.SystemColors.Control;
+            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label15.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label15.Location = new System.Drawing.Point(0, 457);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(93, 37);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "SDR #3";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr4Max
+            // 
+            this.lblSdr4Max.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSdr4Max.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr4Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr4Max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr4Max.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr4Max.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr4Max.Location = new System.Drawing.Point(203, 502);
+            this.lblSdr4Max.Name = "lblSdr4Max";
+            this.lblSdr4Max.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr4Max.TabIndex = 11;
+            this.lblSdr4Max.Text = "0.0";
+            this.lblSdr4Max.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSdr4Min
+            // 
+            this.lblSdr4Min.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblSdr4Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSdr4Min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSdr4Min.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblSdr4Min.ForeColor = System.Drawing.Color.Orange;
+            this.lblSdr4Min.Location = new System.Drawing.Point(99, 502);
+            this.lblSdr4Min.Name = "lblSdr4Min";
+            this.lblSdr4Min.Size = new System.Drawing.Size(98, 37);
+            this.lblSdr4Min.TabIndex = 11;
+            this.lblSdr4Min.Text = "0.0";
+            this.lblSdr4Min.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.SystemColors.Control;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label18.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label18.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label18.Location = new System.Drawing.Point(0, 502);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(93, 37);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "SDR #4";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lsvChmbSpc21
+            // 
+            this.lsvChmbSpc21.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc21.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader97,
+            this.columnHeader98,
+            this.columnHeader99,
+            this.columnHeader100,
+            this.columnHeader101,
+            this.columnHeader102,
+            this.columnHeader103,
+            this.columnHeader104,
+            this.columnHeader105,
+            this.columnHeader106,
+            this.columnHeader107,
+            this.columnHeader108,
+            this.columnHeader109,
+            this.columnHeader110,
+            this.columnHeader111,
+            this.columnHeader112});
+            this.lsvChmbSpc21.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc21.FullRowSelect = true;
+            this.lsvChmbSpc21.GridLines = true;
+            this.lsvChmbSpc21.HideSelection = false;
+            this.lsvChmbSpc21.Location = new System.Drawing.Point(42, 7);
+            this.lsvChmbSpc21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc21.Name = "lsvChmbSpc21";
+            this.lsvChmbSpc21.OwnerDraw = true;
+            this.lsvChmbSpc21.Scrollable = false;
+            this.lsvChmbSpc21.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc21.TabIndex = 13;
+            this.lsvChmbSpc21.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc21.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc21.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc21.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader97
+            // 
+            this.columnHeader97.Text = "REG.";
+            this.columnHeader97.Width = 70;
+            // 
+            // columnHeader98
+            // 
+            this.columnHeader98.Text = "VALUE";
+            this.columnHeader98.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader98.Width = 90;
+            // 
+            // lsvChmbSpc22
+            // 
+            this.lsvChmbSpc22.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc22.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader113,
+            this.columnHeader114,
+            this.columnHeader115,
+            this.columnHeader116,
+            this.columnHeader117,
+            this.columnHeader118,
+            this.columnHeader119,
+            this.columnHeader120,
+            this.columnHeader121,
+            this.columnHeader122,
+            this.columnHeader123,
+            this.columnHeader124,
+            this.columnHeader125,
+            this.columnHeader126,
+            this.columnHeader127,
+            this.columnHeader128});
+            this.lsvChmbSpc22.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc22.FullRowSelect = true;
+            this.lsvChmbSpc22.GridLines = true;
+            this.lsvChmbSpc22.HideSelection = false;
+            this.lsvChmbSpc22.Location = new System.Drawing.Point(45, 6);
+            this.lsvChmbSpc22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc22.Name = "lsvChmbSpc22";
+            this.lsvChmbSpc22.OwnerDraw = true;
+            this.lsvChmbSpc22.Scrollable = false;
+            this.lsvChmbSpc22.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc22.TabIndex = 14;
+            this.lsvChmbSpc22.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc22.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc22.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc22.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader113
+            // 
+            this.columnHeader113.Text = "REG.";
+            this.columnHeader113.Width = 70;
+            // 
+            // columnHeader114
+            // 
+            this.columnHeader114.Text = "VALUE";
+            this.columnHeader114.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader114.Width = 90;
+            // 
+            // lsvChmbSpc12
+            // 
+            this.lsvChmbSpc12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc12.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader81,
+            this.columnHeader82,
+            this.columnHeader83,
+            this.columnHeader84,
+            this.columnHeader85,
+            this.columnHeader86,
+            this.columnHeader87,
+            this.columnHeader88,
+            this.columnHeader89,
+            this.columnHeader90,
+            this.columnHeader91,
+            this.columnHeader92,
+            this.columnHeader93,
+            this.columnHeader94,
+            this.columnHeader95,
+            this.columnHeader96});
+            this.lsvChmbSpc12.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc12.FullRowSelect = true;
+            this.lsvChmbSpc12.GridLines = true;
+            this.lsvChmbSpc12.HideSelection = false;
+            this.lsvChmbSpc12.Location = new System.Drawing.Point(42, 4);
+            this.lsvChmbSpc12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc12.MultiSelect = false;
+            this.lsvChmbSpc12.Name = "lsvChmbSpc12";
+            this.lsvChmbSpc12.OwnerDraw = true;
+            this.lsvChmbSpc12.ShowGroups = false;
+            this.lsvChmbSpc12.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc12.TabIndex = 15;
+            this.lsvChmbSpc12.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc12.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc12.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc12.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader81
+            // 
+            this.columnHeader81.Text = "REG.";
+            this.columnHeader81.Width = 70;
+            // 
+            // columnHeader82
+            // 
+            this.columnHeader82.Text = "VALUE";
+            this.columnHeader82.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader82.Width = 90;
+            // 
+            // lsvChmbSpc11
+            // 
+            this.lsvChmbSpc11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvChmbSpc11.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader73,
+            this.columnHeader74,
+            this.columnHeader75,
+            this.columnHeader76,
+            this.columnHeader77,
+            this.columnHeader78,
+            this.columnHeader79,
+            this.columnHeader80});
+            this.lsvChmbSpc11.Font = new System.Drawing.Font("돋움체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lsvChmbSpc11.FullRowSelect = true;
+            this.lsvChmbSpc11.GridLines = true;
+            this.lsvChmbSpc11.HideSelection = false;
+            this.lsvChmbSpc11.Location = new System.Drawing.Point(42, 2);
+            this.lsvChmbSpc11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lsvChmbSpc11.MultiSelect = false;
+            this.lsvChmbSpc11.Name = "lsvChmbSpc11";
+            this.lsvChmbSpc11.OwnerDraw = true;
+            this.lsvChmbSpc11.ShowGroups = false;
+            this.lsvChmbSpc11.Size = new System.Drawing.Size(1383, 206);
+            this.lsvChmbSpc11.TabIndex = 15;
+            this.lsvChmbSpc11.UseCompatibleStateImageBehavior = false;
+            this.lsvChmbSpc11.View = System.Windows.Forms.View.Details;
+            this.lsvChmbSpc11.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
+            this.lsvChmbSpc11.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.ListView_DrawSubItem);
+            this.lsvChmbSpc11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListView_MouseDown);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "REG.";
+            this.columnHeader1.Width = 70;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "VALUE";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 90;
             // 
             // EqmtForm
             // 
@@ -2313,5 +2513,17 @@
         private System.Windows.Forms.Label lblRmtCh3;
         private System.Windows.Forms.Label lblRmtCh2;
         private System.Windows.Forms.Label lblRmtCh4;
+        private System.Windows.Forms.Label lblSdr1Max;
+        private System.Windows.Forms.Label lblSdr1Min;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblSdr2Max;
+        private System.Windows.Forms.Label lblSdr2Min;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblSdr3Max;
+        private System.Windows.Forms.Label lblSdr3Min;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblSdr4Max;
+        private System.Windows.Forms.Label lblSdr4Min;
+        private System.Windows.Forms.Label label18;
     }
 }
